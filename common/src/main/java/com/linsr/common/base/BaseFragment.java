@@ -1,6 +1,7 @@
 package com.linsr.common.base;
 
-import android.app.Fragment;
+
+import android.support.v4.app.Fragment;
 
 /**
  * Fragment 基类
