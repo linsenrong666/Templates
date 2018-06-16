@@ -1,0 +1,1 @@
+include ':app', ':books', ':common', ':news', ':main'
