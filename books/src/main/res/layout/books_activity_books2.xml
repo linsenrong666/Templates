@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@android:color/holo_green_light"
+        android:gravity="center_vertical"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+
+    <ScrollView
+        android:id="@+id/nestscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_red_light"
+                android:text="1\n2\n3\n4\n5\n6\n7\n8\n9\n10"/>
+
+            <TextView
+                android:id="@+id/title_2"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@android:color/holo_blue_bright"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="@android:color/holo_purple"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="@android:color/holo_orange_light"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

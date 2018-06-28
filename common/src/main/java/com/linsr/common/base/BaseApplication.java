@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.BuildConfig;
+import com.linsr.common.utils.JLog;
 
 /**
  * application基类
@@ -18,7 +19,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApplication = this;
-
+        //初始化日志工具
+        JLog.init(isDebug());
         //初始化路由
         initRouter();
     }

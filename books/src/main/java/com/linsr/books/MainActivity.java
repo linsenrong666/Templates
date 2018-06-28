@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.base.BaseActivity;
 
 @Route(path = "/books/main")
@@ -19,6 +20,12 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, BookActivity.class);
                 startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/books/books2").navigation();
             }
         });
     }
