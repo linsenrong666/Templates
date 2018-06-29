@@ -88,6 +88,7 @@ public class Api {
     private class LogInterceptor implements Interceptor {
 
         private static final String TAG = "net_log";
+        private static final String POST = "POST";
 
         @Override
         public okhttp3.Response intercept(@NonNull Chain chain) throws IOException {
@@ -102,7 +103,7 @@ public class Api {
             JLog.d(TAG, "----------Start----------------");
             JLog.d(TAG, "| " + request.toString());
             String method = request.method();
-            if ("POST".equals(method)) {
+            if (POST.equals(method)) {
                 StringBuilder sb = new StringBuilder();
                 if (request.body() instanceof FormBody) {
                     FormBody body = (FormBody) request.body();
@@ -117,7 +118,7 @@ public class Api {
                     }
                 }
             }
-            JLog.d(TAG, "| Response:" + content);
+            JLog.json(TAG, "| Response:" + content);
             JLog.d(TAG, "----------End:" + duration + "毫秒----------");
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_middle">16dp</dimen>
+    <dimen name="common_small">12dp</dimen>
+    <dimen name="common_tiny">4dp</dimen>
+    <dimen name="common_large">20dp</dimen>
+    <dimen name="common_max">28dp</dimen>
+
+    <dimen name="common_font_tiny">12sp</dimen>
+    <dimen name="common_font_small">14sp</dimen>
+    <dimen name="common_font_middle">16sp</dimen>
+    <dimen name="common_font_large">20sp</dimen>
+    <dimen name="common_font_max">28sp</dimen>
+
+</resources>

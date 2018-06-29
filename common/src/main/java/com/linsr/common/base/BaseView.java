@@ -7,10 +7,12 @@ package com.linsr.common.base;
  */
 public interface BaseView {
 
-    void showNoData(String text);
+
+    void showNoData();
 
     void hideNoData();
 
-    void onLoading();
+    void showLoading();
 
+    void hideLoading();
 }

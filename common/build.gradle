@@ -33,4 +33,7 @@ dependencies {
     compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
     //refresh layout
     compile "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.ext.smartRefreshLayout"
+    //easyPermissions
+    compile "pub.devrel:easypermissions:$rootProject.ext.easyPermissions"
+
 }

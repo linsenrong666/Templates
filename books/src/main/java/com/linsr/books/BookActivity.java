@@ -1,5 +1,6 @@
 package com.linsr.books;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,9 @@ import com.linsr.books.widgets.OnChildScrollListener;
 import com.linsr.books.widgets.OnGroupScrollListener;
 import com.linsr.books.widgets.SideGroupLayout;
 import com.linsr.books.widgets.SideTopScrollView;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * Description
@@ -46,4 +50,6 @@ public class BookActivity extends AppCompatActivity implements OnGroupScrollList
     @Override
     public void onScrollChanged(int left, int top) {
     }
+
+
 }
