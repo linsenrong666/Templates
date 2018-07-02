@@ -1,12 +1,12 @@
 package com.linsr.common.base;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.linsr.common.BuildConfig;
-import com.linsr.common.R;
 import com.linsr.common.utils.JLog;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -17,12 +17,16 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
+import java.util.List;
+
 /**
  * application基类
  *
  * @author Linsr 2018/6/16 上午11:10
  */
 public class BaseApplication extends Application {
+
+    protected String TAG;
 
     static {
         //设置全局的Header构建器
@@ -48,13 +52,45 @@ public class BaseApplication extends Application {
     private static BaseApplication mApplication;
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this); // Enable MultiDex.
+    }
+
+    @Override
     public void onCreate() {
+        TAG = getClass().getSimpleName();
+        JLog.i(TAG, "\n\n\n######################################################################################" +
+                "启动完成######################################################################################");
+        isInMainProcesses();
+
         super.onCreate();
         mApplication = this;
         //初始化日志工具
         JLog.init(isDebug());
         //初始化路由
         initRouter();
+    }
+
+    /**
+     * Application 是否在主进程
+     * @return 是否在主进程
+     */
+    protected boolean isInMainProcesses() {
+        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
+        List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
+        String mainProcessName = getPackageName();
+        int myPid = android.os.Process.myPid();
+
+        for (ActivityManager.RunningAppProcessInfo info : processInfos) {
+            JLog.i(TAG, "my.pid -> " + myPid + ",mainProcessName -> " + mainProcessName);
+            JLog.i(TAG, "info.pid -> " + info.pid + ",info.processName -> " + info.processName);
+
+            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void initRouter() {
@@ -72,4 +108,5 @@ public class BaseApplication extends Application {
     public static BaseApplication getInstance() {
         return mApplication;
     }
+
 }

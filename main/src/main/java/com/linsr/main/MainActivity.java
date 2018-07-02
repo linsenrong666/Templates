@@ -1,6 +1,5 @@
 package com.linsr.main;
 
-import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,7 +10,8 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.linsr.common.base.BaseFragment;
+import com.linsr.common.router.RouterCenter;
+import com.linsr.common.router.url.BookModule;
 
 @Route(path = "/main/main")
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/books/main").navigation();
+                RouterCenter.startActivity(BookModule.Activity.MAIN);
             }
         });
 

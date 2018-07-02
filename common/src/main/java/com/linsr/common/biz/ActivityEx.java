@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.linsr.common.base.BaseActivity;
-import com.linsr.common.base.BasePresenter;
-import com.linsr.common.base.BaseRepository;
 import com.linsr.common.base.BaseView;
 
 /**
@@ -31,5 +29,23 @@ public abstract class ActivityEx extends BaseActivity implements BaseView {
     }
 
 
+    @Override
+    public void showNoData() {
 
+    }
+
+    @Override
+    public void hideNoData() {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.linsr.common.biz;
 
 import com.linsr.common.base.BaseApplication;
+import com.linsr.common.utils.JLog;
 
 /**
  * 业务相关的application基类
@@ -12,6 +13,5 @@ public class ApplicationEx extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
     }
 }

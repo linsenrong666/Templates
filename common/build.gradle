@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+        multiDexEnabled true
     }
     resourcePrefix "common_"
 }
@@ -35,5 +36,7 @@ dependencies {
     compile "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.ext.smartRefreshLayout"
     //easyPermissions
     compile "pub.devrel:easypermissions:$rootProject.ext.easyPermissions"
+    //share preference for inter process
+    compile "net.grandcentrix.tray:tray:$rootProject.ext.trayVersion"
 
 }
