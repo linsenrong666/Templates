@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mContentsManager.notifyContentUpdateSuccess("aa");
                 Intent intent = new Intent(MainActivity.this, BookActivity.class);
                 startActivity(intent);
             }

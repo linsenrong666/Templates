@@ -16,6 +16,8 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
@@ -70,6 +72,18 @@ public class BaseApplication extends Application {
         JLog.init(isDebug());
         //初始化路由
         initRouter();
+        //初始化内存泄漏分析工具
+        initLeakCanary();
+    }
+
+    private RefWatcher mRefWatcher;
+
+    private void initLeakCanary() {
+        mRefWatcher = LeakCanary.install(this);
+    }
+
+    public RefWatcher getRefWatcher() {
+        return mRefWatcher;
     }
 
     /**

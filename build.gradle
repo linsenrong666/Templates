@@ -42,4 +42,5 @@ ext {
     smartRefreshLayout = '1.0.5.1'
     easyPermissions = '1.2.0'
     trayVersion = '0.12.0'
+    leakCanaryVersion = '1.5.4'
 }

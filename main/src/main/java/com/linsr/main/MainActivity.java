@@ -10,11 +10,16 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.linsr.common.base.BaseActivity;
 import com.linsr.common.router.RouterCenter;
 import com.linsr.common.router.url.BookModule;
+import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
+
+import java.util.List;
 
 @Route(path = "/main/main")
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,23 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.vp);
         adapter a = new adapter(getSupportFragmentManager());
         viewPager.setAdapter(a);
+
+        registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
+            @Override
+            public void onContentUpdated(List<Object[]> values) {
+                JLog.e("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            }
+
+            @Override
+            public boolean isActive() {
+                return mIsActive;
+            }
+
+            @Override
+            public String getKey() {
+                return "aa";
+            }
+        });
     }
 
     class adapter extends FragmentPagerAdapter {

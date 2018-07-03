@@ -252,6 +252,8 @@ public class JLog {
             case XML:
                 printXml(tag, msg, headString);
                 break;
+            default:
+                break;
         }
     }
 
@@ -351,6 +353,8 @@ public class JLog {
                 break;
             case JLog.A:
                 Log.wtf(tag, sub);
+                break;
+            default:
                 break;
         }
     }

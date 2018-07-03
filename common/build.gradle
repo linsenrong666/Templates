@@ -38,5 +38,7 @@ dependencies {
     compile "pub.devrel:easypermissions:$rootProject.ext.easyPermissions"
     //share preference for inter process
     compile "net.grandcentrix.tray:tray:$rootProject.ext.trayVersion"
-
+    //Memory leakage analysis
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leakCanaryVersion"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.ext.leakCanaryVersion"
 }

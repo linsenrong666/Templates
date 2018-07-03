@@ -57,7 +57,7 @@ public class NewsActivity extends BaseActivity {
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                JLog.i("offset:" + verticalOffset);
+                JLog.i(TAG,"offset:" + verticalOffset);
                 verticalOffset = Math.abs(verticalOffset);
 
                 if (verticalOffset > 0) {
