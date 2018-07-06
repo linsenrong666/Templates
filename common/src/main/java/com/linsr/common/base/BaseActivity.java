@@ -49,8 +49,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         mIsActive = true;
-        JLog.d(TAG, "onResume.called,this:" + getClass().getName());
-        JLog.d(TAG, "mOnContentUpdateListeners.size:" + mOnContentUpdateListeners.size());
+        JLog.d(TAG, "Activity onResume.called , this: " + getClass().getName());
+        JLog.d(TAG, "mOnContentUpdateListeners.size: " + mOnContentUpdateListeners.size());
         for (AbstractOnContentUpdateListener listener : mOnContentUpdateListeners) {
             if (listener.isUpdateHappened()) {
                 listener.onContentUpdated(listener.getCachedObjects());
@@ -63,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     protected void onPause() {
         super.onPause();
         mIsActive = false;
-        JLog.d(TAG, "onPause.called,this:" + getClass().getName());
+        JLog.d(TAG, "Activity onPause.called , this: " + getClass().getName());
     }
 
     @Override

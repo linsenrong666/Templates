@@ -14,6 +14,6 @@ public interface BookModule {
     }
 
     interface Fragment {
-
+        String TEST1 = ROOT+"test1";
     }
 }

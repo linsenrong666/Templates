@@ -1,6 +1,9 @@
 package com.linsr.news;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +12,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.base.BaseActivity;
 import com.linsr.common.biz.ActivityEx;
+import com.linsr.common.router.RouterCenter;
+import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.JLog;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -25,7 +30,25 @@ public class MainActivity extends ActivityEx {
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/news/news").navigation();
+//                ARouter.getInstance().build("/news/news").navigation();
+//                RouterCenter.startActivity(BookModule.Activity.MAIN);
+
+                Intent intent = new Intent();
+//                intent.setClassName("com.linsr.books", "com.linsr.books.MainActivity");
+//                startActivity(intent);
+
+
+                try {
+                    intent = new Intent(Intent.ACTION_MAIN);
+                    ComponentName cmp = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI");
+                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setComponent(cmp);
+                    startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
         methodRequiresTwoPermission();
@@ -40,9 +63,9 @@ public class MainActivity extends ActivityEx {
         if (EasyPermissions.hasPermissions(this, perms)) {
             // Already have permission, do the thing
             // ...
-            JLog.i(TAG,"有权限！");
+            JLog.i(TAG, "有权限！");
         } else {
-            JLog.e(TAG,"没权限！");
+            JLog.e(TAG, "没权限！");
             // Do not have permissions, request them now
             EasyPermissions.requestPermissions(this, getString(R.string.app_name),
                     RC_CAMERA_AND_LOCATION, perms);

@@ -11,12 +11,16 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.base.BaseActivity;
+import com.linsr.common.biz.EventKey;
 import com.linsr.common.router.RouterCenter;
 import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Route(path = "/main/main")
 public class MainActivity extends BaseActivity {
@@ -41,8 +45,19 @@ public class MainActivity extends BaseActivity {
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.vp);
-        adapter a = new adapter(getSupportFragmentManager());
+
+        List<Fragment> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("aa", "-1000");
+        list.add(RouterCenter.findFragment(BookModule.Fragment.TEST1, map));
+
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("aa", "1000");
+        list.add(RouterCenter.findFragment(BookModule.Fragment.TEST1, map2));
+
+        adapter a = new adapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(a);
+
 
         registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
             @Override
@@ -57,26 +72,28 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public String getKey() {
-                return "aa";
+                return EventKey.aa;
             }
         });
     }
 
     class adapter extends FragmentPagerAdapter {
 
-        public adapter(FragmentManager fm) {
+        private List<Fragment> mList;
+
+        public adapter(FragmentManager fm, List<Fragment> mList) {
             super(fm);
+            this.mList = mList;
         }
 
         @Override
         public Fragment getItem(int position) {
-            Fragment fragment = (Fragment) ARouter.getInstance().build("/books/booksFragment").navigation();
-            return fragment;
+            return mList.get(position);
         }
 
         @Override
         public int getCount() {
-            return 1;
+            return mList.size();
         }
     }
 
