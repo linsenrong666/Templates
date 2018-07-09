@@ -10,7 +10,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
+import com.linsr.common.R;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.utils.contents.ContentsManager;
@@ -41,6 +43,10 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
     private boolean mLazyLoaded;
     private boolean mIsViewCreated;
 
+    private FrameLayout mContentLayout;
+    protected FrameLayout mNoDataLayout;
+    private View mContentView;
+
     @Override
     public void onAttach(Context context) {
         TAG = getClass().getSimpleName();
@@ -49,10 +55,13 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
         mContentsManager = ContentsManager.getInstance();
 
         initArguments(getArguments());
-
     }
 
+    protected abstract int getLayoutId();
+
     protected abstract void initArguments(Bundle arguments);
+
+    protected abstract void initView();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,10 +69,32 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
         JLog.d(TAG, "Fragment onCreate.called, this: " + getClass().getName());
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.common_fragment_base, container, false);
+        mContentLayout = (FrameLayout) view.findViewById(R.id.base_content_layout);
+        mNoDataLayout = (FrameLayout) view.findViewById(R.id.base_no_data_layout);
+
+        if (mContentView == null) {
+            mContentView = inflater.inflate(getLayoutId(), mContentLayout, false);
+        }
+        mContentLayout.addView(mContentView);
+        return view;
+    }
+
+    protected <T extends View> T findViewById(int resId) {
+        if (mContentView == null) {
+            throw new RuntimeException("content view cannot be null!");
+        }
+        return mContentView.findViewById(resId);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mIsViewCreated = true;
+        initView();
     }
 
     @Override
@@ -160,6 +191,7 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
             mContentsManager.unregisterOnContentUpdateListener(listener);
         }
         mOnContentUpdateListeners.clear();
+        mActivity = null;
     }
 
     @Override
@@ -172,6 +204,4 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
             JLog.e(TAG, "Error:RefWatcher is null!");
         }
     }
-
-
 }

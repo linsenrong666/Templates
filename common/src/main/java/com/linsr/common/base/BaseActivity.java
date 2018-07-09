@@ -1,10 +1,18 @@
 package com.linsr.common.base;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
+import com.linsr.common.R;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.utils.contents.ContentsManager;
@@ -28,11 +36,37 @@ public abstract class BaseActivity extends AppCompatActivity implements
     private List<AbstractOnContentUpdateListener> mOnContentUpdateListeners = new ArrayList<>();
     protected boolean mIsActive = true;
 
+    private RelativeLayout mMiddleLayout;
+    protected FrameLayout mTopLayout;
+    protected FrameLayout mBottomLayout;
+    protected FrameLayout mContentLayout;
+    protected FrameLayout mNoDataLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        //设置无title样式
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setOrientation();
         super.onCreate(savedInstanceState);
+        init();
+        findView();
+        onCreateEx(savedInstanceState);
+    }
+
+    protected abstract void onCreateEx(@Nullable Bundle savedInstanceState);
+
+    private void init() {
         TAG = getClass().getSimpleName();
         mContentsManager = ContentsManager.getInstance();
+    }
+
+    private void findView() {
+        setContentView(R.layout.common_activity_base);
+        mTopLayout = (FrameLayout) findViewById(R.id.base_top_layout);
+        mMiddleLayout = (RelativeLayout) findViewById(R.id.base_middle_layout);
+        mBottomLayout = (FrameLayout) findViewById(R.id.base_bottom_layout);
+        mContentLayout = (FrameLayout) findViewById(R.id.base_content_layout);
+        mNoDataLayout = (FrameLayout) findViewById(R.id.base_no_data_layout);
     }
 
     /**
@@ -83,6 +117,28 @@ public abstract class BaseActivity extends AppCompatActivity implements
         JLog.i(TAG, "===获取权限失败，requestCode:" + requestCode + "，list:" + list.toString());
     }
 
+    /**
+     * 获取根视图
+     */
+    protected ViewGroup getRootContent() {
+        return ((ViewGroup) findViewById(android.R.id.content));
+    }
+
+    /**
+     * 后退
+     */
+    public void back() {
+        onBackPressed();
+    }
+
+    /**
+     * 设置屏幕方向
+     */
+    protected void setOrientation() {
+        //默认设置竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -92,4 +148,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
         mOnContentUpdateListeners.clear();
     }
 
+    public static void startSelf(Context context, Class c) {
+        Intent intent = new Intent(context, c);
+        context.startActivity(intent);
+    }
 }

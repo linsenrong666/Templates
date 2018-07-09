@@ -1,4 +1,4 @@
-package com.linsr.common.base;
+package com.linsr.common.base.mvp;
 
 /**
  * Description
