@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!---->
+    <declare-styleable name="LabelContainer">
+        <attr name="label_text" format="string"/>
+        <attr name="label_text_size" format="dimension"/>
+        <attr name="label_text_color" format="color"/>
+        <attr name="content_text" format="string"/>
+        <attr name="content_text_size" format="dimension"/>
+        <attr name="content_text_color" format="color"/>
+        <attr name="content_edit_size" format="dimension"/>
+        <attr name="content_image" format="reference"/>
+        <attr name="show_edit_text" format="boolean"/>
+        <attr name="hint_text" format="string"/>
+        <attr name="edit_input_type" format="integer"/>
+        <attr name="content_height" format="dimension"/>
+        <attr name="show_top_divider" format="boolean"/>
+        <attr name="show_bottom_divider" format="boolean"/>
+        <attr name="show_bottom_inner_divider" format="boolean"/>
+        <attr name="inner_margin_left" format="dimension"/>
+        <attr name="inner_margin_right" format="dimension"/>
+        <attr name="label_width" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="LabelRadioGroup">
+        <attr name="label_text_rg" format="string"/>
+        <attr name="label_text_size_rg" format="dimension"/>
+        <attr name="content_height_rg" format="dimension"/>
+        <attr name="show_top_divider_rg" format="boolean"/>
+        <attr name="show_bottom_divider_rg" format="boolean"/>
+        <attr name="show_bottom_inner_divider_rg" format="boolean"/>
+        <attr name="inner_margin_left_rg" format="dimension"/>
+        <attr name="inner_margin_right_rg" format="dimension"/>
+        <attr name="label_width_rg" format="dimension"/>
+        <attr name="content_list_rg" format="reference"/>
+        <attr name="rb_drawable_id_rg" format="reference"/>
+    </declare-styleable>
+</resources>
