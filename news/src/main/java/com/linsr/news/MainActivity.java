@@ -22,11 +22,35 @@ import pub.devrel.easypermissions.EasyPermissions;
 @Route(path = "/news/main")
 public class MainActivity extends ActivityEx {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_activity_main);
+    static final int RC_CAMERA_AND_LOCATION = 1;
 
+    @AfterPermissionGranted(RC_CAMERA_AND_LOCATION)
+    private void methodRequiresTwoPermission() {
+        String[] perms = {Manifest.permission.CAMERA};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            // Already have permission, do the thing
+            // ...
+            JLog.i(TAG, "有权限！");
+        } else {
+            JLog.e(TAG, "没权限！");
+            // Do not have permissions, request them now
+            EasyPermissions.requestPermissions(this, getString(R.string.app_name),
+                    RC_CAMERA_AND_LOCATION, perms);
+        }
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.news_activity_main;
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void initView() {
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,23 +76,5 @@ public class MainActivity extends ActivityEx {
             }
         });
         methodRequiresTwoPermission();
-    }
-
-
-    static final int RC_CAMERA_AND_LOCATION = 1;
-
-    @AfterPermissionGranted(RC_CAMERA_AND_LOCATION)
-    private void methodRequiresTwoPermission() {
-        String[] perms = {Manifest.permission.CAMERA};
-        if (EasyPermissions.hasPermissions(this, perms)) {
-            // Already have permission, do the thing
-            // ...
-            JLog.i(TAG, "有权限！");
-        } else {
-            JLog.e(TAG, "没权限！");
-            // Do not have permissions, request them now
-            EasyPermissions.requestPermissions(this, getString(R.string.app_name),
-                    RC_CAMERA_AND_LOCATION, perms);
-        }
     }
 }

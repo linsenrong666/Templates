@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.BaseActivity;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.utils.JLog;
 
 /**
@@ -21,39 +22,30 @@ import com.linsr.common.utils.JLog;
  * @author Linsr 2018/6/18 下午2:25
  */
 @Route(path = "/books/books2")
-public class Book2Activity extends BaseActivity {
+public class Book2Activity extends ActivityEx {
 
     private TextView title;
     private TextView title2;
     private View content;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.books_activity_books2);
+    protected int getLayoutId() {
+        return R.layout.books_activity_books2;
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void initView() {
         title = (TextView) findViewById(R.id.title);
         title2 = (TextView) findViewById(R.id.title_2);
         content = findViewById(R.id.content);
 
         ScrollView scrollView = (ScrollView) findViewById(R.id.nestscroll);
-        scrollView.setOnScrollChangeListener(new ScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                if (scrollY > content.getHeight()) {
-//                    title.setVisibility(View.VISIBLE);
-//                } else {
-//                    title.setVisibility(View.GONE);
-//                }
-                scrollY = Math.abs(scrollY);
-//                JLog.i("title2.getTop():" + title2.getTop());
-                JLog.i("scrollY:" + scrollY);
-//                title2.setTranslationY(Math.max(scrollY, title2.getTop()));
-                if (scrollY >= content.getHeight()) {
-                    title2.setTranslationY(scrollY - content.getHeight());
-                }
-            }
-        });
+
 
 
 //        NestedScrollView scrollView = (NestedScrollView) findViewById(R.id.nestscroll);

@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.linsr.common.R;
+import com.linsr.common.dialogs.DialogFactory;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.utils.contents.ContentsManager;
@@ -36,11 +39,25 @@ public abstract class BaseActivity extends AppCompatActivity implements
     private List<AbstractOnContentUpdateListener> mOnContentUpdateListeners = new ArrayList<>();
     protected boolean mIsActive = true;
 
+    protected DialogFactory mDialogFactory;
+
     private RelativeLayout mMiddleLayout;
     protected FrameLayout mTopLayout;
     protected FrameLayout mBottomLayout;
     protected FrameLayout mContentLayout;
     protected FrameLayout mNoDataLayout;
+
+    /**
+     * 加载layout id
+     * @return id
+     */
+    protected abstract int getLayoutId();
+
+    /**
+     * 初始化 view
+     */
+    protected abstract void initView();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,13 +70,30 @@ public abstract class BaseActivity extends AppCompatActivity implements
         onCreateEx(savedInstanceState);
     }
 
-    protected abstract void onCreateEx(@Nullable Bundle savedInstanceState);
-
-    private void init() {
-        TAG = getClass().getSimpleName();
-        mContentsManager = ContentsManager.getInstance();
+    protected void onCreateEx(@Nullable Bundle savedInstanceState) {
+        setContentLayout();
+        setNoDataLayout();
+        initView();
     }
 
+    private void setContentLayout() {
+        View mContentView = LayoutInflater.from(this).inflate(getLayoutId(), getRootContent(), false);
+        mContentLayout.addView(mContentView);
+    }
+
+    /**
+     * 初始化，声明周期很靠前，建议再此进行接收intent参数，初始化变量等操作
+     */
+    protected void init() {
+        TAG = getClass().getSimpleName();
+        mContentsManager = ContentsManager.getInstance();
+        mDialogFactory = DialogFactory.getInstance();
+    }
+    /**
+     * 设置空数据托底页面，子类可以修改定制
+     */
+    protected void setNoDataLayout() {
+    }
     private void findView() {
         setContentView(R.layout.common_activity_base);
         mTopLayout = (FrameLayout) findViewById(R.id.base_top_layout);

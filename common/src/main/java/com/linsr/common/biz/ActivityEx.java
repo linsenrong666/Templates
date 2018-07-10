@@ -1,5 +1,6 @@
 package com.linsr.common.biz;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,56 +17,55 @@ import com.linsr.common.base.mvp.IView;
  */
 public abstract class ActivityEx extends BaseActivity implements IView {
 
-    private View mContentView;
+    private final Object mLockObject = new Object();
 
+    private volatile Dialog mTransparentDialog;
+
+    /**
+     * 设置空数据托底页面，子类可以修改定制
+     */
     @Override
-    protected void onCreateEx(@Nullable Bundle savedInstanceState) {
-        mContentView = LayoutInflater.from(this).inflate(getLayoutId(), getRootContent(), false);
-        mContentLayout.addView(mContentView);
-        setNoDataLayout();
-
-        init();
-        initView();
-    }
-
-    protected abstract int getLayoutId();
-
-    protected abstract void init();
-
-    protected abstract void initView();
-
     protected void setNoDataLayout() {
-        View mNoDataView = LayoutInflater.from(this).inflate(R.layout.common_layout_no_data, getRootContent(), false);
-
+        View mNoDataView = LayoutInflater.from(this).inflate(R.layout.common_layout_no_data,
+                getRootContent(), false);
         mNoDataLayout.addView(mNoDataView);
     }
 
     @Override
     public void showNoData(String text) {
         mNoDataLayout.setVisibility(View.VISIBLE);
-        mContentView.setVisibility(View.GONE);
+        mContentLayout.setVisibility(View.GONE);
     }
 
     @Override
     public void hideNoData() {
         mNoDataLayout.setVisibility(View.GONE);
-        mContentView.setVisibility(View.VISIBLE);
+        mContentLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showLoading(String text) {
-
+        synchronized (mLockObject) {
+            hideLoading();
+            mTransparentDialog = mDialogFactory.createTransparentProgressDialog(this);
+            mDialogFactory.showDialog(mTransparentDialog);
+        }
     }
 
     @Override
     public void hideLoading() {
-
+        synchronized (mLockObject) {
+            if (mTransparentDialog != null) {
+                mDialogFactory.dismissDialog(mTransparentDialog);
+                mTransparentDialog = null;
+            }
+        }
     }
 
     @Override
     public void showError(String text) {
         mNoDataLayout.setVisibility(View.VISIBLE);
-        mContentView.setVisibility(View.GONE);
+        mContentLayout.setVisibility(View.GONE);
     }
 
 }

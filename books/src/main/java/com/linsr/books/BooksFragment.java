@@ -30,6 +30,11 @@ public class BooksFragment extends BaseFragment {
     String aa;
 
     @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
     protected void initArguments(Bundle arguments) {
         aa = arguments.getString("aa");
         registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
@@ -48,6 +53,11 @@ public class BooksFragment extends BaseFragment {
                 return EventKey.aa;
             }
         });
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Nullable

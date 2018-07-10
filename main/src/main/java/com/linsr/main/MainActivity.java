@@ -11,6 +11,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.base.BaseActivity;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.biz.EventKey;
 import com.linsr.common.router.RouterCenter;
 import com.linsr.common.router.url.BookModule;
@@ -23,12 +24,21 @@ import java.util.List;
 import java.util.Map;
 
 @Route(path = "/main/main")
-public class MainActivity extends BaseActivity {
+public class MainActivity extends ActivityEx {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity_main);
+    protected int getLayoutId() {
+        return R.layout.main_activity_main;
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void initView() {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

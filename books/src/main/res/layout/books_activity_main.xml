@@ -31,4 +31,15 @@
         android:layout_marginLeft="88dp"
         android:text="2"
         />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:text="3"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btn2"
+        android:layout_toEndOf="@+id/btn2"
+        android:layout_marginStart="17dp"/>
 </RelativeLayout>

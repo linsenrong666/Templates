@@ -43,7 +43,8 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
     private boolean mLazyLoaded;
     private boolean mIsViewCreated;
 
-    private FrameLayout mContentLayout;
+
+    protected FrameLayout mContentLayout;
     protected FrameLayout mNoDataLayout;
     private View mContentView;
 
@@ -80,7 +81,13 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
             mContentView = inflater.inflate(getLayoutId(), mContentLayout, false);
         }
         mContentLayout.addView(mContentView);
+
+        setNoDataLayout();
         return view;
+    }
+
+    private void setNoDataLayout() {
+
     }
 
     protected <T extends View> T findViewById(int resId) {

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.BaseActivity;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.utils.DisplayUtils;
 import com.linsr.common.utils.JLog;
 
@@ -21,18 +22,26 @@ import com.linsr.common.utils.JLog;
  * @author Linsr 2018/6/17 下午5:24
  */
 @Route(path = "/news/news")
-public class NewsActivity extends BaseActivity {
+public class NewsActivity extends ActivityEx {
 
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private CoordinatorLayout mCoordinatorLayout;
     private TextView mTextView;
     private AppBarLayout mAppBarLayout;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_activity_news);
+    protected int getLayoutId() {
+        return R.layout.news_activity_news;
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void initView() {
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         mTextView = (TextView) findViewById(R.id.news_title);
@@ -75,7 +84,6 @@ public class NewsActivity extends BaseActivity {
 
             }
         });
-
     }
 
     public abstract static class AppBarStateChangeListener implements AppBarLayout.OnOffsetChangedListener {

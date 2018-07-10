@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--通用文字颜色-->
+    <color name="common_text_primary">#7b7b7b</color>
+    <!--通用文字颜色-深-->
+    <color name="common_text_primary_dark">#5b5b5b</color>
+    <!--通用文字颜色-浅-->
+    <color name="common_text_primary_weak">#ababab</color>
+    <!--透明-->
+    <color name="common_transparent">@android:color/transparent</color>
+
+</resources>

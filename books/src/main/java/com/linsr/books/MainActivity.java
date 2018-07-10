@@ -8,21 +8,29 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.base.BaseActivity;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.RouterCenter;
 import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.PrefsUtils;
 
 @Route(path = BookModule.Activity.MAIN)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends ActivityEx {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.books_activity_main);
+    protected int getLayoutId() {
+        return R.layout.books_activity_main;
+    }
 
+    @Override
+    protected void init() {
+
+    }
+
+    @Override
+    protected void initView() {
         TextView tv = findViewById(R.id.books_tv);
-        PrefsUtils.putSharedString(this,"booksName","i am books module！\nwelcome！");
-        tv.setText(PrefsUtils.getSharedString(this,"booksName"));
+        PrefsUtils.putSharedString(this, "booksName", "i am books module！\nwelcome！");
+        tv.setText(PrefsUtils.getSharedString(this, "booksName"));
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +45,12 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 ARouter.getInstance().build("/books/books2").navigation();
+            }
+        });
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLoading("aaa");
             }
         });
     }
