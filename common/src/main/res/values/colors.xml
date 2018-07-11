@@ -8,5 +8,11 @@
     <color name="common_text_primary_weak">#ababab</color>
     <!--透明-->
     <color name="common_transparent">@android:color/transparent</color>
+    <!--默认分割线颜色-->
+    <color name="common_divider">#ababab</color>
+    <!--通用背景色-->
+    <color name="common_background">#f8f8f8</color>
+    <!--白色-->
+    <color name="common_white">#fff</color>
 
 </resources>

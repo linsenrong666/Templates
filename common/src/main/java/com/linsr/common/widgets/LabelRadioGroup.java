@@ -48,7 +48,7 @@ public class LabelRadioGroup extends RelativeLayout {
 
     public LabelRadioGroup(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        LayoutInflater.from(context).inflate(R.layout.widget_label_radio_group, this, true);
+        LayoutInflater.from(context).inflate(R.layout.common_widget_label_radio_group, this, true);
         findView();
         initView(context, attrs);
         initData();

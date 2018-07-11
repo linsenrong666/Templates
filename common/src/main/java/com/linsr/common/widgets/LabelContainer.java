@@ -47,7 +47,7 @@ public class LabelContainer extends FrameLayout {
 
     public LabelContainer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        View view = LayoutInflater.from(context).inflate(R.layout.widget_label_view, (ViewGroup) getParent(), false);
+        View view = LayoutInflater.from(context).inflate(R.layout.common_widget_label_view, (ViewGroup) getParent(), false);
         findView(view);
         initView(context, attrs);
         addView(view);

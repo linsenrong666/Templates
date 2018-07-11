@@ -37,6 +37,10 @@ public class RouterCenter {
         return (Fragment) build.navigation();
     }
 
+    public static Fragment findFragment(String fragment) {
+        return findFragment(fragment,null);
+    }
+
     public static void inject(Object o) {
         ARouter.getInstance().inject(o);
     }

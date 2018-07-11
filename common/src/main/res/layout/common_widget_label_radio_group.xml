@@ -7,7 +7,7 @@
 
     <View
         android:id="@+id/label_rg_top_divider"
-        style="@style/line1"/>
+        style="@style/common_divider_horizontal"/>
 
     <RelativeLayout
         android:id="@+id/label_rg_container_rl"
@@ -44,12 +44,11 @@
             android:layout_toEndOf="@id/label_rg_title_container"
             android:layout_toRightOf="@id/label_rg_title_container"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            tools:background="@color/a2AA6FF"/>
+            android:orientation="horizontal"/>
 
         <View
             android:id="@+id/label_rg_bottom_inner_divider"
-            style="@style/line1"
+            style="@style/common_divider_horizontal"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
@@ -64,7 +63,7 @@
 
     <View
         android:id="@+id/label_rg_bottom_divider"
-        style="@style/line1"
+        style="@style/common_divider_horizontal"
         android:layout_below="@id/label_rg_container_rl"
         android:visibility="gone"/>
 </RelativeLayout>

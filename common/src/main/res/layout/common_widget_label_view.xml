@@ -7,7 +7,7 @@
 
     <View
         android:id="@+id/label_top_divider"
-        style="@style/line1"/>
+        style="@style/common_divider_horizontal"/>
 
     <RelativeLayout
         android:id="@+id/label_container_rl"
@@ -73,7 +73,7 @@
 
         <View
             android:id="@+id/label_bottom_inner_divider"
-            style="@style/line1"
+            style="@style/common_divider_horizontal"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
@@ -88,7 +88,7 @@
 
     <View
         android:id="@+id/label_bottom_divider"
-        style="@style/line1"
+        style="@style/common_divider_horizontal"
         android:layout_below="@id/label_container_rl"
         android:visibility="gone"/>
 </RelativeLayout>
