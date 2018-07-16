@@ -68,12 +68,12 @@ public abstract class BaseActivity extends AppCompatActivity implements
         init();
         findView();
         onCreateEx(savedInstanceState);
-    }
-
-    protected void onCreateEx(@Nullable Bundle savedInstanceState) {
         setContentLayout();
         setNoDataLayout();
         initView();
+    }
+
+    protected void onCreateEx(@Nullable Bundle savedInstanceState) {
     }
 
     private void setContentLayout() {
@@ -89,11 +89,13 @@ public abstract class BaseActivity extends AppCompatActivity implements
         mContentsManager = ContentsManager.getInstance();
         mDialogFactory = DialogFactory.getInstance();
     }
+
     /**
      * 设置空数据托底页面，子类可以修改定制
      */
     protected void setNoDataLayout() {
     }
+
     private void findView() {
         setContentView(R.layout.common_activity_base);
         mTopLayout = (FrameLayout) findViewById(R.id.base_top_layout);

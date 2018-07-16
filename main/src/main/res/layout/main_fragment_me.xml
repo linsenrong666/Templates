@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnableLoadMore="false"
+    app:srlEnableRefresh="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="108dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_middle">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_middle"
+                android:src="@mipmap/ic_launcher_round"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登陆注册"/>
+        </LinearLayout>
+
+        <com.linsr.common.widgets.LabelContainer
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            app:inner_margin_left="@dimen/common_middle"
+            app:inner_margin_right="@dimen/common_font_middle"
+            app:label_text="@string/app_name"
+            app:label_text_gravity="center_vertical"
+            app:show_bottom_divider="false"
+            app:show_bottom_inner_divider="true"
+            app:show_top_divider="true"/>
+
+        <com.linsr.common.widgets.LabelContainer
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
+            app:inner_margin_left="@dimen/common_middle"
+            app:inner_margin_right="@dimen/common_font_middle"
+            app:label_text="@string/app_name"
+            app:show_bottom_divider="false"
+            app:show_bottom_inner_divider="true"
+            app:show_top_divider="true"/>
+
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -4,6 +4,7 @@
     <color name="common_text_primary">#7b7b7b</color>
     <!--通用文字颜色-深-->
     <color name="common_text_primary_dark">#5b5b5b</color>
+    <color name="common_text_primary_black">#333</color>
     <!--通用文字颜色-浅-->
     <color name="common_text_primary_weak">#ababab</color>
     <!--透明-->

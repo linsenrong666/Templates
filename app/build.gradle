@@ -31,5 +31,6 @@ dependencies {
         compile project(':main')
         compile project(':books')
         compile project(':news')
+        compile project(':personal')
     }
 }

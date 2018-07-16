@@ -44,4 +44,5 @@ ext {
     trayVersion = '0.12.0'
     leakCanaryVersion = '1.5.4'
     glideVersion = '3.7.0'
+    badgeViewVersion = '1.1.3'
 }

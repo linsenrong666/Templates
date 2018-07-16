@@ -46,6 +46,9 @@ public class ActivityUtils {
                                              FragmentTransaction transaction,
                                              Fragment fragment,
                                              int frameId) {
+        if (fragment == null) {
+            return null;
+        }
         if (currentFragment == fragment) {
             return fragment;
         }

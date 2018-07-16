@@ -7,5 +7,5 @@ package com.linsr.common.biz;
  */
 public interface EventKey {
 
-    String aa = "aa";
+    String ADD_GOODS_CART = "add_goods_cart";
 }

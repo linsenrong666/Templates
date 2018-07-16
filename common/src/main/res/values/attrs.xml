@@ -6,6 +6,15 @@
         <attr name="label_text" format="string"/>
         <attr name="label_text_size" format="dimension"/>
         <attr name="label_text_color" format="color"/>
+        <attr name="label_text_gravity" format="enum">
+            <enum name="left" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="right" value="3"/>
+            <enum name="bottom" value="4"/>
+            <enum name="center" value="5"/>
+            <enum name="center_horizontal" value="6"/>
+            <enum name="center_vertical" value="7"/>
+        </attr>
         <attr name="content_text" format="string"/>
         <attr name="content_text_size" format="dimension"/>
         <attr name="content_text_color" format="color"/>

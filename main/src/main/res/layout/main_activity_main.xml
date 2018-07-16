@@ -6,20 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_background"
-    tools:context="com.linsr.main.MainActivity">
+    tools:context="com.linsr.main.activities.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_fragment_container"
+    <com.linsr.common.widgets.NoScrollViewPager
+        android:id="@+id/main_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/main_nav_bar"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@id/main_nav_bar"
-        android:background="@color/common_white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/common_white"
         app:menu="@menu/main_menu"/>
 
 </RelativeLayout>

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.linsr.common.R;
+
 import java.lang.reflect.Field;
 
 /**
@@ -13,7 +15,7 @@ import java.lang.reflect.Field;
  */
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
-    private View mView;
+    protected View mView;
     protected Context mContext;
 
     public BaseViewHolder(Context context, View itemView) {
@@ -57,4 +59,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
         return mContext.getString(resId, args);
     }
 
+    protected int getColor(int color) {
+        return mContext.getResources().getColor(color);
+    }
 }

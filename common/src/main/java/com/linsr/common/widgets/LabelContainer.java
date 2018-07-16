@@ -7,6 +7,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +89,33 @@ public class LabelContainer extends FrameLayout {
         int titleColor = a.getColor(R.styleable.LabelContainer_label_text_color, -1);
         if (titleColor != -1) {
             mTitleTextView.setTextColor(titleColor);
+        }
+        // 设置标题居中权重
+        int titleGravity = a.getInt(R.styleable.LabelContainer_label_text_gravity, -1);
+        switch (titleGravity) {
+            case 1:
+                mTitleTextView.setGravity(Gravity.START);
+                break;
+            case 2:
+                mTitleTextView.setGravity(Gravity.TOP);
+                break;
+            case 3:
+                mTitleTextView.setGravity(Gravity.END);
+                break;
+            case 4:
+                mTitleTextView.setGravity(Gravity.BOTTOM);
+                break;
+            case 5:
+                mTitleTextView.setGravity(Gravity.CENTER);
+                break;
+            case 6:
+                mTitleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                break;
+            case 7:
+                mTitleTextView.setGravity(Gravity.CENTER_VERTICAL);
+                break;
+            default:
+                break;
         }
         //设置内容文字
         String contentString = a.getString(R.styleable.LabelContainer_content_text);

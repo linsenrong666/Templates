@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,6 +71,11 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
         JLog.d(TAG, "Fragment onCreate.called, this: " + getClass().getName());
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -77,9 +83,11 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
         mContentLayout = (FrameLayout) view.findViewById(R.id.base_content_layout);
         mNoDataLayout = (FrameLayout) view.findViewById(R.id.base_no_data_layout);
 
-        if (mContentView == null) {
-            mContentView = inflater.inflate(getLayoutId(), mContentLayout, false);
+        if (mContentView != null) {
+            mContentLayout.removeView(mContentView);
+            mContentView = null;
         }
+        mContentView = inflater.inflate(getLayoutId(), mContentLayout, false);
         mContentLayout.addView(mContentView);
 
         setNoDataLayout();
@@ -102,6 +110,7 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
         super.onViewCreated(view, savedInstanceState);
         mIsViewCreated = true;
         initView();
+        lazyLoad();
     }
 
     @Override
@@ -112,18 +121,6 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
             onVisible();
             lazyLoad();
         } else {
-            onInvisible();
-        }
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            mIsVisible = true;
-            onVisible();
-        } else {
-            mIsVisible = false;
             onInvisible();
         }
     }
@@ -166,6 +163,7 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
      * 页面可见
      */
     protected void onVisible() {
+        JLog.d(TAG, "Fragment onVisible " + getClass().getSimpleName());
         JLog.d(TAG, "mOnContentUpdateListeners.size: " + mOnContentUpdateListeners.size());
         for (AbstractOnContentUpdateListener listener : mOnContentUpdateListeners) {
             if (listener.isUpdateHappened()) {
@@ -184,6 +182,7 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
      * 页面隐藏
      */
     protected void onInvisible() {
+        JLog.d(TAG, "Fragment onInvisible " + getClass().getSimpleName());
     }
 
     @Override

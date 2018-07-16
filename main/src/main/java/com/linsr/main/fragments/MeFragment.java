@@ -1,23 +1,24 @@
-package com.linsr.personal.fragments;
+package com.linsr.main.fragments;
 
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.router.url.MainModule;
 import com.linsr.common.router.url.PersonalModule;
-import com.linsr.personal.R;
+import com.linsr.main.R;
 
 /**
  * Description
  *
  * @author Linsr 2018/7/11 上午10:26
  */
-@Route(path = PersonalModule.Fragment.ME)
+@Route(path = MainModule.Fragment.ME)
 public class MeFragment extends FragmentEx {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.personal_fragment_me;
+        return R.layout.main_fragment_me;
     }
 
     @Override

@@ -23,12 +23,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
         /**
          * 单击事件
-         * @param itemView view对象
+         * @param holder view对象
          * @param position 位置
          * @param itemType view type
          * @param data 数据
          */
-        void onItemClick(View itemView, int position, int itemType, T data);
+        void onItemClick(BaseViewHolder<T> holder, int position, int itemType, T data);
     }
 
     public interface OnLongClickListener<T> {
@@ -69,15 +69,8 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         final int itemViewType = getItemViewType(position);
         final T item = mList.get(position);
         holder.convert(position, item, itemViewType);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(holder.itemView, holder.getAdapterPosition(),
-                            itemViewType, item);
-                }
-            }
-        });
+
+        setOnItemClickListener(holder, itemViewType, item);
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -86,6 +79,20 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
                             itemViewType, item);
                 }
                 return false;
+            }
+        });
+    }
+
+    protected void setOnItemClickListener(final BaseViewHolder<T> holder,
+                                          final int itemViewType,
+                                          final T item) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(holder, holder.getAdapterPosition(),
+                            itemViewType, item);
+                }
             }
         });
     }

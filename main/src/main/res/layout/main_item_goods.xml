@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="108dp"
+    android:background="@color/common_white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/common_middle"
+    android:paddingRight="@dimen/common_middle">
+
+    <ImageView
+        android:id="@+id/item_goods_img_iv"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginRight="@dimen/common_middle"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
+        tools:background="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/item_goods_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_goods_img_iv"
+        android:singleLine="true"
+        android:textColor="@color/common_text_primary_black"
+        android:textSize="@dimen/common_font_large"
+        tools:text="商品名称商品名称商品名称商品名称商品名称商品名称"/>
+
+    <TextView
+        android:id="@+id/item_goods_desc_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_goods_title_tv"
+        android:layout_marginTop="@dimen/common_tiny"
+        android:layout_toRightOf="@id/item_goods_img_iv"
+        android:singleLine="true"
+        android:textColor="@color/common_text_primary"
+        android:textSize="@dimen/common_font_small"
+        tools:text="商品名称商品名称商品名称商品名称商品名称商品名称"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_goods_desc_tv"
+        android:layout_marginTop="@dimen/common_middle"
+        android:layout_toRightOf="@id/item_goods_img_iv">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="$100"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="@dimen/common_font_large"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/item_goods_add_tv"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="+"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

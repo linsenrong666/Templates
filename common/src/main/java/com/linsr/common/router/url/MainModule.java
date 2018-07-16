@@ -20,6 +20,9 @@ public class MainModule {
 
         String HOME = FRAGMENT + "home";
         String CATEGORY = FRAGMENT + "category";
+        String FIND = FRAGMENT + "find";
+        String CART = FRAGMENT + "cart";
+        String ME = FRAGMENT + "me";
 
     }
 }
