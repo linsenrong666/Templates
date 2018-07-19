@@ -31,7 +31,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  *
  * @author Linsr 2018/6/16 上午11:18
  */
-public abstract class BaseFragment extends Fragment implements EasyPermissions.PermissionCallbacks {
+public abstract class BaseFragment extends Fragment {
 
     protected Activity mActivity;
     protected String TAG;
@@ -140,16 +140,6 @@ public abstract class BaseFragment extends Fragment implements EasyPermissions.P
         if (mContentsManager.registerOnContentUpdateListener(listener)) {
             mOnContentUpdateListeners.add(listener);
         }
-    }
-
-    @Override
-    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
-
-    }
-
-    @Override
-    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
-
     }
 
     /**

@@ -10,7 +10,7 @@ import android.Manifest;
 
 public interface Permissions {
 
-    int REQUEST_CAMERA = 0;
+    int PERMISSION_CAMERA = 0;
 
     /**
      * 通讯录

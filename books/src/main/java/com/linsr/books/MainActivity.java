@@ -1,15 +1,12 @@
 package com.linsr.books;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.linsr.common.base.BaseActivity;
 import com.linsr.common.biz.ActivityEx;
-import com.linsr.common.router.RouterCenter;
 import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.PrefsUtils;
 

@@ -24,6 +24,7 @@ import com.linsr.common.utils.contents.OnContentUpdateListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
@@ -151,6 +152,19 @@ public abstract class BaseActivity extends AppCompatActivity implements
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> list) {
         JLog.i(TAG, "===获取权限失败，requestCode:" + requestCode + "，list:" + list.toString());
+        StringBuilder sb = new StringBuilder();
+        for (String str : list) {
+            sb.append(str);
+            sb.append("\n");
+        }
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, list)) {
+            new AppSettingsDialog.Builder(this)
+                    .setTitle("需要权限")
+                    .setRationale("此功能需要" + sb + "权限,否则无法正常使用,是否打开设置")
+                    .setPositiveButton("是")
+                    .setNegativeButton("否")
+                    .build().show();
+        }
     }
 
     /**

@@ -1,7 +1,7 @@
 package com.linsr.main.activities;
 
 import com.linsr.common.biz.ActivityEx;
-import com.linsr.common.router.RouterCenter;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
 
@@ -10,7 +10,7 @@ import com.linsr.main.R;
  *
  * @author Linsr 2018/7/16 下午2:45
  */
-public class SplashScreenActivity extends ActivityEx {
+public class SplashActivity extends ActivityEx {
 
     @Override
     protected int getLayoutId() {
@@ -22,8 +22,8 @@ public class SplashScreenActivity extends ActivityEx {
         getRootContent().postDelayed(new Runnable() {
             @Override
             public void run() {
-                RouterCenter.startActivity(MainModule.Activity.MAIN);
+                Router.startActivity(MainModule.Activity.MAIN);
             }
-        }, 2000);
+        }, 500);
     }
 }

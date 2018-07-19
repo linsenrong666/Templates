@@ -12,7 +12,8 @@ public class MainModule {
     public interface Activity {
         String ACTIVITY = ROOT + "activity/";
 
-        String MAIN = ROOT + "main";
+        String MAIN = ACTIVITY + "main";
+        String SCAN_CODE = ACTIVITY + "scan_code";
     }
 
     public interface Fragment {

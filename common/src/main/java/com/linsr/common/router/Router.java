@@ -1,5 +1,7 @@
 package com.linsr.common.router;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -14,8 +16,18 @@ import java.util.Map;
  *
  * @author Linsr 2018/6/29 下午2:22
  */
-public class RouterCenter {
+public class Router {
 
+    public static void startActivityForResult(Activity context,
+                                              String activity,
+                                              int requestCode,
+                                              Map<String, Object> params) {
+        Postcard build = ARouter.getInstance().build(activity);
+        if (params != null && params.size() > 0) {
+            build = handleParams(params, build);
+        }
+        build.navigation(context, requestCode);
+    }
 
     public static void startActivity(String activity) {
         startActivity(activity, null);
@@ -38,7 +50,7 @@ public class RouterCenter {
     }
 
     public static Fragment findFragment(String fragment) {
-        return findFragment(fragment,null);
+        return findFragment(fragment, null);
     }
 
     public static void inject(Object o) {

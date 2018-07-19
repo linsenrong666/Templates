@@ -4,16 +4,10 @@ import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.linsr.common.base.BaseActivity;
 import com.linsr.common.biz.ActivityEx;
-import com.linsr.common.router.RouterCenter;
-import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.JLog;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;

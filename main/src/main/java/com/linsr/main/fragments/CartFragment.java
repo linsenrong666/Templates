@@ -1,6 +1,7 @@
 package com.linsr.main.fragments;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
@@ -14,6 +15,9 @@ import com.linsr.main.R;
  */
 @Route(path = MainModule.Fragment.CART)
 public class CartFragment extends FragmentEx {
+
+    private RecyclerView mRecyclerView;
+
 
     @Override
     protected int getLayoutId() {

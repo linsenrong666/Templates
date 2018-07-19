@@ -50,7 +50,7 @@ public class BooksFragment extends BaseFragment {
 
             @Override
             public String getKey() {
-                return EventKey.aa;
+                return EventKey.ADD_GOODS_CART;
             }
         });
     }

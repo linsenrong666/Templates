@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">main</string>
+
+    <string name="main_capture_camera_failed">未找到相机或相机不可用</string>
+    <string name="main_capture_decode_failed">未找到二维码</string>
+
 </resources>

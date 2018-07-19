@@ -1,5 +1,6 @@
 package com.linsr.main.activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
@@ -12,9 +13,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.biz.EventKey;
-import com.linsr.common.router.RouterCenter;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.BottomNavigationViewHelper;
+import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.widgets.NoScrollViewPager;
 import com.linsr.main.R;
@@ -25,12 +27,13 @@ import java.util.List;
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
 
-@Route(path = "/main/main")
+@Route(path = MainModule.Activity.MAIN)
 public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
 
     private NoScrollViewPager mViewPager;
     private Badge mBadge;
+    private List<Fragment> mFragmentList;
 
     @Override
     protected int getLayoutId() {
@@ -67,7 +70,8 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         BottomNavigationView mBottomNavigationView = findViewById(R.id.main_nav_bar);
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) mBottomNavigationView.getChildAt(0);
+        BottomNavigationMenuView menuView =
+                (BottomNavigationMenuView) mBottomNavigationView.getChildAt(0);
         View mCartView = menuView.getChildAt(3);
         mBadge = new QBadgeView(this).bindTarget(mCartView);
 
@@ -75,16 +79,17 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     }
 
     private void initFragment() {
-        List<Fragment> list = new ArrayList<>();
-        list.add(RouterCenter.findFragment(MainModule.Fragment.HOME));
-        list.add(RouterCenter.findFragment(MainModule.Fragment.CATEGORY));
-        list.add(RouterCenter.findFragment(MainModule.Fragment.FIND));
-        list.add(RouterCenter.findFragment(MainModule.Fragment.CART));
-        list.add(RouterCenter.findFragment(MainModule.Fragment.ME));
-        FragmentPagerAdapterEx mPagerAdapterEx = new FragmentPagerAdapterEx(getSupportFragmentManager(), list);
+        mFragmentList = new ArrayList<>();
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.HOME));
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.CATEGORY));
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.FIND));
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.CART));
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.ME));
+        FragmentPagerAdapterEx mPagerAdapterEx =
+                new FragmentPagerAdapterEx(getSupportFragmentManager(), mFragmentList);
         mViewPager.setAdapter(mPagerAdapterEx);
         mViewPager.addOnPageChangeListener(this);
-        mViewPager.setOffscreenPageLimit(list.size());
+        mViewPager.setOffscreenPageLimit(mFragmentList.size());
     }
 
     @Override
@@ -112,7 +117,6 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
     }
 
     @Override
@@ -123,5 +127,17 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        int position = mViewPager.getCurrentItem();
+        if (mFragmentList != null && mFragmentList.size() > position) {
+            mFragmentList.get(position).onActivityResult(requestCode, resultCode, data);
+        } else {
+            JLog.e(TAG, "error onActivityResult. mFragmentList:"
+                    + mFragmentList + ",cur position:" + position);
+        }
     }
 }

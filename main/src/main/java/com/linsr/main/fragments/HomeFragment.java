@@ -1,27 +1,24 @@
 package com.linsr.main.fragments;
 
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.BackgroundColorSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
-import android.text.style.UnderlineSpan;
+import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.BaseActivity;
 import com.linsr.common.biz.EventKey;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.Permissions;
 import com.linsr.common.utils.RecyclerViewHepler;
 import com.linsr.main.R;
+import com.linsr.main.activities.CaptureActivity;
 import com.linsr.main.adapters.GoodsAdapter;
 import com.linsr.main.contacts.HomeContact;
 import com.linsr.main.model.HomePojo;
@@ -29,6 +26,9 @@ import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * Description
@@ -41,6 +41,7 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
     private RecyclerView mRecyclerView;
     private SmartRefreshLayout mRefreshLayout;
     private GoodsAdapter mAdapter;
+    private TextView mScanCodeTextView;
 
     @Override
     protected int getLayoutId() {
@@ -54,8 +55,9 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
 
     @Override
     protected void initView() {
-        mRecyclerView = findViewById(R.id.main_recycler_view);
         mRefreshLayout = findViewById(R.id.main_refresh_layout);
+
+        mRecyclerView = findViewById(R.id.main_recycler_view);
         mAdapter = new GoodsAdapter(mActivity);
         RecyclerViewHepler.initDefault(mActivity, mRecyclerView, mAdapter);
         mAdapter.setOnGoodsClickListener(new GoodsAdapter.OnGoodsClickListener() {
@@ -65,6 +67,25 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
                 mContentsManager.notifyContentUpdateSuccess(EventKey.ADD_GOODS_CART);
             }
         });
+
+        mScanCodeTextView = findViewById(R.id.main_scan_code_tv);
+        mScanCodeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (requestPermission()) {
+                    Router.startActivityForResult(mActivity, MainModule.Activity.SCAN_CODE, 200, null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            String stringExtra = data.getStringExtra(CaptureActivity.EXTRA_RESULT);
+            JLog.e(TAG, "text:"+stringExtra);
+        }
     }
 
     @Override
@@ -72,5 +93,16 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
         super.loadData();
         List<HomePojo> goodsList = Mock.getGoodsList(20);
         mAdapter.addData(goodsList);
+    }
+
+    @AfterPermissionGranted(Permissions.PERMISSION_CAMERA)
+    private boolean requestPermission() {
+        if (EasyPermissions.hasPermissions(mActivity, Permissions.PERMISSIONS_CAMERA)) {
+            return true;
+        } else {
+            EasyPermissions.requestPermissions(this, "扫码需要相机权限",
+                    Permissions.PERMISSION_CAMERA, Permissions.PERMISSIONS_CAMERA);
+            return false;
+        }
     }
 }
