@@ -54,8 +54,8 @@ public class CaptureView extends View {
         paint = new Paint();
         paint.setAntiAlias(true);
         possiblePoints = new LinkedList<>();
-        frameDrawable = getResources().getDrawable(R.mipmap.qrcode_scan_frame);
-        scannerDrawable = getResources().getDrawable(R.mipmap.qrcode_scan_scaner);
+        frameDrawable = getResources().getDrawable(R.mipmap.scancode_qrcode_scan_frame);
+        scannerDrawable = getResources().getDrawable(R.mipmap.scancode_qrcode_scan_scaner);
     }
 
     @Override

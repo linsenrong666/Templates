@@ -1,6 +1,7 @@
 package com.linsr.common.base.adapter;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -33,8 +34,8 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      */
     protected abstract void convert(int position, T data, int itemType);
 
-    protected View findViewById(int resId) {
-        return mView.findViewById(resId);
+    public <V extends View> V findViewById(@IdRes int id) {
+        return mView.findViewById(id);
     }
 
     private void initView() {

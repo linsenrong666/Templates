@@ -13,8 +13,6 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/location_lib" />
             <option value="$PROJECT_DIR$/main" />
-            <option value="$PROJECT_DIR$/news" />
-            <option value="$PROJECT_DIR$/personal" />
             <option value="$PROJECT_DIR$/scancode_lib" />
           </set>
         </option>

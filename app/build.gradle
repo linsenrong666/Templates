@@ -25,12 +25,11 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
     //module dependencies
     compile project(':common')
     if (!isModule.toBoolean()) {
         compile project(':main')
         compile project(':books')
-        compile project(':news')
-        compile project(':personal')
     }
 }

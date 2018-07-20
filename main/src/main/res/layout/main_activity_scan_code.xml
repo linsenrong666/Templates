@@ -31,7 +31,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:button="@mipmap/ic_launcher"/>
+            android:button="@mipmap/common_ic_launcher"/>
 
     </RelativeLayout>
 

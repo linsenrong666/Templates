@@ -32,11 +32,11 @@ public class CategoryDetailsAdapter extends BaseRecyclerAdapter<CategoryMenuPojo
 
     private class MenuHolder extends BaseViewHolder<CategoryMenuPojo> {
 
-        @BindView(id = R.id.item_category_title_tv)
         private TextView title;
 
         public MenuHolder(Context context, View itemView) {
             super(context, itemView);
+            title = findViewById(R.id.item_category_title_tv);
         }
 
         @Override

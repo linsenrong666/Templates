@@ -1,1 +1,6 @@
-include ':app', ':books', ':common', ':news', ':main', ':personal', ':location_lib', ':scancode_lib'
+include ':app',
+        ':books',
+        ':common',
+        ':main',
+        ':location_lib',
+        ':scancode_lib'

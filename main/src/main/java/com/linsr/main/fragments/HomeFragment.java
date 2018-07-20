@@ -1,15 +1,14 @@
 package com.linsr.main.fragments;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.linsr.common.base.BaseActivity;
 import com.linsr.common.biz.EventKey;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Router;
@@ -36,7 +35,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @author Linsr 2018/7/10 下午5:59
  */
 @Route(path = MainModule.Fragment.HOME)
-public class HomeFragment extends FragmentEx implements HomeContact.View {
+public class HomeFragment extends FragmentEx implements HomeContact.View ,EasyPermissions.PermissionCallbacks{
 
     private RecyclerView mRecyclerView;
     private SmartRefreshLayout mRefreshLayout;
@@ -72,9 +71,7 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
         mScanCodeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (requestPermission()) {
-                    Router.startActivityForResult(mActivity, MainModule.Activity.SCAN_CODE, 200, null);
-                }
+                toScanCodeActivity();
             }
         });
     }
@@ -84,7 +81,7 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             String stringExtra = data.getStringExtra(CaptureActivity.EXTRA_RESULT);
-            JLog.e(TAG, "text:"+stringExtra);
+            JLog.e(TAG, "text:" + stringExtra);
         }
     }
 
@@ -95,14 +92,23 @@ public class HomeFragment extends FragmentEx implements HomeContact.View {
         mAdapter.addData(goodsList);
     }
 
-    @AfterPermissionGranted(Permissions.PERMISSION_CAMERA)
-    private boolean requestPermission() {
+    @AfterPermissionGranted(Permissions.REQUEST_CAMERA)
+    private void toScanCodeActivity() {
         if (EasyPermissions.hasPermissions(mActivity, Permissions.PERMISSIONS_CAMERA)) {
-            return true;
+            Router.startActivityForResult(mActivity, MainModule.Activity.SCAN_CODE, 200, null);
         } else {
             EasyPermissions.requestPermissions(this, "扫码需要相机权限",
-                    Permissions.PERMISSION_CAMERA, Permissions.PERMISSIONS_CAMERA);
-            return false;
+                    Permissions.REQUEST_CAMERA, Permissions.PERMISSIONS_CAMERA);
         }
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        Router.startActivityForResult(mActivity, MainModule.Activity.SCAN_CODE, 200, null);
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+
     }
 }

@@ -94,39 +94,39 @@ public class LabelRadioGroup extends RelativeLayout {
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LabelRadioGroup);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.common_label_radioGroup);
         //显示分割线
-        boolean showTopDivider = a.getBoolean(R.styleable.LabelRadioGroup_show_top_divider_rg, false);
-        boolean showBottomDivider = a.getBoolean(R.styleable.LabelRadioGroup_show_bottom_divider_rg, false);
-        boolean showBottomInnerDivider = a.getBoolean(R.styleable.LabelRadioGroup_show_bottom_inner_divider_rg, true);
+        boolean showTopDivider = a.getBoolean(R.styleable.common_label_radioGroup_common_show_top_divider_rg, false);
+        boolean showBottomDivider = a.getBoolean(R.styleable.common_label_radioGroup_common_show_bottom_divider_rg, false);
+        boolean showBottomInnerDivider = a.getBoolean(R.styleable.common_label_radioGroup_common_show_bottom_inner_divider_rg, true);
         mTopDivider.setVisibility(showTopDivider ? VISIBLE : GONE);
         mBottomDivider.setVisibility(showBottomDivider ? VISIBLE : GONE);
         mBottomInnerDivider.setVisibility(showBottomInnerDivider ? VISIBLE : GONE);
         //设置内边距
-        int innerMarginLeft = (int) a.getDimension(R.styleable.LabelRadioGroup_inner_margin_left_rg, 0);
-        int innerMarginRight = (int) a.getDimension(R.styleable.LabelRadioGroup_inner_margin_right_rg, 0);
+        int innerMarginLeft = (int) a.getDimension(R.styleable.common_label_radioGroup_common_inner_margin_left_rg, 0);
+        int innerMarginRight = (int) a.getDimension(R.styleable.common_label_radioGroup_common_inner_margin_right_rg, 0);
         ViewUtils.setMargins(mContainer, innerMarginLeft, 0, innerMarginRight, 0);
         //设置标题文字
-        String titleString = a.getString(R.styleable.LabelRadioGroup_label_text_rg);
+        String titleString = a.getString(R.styleable.common_label_radioGroup_common_label_text_rg);
         if (!TextUtils.isEmpty(titleString)) {
             mTitleTextView.setText(titleString);
         }
         //设置文字大小
-        float titleTextSize = a.getDimension(R.styleable.LabelRadioGroup_label_text_size_rg, 13);
+        float titleTextSize = a.getDimension(R.styleable.common_label_radioGroup_common_label_text_size_rg, 13);
         mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, titleTextSize);
         //设置标题宽度
-        int labelWidth = (int) a.getDimension(R.styleable.LabelRadioGroup_label_width_rg, -1);
+        int labelWidth = (int) a.getDimension(R.styleable.common_label_radioGroup_common_label_width_rg, -1);
         if (labelWidth != -1) {
             ViewGroup.LayoutParams labelLayoutParams = mTitleContainer.getLayoutParams();
             labelLayoutParams.width = labelWidth;
             mTitleContainer.setLayoutParams(labelLayoutParams);
         }
         //内容文字list
-        int contentListId = a.getResourceId(R.styleable.LabelRadioGroup_content_list_rg, -1);
+        int contentListId = a.getResourceId(R.styleable.common_label_radioGroup_common_content_list_rg, -1);
         if (contentListId != -1) {
             mStrings = context.getResources().getStringArray(contentListId);
         }
-        mRadioButtonDrawableId = a.getResourceId(R.styleable.LabelRadioGroup_rb_drawable_id_rg,-1);
+        mRadioButtonDrawableId = a.getResourceId(R.styleable.common_label_radioGroup_common_rb_drawable_id_rg,-1);
         a.recycle();
     }
 

@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/common_middle"
-                android:src="@mipmap/ic_launcher_round"/>
+                android:src="@mipmap/common_ic_launcher_round"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -36,24 +36,13 @@
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginTop="10dp"
-            app:inner_margin_left="@dimen/common_middle"
-            app:inner_margin_right="@dimen/common_font_middle"
-            app:label_text="@string/app_name"
-            app:label_text_gravity="center_vertical"
-            app:show_bottom_divider="false"
-            app:show_bottom_inner_divider="true"
-            app:show_top_divider="true"/>
-
-        <com.linsr.common.widgets.LabelContainer
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginTop="10dp"
-            app:inner_margin_left="@dimen/common_middle"
-            app:inner_margin_right="@dimen/common_font_middle"
-            app:label_text="@string/app_name"
-            app:show_bottom_divider="false"
-            app:show_bottom_inner_divider="true"
-            app:show_top_divider="true"/>
+            app:common_inner_margin_left="@dimen/common_middle"
+            app:common_inner_margin_right="@dimen/common_font_middle"
+            app:common_label_text="@string/app_name"
+            app:common_label_text_gravity="center_vertical"
+            app:common_show_bottom_divider="false"
+            app:common_show_bottom_inner_divider="true"
+            app:common_show_top_divider="true"/>
 
     </LinearLayout>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

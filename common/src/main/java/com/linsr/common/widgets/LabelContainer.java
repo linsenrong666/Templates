@@ -68,30 +68,30 @@ public class LabelContainer extends FrameLayout {
     }
 
     private void initView(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LabelContainer);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.common_label_container);
 
         //设置文字大小
-        float titleTextSize = a.getDimension(R.styleable.LabelContainer_label_text_size, mDefaultTextSize);
-        float contentEditSize = a.getDimension(R.styleable.LabelContainer_content_edit_size, mDefaultTextSize);
-        float contentTextSize = a.getDimension(R.styleable.LabelContainer_content_text_size, mDefaultTextSize);
+        float titleTextSize = a.getDimension(R.styleable.common_label_container_common_label_text_size, mDefaultTextSize);
+        float contentEditSize = a.getDimension(R.styleable.common_label_container_common_content_edit_size, mDefaultTextSize);
+        float contentTextSize = a.getDimension(R.styleable.common_label_container_common_content_text_size, mDefaultTextSize);
         mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, titleTextSize);
         mContentEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, contentEditSize);
         mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, contentTextSize);
         //设置输入框输入类型
-        int inputType = a.getInt(R.styleable.LabelContainer_edit_input_type, InputType.TYPE_CLASS_TEXT);
+        int inputType = a.getInt(R.styleable.common_label_container_common_edit_input_type, InputType.TYPE_CLASS_TEXT);
         mContentEditText.setInputType(inputType);
         //设置标题文字
-        String titleString = a.getString(R.styleable.LabelContainer_label_text);
+        String titleString = a.getString(R.styleable.common_label_container_common_label_text);
         if (!TextUtils.isEmpty(titleString)) {
             mTitleTextView.setText(titleString);
         }
         //设置标题文字颜色
-        int titleColor = a.getColor(R.styleable.LabelContainer_label_text_color, -1);
+        int titleColor = a.getColor(R.styleable.common_label_container_common_label_text_color, -1);
         if (titleColor != -1) {
             mTitleTextView.setTextColor(titleColor);
         }
         // 设置标题居中权重
-        int titleGravity = a.getInt(R.styleable.LabelContainer_label_text_gravity, -1);
+        int titleGravity = a.getInt(R.styleable.common_label_container_common_label_text_gravity, -1);
         switch (titleGravity) {
             case 1:
                 mTitleTextView.setGravity(Gravity.START);
@@ -118,25 +118,25 @@ public class LabelContainer extends FrameLayout {
                 break;
         }
         //设置内容文字
-        String contentString = a.getString(R.styleable.LabelContainer_content_text);
+        String contentString = a.getString(R.styleable.common_label_container_common_content_text);
         if (!TextUtils.isEmpty(contentString)) {
             mContentTextView.setVisibility(VISIBLE);
             mContentTextView.setText(contentString);
         }
         //设置内容文字颜色
-        int contentTextColor = a.getColor(R.styleable.LabelContainer_content_text_color, -1);
+        int contentTextColor = a.getColor(R.styleable.common_label_container_common_content_text_color, -1);
         if (contentTextColor != -1) {
             mContentTextView.setTextColor(contentTextColor);
         }
         //设置左边图片
-        Drawable drawable = a.getDrawable(R.styleable.LabelContainer_content_image);
+        Drawable drawable = a.getDrawable(R.styleable.common_label_container_common_content_image);
         if (drawable != null) {
             mContentImageView.setVisibility(VISIBLE);
             mContentImageView.setImageDrawable(drawable);
         }
         //设置是否显示输入框
-        mIsShowEdit = a.getBoolean(R.styleable.LabelContainer_show_edit_text, false);
-        String hintText = a.getString(R.styleable.LabelContainer_hint_text);
+        mIsShowEdit = a.getBoolean(R.styleable.common_label_container_common_show_edit_text, false);
+        String hintText = a.getString(R.styleable.common_label_container_common_hint_text);
         if (mIsShowEdit) {
             mContentTextView.setVisibility(GONE);
             mContentEditText.setVisibility(VISIBLE);
@@ -146,25 +146,25 @@ public class LabelContainer extends FrameLayout {
         }
 
         //显示分割线
-        boolean showTopDivider = a.getBoolean(R.styleable.LabelContainer_show_top_divider, false);
-        boolean showBottomDivider = a.getBoolean(R.styleable.LabelContainer_show_bottom_divider, false);
-        boolean showBottomInnerDivider = a.getBoolean(R.styleable.LabelContainer_show_bottom_inner_divider, true);
+        boolean showTopDivider = a.getBoolean(R.styleable.common_label_container_common_show_top_divider, false);
+        boolean showBottomDivider = a.getBoolean(R.styleable.common_label_container_common_show_bottom_divider, false);
+        boolean showBottomInnerDivider = a.getBoolean(R.styleable.common_label_container_common_show_bottom_inner_divider, true);
         mTopDivider.setVisibility(showTopDivider ? VISIBLE : GONE);
         mBottomDivider.setVisibility(showBottomDivider ? VISIBLE : GONE);
         mBottomInnerDivider.setVisibility(showBottomInnerDivider ? VISIBLE : GONE);
         //设置高度
-        int contentHeight = (int) a.getDimension(R.styleable.LabelContainer_content_height, -1);
+        int contentHeight = (int) a.getDimension(R.styleable.common_label_container_common_content_height, -1);
         if (contentHeight != -1) {
             ViewGroup.LayoutParams layoutParams = mContainer.getLayoutParams();
             layoutParams.height = contentHeight;
             mContainer.setLayoutParams(layoutParams);
         }
         //设置内边距
-        int innerMarginLeft = (int) a.getDimension(R.styleable.LabelContainer_inner_margin_left, 0);
-        int innerMarginRight = (int) a.getDimension(R.styleable.LabelContainer_inner_margin_right, 0);
+        int innerMarginLeft = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_left, 0);
+        int innerMarginRight = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_right, 0);
         ViewUtils.setMargins(mContainer, innerMarginLeft, 0, innerMarginRight, 0);
         //设置标题宽度
-        int labelWidth = (int) a.getDimension(R.styleable.LabelContainer_label_width, -1);
+        int labelWidth = (int) a.getDimension(R.styleable.common_label_container_common_label_width, -1);
         if (labelWidth != -1) {
             ViewGroup.LayoutParams labelLayoutParams = mTitleContainer.getLayoutParams();
             labelLayoutParams.width = labelWidth;

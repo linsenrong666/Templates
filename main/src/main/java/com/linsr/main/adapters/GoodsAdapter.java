@@ -44,17 +44,17 @@ public class GoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
 
     private class Holder extends BaseViewHolder<HomePojo> {
 
-        @BindView(id = R.id.item_goods_title_tv)
         private TextView title;
-        @BindView(id = R.id.item_goods_desc_tv)
         private TextView desc;
-        @BindView(id = R.id.item_goods_img_iv)
         private ImageView img;
-        @BindView(id = R.id.item_goods_add_tv)
         private TextView add;
 
         Holder(Context context, View itemView) {
             super(context, itemView);
+            title = findViewById(R.id.item_goods_title_tv);
+            desc = findViewById(R.id.item_goods_desc_tv);
+            img = findViewById(R.id.item_goods_img_iv);
+            add = findViewById(R.id.item_goods_add_tv);
         }
 
         @Override

@@ -32,13 +32,13 @@ public class FindAdapter extends BaseRecyclerAdapter<FindPojo> {
 
     private class FindHolder extends BaseViewHolder<FindPojo> {
 
-        @BindView(id = R.id.item_find_title_tv)
         private TextView title;
-        @BindView(id = R.id.item_find_content_tv)
         private TextView content;
 
-        public FindHolder(Context context, View itemView) {
+        FindHolder(Context context, View itemView) {
             super(context, itemView);
+            title = findViewById(R.id.item_find_title_tv);
+            content = findViewById(R.id.item_find_content_tv);
         }
 
         @Override

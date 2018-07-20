@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/item_home"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/common_ic_launcher_round"
         android:title="首页"/>
     <item
         android:id="@+id/item_category"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/common_ic_launcher"
         android:title="分类"/>
     <item
         android:id="@+id/item_find"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/common_ic_launcher_round"
         android:title="发现"/>
     <item
         android:id="@+id/item_cart"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/common_ic_launcher"
         android:title="购物车"/>
     <item
         android:id="@+id/item_me"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/common_ic_launcher_round"
         android:title="我的"/>
 </menu>

@@ -16,7 +16,7 @@
         android:layout_height="88dp"
         android:layout_marginRight="@dimen/common_middle"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@mipmap/common_ic_launcher_round"
         tools:background="@color/colorPrimary"/>
 
     <TextView

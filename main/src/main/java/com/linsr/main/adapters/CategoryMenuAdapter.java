@@ -46,11 +46,11 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
 
     private class MenuHolder extends BaseViewHolder<CategoryMenuPojo> {
 
-        @BindView(id = R.id.item_category_title_tv)
         private TextView title;
 
-        public MenuHolder(Context context, View itemView) {
+        MenuHolder(Context context, View itemView) {
             super(context, itemView);
+            title = findViewById(R.id.item_category_title_tv);
         }
 
         @Override
@@ -58,7 +58,7 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
             title.setText(data.getTitle());
             if (mSelectedPosition == position) {
                 mView.setBackgroundColor(getColor(R.color.colorAccent));
-            }else{
+            } else {
                 mView.setBackgroundColor(getColor(R.color.common_transparent));
             }
         }

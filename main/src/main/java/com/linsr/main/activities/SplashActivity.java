@@ -23,7 +23,9 @@ public class SplashActivity extends ActivityEx {
             @Override
             public void run() {
                 Router.startActivity(MainModule.Activity.MAIN);
+                finish();
             }
         }, 500);
     }
+
 }

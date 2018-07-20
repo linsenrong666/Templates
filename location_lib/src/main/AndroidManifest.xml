@@ -6,5 +6,8 @@
     <!--ACCESS_COARSE_LOCATION：允许APP访问大概地理位置-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
+    <application>
+
+    </application>
 
 </manifest>
