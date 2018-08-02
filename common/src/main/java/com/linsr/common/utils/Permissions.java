@@ -11,6 +11,7 @@ import android.Manifest;
 public interface Permissions {
 
     int REQUEST_CAMERA = 0;
+    int REQUEST_STORAGE = 1;
 
     /**
      * 通讯录

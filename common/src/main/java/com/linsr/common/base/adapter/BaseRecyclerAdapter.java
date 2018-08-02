@@ -19,6 +19,7 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder<T>> {
 
+
     public interface OnItemClickListener<T> {
 
         /**
@@ -84,8 +85,8 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     }
 
     protected void setOnItemClickListener(final BaseViewHolder<T> holder,
-                                          final int itemViewType,
-                                          final T item) {
+                                final int itemViewType,
+                                final T item) {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +97,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
             }
         });
     }
+
 
     @Override
     public int getItemViewType(int position) {

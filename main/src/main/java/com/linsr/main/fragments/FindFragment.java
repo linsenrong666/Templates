@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.JLog;
-import com.linsr.common.utils.RecyclerViewHepler;
+import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.FindAdapter;
-import com.linsr.main.contacts.HomeContact;
 import com.linsr.main.model.FindPojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -57,7 +55,7 @@ public class FindFragment extends FragmentEx {
             }
         });
         mAdapter = new FindAdapter(mActivity);
-        RecyclerViewHepler.initDefault(mActivity, mRecyclerView, mAdapter);
+        RecyclerViewHelper.initDefault(mActivity, mRecyclerView, mAdapter);
 
     }
 

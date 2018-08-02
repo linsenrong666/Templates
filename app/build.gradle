@@ -21,10 +21,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    signingConfigs {
+//        debug {
+//            keyAlias 'jdsupershops'
+//            keyPassword 'jd_supermall'
+//            storeFile file('jdsupershops.jks')
+//            storePassword 'jd_supermall'
+//        }
+
+        release {
+            keyAlias 'templates_release'
+            keyPassword 'templates123'
+            storeFile file('templates_release.jks')
+            storePassword 'templates123'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs project(':location_lib').file('libs')
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     //module dependencies
     compile project(':common')

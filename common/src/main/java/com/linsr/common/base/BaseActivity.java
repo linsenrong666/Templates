@@ -68,9 +68,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         init();
         findView();
-        onCreateEx(savedInstanceState);
         setContentLayout();
         setNoDataLayout();
+        onCreateEx(savedInstanceState);
         initView();
     }
 
@@ -119,9 +119,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        mIsActive = true;
         JLog.d(TAG, "Activity onResume.called , this: " + getClass().getName());
         JLog.d(TAG, "mOnContentUpdateListeners.size: " + mOnContentUpdateListeners.size());
+        mIsActive = true;
         for (AbstractOnContentUpdateListener listener : mOnContentUpdateListeners) {
             if (listener.isUpdateHappened()) {
                 listener.onContentUpdated(listener.getCachedObjects());

@@ -3,7 +3,9 @@ package com.linsr.common.base.adapter;
 import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.linsr.common.R;
 
@@ -26,6 +28,29 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
         initView();
     }
 
+    public static BaseViewHolder createViewHolder(Context context, View itemView) {
+        BaseViewHolder holder = new BaseViewHolder(context, itemView) {
+            @Override
+            protected void convert(int position, Object data, int itemType) {
+
+            }
+        };
+        return holder;
+    }
+
+    public static BaseViewHolder createViewHolder(Context context,
+                                                  ViewGroup parent, int layoutId) {
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
+                false);
+        BaseViewHolder holder = new BaseViewHolder(context, itemView) {
+            @Override
+            protected void convert(int position, Object data, int itemType) {
+
+            }
+        };
+        return holder;
+    }
+
     /**
      * 绑定数据
      * @param position 位置
@@ -34,7 +59,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      */
     protected abstract void convert(int position, T data, int itemType);
 
-    public <V extends View> V findViewById(@IdRes int id) {
+    protected <V extends View> V findViewById(@IdRes int id) {
         return mView.findViewById(id);
     }
 

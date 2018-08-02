@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.linsr.common.biz.FragmentEx;
-import com.linsr.common.utils.RecyclerViewHepler;
+import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.CategoryDetailsAdapter;
 import com.linsr.main.utils.Mock;
@@ -46,7 +46,7 @@ public class CategoryDetailsFragment extends FragmentEx {
     protected void initView() {
         mRecyclerView = findViewById(R.id.category_details_recycler_view);
         mAdapter = new CategoryDetailsAdapter(mActivity);
-        RecyclerViewHepler.initGridLayout(mActivity, 3, mRecyclerView, mAdapter);
+        RecyclerViewHelper.initGridLayout(mActivity, 3, mRecyclerView, mAdapter);
 
         mTitleTextView = findViewById(R.id.category_details_title_tv);
         mTitleTextView.setText(mCategoryId);

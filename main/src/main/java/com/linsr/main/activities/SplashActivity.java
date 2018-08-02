@@ -1,9 +1,19 @@
 package com.linsr.main.activities;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
+import com.amap.api.maps2d.AMap;
+import com.amap.api.maps2d.MapView;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.Permissions;
 import com.linsr.main.R;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * Description
@@ -17,6 +27,30 @@ public class SplashActivity extends ActivityEx {
         return R.layout.main_activity_splash_screen;
     }
 
+    private MapView mMapView;
+
+    @Override
+    protected void onCreateEx(@Nullable Bundle savedInstanceState) {
+        super.onCreateEx(savedInstanceState);
+        requestPermissions();
+
+        mMapView = findViewById(R.id.map);
+        mMapView.onCreate(savedInstanceState);// 此方法必须重写
+        AMap aMap = mMapView.getMap();
+
+
+    }
+
+    @AfterPermissionGranted(Permissions.REQUEST_STORAGE)
+    private void requestPermissions() {
+        if (EasyPermissions.hasPermissions(this, Permissions.PERMISSIONS_STORAGE)) {
+            JLog.i(TAG,"====有全新啊");
+        } else {
+            EasyPermissions.requestPermissions(this, "应用需要存储权限",
+                    Permissions.REQUEST_STORAGE, Permissions.PERMISSIONS_STORAGE);
+        }
+    }
+
     @Override
     protected void initView() {
         getRootContent().postDelayed(new Runnable() {
@@ -25,7 +59,12 @@ public class SplashActivity extends ActivityEx {
                 Router.startActivity(MainModule.Activity.MAIN);
                 finish();
             }
-        }, 500);
+        }, 1000);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+    }
 }

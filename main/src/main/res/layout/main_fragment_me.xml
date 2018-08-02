@@ -12,25 +12,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.linsr.main.widgets.MeTopView
             android:layout_width="match_parent"
-            android:layout_height="108dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/common_middle">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/common_middle"
-                android:src="@mipmap/common_ic_launcher_round"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="登陆注册"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
 
         <com.linsr.common.widgets.LabelContainer
             android:layout_width="match_parent"

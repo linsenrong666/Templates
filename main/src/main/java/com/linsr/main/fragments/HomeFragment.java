@@ -15,7 +15,8 @@ import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.Permissions;
-import com.linsr.common.utils.RecyclerViewHepler;
+import com.linsr.common.utils.RecyclerViewHelper;
+import com.linsr.common.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
 import com.linsr.main.activities.CaptureActivity;
 import com.linsr.main.adapters.GoodsAdapter;
@@ -58,7 +59,21 @@ public class HomeFragment extends FragmentEx implements HomeContact.View ,EasyPe
 
         mRecyclerView = findViewById(R.id.main_recycler_view);
         mAdapter = new GoodsAdapter(mActivity);
-        RecyclerViewHepler.initDefault(mActivity, mRecyclerView, mAdapter);
+
+
+        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mAdapter);
+        RecyclerViewHelper.initDefault(mActivity, mRecyclerView, wrapper);
+
+
+        TextView textView = new TextView(getContext());
+        textView.setText("aaaaaaaaaaaaaaaaaa");
+        wrapper.addHeaderView(textView);
+
+        TextView textView1 = new TextView(getContext());
+        textView1.setText("cccc");
+        wrapper.addHeaderView(textView1);
+
+
         mAdapter.setOnGoodsClickListener(new GoodsAdapter.OnGoodsClickListener() {
             @Override
             public void onAdd(int position) {
