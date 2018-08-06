@@ -8,17 +8,16 @@ package com.linsr.common.router.url;
 public class MainModule {
 
     private static final String ROOT = "/main/";
+    private static final String ACTIVITY = ROOT + "activity/";
+    private static final String FRAGMENT = ROOT + "fragment/";
 
     public interface Activity {
-        String ACTIVITY = ROOT + "activity/";
-
         String MAIN = ACTIVITY + "main";
         String SCAN_CODE = ACTIVITY + "scan_code";
+        String PRODUCT_DETAILS = ACTIVITY + "product_details";
     }
 
     public interface Fragment {
-        String FRAGMENT = ROOT + "fragment/";
-
         String HOME = FRAGMENT + "home";
         String CATEGORY = FRAGMENT + "category";
         String FIND = FRAGMENT + "find";

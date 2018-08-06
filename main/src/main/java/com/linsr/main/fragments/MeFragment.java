@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.router.url.PersonalModule;
 import com.linsr.main.R;
 
 /**

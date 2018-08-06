@@ -7,6 +7,7 @@ import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.MapView;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
+import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.Permissions;
@@ -27,24 +28,16 @@ public class SplashActivity extends ActivityEx {
         return R.layout.main_activity_splash_screen;
     }
 
-    private MapView mMapView;
-
     @Override
     protected void onCreateEx(@Nullable Bundle savedInstanceState) {
         super.onCreateEx(savedInstanceState);
         requestPermissions();
-
-        mMapView = findViewById(R.id.map);
-        mMapView.onCreate(savedInstanceState);// 此方法必须重写
-        AMap aMap = mMapView.getMap();
-
-
     }
 
     @AfterPermissionGranted(Permissions.REQUEST_STORAGE)
     private void requestPermissions() {
         if (EasyPermissions.hasPermissions(this, Permissions.PERMISSIONS_STORAGE)) {
-            JLog.i(TAG,"====有全新啊");
+            JLog.i(TAG, "====有全新啊");
         } else {
             EasyPermissions.requestPermissions(this, "应用需要存储权限",
                     Permissions.REQUEST_STORAGE, Permissions.PERMISSIONS_STORAGE);
@@ -56,15 +49,10 @@ public class SplashActivity extends ActivityEx {
         getRootContent().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Router.startActivity(MainModule.Activity.MAIN);
+                Router.startActivity(LoginModule.Activity.LOGIN);
                 finish();
             }
         }, 1000);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mMapView.onDestroy();
-    }
 }

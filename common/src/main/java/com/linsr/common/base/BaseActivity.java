@@ -1,8 +1,10 @@
 package com.linsr.common.base;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.linsr.common.R;
 import com.linsr.common.dialogs.DialogFactory;
 import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.SystemBarTintManager;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.utils.contents.ContentsManager;
 import com.linsr.common.utils.contents.OnContentUpdateListener;
@@ -67,11 +71,50 @@ public abstract class BaseActivity extends AppCompatActivity implements
         setOrientation();
         super.onCreate(savedInstanceState);
         init();
+        initSystemBarTint();
         findView();
         setContentLayout();
         setNoDataLayout();
+        initTopLayout();
         onCreateEx(savedInstanceState);
         initView();
+    }
+
+    protected void initSystemBarTint() {
+
+//        loadStateBar();
+    }
+
+    protected SystemBarTintManager tintManager;
+
+    private void loadStateBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+        tintManager = new SystemBarTintManager(this);
+        // 激活状态栏设置
+        tintManager.setStatusBarTintEnabled(true);
+        // 激活导航栏设置
+        tintManager.setNavigationBarTintEnabled(true);
+        // 设置一个状态栏颜色
+//        tintManager.setStatusBarTintResource(setSystemBarColor());
+    }
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
+
+    protected void initTopLayout() {
     }
 
     protected void onCreateEx(@Nullable Bundle savedInstanceState) {
@@ -201,5 +244,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
     public static void startSelf(Context context, Class c) {
         Intent intent = new Intent(context, c);
         context.startActivity(intent);
+    }
+
+    public int setSystemBarColor() {
+        return R.color.white;
     }
 }

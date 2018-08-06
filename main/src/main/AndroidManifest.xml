@@ -3,11 +3,11 @@
           package="com.linsr.main">
 
     <application>
-        <!---->
+        <!--Main-->
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"/>
-        <!---->
+        <!--闪屏-->
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
@@ -17,9 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!---->
+        <!--扫码-->
         <activity
             android:name=".activities.CaptureActivity"
+            android:screenOrientation="portrait"/>
+        <!--商详-->
+        <activity
+            android:name=".activities.ProductDetailsActivity"
             android:screenOrientation="portrait"/>
     </application>
 

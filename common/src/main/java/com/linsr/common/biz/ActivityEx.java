@@ -9,6 +9,7 @@ import android.view.View;
 import com.linsr.common.R;
 import com.linsr.common.base.BaseActivity;
 import com.linsr.common.base.mvp.IView;
+import com.linsr.common.widgets.TitleView;
 
 /**
  * 和业务相关的activity基类
@@ -20,6 +21,24 @@ public abstract class ActivityEx extends BaseActivity implements IView {
     private final Object mLockObject = new Object();
 
     private volatile Dialog mTransparentDialog;
+
+    protected TitleView mTitleView;
+
+    @Override
+    protected void initTopLayout() {
+        if (showTitleView()) {
+            mTopLayout.setVisibility(View.VISIBLE);
+            mTitleView = new TitleView(this);
+            mTopLayout.addView(mTitleView);
+        }
+    }
+
+    /**
+     * @return 是否显示标题栏
+     */
+    protected boolean showTitleView() {
+        return true;
+    }
 
     /**
      * 设置空数据托底页面，子类可以修改定制

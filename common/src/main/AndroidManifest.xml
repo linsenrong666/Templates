@@ -1,3 +1,11 @@
-<manifest package="com.linsr.common">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.linsr.common">
+
+    <application>
+        <meta-data
+            android:name="com.linsr.common.utils.glide.GlideModelConfig"
+            android:value="GlideModule"/>
+    </application>
+
 
 </manifest>

@@ -44,6 +44,7 @@
 
 ########################################Glide混淆规则################################################
 -keep public class * implements com.bumptech.glide.module.GlideModule
+-keepnames class * com.linsr.common.utils.glide.GlideModelConfig
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
   **[] $VALUES;
   public *;
