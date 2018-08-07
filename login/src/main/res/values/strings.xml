@@ -1,3 +1,6 @@
 <resources>
     <string name="login_app_name">login</string>
+    <string name="login_wechat_login"><u>微信登陆</u></string>
+    <string name="login_forgot_password"><u>忘记密码</u></string>
+    <string name="login_register"><u>注册新账号</u></string>
 </resources>

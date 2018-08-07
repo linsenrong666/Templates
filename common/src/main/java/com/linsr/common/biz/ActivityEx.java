@@ -9,6 +9,7 @@ import android.view.View;
 import com.linsr.common.R;
 import com.linsr.common.base.BaseActivity;
 import com.linsr.common.base.mvp.IView;
+import com.linsr.common.utils.JLog;
 import com.linsr.common.widgets.TitleView;
 
 /**
@@ -31,6 +32,24 @@ public abstract class ActivityEx extends BaseActivity implements IView {
             mTitleView = new TitleView(this);
             mTopLayout.addView(mTitleView);
         }
+    }
+
+    protected void initTitleView(int titleTextResId) {
+        this.initTitleView(titleTextResId, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back();
+            }
+        });
+    }
+
+    protected void initTitleView(int titleTextResId, View.OnClickListener leftClickListener) {
+        if (mTitleView == null) {
+            JLog.e(TAG, "error: title view has not be initialized.");
+            return;
+        }
+        mTitleView.setTitleText(getString(titleTextResId));
+        mTitleView.setOnLeftClickListener(leftClickListener);
     }
 
     /**

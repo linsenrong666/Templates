@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
     <!--主色-->
     <color name="main_color">#FB6384</color>
     <!--主色按下效果-->
     <color name="main_color_p">#CCFB6384</color>
+    <color name="main_color_disable">#99FB6384</color>
     <color name="main_color_n">@color/main_color</color>
 
     <!--通用文字颜色-->
@@ -27,7 +27,7 @@
     <!--白色-->
     <color name="white">#fff</color>
 
-    <!-- 十六进制透明度换算-->
+     <!--十六进制透明度换算-->
     <!--100% — FF -->
     <!--99% — FC -->
     <!--98% — FA -->

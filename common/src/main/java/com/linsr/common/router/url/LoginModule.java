@@ -14,10 +14,10 @@ public class LoginModule {
     public interface Activity {
         String LOGIN = ACTIVITY + "login";
         String REGISTER = ACTIVITY + "register";
+        String FIND_PASSWORD = ACTIVITY + "find_password";
     }
 
     public interface Fragment {
-        String FRAGMENT = ROOT + "fragment/";
     }
 
 }
