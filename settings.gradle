@@ -1,6 +1,8 @@
-include ':app', ':login', ':resource',
+include ':app',
+        ':login',
         ':books',
         ':common',
         ':main',
         ':location_lib',
-        ':scancode_lib'
+        ':scancode_lib',
+        ':resource_lib'

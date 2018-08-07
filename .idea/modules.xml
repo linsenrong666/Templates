@@ -9,7 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/location_lib/location_lib.iml" filepath="$PROJECT_DIR$/location_lib/location_lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/login/login.iml" filepath="$PROJECT_DIR$/login/login.iml" />
       <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/resource/resource.iml" filepath="$PROJECT_DIR$/resource/resource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resource_lib/resource_lib.iml" filepath="$PROJECT_DIR$/resource_lib/resource_lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/scancode_lib/scancode_lib.iml" filepath="$PROJECT_DIR$/scancode_lib/scancode_lib.iml" />
     </modules>
   </component>

@@ -25,7 +25,7 @@ dependencies {
     //依赖扫码组件
     compile project(":scancode_lib")
     //依赖资源组件
-    compile project(":resource")
+    compile project(':resource_lib')
 
     //android support library
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
