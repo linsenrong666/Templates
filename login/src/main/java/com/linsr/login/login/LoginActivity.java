@@ -16,12 +16,13 @@ import com.linsr.login.R;
  * @author Linsr
  */
 @Route(path = LoginModule.Activity.LOGIN)
-public class LoginActivity extends ActivityEx {
+public class LoginActivity extends ActivityEx implements LoginContact.View {
 
     private EditText mAccountEditText;
     private EditText mPasswordEditText;
     private Button mConfirmButton;
-    private TextView mForgotTextView;
+
+    private LoginPresenter mPresenter;
 
     @Override
     protected int getLayoutId() {
@@ -41,7 +42,7 @@ public class LoginActivity extends ActivityEx {
                 Router.startActivity(LoginModule.Activity.REGISTER);
             }
         });
-        mForgotTextView = findViewById(R.id.login_forgot_password_tv);
+        TextView mForgotTextView = findViewById(R.id.login_forgot_password_tv);
         mForgotTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +55,7 @@ public class LoginActivity extends ActivityEx {
             public void onClick(View v) {
             }
         });
-
     }
+
 
 }

@@ -70,7 +70,7 @@ public abstract class ActivityEx extends BaseActivity implements IView {
     }
 
     @Override
-    public void showNoData(String text) {
+    public void showNoData() {
         mNoDataLayout.setVisibility(View.VISIBLE);
         mContentLayout.setVisibility(View.GONE);
     }
@@ -82,7 +82,7 @@ public abstract class ActivityEx extends BaseActivity implements IView {
     }
 
     @Override
-    public void showLoading(String text) {
+    public void showLoading() {
         synchronized (mLockObject) {
             hideLoading();
             mTransparentDialog = mDialogFactory.createTransparentProgressDialog(this);

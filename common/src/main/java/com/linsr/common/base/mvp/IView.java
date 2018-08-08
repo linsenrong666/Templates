@@ -7,11 +7,11 @@ package com.linsr.common.base.mvp;
  */
 public interface IView {
 
-    void showNoData(String text);
+    void showNoData();
 
     void hideNoData();
 
-    void showLoading(String text);
+    void showLoading();
 
     void hideLoading();
 
