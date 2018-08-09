@@ -17,13 +17,8 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@color/common_white"
-            android:divider="@drawable/divider_horizontal"
-            android:orientation="vertical"
-            android:showDividers="beginning|end|middle">
+            style="@style/login_linear_layout_divider"
+            android:layout_marginTop="50dp">
 
             <EditText
                 android:id="@+id/login_account_et"
@@ -62,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="@dimen/middle"
-            android:text="@string/login_register"
+            android:text="@string/login_register_new_account"
             android:textColor="@color/color_main_selector"
             android:textSize="@dimen/font_small"/>
 

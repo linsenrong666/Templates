@@ -1,15 +1,20 @@
 package com.linsr.common.biz;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.linsr.common.R;
 import com.linsr.common.base.BaseActivity;
 import com.linsr.common.base.mvp.IView;
 import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.SystemBarTintManager;
 import com.linsr.common.widgets.TitleView;
 
 /**
@@ -104,6 +109,40 @@ public abstract class ActivityEx extends BaseActivity implements IView {
     public void showError(String text) {
         mNoDataLayout.setVisibility(View.VISIBLE);
         mContentLayout.setVisibility(View.GONE);
+    }
+
+
+    protected SystemBarTintManager tintManager;
+
+    @Override
+    protected void initSystemBarTint() {
+        super.initSystemBarTint();
+    }
+
+    private void loadStateBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+        tintManager = new SystemBarTintManager(this);
+        // 激活状态栏设置
+        tintManager.setStatusBarTintEnabled(true);
+        // 激活导航栏设置
+        tintManager.setNavigationBarTintEnabled(true);
+        // 设置一个状态栏颜色
+//        tintManager.setStatusBarTintResource(setSystemBarColor());
+    }
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 
 }

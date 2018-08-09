@@ -2,6 +2,7 @@ package com.linsr.common.widgets.countdown;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import com.linsr.common.utils.JLog;
 
@@ -10,7 +11,7 @@ import com.linsr.common.utils.JLog;
  *
  * @author Linsr 2018/8/7 下午2:25
  */
-public class CountDownButton extends android.support.v7.widget.AppCompatButton {
+public class CountDownButton extends android.support.v7.widget.AppCompatTextView {
 
     public final Object mLock = new Object();
 

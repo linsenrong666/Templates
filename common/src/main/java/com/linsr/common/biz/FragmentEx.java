@@ -17,7 +17,7 @@ import com.linsr.common.base.mvp.IView;
 public abstract class FragmentEx extends BaseFragment implements IView {
 
     @Override
-    public void showNoData(String text) {
+    public void showNoData() {
         mContentLayout.setVisibility(View.GONE);
         mNoDataLayout.setVisibility(View.VISIBLE);
     }
@@ -29,9 +29,9 @@ public abstract class FragmentEx extends BaseFragment implements IView {
     }
 
     @Override
-    public void showLoading(String text) {
+    public void showLoading() {
         if (mActivity instanceof ActivityEx) {
-            ((ActivityEx) mActivity).showLoading(text);
+            ((ActivityEx) mActivity).showLoading();
         }
     }
 

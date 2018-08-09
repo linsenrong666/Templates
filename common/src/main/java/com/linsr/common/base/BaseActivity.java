@@ -77,47 +77,22 @@ public abstract class BaseActivity extends AppCompatActivity implements
         setNoDataLayout();
         initTopLayout();
         onCreateEx(savedInstanceState);
-        initView();
     }
 
+    /**
+     * 初始化状态栏
+     */
     protected void initSystemBarTint() {
-
-//        loadStateBar();
     }
 
-    protected SystemBarTintManager tintManager;
-
-    private void loadStateBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatus(true);
-        }
-        tintManager = new SystemBarTintManager(this);
-        // 激活状态栏设置
-        tintManager.setStatusBarTintEnabled(true);
-        // 激活导航栏设置
-        tintManager.setNavigationBarTintEnabled(true);
-        // 设置一个状态栏颜色
-//        tintManager.setStatusBarTintResource(setSystemBarColor());
-    }
-
-    @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
-    }
-
-
+    /**
+     * 初始化顶部布局
+     */
     protected void initTopLayout() {
     }
 
     protected void onCreateEx(@Nullable Bundle savedInstanceState) {
+        initView();
     }
 
     private void setContentLayout() {
