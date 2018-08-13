@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.linsr.common.R;
+import com.linsr.common.biz.ApplicationEx;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.utils.contents.ContentsManager;
@@ -34,6 +35,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public abstract class BaseFragment extends Fragment {
 
     protected Activity mActivity;
+    protected Context mContext;
     protected String TAG;
     protected ContentsManager mContentsManager;
     private List<AbstractOnContentUpdateListener> mOnContentUpdateListeners = new ArrayList<>();
@@ -54,6 +56,7 @@ public abstract class BaseFragment extends Fragment {
         TAG = getClass().getSimpleName();
         super.onAttach(context);
         mActivity = getActivity();
+        mContext = getContext();
         mContentsManager = ContentsManager.getInstance();
 
         initArguments(getArguments());
@@ -178,7 +181,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,this);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
     @Override

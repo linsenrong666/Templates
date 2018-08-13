@@ -65,8 +65,10 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
 
     @Override
     protected void initView() {
-        mViewPager = findViewById(R.id.main_view_pager);
+        mTitleView.setVisibility(View.GONE);
 
+
+        mViewPager = findViewById(R.id.main_view_pager);
         BottomNavigationView mBottomNavigationView = findViewById(R.id.main_nav_bar);
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -74,7 +76,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
                 (BottomNavigationMenuView) mBottomNavigationView.getChildAt(0);
         View mCartView = menuView.getChildAt(3);
         mBadge = new QBadgeView(this).bindTarget(mCartView);
-
+        mBadge.setBadgeBackgroundColor(getResources().getColor(R.color.main_color));
         initFragment();
     }
 
@@ -96,18 +98,25 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int i = item.getItemId();
         if (i == R.id.item_home) {
+            mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(0);
             return true;
         } else if (i == R.id.item_category) {
+            mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(1);
             return true;
         } else if (i == R.id.item_find) {
+            mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(2);
             return true;
         } else if (i == R.id.item_cart) {
+            mTitleView.setVisibility(View.VISIBLE);
+            mTitleView.setTitleText(getString(R.string.main_cart));
             mViewPager.setCurrentItem(3);
             return true;
         } else if (i == R.id.item_me) {
+            mTitleView.setVisibility(View.VISIBLE);
+            mTitleView.setTitleText(getString(R.string.main_me_center));
             mViewPager.setCurrentItem(4);
             return true;
         } else {

@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.LoginModule;
+import com.linsr.common.router.url.MainModule;
 import com.linsr.login.R;
 
 /**
@@ -53,6 +54,8 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
         mConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Router.startActivity(MainModule.Activity.MAIN);
+                finish();
             }
         });
     }

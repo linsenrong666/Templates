@@ -2,5 +2,10 @@
 
     <string name="main_capture_camera_failed">未找到相机或相机不可用</string>
     <string name="main_capture_decode_failed">未找到二维码</string>
+    <string name="main_cart_empty">购物车还没有商品噢~</string>
+    <string name="main_cart_shopping">去逛逛</string>
+    <string name="main_recommend_for_you">为你推荐</string>
+    <string name="main_cart">购物车</string>
+    <string name="main_me_center">个人中心</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.linsr.main.utils;
 import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.model.FindPojo;
 import com.linsr.main.model.HomePojo;
+import com.linsr.main.model.RecommendPojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,18 @@ public class Mock {
                     "content content content content content content content content " +
                     "content content content content content content content content " +
                     "content content content content content content content content ");
+            pojo.setUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531463747502&di=dfd96a9a0909db0cad21818981866e8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201507%2F01%2F20150701165443_3XdLc.jpeg");
+            list.add(pojo);
+        }
+        return list;
+    }
+
+    public static List<RecommendPojo> getRecommendList(int size){
+        List<RecommendPojo> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            RecommendPojo pojo = new RecommendPojo();
+            pojo.setName("item:" + i);
+            pojo.setPrice("$20 ");
             pojo.setUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531463747502&di=dfd96a9a0909db0cad21818981866e8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201507%2F01%2F20150701165443_3XdLc.jpeg");
             list.add(pojo);
         }
