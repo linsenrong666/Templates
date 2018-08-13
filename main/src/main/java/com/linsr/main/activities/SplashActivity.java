@@ -38,6 +38,13 @@ public class SplashActivity extends ActivityEx {
     private void requestPermissions() {
         if (EasyPermissions.hasPermissions(this, Permissions.PERMISSIONS_STORAGE)) {
             JLog.i(TAG, "====有全新啊");
+            getRootContent().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Router.startActivity(LoginModule.Activity.LOGIN);
+                    finish();
+                }
+            }, 1000);
         } else {
             EasyPermissions.requestPermissions(this, "应用需要存储权限",
                     Permissions.REQUEST_STORAGE, Permissions.PERMISSIONS_STORAGE);
@@ -46,13 +53,11 @@ public class SplashActivity extends ActivityEx {
 
     @Override
     protected void initView() {
-        getRootContent().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Router.startActivity(LoginModule.Activity.LOGIN);
-                finish();
-            }
-        }, 1000);
+
     }
 
+    @Override
+    protected boolean showTitleView() {
+        return false;
+    }
 }
