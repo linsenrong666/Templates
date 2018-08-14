@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.base.adapter.BindView;
-import com.linsr.common.utils.ImageUtils;
 import com.linsr.main.R;
 import com.linsr.main.model.HomePojo;
 
@@ -19,13 +17,13 @@ import com.linsr.main.model.HomePojo;
  *
  * @author Linsr 2018/7/13 上午11:21
  */
-public class GoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
+public class HomeGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
 
     public interface OnGoodsClickListener {
         void onAdd(int position);
     }
 
-    public GoodsAdapter(Context context) {
+    public HomeGoodsAdapter(Context context) {
         super(context);
     }
 
@@ -38,7 +36,7 @@ public class GoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
     @NonNull
     @Override
     public BaseViewHolder<HomePojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.main_item_goods, parent, false);
+        View view = mInflater.inflate(R.layout.main_item_home_goods, parent, false);
         return new Holder(mContext, view);
     }
 

@@ -65,9 +65,6 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
 
     @Override
     protected void initView() {
-        mTitleView.setVisibility(View.GONE);
-
-
         mViewPager = findViewById(R.id.main_view_pager);
         BottomNavigationView mBottomNavigationView = findViewById(R.id.main_nav_bar);
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
@@ -78,6 +75,9 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         mBadge = new QBadgeView(this).bindTarget(mCartView);
         mBadge.setBadgeBackgroundColor(getResources().getColor(R.color.main_color));
         initFragment();
+        
+        //默认选择home页
+        onNavigationItemSelected(mBottomNavigationView.getMenu().findItem(R.id.item_home));
     }
 
     private void initFragment() {
@@ -98,7 +98,8 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int i = item.getItemId();
         if (i == R.id.item_home) {
-            mTitleView.setVisibility(View.GONE);
+            mTitleView.setVisibility(View.VISIBLE);
+            mTitleView.setTitleText(getString(R.string.main_recommend_for_you));
             mViewPager.setCurrentItem(0);
             return true;
         } else if (i == R.id.item_category) {

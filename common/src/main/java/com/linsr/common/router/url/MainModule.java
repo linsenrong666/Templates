@@ -20,6 +20,7 @@ public class MainModule {
 
     public interface Fragment {
         String HOME = FRAGMENT + "home";
+        String HOME_GOODS = FRAGMENT + "homeGoods";
         String CATEGORY = FRAGMENT + "category";
         String FIND = FRAGMENT + "find";
         String CART = FRAGMENT + "cart";

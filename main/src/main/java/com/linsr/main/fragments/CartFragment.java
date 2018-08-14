@@ -11,7 +11,7 @@ import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
-import com.linsr.main.adapters.GoodsAdapter;
+import com.linsr.main.adapters.HomeGoodsAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.RecommendPojo;
@@ -32,7 +32,7 @@ import java.util.List;
 public class CartFragment extends FragmentEx {
 
     private RecyclerView mCartRecyclerView;
-    private GoodsAdapter mGoodsAdapter;
+    private HomeGoodsAdapter mHomeGoodsAdapter;
     private RecyclerView mRecommendRecyclerView;
     private RecommendAdapter mRecommendAdapter;
     private CartBottomBar mCartBottomBar;
@@ -64,7 +64,7 @@ public class CartFragment extends FragmentEx {
                 refreshLayout.finishRefresh();
 
                 List<HomePojo> goodsList1 = Mock.getGoodsList(1);
-                mGoodsAdapter.addData(goodsList1);
+                mHomeGoodsAdapter.addData(goodsList1);
                 mGoodsAdapterWrapper.notifyDataSetChanged();
 
                 List<RecommendPojo> goodsList3 = Mock.getRecommendList(1);
@@ -99,8 +99,8 @@ public class CartFragment extends FragmentEx {
     EmptyWrapper mGoodsAdapterWrapper;
 
     private void initCartAdapter() {
-        mGoodsAdapter = new GoodsAdapter(mContext);
-        mGoodsAdapterWrapper = new EmptyWrapper(mGoodsAdapter);
+        mHomeGoodsAdapter = new HomeGoodsAdapter(mContext);
+        mGoodsAdapterWrapper = new EmptyWrapper(mHomeGoodsAdapter);
         mGoodsAdapterWrapper.setEmptyView(R.layout.main_empty_cart);
         RecyclerViewHelper.initDefault(mContext, mCartRecyclerView, mGoodsAdapterWrapper);
     }
