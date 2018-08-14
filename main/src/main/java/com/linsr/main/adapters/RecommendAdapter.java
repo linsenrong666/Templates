@@ -27,7 +27,8 @@ public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
     @NonNull
     @Override
     public BaseViewHolder<RecommendPojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Holder(mContext, mInflater.inflate(R.layout.main_item_recommend_goods, parent, false));
+        return new Holder(mContext, mInflater.inflate(R.layout.main_item_recommend_goods,
+                parent, false));
     }
 
     class Holder extends BaseViewHolder<RecommendPojo> {

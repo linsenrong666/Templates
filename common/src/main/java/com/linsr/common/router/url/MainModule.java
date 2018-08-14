@@ -13,8 +13,9 @@ public class MainModule {
 
     public interface Activity {
         String MAIN = ACTIVITY + "main";
-        String SCAN_CODE = ACTIVITY + "scan_code";
-        String PRODUCT_DETAILS = ACTIVITY + "product_details";
+        String SCAN_CODE = ACTIVITY + "scanCode";
+        String PRODUCT_DETAILS = ACTIVITY + "productDetails";
+        String CHILD_CATEGORY = ACTIVITY + "childCategory";
     }
 
     public interface Fragment {
@@ -23,6 +24,6 @@ public class MainModule {
         String FIND = FRAGMENT + "find";
         String CART = FRAGMENT + "cart";
         String ME = FRAGMENT + "me";
-
+        String CHILD_CATEGORY = FRAGMENT + "childCategory";
     }
 }

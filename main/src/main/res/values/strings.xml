@@ -7,5 +7,6 @@
     <string name="main_recommend_for_you">为你推荐</string>
     <string name="main_cart">购物车</string>
     <string name="main_me_center">个人中心</string>
+    <string name="main_text_search_goods">搜索您喜欢的商品</string>
 
 </resources>

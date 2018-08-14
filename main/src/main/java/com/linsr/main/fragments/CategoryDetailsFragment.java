@@ -4,10 +4,16 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.adapter.BaseRecyclerAdapter;
+import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.router.Router;
+import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.CategoryDetailsAdapter;
+import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.utils.Mock;
 
 /**
@@ -52,5 +58,12 @@ public class CategoryDetailsFragment extends FragmentEx {
         mTitleTextView.setText(mCategoryId);
 
         mAdapter.addData(Mock.getMenuList(50));
+        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<CategoryMenuPojo>() {
+            @Override
+            public void onItemClick(BaseViewHolder<CategoryMenuPojo> holder,
+                                    int position, int itemType, CategoryMenuPojo data) {
+                Router.startActivity(MainModule.Activity.CHILD_CATEGORY);
+            }
+        });
     }
 }

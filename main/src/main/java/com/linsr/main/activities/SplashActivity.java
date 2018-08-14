@@ -37,7 +37,7 @@ public class SplashActivity extends ActivityEx {
     @AfterPermissionGranted(Permissions.REQUEST_STORAGE)
     private void requestPermissions() {
         if (EasyPermissions.hasPermissions(this, Permissions.PERMISSIONS_STORAGE)) {
-            JLog.i(TAG, "====有全新啊");
+            JLog.i(TAG, "====有权限啊");
             getRootContent().postDelayed(new Runnable() {
                 @Override
                 public void run() {

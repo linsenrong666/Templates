@@ -16,6 +16,7 @@
 
 package com.linsr.common.utils;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -33,6 +34,7 @@ public class ActivityUtils {
      * performed by the {@code fragmentManager}.
      *
      */
+    @SuppressLint("RestrictedApi")
     public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
                                              @NonNull Fragment fragment, int frameId) {
         checkNotNull(fragmentManager);
