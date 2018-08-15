@@ -22,7 +22,7 @@ public class MainModule {
         String HOME = FRAGMENT + "home";
         String HOME_GOODS = FRAGMENT + "homeGoods";
         String CATEGORY = FRAGMENT + "category";
-        String FIND = FRAGMENT + "find";
+        String MALL = FRAGMENT + "mall";
         String CART = FRAGMENT + "cart";
         String ME = FRAGMENT + "me";
         String CHILD_CATEGORY = FRAGMENT + "childCategory";

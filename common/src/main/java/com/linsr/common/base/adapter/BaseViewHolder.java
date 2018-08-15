@@ -28,27 +28,22 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
         initView();
     }
 
-    public static BaseViewHolder createViewHolder(Context context, View itemView) {
-        BaseViewHolder holder = new BaseViewHolder(context, itemView) {
+    public static <T> BaseViewHolder<T> createViewHolder(Context context, View itemView) {
+        return new BaseViewHolder<T>(context, itemView) {
             @Override
             protected void convert(int position, Object data, int itemType) {
-
             }
         };
-        return holder;
     }
 
-    public static BaseViewHolder createViewHolder(Context context,
-                                                  ViewGroup parent, int layoutId) {
+    public static <T> BaseViewHolder<T> createViewHolder(Context context, ViewGroup parent, int layoutId) {
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
                 false);
-        BaseViewHolder holder = new BaseViewHolder(context, itemView) {
+        return new BaseViewHolder<T>(context, itemView) {
             @Override
             protected void convert(int position, Object data, int itemType) {
-
             }
         };
-        return holder;
     }
 
     /**

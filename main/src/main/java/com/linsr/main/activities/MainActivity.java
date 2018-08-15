@@ -84,7 +84,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         mFragmentList = new ArrayList<>();
         mFragmentList.add(Router.findFragment(MainModule.Fragment.HOME));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.CATEGORY));
-        mFragmentList.add(Router.findFragment(MainModule.Fragment.FIND));
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.MALL));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.CART));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.ME));
         FragmentPagerAdapterEx mPagerAdapterEx =
@@ -106,7 +106,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
             mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(1);
             return true;
-        } else if (i == R.id.item_find) {
+        } else if (i == R.id.item_shop_center) {
             mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(2);
             return true;

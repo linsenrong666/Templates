@@ -26,14 +26,12 @@ public class Mock {
     }
 
     public static List<FindPojo> getFindList(int size) {
+        int[] arr = {0, 1, 2, 3};
         List<FindPojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             FindPojo pojo = new FindPojo();
-            pojo.setTitle("item:" + i);
-            pojo.setContent("content content content content content content content content " +
-                    "content content content content content content content content " +
-                    "content content content content content content content content " +
-                    "content content content content content content content content ");
+            int index = (int) (Math.random() * arr.length);
+            pojo.setFloorType(arr[index]);
             list.add(pojo);
         }
         return list;
@@ -54,7 +52,7 @@ public class Mock {
         return list;
     }
 
-    public static List<RecommendPojo> getRecommendList(int size){
+    public static List<RecommendPojo> getRecommendList(int size) {
         List<RecommendPojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             RecommendPojo pojo = new RecommendPojo();

@@ -8,7 +8,7 @@ import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
-import com.linsr.main.adapters.FindAdapter;
+import com.linsr.main.adapters.mall.MallAdapter;
 import com.linsr.main.model.FindPojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -18,20 +18,20 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import java.util.List;
 
 /**
- * Description
+ * 购物中心
  *
  * @author Linsr 2018/7/10 下午5:59
  */
-@Route(path = MainModule.Fragment.FIND)
-public class FindFragment extends FragmentEx {
+@Route(path = MainModule.Fragment.MALL)
+public class MallFragment extends FragmentEx {
 
     private RecyclerView mRecyclerView;
     private SmartRefreshLayout mRefreshLayout;
-    private FindAdapter mAdapter;
+    private MallAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.main_fragment_find;
+        return R.layout.main_fragment_mall;
     }
 
     @Override
@@ -41,20 +41,25 @@ public class FindFragment extends FragmentEx {
 
     @Override
     protected void initView() {
-        mRecyclerView = findViewById(R.id.find_recycler_view);
-        mRefreshLayout = findViewById(R.id.find_refresh_layout);
-        mRefreshLayout.setOnRefreshListener(new OnRefreshLoadMoreListener() {
+        mRecyclerView = findViewById(R.id.mall_recycler_view);
+        mRefreshLayout = findViewById(R.id.mall_refresh_layout);
+        mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 refreshLayout.finishRefresh();
+                mAdapter.clear();
+                List<FindPojo> findList = Mock.getFindList(10);
+                mAdapter.addData(findList);
             }
 
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
+                List<FindPojo> findList = Mock.getFindList(5);
+                mAdapter.addData(findList);
                 refreshLayout.finishLoadMore();
             }
         });
-        mAdapter = new FindAdapter(mActivity);
+        mAdapter = new MallAdapter(mActivity);
         RecyclerViewHelper.initDefault(mActivity, mRecyclerView, mAdapter);
 
     }
@@ -62,7 +67,7 @@ public class FindFragment extends FragmentEx {
     @Override
     protected void loadData() {
         super.loadData();
-        List<FindPojo> findList = Mock.getFindList(20);
+        List<FindPojo> findList = Mock.getFindList(5);
         mAdapter.addData(findList);
     }
 }
