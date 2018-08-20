@@ -11,9 +11,11 @@ import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
-import com.linsr.main.adapters.HomeGoodsAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
-import com.linsr.main.model.HomePojo;
+import com.linsr.main.adapters.cart.CartAdapter;
+import com.linsr.main.adapters.cart.TreePojo;
+import com.linsr.main.model.CartGoodsPojo;
+import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.utils.Mock;
 import com.linsr.main.widgets.CartBottomBar;
@@ -32,7 +34,7 @@ import java.util.List;
 public class CartFragment extends FragmentEx {
 
     private RecyclerView mCartRecyclerView;
-    private HomeGoodsAdapter mHomeGoodsAdapter;
+    private CartAdapter mCartAdapter;
     private RecyclerView mRecommendRecyclerView;
     private RecommendAdapter mRecommendAdapter;
     private CartBottomBar mCartBottomBar;
@@ -63,8 +65,8 @@ public class CartFragment extends FragmentEx {
             public void onRefresh(RefreshLayout refreshLayout) {
                 refreshLayout.finishRefresh();
 
-                List<HomePojo> goodsList1 = Mock.getGoodsList(1);
-                mHomeGoodsAdapter.addData(goodsList1);
+                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(1);
+                mCartAdapter.addData(cartList);
                 mGoodsAdapterWrapper.notifyDataSetChanged();
 
                 List<RecommendPojo> goodsList3 = Mock.getRecommendList(1);
@@ -99,10 +101,11 @@ public class CartFragment extends FragmentEx {
     EmptyWrapper mGoodsAdapterWrapper;
 
     private void initCartAdapter() {
-        mHomeGoodsAdapter = new HomeGoodsAdapter(mContext);
-        mGoodsAdapterWrapper = new EmptyWrapper(mHomeGoodsAdapter);
+        mCartAdapter = new CartAdapter(mContext);
+        mGoodsAdapterWrapper = new EmptyWrapper(mCartAdapter);
         mGoodsAdapterWrapper.setEmptyView(R.layout.main_empty_cart);
         RecyclerViewHelper.initDefault(mContext, mCartRecyclerView, mGoodsAdapterWrapper);
+
     }
 
 }

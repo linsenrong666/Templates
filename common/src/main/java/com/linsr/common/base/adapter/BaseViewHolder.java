@@ -31,7 +31,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
     public static <T> BaseViewHolder<T> createViewHolder(Context context, View itemView) {
         return new BaseViewHolder<T>(context, itemView) {
             @Override
-            protected void convert(int position, Object data, int itemType) {
+            public void convert(int position, Object data, int itemType) {
             }
         };
     }
@@ -41,7 +41,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
                 false);
         return new BaseViewHolder<T>(context, itemView) {
             @Override
-            protected void convert(int position, Object data, int itemType) {
+            public void convert(int position, Object data, int itemType) {
             }
         };
     }
@@ -52,7 +52,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      * @param data 数据
      * @param itemType 类型
      */
-    protected abstract void convert(int position, T data, int itemType);
+    public abstract void convert(int position, T data, int itemType);
 
     protected <V extends View> V findViewById(@IdRes int id) {
         return mView.findViewById(id);

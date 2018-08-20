@@ -23,7 +23,7 @@ public class BannerHolder extends BaseViewHolder<FindPojo> {
     }
 
     @Override
-    protected void convert(int position, FindPojo data, int itemType) {
+    public void convert(int position, FindPojo data, int itemType) {
         name.setText("["+position+"]this is Banner");
     }
 

@@ -40,7 +40,7 @@ public class CategoryDetailsAdapter extends BaseRecyclerAdapter<CategoryMenuPojo
         }
 
         @Override
-        protected void convert(int position, CategoryMenuPojo data, int itemType) {
+        public void convert(int position, CategoryMenuPojo data, int itemType) {
             title.setText(data.getTitle());
         }
     }

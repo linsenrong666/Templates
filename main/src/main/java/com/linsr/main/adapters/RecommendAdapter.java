@@ -45,7 +45,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
         }
 
         @Override
-        protected void convert(int position, RecommendPojo data, int itemType) {
+        public void convert(int position, RecommendPojo data, int itemType) {
             name.setText(data.getName());
             price.setText(data.getPrice());
             ImageUtils.load(mContext, data.getUrl(), img);

@@ -56,7 +56,7 @@ public class HomeGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
         }
 
         @Override
-        protected void convert(final int position, HomePojo data, int itemType) {
+        public void convert(final int position, HomePojo data, int itemType) {
             title.setText(data.getTitle());
             desc.setText(data.getDesc());
 //            ImageUtils.load(mContext, data.getUrl(), img);
