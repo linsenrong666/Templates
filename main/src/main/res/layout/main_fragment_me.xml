@@ -1,32 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.scwang.smartrefresh.layout.SmartRefreshLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:srlEnableLoadMore="false"
-    app:srlEnableRefresh="false">
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.linsr.main.widgets.MeTopView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <TextView
+            style="@style/TextView"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginTop="10dp"
-            app:common_inner_margin_left="@dimen/common_middle"
-            app:common_inner_margin_right="@dimen/common_font_middle"
-            app:common_label_text="@string/app_name"
-            app:common_label_text_gravity="center_vertical"
-            app:common_show_bottom_divider="false"
-            app:common_show_bottom_inner_divider="true"
-            app:common_show_top_divider="true"/>
+            android:gravity="center"
+            android:padding="@dimen/small"
+            android:text="@string/main_recommend_user_name"/>
 
+        <com.linsr.main.widgets.meitem.MainMeItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:mainIconList="@array/main_order_status_icon_list"
+            app:mainLeftText="@string/main_my_order"
+            app:mainRightText="@string/main_all_order"
+            app:mainSpanCount="5"
+            app:mainTitleList="@array/main_order_status_list"/>
+
+        <com.linsr.main.widgets.meitem.MainMeItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle"
+            android:background="@color/white"
+            app:mainIconList="@array/main_order_status_icon_list"
+            app:mainLeftText="@string/main_my_order"/>
+
+        <com.linsr.main.widgets.meitem.MainMeItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle"
+            android:background="@color/white"
+            app:mainIconList="@array/main_order_status_icon_list"
+            app:mainLeftText="@string/main_my_order"
+            app:mainRightText="@string/main_all_order"
+            app:mainTitleList="@array/main_my_card_list"/>
+
+        <com.linsr.main.widgets.meitem.MainMeItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle"
+            android:background="@color/white"
+            app:mainIconList="@array/main_order_status_icon_list"
+            app:mainLeftText="@string/main_my_order"
+            app:mainRightText="@string/main_all_order"
+            app:mainTitleList="@array/main_my_card_list"/>
+
+        <com.linsr.main.widgets.meitem.MainMeItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle"
+            android:background="@color/white"
+            app:mainIconList="@array/main_order_status_icon_list"
+            app:mainLeftText="@string/main_my_order"
+            app:mainRightText="@string/main_all_order"
+            app:mainTitleList="@array/main_my_card_list"/>
     </LinearLayout>
-</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</ScrollView>

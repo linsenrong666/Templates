@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.SearchActivity">
+
+    <include
+        android:id="@+id/search_title_layout"
+        layout="@layout/main_layout_search"/>
+
+    <TextView
+        style="@style/TextView"
+        android:layout_width="match_parent"
+        android:background="@color/background"
+        android:padding="@dimen/middle"
+        android:text="@string/main_search_hot"/>
+
+    <com.linsr.common.widgets.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:padding="@dimen/small"
+            android:text="@string/main_me_center"/>
+    </com.linsr.common.widgets.FlowLayout>
+
+    <TextView
+        style="@style/TextView"
+        android:layout_width="match_parent"
+        android:background="@color/background"
+        android:padding="@dimen/middle"
+        android:text="@string/main_search_history"/>
+
+    <com.linsr.common.widgets.FlowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+
+        <TextView android:padding="@dimen/small"
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+
+        <TextView android:padding="@dimen/small"
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+
+        <TextView android:padding="@dimen/small"
+            style="@style/TextView"
+            android:text="@string/main_me_center"/>
+    </com.linsr.common.widgets.FlowLayout>
+</LinearLayout>

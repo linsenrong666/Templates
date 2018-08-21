@@ -33,10 +33,6 @@ public class Book2Activity extends ActivityEx {
         return R.layout.books_activity_books2;
     }
 
-    @Override
-    protected void init() {
-
-    }
 
     @Override
     protected void initView() {

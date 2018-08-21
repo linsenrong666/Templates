@@ -19,6 +19,8 @@ public class MainModule {
         String BALANCE = ACTIVITY + "balance";
         String ADDRESS_LIST = ACTIVITY + "addressList";
         String ADD_ADDRESS = ACTIVITY + "addAddress";
+        String SEARCH = ACTIVITY + "search";
+        String SEARCH_RESULT = ACTIVITY + "searchResult";
     }
 
     public interface Fragment {

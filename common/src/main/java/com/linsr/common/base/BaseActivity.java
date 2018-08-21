@@ -70,7 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setOrientation();
         super.onCreate(savedInstanceState);
-        init();
+        init(getIntent());
         initSystemBarTint();
         findView();
         setContentLayout();
@@ -101,9 +101,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
     }
 
     /**
-     * 初始化，声明周期很靠前，建议再此进行接收intent参数，初始化变量等操作
+     * 初始化，执行顺序很靠前，建议再此进行接收intent参数，初始化变量等操作
      */
-    protected void init() {
+    protected void init(Intent intent) {
         TAG = getClass().getSimpleName();
         mContentsManager = ContentsManager.getInstance();
         mDialogFactory = DialogFactory.getInstance();

@@ -41,8 +41,8 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     }
 
     @Override
-    protected void init() {
-        super.init();
+    protected void init(Intent intent) {
+        super.init(intent);
         registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
             @Override
             public void onContentUpdated(List<Object[]> values) {
@@ -75,7 +75,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         mBadge = new QBadgeView(this).bindTarget(mCartView);
         mBadge.setBadgeBackgroundColor(getResources().getColor(R.color.main_color));
         initFragment();
-        
+
         //默认选择home页
         onNavigationItemSelected(mBottomNavigationView.getMenu().findItem(R.id.item_home));
     }

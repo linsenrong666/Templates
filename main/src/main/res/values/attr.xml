@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MainMeItemView">
+        <attr name="mainLeftText" format="string|reference"/>
+        <attr name="mainRightText" format="string|reference"/>
+        <attr name="mainShowRightView" format="boolean"/>
+        <attr name="mainSpanCount" format="integer"/>
+        <attr name="mainTitleList" format="reference"/>
+        <attr name="mainIconList" format="reference"/>
+    </declare-styleable>
+</resources>

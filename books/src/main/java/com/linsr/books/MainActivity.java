@@ -19,11 +19,6 @@ public class MainActivity extends ActivityEx {
     }
 
     @Override
-    protected void init() {
-
-    }
-
-    @Override
     protected void initView() {
         TextView tv = findViewById(R.id.books_tv);
         PrefsUtils.putSharedString(this, "booksName", "i am books module！\nwelcome！");
