@@ -16,6 +16,9 @@ public class MainModule {
         String SCAN_CODE = ACTIVITY + "scanCode";
         String PRODUCT_DETAILS = ACTIVITY + "productDetails";
         String CHILD_CATEGORY = ACTIVITY + "childCategory";
+        String BALANCE = ACTIVITY + "balance";
+        String ADDRESS_LIST = ACTIVITY + "addressList";
+        String ADD_ADDRESS = ACTIVITY + "addAddress";
     }
 
     public interface Fragment {

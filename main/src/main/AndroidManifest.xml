@@ -28,6 +28,15 @@
         <activity
             android:name=".activities.ChildCategoryActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.BalanceActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.AddressActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.NewAddressActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

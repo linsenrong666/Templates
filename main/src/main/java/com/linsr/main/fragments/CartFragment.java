@@ -3,9 +3,11 @@ package com.linsr.main.fragments;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.widgets.recyclerview.EmptyWrapper;
@@ -57,6 +59,16 @@ public class CartFragment extends FragmentEx {
         initCartAdapter();
         initRecommend();
         initRefreshLayout();
+        initBottomBar();
+    }
+
+    private void initBottomBar() {
+        mCartBottomBar.setOnCartBottomBarListener(new CartBottomBar.OnCartBottomBarListener() {
+            @Override
+            public void onBalanceClick() {
+                Router.startActivity(MainModule.Activity.BALANCE);
+            }
+        });
     }
 
     private void initRefreshLayout() {
@@ -65,7 +77,7 @@ public class CartFragment extends FragmentEx {
             public void onRefresh(RefreshLayout refreshLayout) {
                 refreshLayout.finishRefresh();
 
-                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(1);
+                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(2);
                 mCartAdapter.addData(cartList);
                 mGoodsAdapterWrapper.notifyDataSetChanged();
 
@@ -105,7 +117,24 @@ public class CartFragment extends FragmentEx {
         mGoodsAdapterWrapper = new EmptyWrapper(mCartAdapter);
         mGoodsAdapterWrapper.setEmptyView(R.layout.main_empty_cart);
         RecyclerViewHelper.initDefault(mContext, mCartRecyclerView, mGoodsAdapterWrapper);
-
+        mCartAdapter.registerAdapterDataObserver(mAdapterDataObserver);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mCartAdapter.unregisterAdapterDataObserver(mAdapterDataObserver);
+    }
+
+    private RecyclerView.AdapterDataObserver mAdapterDataObserver = new RecyclerView.AdapterDataObserver() {
+        @Override
+        public void onChanged() {
+            if (mCartAdapter.getItemCount() == 0) {
+                mCartBottomBar.setVisibility(View.GONE);
+            } else {
+                mCartBottomBar.setVisibility(View.VISIBLE);
+            }
+        }
+    };
 
 }

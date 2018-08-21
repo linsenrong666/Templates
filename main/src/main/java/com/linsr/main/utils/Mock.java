@@ -1,6 +1,7 @@
 package com.linsr.main.utils;
 
 import com.linsr.main.adapters.cart.TreePojo;
+import com.linsr.main.model.AddressPojo;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.CategoryMenuPojo;
@@ -73,11 +74,23 @@ public class Mock {
             TreePojo<CartShopPojo, CartGoodsPojo> treePojo = new TreePojo<>();
             treePojo.setParentPojo(new CartShopPojo("SHOP：" + i));
             List<CartGoodsPojo> goodsPojos = new ArrayList<>();
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 2; j++) {
                 goodsPojos.add(new CartGoodsPojo("GOODS:" + j));
             }
             treePojo.setChildPojo(goodsPojos);
             list.add(treePojo);
+        }
+        return list;
+    }
+
+    public static List<AddressPojo> getAddressList(int size) {
+        List<AddressPojo> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            AddressPojo po = new AddressPojo();
+            po.setAddress("这是地址这是地址这是地址这是地址这是地址这是地址");
+            po.setUserName("海贼王路飞" + i);
+            po.setPhoneNumber("1333444455" + i);
+            list.add(po);
         }
         return list;
     }

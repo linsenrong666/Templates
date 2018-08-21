@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.linsr.main.R;
 
@@ -16,6 +17,17 @@ import com.linsr.main.R;
  * @author Linsr 2018/8/13 下午4:29
  */
 public class CartBottomBar extends FrameLayout {
+
+    public interface OnCartBottomBarListener {
+        void onBalanceClick();
+    }
+
+    private TextView mBalanceButton;
+    private OnCartBottomBarListener mOnCartBottomBarListener;
+
+    public void setOnCartBottomBarListener(OnCartBottomBarListener onCartBottomBarListener) {
+        mOnCartBottomBarListener = onCartBottomBarListener;
+    }
 
     public CartBottomBar(Context context) {
         this(context, null, 0);
@@ -30,5 +42,14 @@ public class CartBottomBar extends FrameLayout {
         LayoutInflater.from(context).inflate(R.layout.main_widgets_cart_bottom_bar,
                 (ViewGroup) getRootView(), true);
 
+        mBalanceButton = findViewById(R.id.cart_balance_btn);
+        mBalanceButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnCartBottomBarListener != null) {
+                    mOnCartBottomBarListener.onBalanceClick();
+                }
+            }
+        });
     }
 }

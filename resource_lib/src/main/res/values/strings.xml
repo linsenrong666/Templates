@@ -7,5 +7,6 @@
     <string name="password">密码</string>
     <string name="forgot_password">忘记密码</string>
     <string name="register">注册</string>
+    <string name="save">保存</string>
 
 </resources>

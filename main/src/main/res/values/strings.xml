@@ -11,5 +11,16 @@
     <string name="main_home">首页</string>
     <string name="main_category">分类</string>
     <string name="main_shop_center">购物中心</string>
+    <string name="main_no_address">没有地址信息，请点击后添加地址</string>
+    <string name="main_pay">去支付</string>
+    <string name="main_balance_count">合计：%s</string>
+    <string name="main_add_address">+添加地址</string>
+    <string name="main_address_user_name">收货人姓名</string>
+    <string name="main_address_user_phone">手机号码</string>
+    <string name="main_address_area">所在地区</string>
+    <string name="main_address_street">街道地址</string>
+    <string name="main_address_post_code">邮政编码</string>
+    <string name="main_address_set_default">设为默认地址</string>
+    <string name="main_title_new_address">新增地址</string>
 
 </resources>

@@ -11,7 +11,7 @@ android {
         versionName rootProject.ext.versionName
         multiDexEnabled true
     }
-    resourcePrefix "common_"
+
 }
 
 dependencies {

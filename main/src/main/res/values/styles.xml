@@ -1,3 +1,12 @@
 <resources>
 
+    <style name="main_new_address_label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="common_show_edit_text">true</item>
+        <item name="common_show_bottom_inner_divider">false</item>
+        <item name="common_inner_margin_left">@dimen/small</item>
+        <item name="common_inner_margin_right">@dimen/small</item>
+        <item name="common_label_width">100dp</item>
+    </style>
 </resources>

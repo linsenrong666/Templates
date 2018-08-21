@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".activities.NewAddressActivity">
+
+    <LinearLayout
+        android:id="@+id/new_address_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:divider="@drawable/divider_horizontal"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <com.linsr.common.widgets.common_label_container
+            style="@style/main_new_address_label"
+            app:common_label_text="@string/main_address_user_name"/>
+
+        <com.linsr.common.widgets.common_label_container
+            style="@style/main_new_address_label"
+            app:common_label_text="@string/main_address_user_phone"/>
+
+        <com.linsr.common.widgets.common_label_container
+            style="@style/main_new_address_label"
+            app:common_label_text="@string/main_address_area"/>
+
+        <com.linsr.common.widgets.common_label_container
+            style="@style/main_new_address_label"
+            app:common_label_text="@string/main_address_street"/>
+
+        <com.linsr.common.widgets.common_label_container
+            style="@style/main_new_address_label"
+            app:common_label_text="@string/main_address_post_code"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_address_layout"
+        android:layout_marginTop="@dimen/middle"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/small">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_address_set_default"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/new_address_save_btn"
+        style="@style/Button.MainColor"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/small"
+        android:text="@string/save"/>
+</RelativeLayout>

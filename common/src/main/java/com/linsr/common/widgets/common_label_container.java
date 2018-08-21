@@ -28,7 +28,7 @@ import com.linsr.common.utils.ViewUtils;
  *
  * @author linsenrong on 2016/10/12 17:22
  */
-public class LabelContainer extends FrameLayout {
+public class common_label_container extends FrameLayout {
 
     private RelativeLayout mContainer;
     private LinearLayout mTitleContainer;
@@ -46,7 +46,7 @@ public class LabelContainer extends FrameLayout {
 
     private int mDefaultTextSize = 13;
 
-    public LabelContainer(Context context, AttributeSet attrs, int defStyleAttr) {
+    public common_label_container(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         View view = LayoutInflater.from(context).inflate(R.layout.common_widget_label_view, (ViewGroup) getParent(), false);
         findView(view);
@@ -280,11 +280,11 @@ public class LabelContainer extends FrameLayout {
         mContentImageView.setOnClickListener(listener);
     }
 
-    public LabelContainer(Context context) {
+    public common_label_container(Context context) {
         this(context, null, 0);
     }
 
-    public LabelContainer(Context context, AttributeSet attrs) {
+    public common_label_container(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
