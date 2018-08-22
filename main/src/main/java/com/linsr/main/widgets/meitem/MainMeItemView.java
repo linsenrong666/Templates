@@ -23,7 +23,6 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.utils.DisplayUtils;
-import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 

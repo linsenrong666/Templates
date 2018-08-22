@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/main_product_details_bottom_bar_height"
+        android:fillViewport="true">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextView"
+                android:text="aaaa"
+                android:textSize="80sp"/>
+
+            <TextView
+                style="@style/TextView"
+                android:text="bbbbb"
+                android:textSize="80sp"/>
+
+            <TextView
+                style="@style/TextView"
+                android:text="cccc"
+                android:textSize="80sp"/>
+
+            <TextView
+                style="@style/TextView"
+                android:text="ddddddd"
+                android:textSize="80sp"/>
+
+            <TextView
+                style="@style/TextView"
+                android:text="bbbbb"
+                android:textSize="80sp"/>
+
+            <TextView
+                style="@style/TextView"
+                android:text="cccc"
+                android:textSize="80sp"/>
+
+            <TextView
+                style="@style/TextView"
+                android:text="ddddddd"
+                android:textSize="80sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.linsr.main.widgets.ProductDetailsBottomBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

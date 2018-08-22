@@ -43,6 +43,9 @@
         <activity
             android:name=".activities.SearchResultActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.PayResultActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

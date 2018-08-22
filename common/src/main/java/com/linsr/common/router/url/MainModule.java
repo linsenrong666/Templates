@@ -21,6 +21,7 @@ public class MainModule {
         String ADD_ADDRESS = ACTIVITY + "addAddress";
         String SEARCH = ACTIVITY + "search";
         String SEARCH_RESULT = ACTIVITY + "searchResult";
+        String PAY_RESULT = ACTIVITY + "payResult";
     }
 
     public interface Fragment {

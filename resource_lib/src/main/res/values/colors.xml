@@ -20,6 +20,8 @@
     <color name="text_primary_weak">#ababab</color>
     <!--透明-->
     <color name="transparent">@android:color/transparent</color>
+    <color name="transparent10">#1A000000</color>
+    <color name="transparent30">#4D000000</color>
     <!--默认分割线颜色-->
     <color name="divider">#ababab</color>
     <!--通用背景色-->

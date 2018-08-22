@@ -30,6 +30,13 @@
     <string name="main_my_card">我的卡券</string>
     <string name="main_all_order">全部订单</string>
     <string name="main_recommend_user_name">您是由【%s】推荐</string>
+    <string name="main_order_money">订单金额</string>
+    <string name="main_order_no">订单编号</string>
+    <string name="main_order_address">收货地址</string>
+    <string name="main_add_cart">加入购物车</string>
+    <string name="main_buy_now">立即购买</string>
+    <string name="main_buy_count">购买数量</string>
+    <string name="main_remaining_count">剩余%s件</string>
 
     <string-array name="main_order_status_list">
         <item>待付款</item>
