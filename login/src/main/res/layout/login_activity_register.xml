@@ -30,15 +30,18 @@
                 android:layout_toLeftOf="@+id/register_idenity_code"
                 android:hint="@string/login_register_phone"/>
 
-            <com.linsr.common.widgets.countdown.CountDownButton
+            <com.linsr.common.gui.widgets.countdown.CountDownButton
                 android:id="@id/register_idenity_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/small"
                 android:background="@drawable/bg_count_down_btn_selector"
                 android:minWidth="80dp"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_tiny"/>
         </RelativeLayout>
 
         <EditText

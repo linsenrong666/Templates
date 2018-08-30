@@ -8,4 +8,8 @@
         <item name="android:background">@color/white</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="LoginEditText" parent="EditText">
+        <item name="android:padding">@dimen/middle</item>
+    </style>
 </resources>

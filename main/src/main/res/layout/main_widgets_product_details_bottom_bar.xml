@@ -89,7 +89,7 @@
                     android:text="颜色"
                     android:textColor="@color/text_primary_black"/>
 
-                <com.linsr.common.widgets.FlowLayout
+                <com.linsr.common.gui.widgets.FlowLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/small">
@@ -108,7 +108,7 @@
                         style="@style/TextView"
                         android:padding="@dimen/tiny"
                         android:text="白色"/>
-                </com.linsr.common.widgets.FlowLayout>
+                </com.linsr.common.gui.widgets.FlowLayout>
 
             </LinearLayout>
 
@@ -136,7 +136,7 @@
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/font_small"/>
 
-                <com.linsr.common.widgets.CartCountView
+                <com.linsr.common.gui.widgets.CartCountView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

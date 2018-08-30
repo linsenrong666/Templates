@@ -41,19 +41,19 @@
         android:orientation="vertical"
         android:padding="@dimen/middle">
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             android:layout_width="match_parent"
             android:layout_height="32dp"
             app:common_label_text="@string/main_order_money"
             app:common_show_bottom_inner_divider="false"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             android:layout_width="match_parent"
             android:layout_height="32dp"
             app:common_label_text="@string/main_order_no"
             app:common_show_bottom_inner_divider="false"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             android:layout_width="match_parent"
             android:layout_height="32dp"
             app:common_label_text="@string/main_order_address"

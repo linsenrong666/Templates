@@ -57,9 +57,9 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
         public void convert(final int position, CategoryMenuPojo data, int itemType) {
             title.setText(data.getTitle());
             if (mSelectedPosition == position) {
-                mView.setBackgroundColor(getColor(R.color.colorAccent));
+                itemView.setBackgroundColor(getColor(R.color.colorAccent));
             } else {
-                mView.setBackgroundColor(getColor(R.color.common_transparent));
+                itemView.setBackgroundColor(getColor(R.color.common_transparent));
             }
         }
     }

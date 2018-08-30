@@ -1,16 +1,23 @@
 package com.linsr.main.utils;
 
+import android.content.Context;
+
+import com.linsr.main.R;
+import com.linsr.main.adapters.MenuItemAdapter;
 import com.linsr.main.adapters.cart.TreePojo;
+import com.linsr.main.app.Constants;
 import com.linsr.main.model.AddressPojo;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.model.FindPojo;
 import com.linsr.main.model.HomePojo;
+import com.linsr.main.model.MenuItemPojo;
 import com.linsr.main.model.RecommendPojo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Description
@@ -18,6 +25,17 @@ import java.util.List;
  * @author Linsr 2018/7/11 下午2:43
  */
 public class Mock {
+
+    public static List<MenuItemPojo> getMenuItemList(int size) {
+        List<MenuItemPojo> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            MenuItemPojo pojo = new MenuItemPojo();
+            pojo.setIcon(R.mipmap.ic_launcher_round);
+            pojo.setText("item:" + i);
+            list.add(pojo);
+        }
+        return list;
+    }
 
     public static List<CategoryMenuPojo> getMenuList(int size) {
         List<CategoryMenuPojo> list = new ArrayList<>();
@@ -34,6 +52,37 @@ public class Mock {
         List<FindPojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             FindPojo pojo = new FindPojo();
+            int index = (int) (Math.random() * arr.length);
+            pojo.setFloorType(arr[index]);
+            list.add(pojo);
+        }
+        return list;
+    }
+
+    public static List<HomePojo> getHomeList(int size) {
+        int[] arr = {Constants.FloorType.MENU,
+                Constants.FloorType.SALES,
+                Constants.FloorType.RECOMMEND_GOODS};
+        List<HomePojo> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            HomePojo pojo = new HomePojo();
+            if (i == 0) {
+                pojo.setFloorType(Constants.FloorType.BANNER);
+                list.add(pojo);
+                continue;
+            }
+            if (i == 1) {
+                pojo.setFloorType(Constants.FloorType.MENU);
+                list.add(pojo);
+                continue;
+            }
+
+            if (i == 2) {
+                pojo.setFloorType(Constants.FloorType.RECOMMEND_GOODS);
+                list.add(pojo);
+                continue;
+            }
+
             int index = (int) (Math.random() * arr.length);
             pojo.setFloorType(arr[index]);
             list.add(pojo);
@@ -94,4 +143,32 @@ public class Mock {
         }
         return list;
     }
+
+    public static List<String> getImageUrlList(int size) {
+        Random random = new Random();
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            String url = imageurls[random.nextInt(imageurls.length)];
+            list.add(url);
+        }
+        return list;
+    }
+
+    static String[] imageurls = {"http://img3.imgtn.bdimg.com/it/u=2378520397,2469794148&fm=26&gp=0.jpg",
+            "http://img5.duitang.com/uploads/item/201411/26/20141126010732_tVxea.jpeg",
+            "http://m.360buyimg.com/n12/jfs/t145/261/906922512/191965/47d31c61/539c3e6aNb2090387.jpg%21q70.jpg",
+            "http://img1.cache.netease.com/catchpic/B/B5/B51EC5A97FCE8C5084FF46164C1A6CE1.jpeg",
+            "http://img2.ph.126.net/_213dOvOYNHJXj5QbQ_byA==/6631481182072640663.jpg",
+            "http://pic13.nipic.com/20110309/3156127_113825426000_2.jpg",
+            "http://img.tupianzj.com/uploads/allimg/170926/9-1F9261P920.jpg",
+            "http://i1.hdslb.com/bfs/face/d9d4dda907e86435d8fbd60e347b40c0574aed19.jpg",
+            "http://img4.99114.com/group10/M00/B4/FF/rBADsloSzDOAW9cRAAIaY1Z3ADg669.jpg",
+            "http://img5.duitang.com/uploads/item/201410/05/20141005194336_JzLe8.thumb.700_0.jpeg",
+            "http://img4q.duitang.com/uploads/item/201408/17/20140817144152_VJPCt.thumb.700_0.jpeg",
+            "http://img610.ph.126.net/5TtuVh-X_wzxX0J8cvq3Cg==/1958221412978120078.jpg",
+            "http://img5.duitang.com/uploads/item/201110/07/20111007192646_nhQay.jpg",
+            "http://cdnq.duitang.com/uploads/item/201501/23/20150123181132_jU3Hr.jpeg"};
+
+
 }

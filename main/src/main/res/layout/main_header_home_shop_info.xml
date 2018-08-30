@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:paddingBottom="@dimen/tiny">
+
+    <ImageView
+        android:id="@+id/home_shop_info_bg_iv"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@android:color/holo_orange_light"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="@dimen/middle"
+        android:paddingRight="@dimen/middle">
+
+        <ImageView
+            android:id="@+id/home_user_profile_tv"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_marginBottom="@dimen/middle"
+            android:layout_marginRight="@dimen/middle"
+            android:background="@android:color/holo_blue_light"/>
+
+        <TextView
+            android:id="@+id/home_shop_name_tv"
+            style="@style/TextView"
+            android:layout_marginTop="@dimen/tiny"
+            android:layout_toRightOf="@+id/home_user_profile_tv"
+            android:text="张三的店铺"
+            android:textSize="@dimen/font_large"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/home_shop_data_tv"
+            style="@style/TextView"
+            android:layout_below="@id/home_shop_name_tv"
+            android:layout_marginTop="@dimen/small"
+            android:layout_toRightOf="@+id/home_user_profile_tv"
+            android:text="访问量:1000  | 网店数:200"/>
+
+        <TextView
+            style="@style/TextView"
+            android:layout_below="@id/home_shop_data_tv"
+            android:layout_marginTop="@dimen/small"
+            android:layout_toRightOf="@+id/home_user_profile_tv"
+            android:text="hello!欢迎光临我的店铺"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -15,32 +15,10 @@
     <LinearLayout
         android:id="@+id/flipper_dot_container"
         android:layout_width="wrap_content"
-        android:layout_margin="@dimen/middle"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@mipmap/common_ic_launcher"/>
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@mipmap/common_ic_launcher"/>
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@mipmap/common_ic_launcher"/>
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@mipmap/common_ic_launcher"/>
-
-    </LinearLayout>
+        android:layout_marginBottom="@dimen/small"
+        android:orientation="horizontal"/>
 
 </RelativeLayout>

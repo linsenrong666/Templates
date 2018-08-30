@@ -5,7 +5,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.url.LoginModule;
-import com.linsr.common.widgets.countdown.CountDownButton;
+import com.linsr.common.gui.widgets.countdown.CountDownButton;
 import com.linsr.login.R;
 
 /**

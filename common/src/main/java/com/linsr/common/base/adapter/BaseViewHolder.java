@@ -19,12 +19,10 @@ import java.lang.reflect.Field;
  */
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
-    protected View mView;
     protected Context mContext;
 
     public BaseViewHolder(Context context, View itemView) {
         super(itemView);
-        mView = itemView;
         mContext = context;
         initView();
     }
@@ -56,7 +54,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
     public abstract void convert(int position, T data, int itemType);
 
     protected <V extends View> V findViewById(@IdRes int id) {
-        return mView.findViewById(id);
+        return itemView.findViewById(id);
     }
 
     private void initView() {
@@ -68,7 +66,7 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
                     int id = viewInject.id();
                     field.setAccessible(true);
                     try {
-                        field.set(this, mView.findViewById(id));
+                        field.set(this, itemView.findViewById(id));
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }

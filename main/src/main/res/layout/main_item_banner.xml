@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/main_item_banner_height">
 
-    <com.linsr.common.widgets.FlipperView
+    <com.linsr.common.gui.widgets.FlipperView
         android:id="@+id/item_banner_flipper_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

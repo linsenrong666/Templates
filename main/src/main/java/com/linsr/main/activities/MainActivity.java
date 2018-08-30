@@ -18,7 +18,7 @@ import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.BottomNavigationViewHelper;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
-import com.linsr.common.widgets.NoScrollViewPager;
+import com.linsr.common.gui.widgets.NoScrollViewPager;
 import com.linsr.main.R;
 
 import java.util.ArrayList;
@@ -98,8 +98,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int i = item.getItemId();
         if (i == R.id.item_home) {
-            mTitleView.setVisibility(View.VISIBLE);
-            mTitleView.setTitleText(getString(R.string.main_recommend_for_you));
+            mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(0);
             return true;
         } else if (i == R.id.item_category) {

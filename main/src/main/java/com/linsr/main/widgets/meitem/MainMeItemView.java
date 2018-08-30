@@ -182,7 +182,7 @@ public class MainMeItemView extends FrameLayout {
 
             Holder(Context context, View itemView) {
                 super(context, itemView);
-                content = (TextView) mView;
+                content = (TextView) itemView;
             }
 
             @Override

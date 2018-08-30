@@ -6,7 +6,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.widgets.CartCountView;
+import com.linsr.common.gui.widgets.CartCountView;
 import com.linsr.main.R;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;

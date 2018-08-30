@@ -34,7 +34,7 @@
             android:layout_alignParentBottom="true"
             android:text="$1988"/>
 
-        <com.linsr.common.widgets.CartCountView
+        <com.linsr.common.gui.widgets.CartCountView
             android:id="@+id/cart_goods_count_ccv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

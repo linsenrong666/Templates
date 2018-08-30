@@ -17,23 +17,23 @@
         android:orientation="vertical"
         android:showDividers="middle">
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_user_name"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_user_phone"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_area"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_street"/>
 
-        <com.linsr.common.widgets.common_label_container
+        <com.linsr.common.gui.widgets.common_label_container
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_post_code"/>
 

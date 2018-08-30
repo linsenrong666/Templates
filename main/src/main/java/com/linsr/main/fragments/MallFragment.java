@@ -8,7 +8,7 @@ import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
-import com.linsr.main.adapters.mall.MallAdapter;
+import com.linsr.main.adapters.MallAdapter;
 import com.linsr.main.model.FindPojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

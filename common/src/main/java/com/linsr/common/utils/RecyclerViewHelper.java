@@ -4,10 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-
-import com.linsr.common.widgets.recyclerview.EmptyWrapper;
-import com.linsr.common.widgets.recyclerview.HeaderAndFooterWrapper;
 
 /**
  * Description

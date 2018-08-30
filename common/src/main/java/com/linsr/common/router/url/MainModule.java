@@ -26,7 +26,7 @@ public class MainModule {
 
     public interface Fragment {
         String HOME = FRAGMENT + "home";
-        String HOME_GOODS = FRAGMENT + "homeGoods";
+        String RECOMMEND_GOODS = FRAGMENT + "recommendGoods";
         String CATEGORY = FRAGMENT + "category";
         String MALL = FRAGMENT + "mall";
         String CART = FRAGMENT + "cart";

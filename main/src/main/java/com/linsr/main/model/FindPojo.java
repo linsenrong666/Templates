@@ -1,16 +1,20 @@
 package com.linsr.main.model;
 
+import com.linsr.common.model.BasePojo;
+
 import java.util.List;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Description
  *
  * @author Linsr 2018/7/12 下午4:49
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class FindPojo {
+public class FindPojo extends BasePojo{
 
     /**
      * floorStyle : ball

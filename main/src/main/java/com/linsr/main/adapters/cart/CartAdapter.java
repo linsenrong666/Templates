@@ -2,15 +2,10 @@ package com.linsr.main.adapters.cart;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.widgets.CartCountView;
 import com.linsr.main.R;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
@@ -47,7 +42,7 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
 
     @NonNull
     @Override
-    public BaseViewHolder<TreePojo<CartShopPojo, CartGoodsPojo>> onCreateViewHolder(
+    public BaseViewHolder onCreateViewHolder(
             @NonNull ViewGroup parent, int viewType) {
         if (viewType == ItemStatus.VIEW_TYPE_PARENT) {
             return new ShopHolder(mContext, mInflater.inflate(R.layout.main_item_cart_shop,
@@ -116,7 +111,7 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder<TreePojo<CartShopPojo, CartGoodsPojo>> holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         ItemStatus itemStatus = getItemStatusByPosition(position); // 获取列表项状态
         final TreePojo<CartShopPojo, CartGoodsPojo> data = mList.get(itemStatus.getParentIndex());
         holder.convert(position, data, getItemViewType(position));

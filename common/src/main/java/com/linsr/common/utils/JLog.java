@@ -44,7 +44,7 @@ public class JLog {
     private static final String DEFAULT_MESSAGE = "execute";
     private static final String PARAM = "Param";
     private static final String NULL = "null";
-    private static final String TAG_DEFAULT = "ahking";//ahking
+    private static final String TAG_DEFAULT = "Linsr";
     private static final String SUFFIX = ".java";
 
     public static final int JSON_INDENT = 4;
@@ -61,7 +61,7 @@ public class JLog {
 
     private static final int STACK_TRACE_INDEX = 5;
 
-    private static String mGlobalTag = "ahking";
+    private static String mGlobalTag = "Linsr";
     private static boolean mIsGlobalTagEmpty = true;
     private static boolean IS_SHOW_LOG = true;
 
@@ -82,7 +82,7 @@ public class JLog {
 
         Log.i(mGlobalTag, "║   " + "current thread name : " + Thread.currentThread().getName());
         //ignore top 3 traces.
-        for(int i=3;i<length;i++) {
+        for (int i = 3; i < length; i++) {
             StackTraceElement targetElement = stackTrace[i];
             String className = targetElement.getClassName();
             String[] classNameInfo = className.split("\\.");
@@ -103,7 +103,7 @@ public class JLog {
 
             String methodNameShort = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
             String headString = "║ " + "[ (" + className + ":" + lineNumber + ")#" + methodNameShort + " ] " + " <--- "; //works
-            Log.i(mGlobalTag,headString);
+            Log.i(mGlobalTag, headString);
         }
         printStackTraceLine(mGlobalTag, false);
 
@@ -117,9 +117,9 @@ public class JLog {
         String subStr = str.substring(1, str.length() - 1);
         String[] objList = subStr.split(",");
         Log.i(mGlobalTag, "║ " + "total element number : " + objList.length);
-        for(String obj:objList) {
+        for (String obj : objList) {
             String[] kv = obj.split("=");
-            Log.i(mGlobalTag,"║ " + "key = " + kv[0].trim() + ", value = " + kv[1].trim());
+            Log.i(mGlobalTag, "║ " + "key = " + kv[0].trim() + ", value = " + kv[1].trim());
         }
         printHashMapLine(mGlobalTag, false);
 
@@ -128,11 +128,11 @@ public class JLog {
     public static void printArrayListObj(Object list) {
         printArrayListLine(mGlobalTag, true);
 
-        ArrayList<Object> objs =  (ArrayList<Object>)list;
+        ArrayList<Object> objs = (ArrayList<Object>) list;
         Log.i(mGlobalTag, "║ " + "total element number : " + objs.size());
-        for(int i=0; i<objs.size();i++) {
+        for (int i = 0; i < objs.size(); i++) {
             String str = objs.get(i).toString();
-            Log.i(mGlobalTag,"║ " + "item = " + str);
+            Log.i(mGlobalTag, "║ " + "item = " + str);
         }
 
         printArrayListLine(mGlobalTag, false);
@@ -282,7 +282,7 @@ public class JLog {
         String methodNameShort = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
 
 //        String tag = (tagStr == null ? className : tagStr);
-        String tag = (tagStr == null ? "ahking" : tagStr);//ahking
+        String tag = (tagStr == null ? TAG_DEFAULT : tagStr);
 
         if (mIsGlobalTagEmpty && TextUtils.isEmpty(tag)) {
             tag = TAG_DEFAULT;

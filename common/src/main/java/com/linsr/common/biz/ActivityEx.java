@@ -3,8 +3,6 @@ package com.linsr.common.biz;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -15,7 +13,7 @@ import com.linsr.common.base.BaseActivity;
 import com.linsr.common.base.mvp.IView;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.SystemBarTintManager;
-import com.linsr.common.widgets.TitleView;
+import com.linsr.common.gui.widgets.TitleView;
 
 /**
  * 和业务相关的activity基类

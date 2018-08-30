@@ -22,15 +22,13 @@
 
             <EditText
                 android:id="@+id/login_account_et"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/transparent"/>
+                style="@style/LoginEditText"
+                android:hint="@string/login_hint_login_tip"/>
 
             <EditText
                 android:id="@+id/login_password_et"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/transparent"/>
+                style="@style/LoginEditText"
+                android:hint="@string/login_hint_password_tip"/>
 
         </LinearLayout>
 
