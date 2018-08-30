@@ -16,6 +16,7 @@ import com.linsr.main.model.HomePojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.List;
@@ -60,7 +61,7 @@ public class HomeFragment extends FragmentEx {
 
     private void initAdapter() {
         mAdapter = new HomeAdapter(mActivity);
-        List<HomePojo> findList = Mock.getHomeList(10);
+        List<HomePojo> findList = Mock.getHomeList(5);
         mAdapter.addData(findList);
     }
 
@@ -72,15 +73,10 @@ public class HomeFragment extends FragmentEx {
     }
 
     private void initRefresh() {
-        mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshLayout) {
-
-            }
-
+        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-
+                refreshLayout.finishRefresh();
             }
         });
     }

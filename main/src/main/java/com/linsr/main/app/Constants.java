@@ -12,6 +12,7 @@ public interface Constants {
         int SALES = 2;
         int MENU = 3;
         int RECOMMEND_GOODS = 4;
+        int SHOP_WINDOW = 5;
     }
 
 }

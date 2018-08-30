@@ -80,6 +80,7 @@ public class FlipperView extends FrameLayout implements ViewPager.OnPageChangeLi
         if (mPagerAdapter == null || mDotDrawableResId == 0) {
             return;
         }
+        mDotContainer.removeAllViews();
         int count = mPagerAdapter.getCount();
         for (int i = 0; i < count; i++) {
             ImageButton iv = new ImageButton(mContext);

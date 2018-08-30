@@ -14,6 +14,7 @@ import com.linsr.main.model.FindPojo;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.MenuItemPojo;
 import com.linsr.main.model.RecommendPojo;
+import com.linsr.main.model.ShopWindowPojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,16 @@ import java.util.Random;
  * @author Linsr 2018/7/11 下午2:43
  */
 public class Mock {
+
+    public static List<ShopWindowPojo> getShopWindowList(int size) {
+        List<ShopWindowPojo> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            ShopWindowPojo pojo = new ShopWindowPojo();
+            pojo.setText("item:" + i);
+            list.add(pojo);
+        }
+        return list;
+    }
 
     public static List<MenuItemPojo> getMenuItemList(int size) {
         List<MenuItemPojo> list = new ArrayList<>();
@@ -62,7 +73,8 @@ public class Mock {
     public static List<HomePojo> getHomeList(int size) {
         int[] arr = {Constants.FloorType.MENU,
                 Constants.FloorType.SALES,
-                Constants.FloorType.RECOMMEND_GOODS};
+                Constants.FloorType.RECOMMEND_GOODS,
+                Constants.FloorType.SHOP_WINDOW};
         List<HomePojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             HomePojo pojo = new HomePojo();
@@ -83,6 +95,11 @@ public class Mock {
                 continue;
             }
 
+            if (i == 3) {
+                pojo.setFloorType(Constants.FloorType.SHOP_WINDOW);
+                list.add(pojo);
+                continue;
+            }
             int index = (int) (Math.random() * arr.length);
             pojo.setFloorType(arr[index]);
             list.add(pojo);
@@ -116,6 +133,7 @@ public class Mock {
         }
         return list;
     }
+
 
     public static List<TreePojo<CartShopPojo, CartGoodsPojo>> getCartList(int size) {
         List<TreePojo<CartShopPojo, CartGoodsPojo>> list = new ArrayList<>();

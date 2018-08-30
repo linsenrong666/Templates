@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="max">28dp</dimen>
+    <dimen name="large">20dp</dimen>
     <dimen name="middle">16dp</dimen>
     <dimen name="small">12dp</dimen>
+    <dimen name="mini">8dp</dimen>
     <dimen name="tiny">4dp</dimen>
-    <dimen name="large">20dp</dimen>
-    <dimen name="maxTime">28dp</dimen>
+
 
     <dimen name="font_tiny">12sp</dimen>
     <dimen name="font_small">14sp</dimen>

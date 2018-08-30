@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.model.BasePojo;
 import com.linsr.main.R;
 import com.linsr.main.adapters.holder.BannerHolder;
 import com.linsr.main.adapters.holder.MenuHolder;
 import com.linsr.main.adapters.holder.NullHolder;
 import com.linsr.main.adapters.holder.RecommendHolder;
-import com.linsr.main.adapters.holder.SalesHolder;
+import com.linsr.main.adapters.holder.ShopWindowHolder;
 import com.linsr.main.app.Constants;
 import com.linsr.main.model.HomePojo;
 
@@ -40,8 +39,11 @@ public class HomeAdapter extends BaseRecyclerAdapter {
                 view = mInflater.inflate(R.layout.main_item_menu_container, parent, false);
                 return new MenuHolder(mContext, view, 4);
             case Constants.FloorType.RECOMMEND_GOODS:
-                view = mInflater.inflate(R.layout.main_item_recommend_floor,parent,false);
-                return  new RecommendHolder(mContext,view);
+                view = mInflater.inflate(R.layout.main_item_recommend_floor, parent, false);
+                return new RecommendHolder(mContext, view);
+            case Constants.FloorType.SHOP_WINDOW:
+                view = mInflater.inflate(R.layout.main_item_shop_window,parent,false);
+                return new ShopWindowHolder(mContext,view);
             default:
                 view = mInflater.inflate(R.layout.main_item_null, parent, false);
                 return new NullHolder(mContext, view);
