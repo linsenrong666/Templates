@@ -23,6 +23,7 @@ public class MainModule {
         String SEARCH_RESULT = ACTIVITY + "searchResult";
         String PAY_RESULT = ACTIVITY + "payResult";
         String RECOMMEND_GOODS = ACTIVITY + "recommendGoods";
+        String ORDER_MAIN = ACTIVITY + "orderMain";
     }
 
     public interface Fragment {
@@ -33,5 +34,6 @@ public class MainModule {
         String CART = FRAGMENT + "cart";
         String ME = FRAGMENT + "me";
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
+        String ORDER_LIST = FRAGMENT + "orderList";
     }
 }

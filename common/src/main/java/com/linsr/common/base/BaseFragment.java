@@ -90,8 +90,12 @@ public abstract class BaseFragment extends Fragment {
             mContentLayout.removeView(mContentView);
             mContentView = null;
         }
-        mContentView = inflater.inflate(getLayoutId(), mContentLayout, false);
-        mContentLayout.addView(mContentView);
+        if (getLayoutId() != 0) {
+            mContentView = inflater.inflate(getLayoutId(), mContentLayout, false);
+            mContentLayout.addView(mContentView);
+        } else {
+            JLog.e(TAG, "error : getLayoutId() is null ");
+        }
 
         setNoDataLayout();
         return view;

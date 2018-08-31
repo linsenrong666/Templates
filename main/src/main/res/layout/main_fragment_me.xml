@@ -24,6 +24,7 @@
             android:text="@string/main_recommend_user_name"/>
 
         <com.linsr.main.widgets.meitem.MainMeItemView
+            android:id="@+id/me_order_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -33,43 +34,6 @@
             app:mainSpanCount="5"
             app:mainTitleList="@array/main_order_status_list"/>
 
-        <com.linsr.main.widgets.meitem.MainMeItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/middle"
-            android:background="@color/white"
-            app:mainIconList="@array/main_order_status_icon_list"
-            app:mainLeftText="@string/main_my_order"/>
-
-        <com.linsr.main.widgets.meitem.MainMeItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/middle"
-            android:background="@color/white"
-            app:mainIconList="@array/main_order_status_icon_list"
-            app:mainLeftText="@string/main_my_order"
-            app:mainRightText="@string/main_all_order"
-            app:mainTitleList="@array/main_my_card_list"/>
-
-        <com.linsr.main.widgets.meitem.MainMeItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/middle"
-            android:background="@color/white"
-            app:mainIconList="@array/main_order_status_icon_list"
-            app:mainLeftText="@string/main_my_order"
-            app:mainRightText="@string/main_all_order"
-            app:mainTitleList="@array/main_my_card_list"/>
-
-        <com.linsr.main.widgets.meitem.MainMeItemView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/middle"
-            android:background="@color/white"
-            app:mainIconList="@array/main_order_status_icon_list"
-            app:mainLeftText="@string/main_my_order"
-            app:mainRightText="@string/main_all_order"
-            app:mainTitleList="@array/main_my_card_list"/>
     </LinearLayout>
 
 </ScrollView>

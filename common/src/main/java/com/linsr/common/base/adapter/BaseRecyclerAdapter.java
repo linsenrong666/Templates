@@ -72,21 +72,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         holder.convert(position, item, itemViewType);
 
         setOnItemClickListener(holder, itemViewType, item);
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (mOnLongClickListener != null) {
-                    return mOnLongClickListener.onLongClick(holder.itemView, holder.getAdapterPosition(),
-                            itemViewType, item);
-                }
-                return false;
-            }
-        });
+        setOnLongClickListener(holder, itemViewType, item);
     }
 
     protected void setOnItemClickListener(final BaseViewHolder<T> holder,
-                                final int itemViewType,
-                                final T item) {
+                                          final int itemViewType,
+                                          final T item) {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +85,21 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
                     mOnItemClickListener.onItemClick(holder, holder.getAdapterPosition(),
                             itemViewType, item);
                 }
+            }
+        });
+    }
+
+    protected void setOnLongClickListener(final BaseViewHolder<T> holder,
+                                          final int itemViewType,
+                                          final T item) {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (mOnLongClickListener != null) {
+                    return mOnLongClickListener.onLongClick(holder.itemView,
+                            holder.getAdapterPosition(), itemViewType, item);
+                }
+                return false;
             }
         });
     }

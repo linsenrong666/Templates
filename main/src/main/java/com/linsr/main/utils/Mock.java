@@ -13,6 +13,7 @@ import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.model.FindPojo;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.MenuItemPojo;
+import com.linsr.main.model.OrderPojo;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.model.ShopWindowPojo;
 
@@ -189,4 +190,12 @@ public class Mock {
             "http://cdnq.duitang.com/uploads/item/201501/23/20150123181132_jU3Hr.jpeg"};
 
 
+    public static List<OrderPojo> getOrderList(int size) {
+        List<OrderPojo> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            OrderPojo po = new OrderPojo();
+            list.add(po);
+        }
+        return list;
+    }
 }

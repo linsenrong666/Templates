@@ -26,11 +26,20 @@ public class BalanceActivity extends ActivityEx {
 
     @Override
     protected void initView() {
+        initTitleView(R.string.main_confirm_message);
+
         mAddressLayout = findViewById(R.id.balance_address_layout);
         mAddressLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Router.startActivity(MainModule.Activity.ADDRESS_LIST);
+            }
+        });
+
+        findViewById(R.id.balance_go_pay_tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router.startActivity(MainModule.Activity.PAY_RESULT);
             }
         });
     }

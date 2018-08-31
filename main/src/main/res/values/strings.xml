@@ -46,6 +46,16 @@
     <string name="main_hint_customer_message">请填写内容需与商家协商并确认，45字以内</string>
     <string name="main_balance_goods_price">商品总价</string>
     <string name="main_balance_freight">运费</string>
+    <string name="main_confirm_message">确认信息</string>
+    <string name="main_order_freight_text">(含运费￥%s)</string>
+
+    <string-array name="main_order_status_text_list">
+        <item>全部订单</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待评价</item>
+    </string-array>
 
     <string-array name="main_order_status_list">
         <item>待付款</item>

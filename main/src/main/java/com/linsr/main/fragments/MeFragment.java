@@ -9,6 +9,8 @@ import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
 import com.linsr.main.widgets.MeTopView;
+import com.linsr.main.widgets.meitem.MainMeItemView;
+import com.linsr.main.widgets.meitem.MeItemPojo;
 
 /**
  * Description
@@ -19,6 +21,7 @@ import com.linsr.main.widgets.MeTopView;
 public class MeFragment extends FragmentEx {
 
     private MeTopView mMeTopView;
+    private MainMeItemView mMainMeItemView;
 
     @Override
     protected int getLayoutId() {
@@ -37,6 +40,19 @@ public class MeFragment extends FragmentEx {
             @Override
             public void onClick(View v) {
                 Router.startActivity(MainModule.Activity.PAY_RESULT);
+            }
+        });
+
+        mMainMeItemView = findViewById(R.id.me_order_item);
+        mMainMeItemView.setOnMeItemClickListener(new MainMeItemView.OnMeItemClickListener() {
+            @Override
+            public void onRightViewClick() {
+                Router.startActivity(MainModule.Activity.ORDER_MAIN);
+            }
+
+            @Override
+            public void onItemClick(int position, MeItemPojo data) {
+
             }
         });
     }

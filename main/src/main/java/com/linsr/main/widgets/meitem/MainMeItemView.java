@@ -81,7 +81,19 @@ public class MainMeItemView extends FrameLayout {
         findView(view);
         initAttrs(context, attrs);
         initRecyclerView(context);
+        initListener();
         addView(view);
+    }
+
+    private void initListener() {
+        mRightTextView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnMeItemClickListener != null) {
+                    mOnMeItemClickListener.onRightViewClick();
+                }
+            }
+        });
     }
 
     private void initRecyclerView(Context context) {
@@ -112,10 +124,6 @@ public class MainMeItemView extends FrameLayout {
         mSpanCount = a.getInt(R.styleable.MainMeItemView_mainSpanCount, 4);
         if (mSpanCount < 1) {
             mSpanCount = 1;
-        }
-
-        if (showRightView && mOnMeItemClickListener != null) {
-            mOnMeItemClickListener.onRightViewClick();
         }
 
         a.recycle();
