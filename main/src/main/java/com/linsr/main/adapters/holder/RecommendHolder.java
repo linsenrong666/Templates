@@ -15,11 +15,32 @@ import com.linsr.main.model.FindPojo;
  */
 public class RecommendHolder extends BaseViewHolder {
 
+    private TextView more;
+
+    public interface OnRecommendHolderListener {
+        void onMoreClick(int position);
+    }
+
+    private OnRecommendHolderListener mOnRecommendHolderListener;
+
+    public void setOnRecommendHolderListener(OnRecommendHolderListener onRecommendHolderListener) {
+        mOnRecommendHolderListener = onRecommendHolderListener;
+    }
+
     public RecommendHolder(Context context, View itemView) {
         super(context, itemView);
+        more = (TextView) findViewById(R.id.item_recommend_floor_more_tv);
     }
 
     @Override
-    public void convert(int position, Object data, int itemType) {
+    public void convert(final int position, Object data, int itemType) {
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnRecommendHolderListener != null) {
+                    mOnRecommendHolderListener.onMoreClick(position);
+                }
+            }
+        });
     }
 }

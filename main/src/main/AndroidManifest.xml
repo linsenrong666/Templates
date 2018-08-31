@@ -30,7 +30,8 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.BalanceActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".activities.AddressActivity"
             android:screenOrientation="portrait"/>
@@ -45,6 +46,9 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.PayResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.RecommendGoodsActivity"
             android:screenOrientation="portrait"/>
     </application>
 

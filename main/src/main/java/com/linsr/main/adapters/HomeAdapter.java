@@ -23,6 +23,13 @@ import com.linsr.main.model.HomePojo;
  */
 public class HomeAdapter extends BaseRecyclerAdapter {
 
+    private RecommendHolder.OnRecommendHolderListener mOnRecommendHolderListener;
+
+    public void setOnRecommendHolderListener(
+            RecommendHolder.OnRecommendHolderListener onRecommendHolderListener) {
+        mOnRecommendHolderListener = onRecommendHolderListener;
+    }
+
     public HomeAdapter(Context context) {
         super(context);
     }
@@ -39,15 +46,21 @@ public class HomeAdapter extends BaseRecyclerAdapter {
                 view = mInflater.inflate(R.layout.main_item_menu_container, parent, false);
                 return new MenuHolder(mContext, view, 4);
             case Constants.FloorType.RECOMMEND_GOODS:
-                view = mInflater.inflate(R.layout.main_item_recommend_floor, parent, false);
-                return new RecommendHolder(mContext, view);
+                return newRecommendHolder(parent);
             case Constants.FloorType.SHOP_WINDOW:
-                view = mInflater.inflate(R.layout.main_item_shop_window,parent,false);
-                return new ShopWindowHolder(mContext,view);
+                view = mInflater.inflate(R.layout.main_item_shop_window, parent, false);
+                return new ShopWindowHolder(mContext, view);
             default:
                 view = mInflater.inflate(R.layout.main_item_null, parent, false);
                 return new NullHolder(mContext, view);
         }
+    }
+
+    private RecommendHolder newRecommendHolder(ViewGroup parent) {
+        View view = mInflater.inflate(R.layout.main_item_recommend_floor, parent, false);
+        RecommendHolder recommendHolder = new RecommendHolder(mContext, view);
+        recommendHolder.setOnRecommendHolderListener(mOnRecommendHolderListener);
+        return recommendHolder;
     }
 
     @Override

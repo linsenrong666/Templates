@@ -7,6 +7,10 @@
     android:background="@color/white"
     android:gravity="center_vertical">
 
+    <View
+        android:layout_alignParentBottom="true"
+        style="@style/common_divider_horizontal"/>
+
     <TextView
         android:id="@+id/title_view_tv_title"
         android:layout_width="wrap_content"
@@ -33,6 +37,7 @@
         android:paddingRight="@dimen/common_large"
         android:paddingTop="@dimen/common_middle"
         android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
         android:visibility="gone"
         />
 

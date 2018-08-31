@@ -52,7 +52,10 @@ public abstract class ActivityEx extends BaseActivity implements IView {
             return;
         }
         mTitleView.setTitleText(getString(titleTextResId));
-        mTitleView.setOnLeftClickListener(leftClickListener);
+        if (leftClickListener!=null){
+            mTitleView.setLeftImage(R.mipmap.ic_back);
+            mTitleView.setOnLeftClickListener(leftClickListener);
+        }
     }
 
     /**

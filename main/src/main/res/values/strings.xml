@@ -38,6 +38,14 @@
     <string name="main_buy_count">购买数量</string>
     <string name="main_remaining_count">剩余%s件</string>
     <string name="main_recommend_goods">推荐商品</string>
+    <string name="main_goods_details">商品详情</string>
+    <string name="main_balance_coupon">优惠券/优惠码</string>
+    <string name="main_delivery_way">配送方式</string>
+    <string name="main_invoice_type">发票类型</string>
+    <string name="main_customer_message">买家留言</string>
+    <string name="main_hint_customer_message">请填写内容需与商家协商并确认，45字以内</string>
+    <string name="main_balance_goods_price">商品总价</string>
+    <string name="main_balance_freight">运费</string>
 
     <string-array name="main_order_status_list">
         <item>待付款</item>

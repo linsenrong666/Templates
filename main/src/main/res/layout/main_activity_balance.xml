@@ -2,28 +2,39 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".activities.BalanceActivity">
 
     <RelativeLayout
         android:id="@+id/balance_pay_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <View
+            style="@style/common_divider_horizontal"/>
 
         <TextView
             android:id="@+id/balance_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_margin="@dimen/small"
             android:text="@string/main_balance_count"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="@string/main_pay"/>
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:text="@string/main_pay"
+            android:textColor="@color/white"/>
 
     </RelativeLayout>
 
@@ -42,49 +53,55 @@
                 android:id="@+id/balance_address_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:padding="@dimen/small">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/mini"
+                    android:layout_marginTop="@dimen/mini"
                     android:layout_toLeftOf="@+id/balance_address_arrow"
                     android:text="@string/main_no_address"
                     android:textColor="@color/main_color"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@id/balance_address_arrow"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/balance_user_name_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/TextView"
                         android:text="姓名"/>
 
                     <TextView
                         android:id="@+id/balance_user_phone_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/TextView"
                         android:layout_alignParentRight="true"
-                        android:text="电话号码"/>
+                        android:text="13344445555"/>
 
                     <TextView
                         android:id="@+id/balance_user_address_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/balance_user_name_tv"
-                        android:text="地址"/>
+                        android:layout_marginTop="@dimen/tiny"
+                        android:text="地址地址地址地址地址地址地址地址地址地址地址地址"
+                        android:textColor="@color/text_primary_weak"
+                        android:textSize="@dimen/font_small"/>
 
                     <TextView
                         android:id="@+id/balance_user_post_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/balance_user_address_tv"
-                        android:text="邮编"/>
+                        android:layout_marginTop="@dimen/tiny"
+                        android:text="100000"
+                        android:textColor="@color/text_primary_weak"/>
                 </RelativeLayout>
 
                 <ImageView
@@ -93,22 +110,197 @@
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_launcher_round"/>
+                    android:src="@mipmap/ic_right_arrow"/>
             </RelativeLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:background="@color/white"
+                android:divider="@drawable/divider_horizontal"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <RadioButton
+                    style="@style/TextView"
+                    android:layout_width="match_parent"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableLeft="@mipmap/ic_zhifubao_pay"
+                    android:drawablePadding="@dimen/mini"
+                    android:drawableRight="@drawable/ic_check_box_selector"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/small"
+                    android:text="@string/zhifubao"/>
+
+                <RadioButton
+                    style="@style/TextView"
+                    android:layout_width="match_parent"
+                    android:button="@null"
+                    android:drawableLeft="@mipmap/ic_weixin_pay"
+                    android:drawablePadding="@dimen/mini"
+                    android:drawableRight="@drawable/ic_check_box_selector"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/small"
+                    android:text="@string/weixin_pay"/>
+            </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small"
+                android:background="@color/white"
+                android:divider="@drawable/divider_horizontal"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    style="@style/TextView"
+                    android:padding="@dimen/small"
+                    android:text="@string/main_goods_details"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/balance_goods_pic_iv"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_margin="@dimen/small"
+                        android:background="@android:color/holo_red_dark"/>
+
+                    <TextView
+                        android:id="@+id/balance_goods_name_tv"
+                        style="@style/TextView"
+                        android:layout_alignTop="@id/balance_goods_pic_iv"
+                        android:layout_toRightOf="@id/balance_goods_pic_iv"
+                        android:text="纪检智能机器人 白色"/>
+
+                    <TextView
+                        android:id="@+id/balance_goods_price_tv"
+                        style="@style/TextView"
+                        android:layout_below="@+id/balance_goods_name_tv"
+                        android:layout_marginTop="@dimen/small"
+                        android:layout_toRightOf="@id/balance_goods_pic_iv"
+                        android:text="$9999999999"
+                        android:textColor="@color/main_color"/>
+
+                    <TextView
+                        android:id="@+id/balance_goods_desc_tv"
+                        style="@style/TextView"
+                        android:layout_alignBottom="@id/balance_goods_pic_iv"
+                        android:layout_marginBottom="@dimen/tiny"
+                        android:layout_toRightOf="@id/balance_goods_pic_iv"
+                        android:text="支持七天无理由退换货"
+                        android:textColor="@color/text_primary_weak"
+                        android:textSize="@dimen/font_small"/>
+
+
+                    <TextView
+                        android:id="@+id/balance_goods_count_tv"
+                        style="@style/TextView"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/small"
+                        android:text="X1"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/main_balance_item_layout">
+
+                    <TextView
+                        style="@style/TextView"
+                        android:layout_width="match_parent"
+                        android:drawableRight="@mipmap/ic_right_arrow"
+                        android:text="@string/main_balance_coupon"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/main_balance_item_layout">
+
+                    <TextView
+                        style="@style/TextView"
+                        android:text="@string/main_delivery_way"/>
+
+                    <TextView
+                        style="@style/TextView"
+                        android:layout_alignParentRight="true"
+                        android:text="快递"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    style="@style/main_balance_item_layout">
+
+                    <TextView
+                        style="@style/TextView"
+                        android:text="@string/main_invoice_type"/>
+
+                    <TextView
+                        style="@style/TextView"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/small"
+                        android:drawableRight="@mipmap/ic_right_arrow"
+                        android:text="不开发票"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    style="@style/main_balance_item_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextView"
+                        android:text="@string/main_customer_message"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/max"
+                        android:background="@color/transparent"
+                        android:hint="@string/main_hint_customer_message"
+                        android:maxLength="45"
+                        android:textSize="@dimen/font_small"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:layout_marginTop="@dimen/small"
+                android:background="@color/white"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/TextView"
-                    android:text="支付宝"/>
+                <RelativeLayout
+                    style="@style/main_balance_item_layout">
 
-                <TextView
-                    style="@style/TextView"
-                    android:text="微信支付"/>
+                    <TextView
+                        style="@style/TextView"
+                        android:text="@string/main_balance_goods_price"/>
+
+                    <TextView
+                        style="@style/TextView"
+                        android:layout_alignParentRight="true"
+                        android:text="快递"
+                        android:textColor="@color/main_color"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    style="@style/main_balance_item_layout">
+
+                    <TextView
+                        style="@style/TextView"
+                        android:text="@string/main_balance_freight"/>
+
+                    <TextView
+                        style="@style/TextView"
+                        android:layout_alignParentRight="true"
+                        android:text="快递"
+                        android:textColor="@color/main_color"/>
+                </RelativeLayout>
+
             </LinearLayout>
         </LinearLayout>
 
