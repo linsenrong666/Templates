@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
@@ -35,7 +36,7 @@ public class CommentActivity extends ActivityEx {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Router.startActivity(MainModule.Activity.COMMENT_RESULT);
                     }
                 });
         initRecyclerView();

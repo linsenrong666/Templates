@@ -5,20 +5,27 @@
     android:id="@+id/cart_empty_view"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:gravity="center"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/result_text_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_cart_empty"
         android:textColor="@color/text_primary"
         android:textSize="@dimen/font_middle"/>
 
-    <Button
+    <TextView
+        android:id="@+id/result_btn"
         style="@style/Button.MainColor"
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/middle"
+        android:paddingBottom="@dimen/mini"
+        android:paddingLeft="@dimen/middle"
+        android:paddingRight="@dimen/middle"
+        android:paddingTop="@dimen/mini"
         android:text="@string/main_cart_shopping"/>
+
 </LinearLayout>

@@ -53,6 +53,7 @@
     <string name="main_hint_comment">质量好吗？给其他小伙伴一个参考呗</string>
     <string name="main_order_delete">删除订单</string>
     <string name="main_order_query_express">查询物流</string>
+    <string name="main_thank_comment">感谢评价</string>
 
     <string-array name="main_order_status_text_list">
         <item>全部订单</item>

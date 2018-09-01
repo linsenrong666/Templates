@@ -115,7 +115,7 @@ public class CartFragment extends FragmentEx {
     private void initCartAdapter() {
         mCartAdapter = new CartAdapter(mContext);
         mGoodsAdapterWrapper = new EmptyWrapper(mCartAdapter);
-        mGoodsAdapterWrapper.setEmptyView(R.layout.main_empty_cart);
+        mGoodsAdapterWrapper.setEmptyView(R.layout.main_layout_empty_result);
         RecyclerViewHelper.initDefault(mContext, mCartRecyclerView, mGoodsAdapterWrapper);
         mCartAdapter.registerAdapterDataObserver(mAdapterDataObserver);
     }
