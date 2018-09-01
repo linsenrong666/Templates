@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:divider="@drawable/divider_horizontal"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_comment_goods_pic_iv"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_margin="@dimen/small"
+            android:background="@android:color/holo_red_dark"/>
+
+        <com.linsr.common.gui.widgets.StarBar
+            android:id="@+id/item_comment_star_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:starCount="5"
+            app:starDistance="@dimen/small"
+            app:starEmpty="@mipmap/ic_star_zero"
+            app:starFill="@mipmap/ic_star_full"
+            app:starSize="30dp"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/item_comment_content_et"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/transparent"
+        android:gravity="top"
+        android:hint="@string/main_hint_comment"
+        android:padding="@dimen/small"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_primary_weak"
+        android:textSize="@dimen/font_middle"/>
+</LinearLayout>

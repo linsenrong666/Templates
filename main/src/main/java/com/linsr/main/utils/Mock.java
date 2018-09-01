@@ -28,6 +28,21 @@ import java.util.Random;
  */
 public class Mock {
 
+    public static <T> List<T> getList(int size, Class<T> c) {
+        List<T> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            try {
+                T obj = c.newInstance();
+                list.add(obj);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
     public static List<ShopWindowPojo> getShopWindowList(int size) {
         List<ShopWindowPojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {

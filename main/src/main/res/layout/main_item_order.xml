@@ -112,14 +112,14 @@
                 style="@style/main_order_item_btn"
                 android:background="@drawable/bg_stroke_btn"
                 android:paddingLeft="@dimen/middle"
-                android:text="@string/main_me_center"/>
+                android:text="@string/main_order_delete"/>
 
             <TextView
                 android:id="@+id/item_order_btn_2"
                 style="@style/main_order_item_btn"
                 android:background="@drawable/bg_stroke_btn"
                 android:paddingLeft="@dimen/middle"
-                android:text="@string/main_add_cart"/>
+                android:text="@string/main_order_query_express"/>
 
             <TextView
                 android:id="@+id/item_order_btn_3"

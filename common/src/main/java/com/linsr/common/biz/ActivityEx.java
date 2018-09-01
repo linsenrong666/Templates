@@ -3,7 +3,9 @@ package com.linsr.common.biz;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.TextureView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,23 +40,53 @@ public abstract class ActivityEx extends BaseActivity implements IView {
     }
 
     protected void initTitleView(int titleTextResId) {
-        this.initTitleView(titleTextResId, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                back();
-            }
-        });
+        this.initTitleView(titleTextResId, R.mipmap.ic_back,
+                0, 0,
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        back();
+                    }
+                }, null);
     }
 
-    protected void initTitleView(int titleTextResId, View.OnClickListener leftClickListener) {
+    protected void initTitleViewWithRightText(int titleTextResId,
+                                              int rightTextResId,
+                                              View.OnClickListener rightClickListener) {
+        this.initTitleView(titleTextResId, R.mipmap.ic_back, 0, rightTextResId,
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        back();
+                    }
+                }, rightClickListener);
+    }
+
+    protected void initTitleView(int titleTextResId,
+                                 int leftImage,
+                                 int rightImage,
+                                 int rightTextResId,
+                                 View.OnClickListener leftClickListener,
+                                 View.OnClickListener rightClickListener) {
         if (mTitleView == null) {
             JLog.e(TAG, "error: title view has not be initialized.");
             return;
         }
         mTitleView.setTitleText(getString(titleTextResId));
-        if (leftClickListener!=null){
-            mTitleView.setLeftImage(R.mipmap.ic_back);
+        if (leftImage != 0) {
+            mTitleView.setLeftImage(leftImage);
+        }
+        if (rightImage != 0) {
+            mTitleView.setRightImage(rightImage);
+        }
+        if (rightTextResId != 0) {
+            mTitleView.setRightText(getString(rightTextResId));
+        }
+        if (leftClickListener != null) {
             mTitleView.setOnLeftClickListener(leftClickListener);
+        }
+        if (rightClickListener != null) {
+            mTitleView.setOnRightClickListener(rightClickListener);
         }
     }
 

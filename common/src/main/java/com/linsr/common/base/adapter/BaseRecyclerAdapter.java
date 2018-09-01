@@ -66,10 +66,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final BaseViewHolder<T> holder, final int position) {
+    public void onBindViewHolder(@NonNull final BaseViewHolder<T> holder, int position) {
         final int itemViewType = getItemViewType(position);
         final T item = mList.get(position);
-        holder.convert(position, item, itemViewType);
+        holder.convert(holder.getAdapterPosition(), item, itemViewType);
 
         setOnItemClickListener(holder, itemViewType, item);
         setOnLongClickListener(holder, itemViewType, item);

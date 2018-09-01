@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.adapters.OrderAdapter;
+import com.linsr.main.model.OrderPojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
@@ -23,6 +25,12 @@ public class OrderListFragment extends RefreshFragment {
     @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
         mAdapter = new OrderAdapter(mActivity);
+        mAdapter.setOnOrderItemClickListener(new OrderAdapter.OnOrderItemClickListener() {
+            @Override
+            public void onPayBtnClick(int position, OrderPojo data) {
+                Router.startActivity(MainModule.Activity.COMMENT);
+            }
+        });
         RecyclerViewHelper.initDefault(mActivity, recyclerView, mAdapter);
         mAdapter.addData(Mock.getOrderList(1));
     }

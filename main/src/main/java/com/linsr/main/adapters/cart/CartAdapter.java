@@ -111,7 +111,7 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder<TreePojo<CartShopPojo, CartGoodsPojo>> holder, int position) {
         ItemStatus itemStatus = getItemStatusByPosition(position); // 获取列表项状态
         final TreePojo<CartShopPojo, CartGoodsPojo> data = mList.get(itemStatus.getParentIndex());
         holder.convert(position, data, getItemViewType(position));
