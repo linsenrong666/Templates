@@ -30,6 +30,16 @@ public class OrderListFragment extends RefreshFragment {
             public void onPayBtnClick(int position, OrderPojo data) {
                 Router.startActivity(MainModule.Activity.COMMENT);
             }
+
+            @Override
+            public void onFirstBtnClick(OrderPojo data) {
+
+            }
+
+            @Override
+            public void onSecondBtnClick(OrderPojo data) {
+                Router.startActivity(MainModule.Activity.AFTER_SALES);
+            }
         });
         RecyclerViewHelper.initDefault(mActivity, recyclerView, mAdapter);
         mAdapter.addData(Mock.getOrderList(1));

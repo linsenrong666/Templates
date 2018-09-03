@@ -21,6 +21,10 @@ public class OrderAdapter extends BaseRecyclerAdapter<OrderPojo> {
 
     public interface OnOrderItemClickListener {
         void onPayBtnClick(int position, OrderPojo data);
+
+        void onFirstBtnClick(OrderPojo data);
+
+        void onSecondBtnClick(OrderPojo data);
     }
 
     private OnOrderItemClickListener mOnOrderItemClickListener;
@@ -57,6 +61,22 @@ public class OrderAdapter extends BaseRecyclerAdapter<OrderPojo> {
 
         @Override
         public void convert(final int position, final OrderPojo data, int itemType) {
+            mButton1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnOrderItemClickListener != null) {
+                        mOnOrderItemClickListener.onFirstBtnClick(data);
+                    }
+                }
+            });
+            mButton2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnOrderItemClickListener != null) {
+                        mOnOrderItemClickListener.onSecondBtnClick(data);
+                    }
+                }
+            });
             mButton3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

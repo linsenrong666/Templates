@@ -23,11 +23,15 @@
             <EditText
                 android:id="@+id/login_account_et"
                 style="@style/LoginEditText"
+                android:drawableLeft="@mipmap/login_ic_phone"
+                android:drawablePadding="@dimen/middle"
                 android:hint="@string/login_hint_login_tip"/>
 
             <EditText
                 android:id="@+id/login_password_et"
                 style="@style/LoginEditText"
+                android:drawableLeft="@mipmap/login_ic_password"
+                android:drawablePadding="@dimen/middle"
                 android:hint="@string/login_hint_password_tip"/>
 
         </LinearLayout>

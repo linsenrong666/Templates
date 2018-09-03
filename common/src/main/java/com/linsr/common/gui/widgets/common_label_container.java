@@ -30,7 +30,7 @@ import com.linsr.common.utils.ViewUtils;
  */
 public class common_label_container extends FrameLayout {
 
-    private RelativeLayout mContainer;
+    private LinearLayout mContainer;
     private LinearLayout mTitleContainer;
     private LinearLayout mRightContainer;
     private TextView mTitleTextView;
@@ -44,11 +44,12 @@ public class common_label_container extends FrameLayout {
 
     private boolean mIsShowEdit;
 
-    private int mDefaultTextSize = 13;
+    private int mDefaultTextSize = DisplayUtils.sp2px(getContext(), 13);
 
     public common_label_container(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        View view = LayoutInflater.from(context).inflate(R.layout.common_widget_label_view, (ViewGroup) getParent(), false);
+        View view = LayoutInflater.from(context).inflate(R.layout.common_widget_label_view,
+                (ViewGroup) getParent(), false);
         findView(view);
         initView(context, attrs);
         addView(view);
@@ -59,7 +60,7 @@ public class common_label_container extends FrameLayout {
         mContentTextView = (TextView) view.findViewById(R.id.label_content_tv);
         mContentImageView = (ImageView) view.findViewById(R.id.label_content_iv);
         mContentEditText = (EditText) view.findViewById(R.id.label_content_et);
-        mContainer = (RelativeLayout) view.findViewById(R.id.label_container_rl);
+        mContainer = (LinearLayout) view.findViewById(R.id.label_container_ll);
         mTopDivider = view.findViewById(R.id.label_top_divider);
         mBottomDivider = view.findViewById(R.id.label_bottom_divider);
         mBottomInnerDivider = view.findViewById(R.id.label_bottom_inner_divider);
@@ -74,9 +75,9 @@ public class common_label_container extends FrameLayout {
         float titleTextSize = a.getDimension(R.styleable.common_label_container_common_label_text_size, mDefaultTextSize);
         float contentEditSize = a.getDimension(R.styleable.common_label_container_common_content_edit_size, mDefaultTextSize);
         float contentTextSize = a.getDimension(R.styleable.common_label_container_common_content_text_size, mDefaultTextSize);
-        mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, titleTextSize);
-        mContentEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, contentEditSize);
-        mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, contentTextSize);
+        mTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextSize);
+        mContentEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, contentEditSize);
+        mContentTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, contentTextSize);
         //设置输入框输入类型
         int inputType = a.getInt(R.styleable.common_label_container_common_edit_input_type, InputType.TYPE_CLASS_TEXT);
         mContentEditText.setInputType(inputType);
@@ -148,7 +149,7 @@ public class common_label_container extends FrameLayout {
         //显示分割线
         boolean showTopDivider = a.getBoolean(R.styleable.common_label_container_common_show_top_divider, false);
         boolean showBottomDivider = a.getBoolean(R.styleable.common_label_container_common_show_bottom_divider, false);
-        boolean showBottomInnerDivider = a.getBoolean(R.styleable.common_label_container_common_show_bottom_inner_divider, true);
+        boolean showBottomInnerDivider = a.getBoolean(R.styleable.common_label_container_common_show_bottom_inner_divider, false);
         mTopDivider.setVisibility(showTopDivider ? VISIBLE : GONE);
         mBottomDivider.setVisibility(showBottomDivider ? VISIBLE : GONE);
         mBottomInnerDivider.setVisibility(showBottomInnerDivider ? VISIBLE : GONE);
@@ -160,9 +161,16 @@ public class common_label_container extends FrameLayout {
             mContainer.setLayoutParams(layoutParams);
         }
         //设置内边距
-        int innerMarginLeft = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_left, 0);
-        int innerMarginRight = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_right, 0);
-        ViewUtils.setMargins(mContainer, innerMarginLeft, 0, innerMarginRight, 0);
+        int innerMargin = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin, 0);
+        if (innerMargin != 0) {
+            ViewUtils.setMargins(mContainer, innerMargin, innerMargin, innerMargin, innerMargin);
+        } else {
+            int innerMarginLeft = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_left, 0);
+            int innerMarginRight = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_right, 0);
+            int innerMarginTop = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_top, 0);
+            int innerMarginBottom = (int) a.getDimension(R.styleable.common_label_container_common_inner_margin_bottom, 0);
+            ViewUtils.setMargins(mContainer, innerMarginLeft, innerMarginTop, innerMarginRight, innerMarginBottom);
+        }
         //设置标题宽度
         int labelWidth = (int) a.getDimension(R.styleable.common_label_container_common_label_width, -1);
         if (labelWidth != -1) {

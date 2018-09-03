@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true"
+    tools:context=".activities.AfterSalesDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/small">
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginBottom="@dimen/middle"
+                android:layout_marginTop="@dimen/small"
+                android:text="@string/main_refund_succeed"
+                android:textSize="@dimen/font_large"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:common_content_text="$100"
+                app:common_content_text_color="@color/text_primary_weak"
+                app:common_label_text="@string/main_refund_amount"
+                app:common_label_text_color="@color/text_primary_black"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mini"
+                app:common_content_text="$100"
+                app:common_content_text_color="@color/text_primary_weak"
+                app:common_label_text="@string/main_refund_time"
+                app:common_label_text_color="@color/text_primary_black"/>
+
+            <Button
+                style="@style/Button.MainColor"
+                android:layout_marginTop="@dimen/middle"
+                android:text="@string/confirm"/>
+        </LinearLayout>
+
+        <View
+            style="@style/common_divider_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle"
+            android:background="@color/white"
+            android:divider="@drawable/divider_horizontal"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <com.linsr.common.gui.widgets.common_label_container
+                style="@style/main_after_sales_details_label"
+                app:common_label_text="@string/main_shop_name"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                style="@style/main_after_sales_details_label"
+                app:common_label_text="@string/main_refund_type"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                style="@style/main_after_sales_details_label"
+                app:common_label_text="@string/main_refund_reason"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                style="@style/main_after_sales_details_label"
+                app:common_label_text="@string/main_refund_explain"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                style="@style/main_after_sales_details_label"
+                app:common_label_text="@string/main_refund_code"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                style="@style/main_after_sales_details_label"
+                app:common_label_text="@string/main_refund_apply_time"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

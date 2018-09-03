@@ -29,6 +29,10 @@
         <attr name="common_show_bottom_inner_divider" format="boolean"/>
         <attr name="common_inner_margin_left" format="dimension"/>
         <attr name="common_inner_margin_right" format="dimension"/>
+        <attr name="common_inner_margin_top" format="dimension"/>
+        <attr name="common_inner_margin_bottom" format="dimension"/>
+        <attr name="common_inner_margin" format="dimension"/>
+        <attr name="common_label_margin_right" format="dimension"/>
         <attr name="common_label_width" format="dimension"/>
     </declare-styleable>
 

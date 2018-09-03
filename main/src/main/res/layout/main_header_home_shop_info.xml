@@ -2,14 +2,15 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="150dp"
     android:paddingBottom="@dimen/tiny">
 
     <ImageView
         android:id="@+id/home_shop_info_bg_iv"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="@android:color/holo_orange_light"/>
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_index_shop"
+        android:scaleType="fitCenter"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,11 +21,11 @@
 
         <ImageView
             android:id="@+id/home_user_profile_tv"
-            android:layout_width="92dp"
-            android:layout_height="92dp"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
             android:layout_marginBottom="@dimen/middle"
             android:layout_marginRight="@dimen/middle"
-            android:background="@android:color/holo_blue_light"/>
+            android:background="@android:color/holo_red_dark"/>
 
         <TextView
             android:id="@+id/home_shop_name_tv"

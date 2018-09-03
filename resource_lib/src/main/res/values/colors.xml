@@ -12,12 +12,12 @@
     <color name="main_color_n">@color/main_color</color>
 
     <!--通用文字颜色-->
-    <color name="text_primary">#7b7b7b</color>
+    <color name="text_primary">#686868</color>
     <!--通用文字颜色-深-->
-    <color name="text_primary_dark">#5b5b5b</color>
+    <color name="text_primary_dark">#383838</color>
     <color name="text_primary_black">#333</color>
     <!--通用文字颜色-浅-->
-    <color name="text_primary_weak">#ababab</color>
+    <color name="text_primary_weak">#aeaeae</color>
     <!--透明-->
     <color name="transparent">@android:color/transparent</color>
     <color name="transparent10">#1A000000</color>

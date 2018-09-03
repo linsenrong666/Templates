@@ -38,6 +38,11 @@ android {
             v2SigningEnabled true
         }
     }
+    //Add the following configuration
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 repositories {

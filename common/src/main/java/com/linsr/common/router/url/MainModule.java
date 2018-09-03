@@ -26,6 +26,8 @@ public class MainModule {
         String ORDER_MAIN = ACTIVITY + "orderMain";
         String COMMENT = ACTIVITY + "comment";
         String COMMENT_RESULT = ACTIVITY +"commentResult";
+        String AFTER_SALES = ACTIVITY +"afterSales";
+        String AFTER_SALES_DETAILS = ACTIVITY +"afterSalesDetails";
     }
 
     public interface Fragment {

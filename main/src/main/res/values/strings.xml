@@ -54,6 +54,17 @@
     <string name="main_order_delete">删除订单</string>
     <string name="main_order_query_express">查询物流</string>
     <string name="main_thank_comment">感谢评价</string>
+    <string name="main_after_sales">退款/售后</string>
+    <string name="main_to_details">查看详情</string>
+    <string name="main_refund_amount">退款金额</string>
+    <string name="main_refund_time">退款时间</string>
+    <string name="main_refund_succeed">退款成功</string>
+    <string name="main_shop_name">店铺名称</string>
+    <string name="main_refund_type">退款类型</string>
+    <string name="main_refund_reason">退款原因</string>
+    <string name="main_refund_explain">退款说明</string>
+    <string name="main_refund_code">退款编号</string>
+    <string name="main_refund_apply_time">申请时间</string>
 
     <string-array name="main_order_status_text_list">
         <item>全部订单</item>

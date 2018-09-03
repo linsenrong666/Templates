@@ -9,9 +9,10 @@
     <dimen name="tiny">4dp</dimen>
 
 
-    <dimen name="font_tiny">12sp</dimen>
-    <dimen name="font_small">14sp</dimen>
-    <dimen name="font_middle">16sp</dimen>
+    <dimen name="font_tiny">11sp</dimen>
+    <dimen name="font_mini">12sp</dimen>
+    <dimen name="font_small">13sp</dimen>
+    <dimen name="font_middle">14sp</dimen>
     <dimen name="font_large">20sp</dimen>
     <dimen name="font_max">28sp</dimen>
 

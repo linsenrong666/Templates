@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:divider="@drawable/divider_horizontal"
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <TextView
+        style="@style/TextView"
+        android:padding="@dimen/small"
+        android:text="格力旗舰店"
+        android:textSize="@dimen/font_small"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/small">
+
+        <ImageView
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:background="@android:color/holo_red_dark"/>
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="0dp"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginRight="@dimen/small"
+            android:layout_weight="1"
+            android:text="产品名称产品名称产品名称产品名称产品名称产品名称产品名称"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="X1"/>
+    </LinearLayout>
+
+    <TextView
+        style="@style/TextView"
+        android:padding="@dimen/small"
+        android:text="退款退货"/>
+
+    <TextView
+        android:id="@+id/item_after_sales_btn"
+        style="@style/TextViewButton.StokeMainColor"
+        android:layout_gravity="right"
+        android:layout_margin="@dimen/small"
+        android:text="@string/main_to_details"
+        android:textSize="@dimen/font_small"/>
+
+</LinearLayout>
