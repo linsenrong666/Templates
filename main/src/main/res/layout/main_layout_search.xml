@@ -16,6 +16,16 @@
         android:src="@mipmap/ic_back"/>
 
     <TextView
+        android:id="@+id/layout_search_left_tv"
+        style="@style/TextView"
+        android:drawableLeft="@mipmap/ic_star_zero"
+        android:drawablePadding="@dimen/tiny"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_margin="@dimen/small"
+        android:text="三明"/>
+
+    <TextView
         android:id="@+id/layout_search_tv"
         android:layout_width="0dp"
         android:layout_height="match_parent"

@@ -84,7 +84,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         mFragmentList = new ArrayList<>();
         mFragmentList.add(Router.findFragment(MainModule.Fragment.HOME));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.CATEGORY));
-        mFragmentList.add(Router.findFragment(MainModule.Fragment.MALL));
+        mFragmentList.add(Router.findFragment(MainModule.Fragment.MALL_CONTAINER));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.CART));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.ME));
         FragmentPagerAdapterEx mPagerAdapterEx =

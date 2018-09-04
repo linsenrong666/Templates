@@ -27,6 +27,7 @@
     <View style="@style/common_divider_horizontal"/>
 
     <android.support.v7.widget.RecyclerView
+        android:overScrollMode="never"
         android:id="@+id/me_item_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

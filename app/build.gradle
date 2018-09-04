@@ -11,16 +11,6 @@ android {
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
     signingConfigs {
 //        debug {
 //            keyAlias 'jdsupershops'
@@ -38,11 +28,51 @@ android {
             v2SigningEnabled true
         }
     }
+
+    buildTypes {
+        release {
+            //是否开启zip优化
+            zipAlignEnabled true
+            //是否开启混淆
+            minifyEnabled true
+            //删除无用资源
+            shrinkResources true
+            //正式的签名文件
+            signingConfig signingConfigs.release
+            //混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = 'ymw.apk'
+                        if (variant.buildType.name.equals('release')) {
+                            fileName = "ymw${defaultConfig.versionName}_${releaseTime()}.apk"
+                        } else if (variant.buildType.name.equals('debug')) {
+                            fileName = "ymw${defaultConfig.versionName}_${releaseTime()}_debug.apk"
+                        }
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+
+        debug {
+            minifyEnabled false
+            versionNameSuffix "_debug"
+            signingConfig signingConfigs.debug
+        }
+    }
     //Add the following configuration
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
+}
+
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 
 repositories {

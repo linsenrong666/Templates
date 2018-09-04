@@ -12,6 +12,8 @@ public class MainModule {
     private static final String FRAGMENT = ROOT + "fragment/";
 
     public interface Activity {
+        String FRAGMENT_CONTAINER = ACTIVITY + "fragmentContainer";
+
         String MAIN = ACTIVITY + "main";
         String SCAN_CODE = ACTIVITY + "scanCode";
         String PRODUCT_DETAILS = ACTIVITY + "productDetails";
@@ -34,10 +36,11 @@ public class MainModule {
         String HOME = FRAGMENT + "home";
         String RECOMMEND_GOODS = FRAGMENT + "recommendGoods";
         String CATEGORY = FRAGMENT + "category";
-        String MALL = FRAGMENT + "mall";
+        String MALL_CONTAINER = FRAGMENT + "mallContainer";
         String CART = FRAGMENT + "cart";
         String ME = FRAGMENT + "me";
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
         String ORDER_LIST = FRAGMENT + "orderList";
+        String MALL_HOME = FRAGMENT + "mallHome";
     }
 }

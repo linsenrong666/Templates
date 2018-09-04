@@ -3,23 +3,23 @@
 
     <item
         android:id="@+id/item_home"
-        android:icon="@mipmap/common_ic_launcher_round"
+        android:icon="@drawable/ic_bot_home_selector"
         android:title="@string/main_home"/>
     <item
         android:id="@+id/item_category"
-        android:icon="@mipmap/common_ic_launcher"
+        android:icon="@drawable/ic_bot_category_selector"
         android:title="@string/main_category"/>
     <item
         android:id="@+id/item_shop_center"
-        android:icon="@mipmap/common_ic_launcher_round"
+        android:icon="@drawable/ic_bot_mall_selector"
         android:title="@string/main_shop_center"/>
     <item
         android:id="@+id/item_cart"
-        android:icon="@mipmap/common_ic_launcher"
+        android:icon="@drawable/ic_bot_cart_selector"
         android:title="@string/main_cart"/>
     <item
         android:id="@+id/item_me"
-        android:icon="@mipmap/common_ic_launcher_round"
+        android:icon="@drawable/ic_bot_profile_selector"
         android:title="@string/main_me_center"/>
 
 </menu>

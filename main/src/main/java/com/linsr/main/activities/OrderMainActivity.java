@@ -2,7 +2,6 @@ package com.linsr.main.activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -10,7 +9,6 @@ import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.TabLayoutHelper;
 import com.linsr.main.R;
 
 import java.util.ArrayList;
@@ -37,7 +35,6 @@ public class OrderMainActivity extends ActivityEx {
     protected void initView() {
         initTitleView(R.string.main_my_order);
         findView();
-//        initTabs();
         initFragment();
     }
 
@@ -53,14 +50,6 @@ public class OrderMainActivity extends ActivityEx {
         adapter.setTitles(titles);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
-    }
-
-    private void initTabs() {
-        String[] itemTitles = getResources().getStringArray(R.array.main_order_status_text_list);
-        for (String tabTitle : itemTitles) {
-            mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle));
-        }
-
     }
 
     private void findView() {

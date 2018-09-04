@@ -10,6 +10,7 @@ import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.main.R;
 import com.linsr.main.adapters.holder.BannerHolder;
 import com.linsr.main.adapters.holder.MenuHolder;
+import com.linsr.main.adapters.holder.NullHolder;
 import com.linsr.main.adapters.holder.RecommendHolder;
 import com.linsr.main.adapters.holder.SalesHolder;
 import com.linsr.main.model.FindPojo;
@@ -19,7 +20,7 @@ import com.linsr.main.model.FindPojo;
  *
  * @author Linsr 2018/7/12 下午4:48
  */
-public class MallAdapter extends BaseRecyclerAdapter<FindPojo> {
+public class MallAdapter extends BaseRecyclerAdapter {
 
     public MallAdapter(Context context) {
         super(context);
@@ -27,14 +28,17 @@ public class MallAdapter extends BaseRecyclerAdapter<FindPojo> {
 
     @NonNull
     @Override
-    public BaseViewHolder<FindPojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view ;
+    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return null;
+        return new NullHolder(mContext, mInflater.inflate(R.layout.main_item_null, parent, false));
     }
 
     @Override
     public int getItemViewType(int position) {
-        return mList.get(position).getFloorType();
+        if (mList == null || mList.size() == 0) {
+            return super.getItemViewType(position);
+        }
+        FindPojo item = (FindPojo) mList.get(position);
+        return item.getFloorType();
     }
 }

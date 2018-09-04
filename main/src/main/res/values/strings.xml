@@ -89,6 +89,13 @@
         <item>会员卡</item>
     </string-array>
 
+    <string-array name="main_mall_index_list">
+        <item>首页</item>
+        <item>拼团</item>
+        <item>竞拍</item>
+        <item>限时购</item>
+    </string-array>
+
     <array name="main_order_status_icon_list">
         <item>@mipmap/ic_launcher</item>
         <item>@mipmap/ic_launcher</item>

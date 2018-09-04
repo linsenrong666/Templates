@@ -2,6 +2,8 @@
 <resources>
 
     <dimen name="main_product_details_bottom_bar_height">48dp</dimen>
+    <dimen name="main_default_tab_layout_height">48dp</dimen>
+    <dimen name="main_mall_tab_layout_height">38dp</dimen>
     <dimen name="main_item_banner_height">188dp</dimen>
 
 </resources>
