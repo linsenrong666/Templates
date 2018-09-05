@@ -45,14 +45,4 @@ public class OrderListFragment extends RefreshFragment {
         mAdapter.addData(Mock.getOrderList(1));
     }
 
-    @Override
-    protected void onRefreshEx(RefreshLayout refreshLayout) {
-        refreshLayout.finishRefresh();
-    }
-
-    @Override
-    protected void onLoadMoreEx(RefreshLayout refreshLayout) {
-        refreshLayout.finishLoadMore();
-    }
-
 }

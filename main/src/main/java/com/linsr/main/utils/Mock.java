@@ -1,16 +1,12 @@
 package com.linsr.main.utils;
 
-import android.content.Context;
-
 import com.linsr.main.R;
-import com.linsr.main.adapters.MenuItemAdapter;
 import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.app.Constants;
 import com.linsr.main.model.AddressPojo;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.CategoryMenuPojo;
-import com.linsr.main.model.FindPojo;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.MenuItemPojo;
 import com.linsr.main.model.OrderPojo;
@@ -74,11 +70,45 @@ public class Mock {
         return list;
     }
 
-    public static List<FindPojo> getFindList(int size) {
-        int[] arr = {0, 1, 2, 3};
-        List<FindPojo> list = new ArrayList<>();
+    public static List<HomePojo> getFindList(int size) {
+        int[] arr = {Constants.FloorType.BANNER,
+                Constants.FloorType.MENU,
+                Constants.FloorType.ACTIVITY_ENTER,
+                Constants.FloorType.FLASH_SALE,
+                Constants.FloorType.DAILY_NEW,};
+        List<HomePojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            FindPojo pojo = new FindPojo();
+            HomePojo pojo = new HomePojo();
+            if (i == 0) {
+                pojo.setFloorType(Constants.FloorType.BANNER);
+                list.add(pojo);
+                continue;
+            }
+            if (i == 1) {
+                pojo.setFloorType(Constants.FloorType.MENU);
+                list.add(pojo);
+                continue;
+            }
+            if (i == 2) {
+                pojo.setFloorType(Constants.FloorType.FLASH_SALE);
+                list.add(pojo);
+                continue;
+            }
+            if (i == 3) {
+                pojo.setFloorType(Constants.FloorType.DAILY_NEW);
+                list.add(pojo);
+                continue;
+            }
+            if (i == 4 || i == 5 || i == 6) {
+                pojo.setFloorType(Constants.FloorType.ACTIVITY_ENTER);
+                list.add(pojo);
+                continue;
+            }
+            if (i > 6) {
+                pojo.setFloorType(Constants.FloorType.RECOMMEND_GOODS);
+                list.add(pojo);
+                continue;
+            }
             int index = (int) (Math.random() * arr.length);
             pojo.setFloorType(arr[index]);
             list.add(pojo);
@@ -88,7 +118,7 @@ public class Mock {
 
     public static List<HomePojo> getHomeList(int size) {
         int[] arr = {Constants.FloorType.MENU,
-                Constants.FloorType.SALES,
+                Constants.FloorType.ACTIVITY_ENTER,
                 Constants.FloorType.RECOMMEND_GOODS,
                 Constants.FloorType.SHOP_WINDOW};
         List<HomePojo> list = new ArrayList<>();

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/small">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextView.TitleLv3"
+            android:layout_marginRight="@dimen/tiny"
+            android:text="@string/main_flash_sales"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/tiny"
+            android:background="@drawable/divider_vertical"/>
+
+        <TextView
+            style="@style/TextView"
+            android:text="9点场"
+            android:textSize="@dimen/font_mini"/>
+
+        <TextView
+            style="@style/FlashSalesTime"
+            android:layout_marginLeft="@dimen/mini"
+            android:text="00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text=":"/>
+
+        <TextView
+            style="@style/FlashSalesTime"
+            android:text="00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text=":"/>
+
+        <TextView
+            style="@style/FlashSalesTime"
+            android:text="00"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/small">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/tiny"
+            android:drawableTop="@mipmap/ic_launcher_round"
+            android:gravity="center"
+            android:text="$999"
+            android:textSize="@dimen/font_mini"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/tiny"
+            android:drawableTop="@mipmap/ic_launcher_round"
+            android:gravity="center"
+            android:text="$999"
+            android:textSize="@dimen/font_mini"/>
+    </LinearLayout>
+</LinearLayout>

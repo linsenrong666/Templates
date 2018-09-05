@@ -52,11 +52,11 @@ public abstract class RefreshFragment extends FragmentEx {
     protected abstract void initRecyclerView(RecyclerView recyclerView);
 
     protected void onRefreshEx(RefreshLayout refreshLayout) {
-
+        refreshLayout.finishRefresh();
     }
 
     protected void onLoadMoreEx(RefreshLayout refreshLayout) {
-
+        refreshLayout.finishLoadMore();
     }
 
 

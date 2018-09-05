@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/small">
+
+    <TextView
+        style="@style/TextView.TitleLv3"
+        android:text="批发专区"/>
+
+    <TextView
+        style="@style/TextView"
+        android:layout_margin="@dimen/tiny"
+        android:text="@string/main_my_card"
+        android:textSize="@dimen/font_small"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small"
+        android:src="@mipmap/ic_launcher_round"/>
+</LinearLayout>

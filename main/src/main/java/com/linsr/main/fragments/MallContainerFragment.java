@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,14 +13,7 @@ import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
-import com.linsr.main.adapters.MallAdapter;
-import com.linsr.main.model.FindPojo;
-import com.linsr.main.utils.Mock;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +46,7 @@ public class MallContainerFragment extends FragmentEx {
         mTabLayout = findViewById(R.id.mall_container_tab_layout);
         mViewPager = findViewById(R.id.mall_container_view_pager);
         initSearchLayout();
-        initFragments();
+
     }
 
     private void initFragments() {
@@ -92,7 +84,7 @@ public class MallContainerFragment extends FragmentEx {
 
     @Override
     protected void loadData() {
-
+        initFragments();
     }
 
 }

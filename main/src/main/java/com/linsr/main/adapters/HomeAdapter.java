@@ -2,13 +2,19 @@ package com.linsr.main.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
+import com.linsr.main.adapters.holder.ActivityEnterHolder;
 import com.linsr.main.adapters.holder.BannerHolder;
+import com.linsr.main.adapters.holder.DailyNewHolder;
+import com.linsr.main.adapters.holder.FlashSaleHolder;
 import com.linsr.main.adapters.holder.MenuHolder;
 import com.linsr.main.adapters.holder.NullHolder;
 import com.linsr.main.adapters.holder.RecommendHolder;
@@ -50,6 +56,15 @@ public class HomeAdapter extends BaseRecyclerAdapter {
             case Constants.FloorType.SHOP_WINDOW:
                 view = mInflater.inflate(R.layout.main_item_shop_window, parent, false);
                 return new ShopWindowHolder(mContext, view);
+            case Constants.FloorType.ACTIVITY_ENTER:
+                view = mInflater.inflate(R.layout.main_item_activity_enter, parent, false);
+                return new ActivityEnterHolder(mContext, view);
+            case Constants.FloorType.FLASH_SALE:
+                view = mInflater.inflate(R.layout.main_item_flash_sale, parent, false);
+                return new FlashSaleHolder(mContext, view);
+            case Constants.FloorType.DAILY_NEW:
+                view = mInflater.inflate(R.layout.main_item_daily_new, parent, false);
+                return new DailyNewHolder(mContext, view);
             default:
                 view = mInflater.inflate(R.layout.main_item_null, parent, false);
                 return new NullHolder(mContext, view);
@@ -68,4 +83,37 @@ public class HomeAdapter extends BaseRecyclerAdapter {
         HomePojo homePojo = (HomePojo) mList.get(position);
         return homePojo.getFloorType();
     }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull final RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if (manager instanceof GridLayoutManager) {
+            final GridLayoutManager gridManager = ((GridLayoutManager) manager);
+            gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    int headerCount = 0;
+                    if (recyclerView.getAdapter() instanceof HeaderAndFooterWrapper) {
+                        headerCount = ((HeaderAndFooterWrapper) (recyclerView.getAdapter())).getHeadersCount();
+                    }
+                    if (position >= headerCount) {
+                        position = position - headerCount;
+                    }
+                    int viewType = getItemViewType(position);
+                    int count = gridManager.getSpanCount();
+                    switch (viewType) {
+                        case Constants.FloorType.FLASH_SALE:
+                        case Constants.FloorType.DAILY_NEW:
+                            return count / 2;
+                        case Constants.FloorType.ACTIVITY_ENTER:
+                            return count / 3;
+                        default:
+                            return count;
+                    }
+                }
+            });
+        }
+    }
+
 }

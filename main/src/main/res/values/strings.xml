@@ -65,6 +65,8 @@
     <string name="main_refund_explain">退款说明</string>
     <string name="main_refund_code">退款编号</string>
     <string name="main_refund_apply_time">申请时间</string>
+    <string name="main_flash_sales">限时购</string>
+    <string name="main_daily_new">每日上新</string>
 
     <string-array name="main_order_status_text_list">
         <item>全部订单</item>
