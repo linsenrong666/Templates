@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.DailyNewActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/placeholders"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="今日上新"
+        android:padding="@dimen/middle"
+        android:layout_height="wrap_content"/>
+
+    <include layout="@layout/main_layout_refresh_recycler_view"/>
+</LinearLayout>

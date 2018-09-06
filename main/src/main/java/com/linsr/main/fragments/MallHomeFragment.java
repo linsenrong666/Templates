@@ -38,6 +38,9 @@ public class MallHomeFragment extends RefreshFragment {
                 if (itemType == Constants.FloorType.FLASH_SALE) {
                     Router.startActivity(MainModule.Activity.FLASH_SALE);
                 }
+                if (itemType == Constants.FloorType.DAILY_NEW) {
+                    Router.startActivity(MainModule.Activity.DAILY_NEW);
+                }
             }
         });
     }
