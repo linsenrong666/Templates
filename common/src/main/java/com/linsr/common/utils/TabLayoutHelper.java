@@ -25,6 +25,22 @@ public class TabLayoutHelper {
 
     private static final String TAG = TabLayoutHelper.class.getCanonicalName();
 
+    public static void initPagerFragment(Context context,
+                                         final ViewPager mViewPager,
+                                         TabLayout mTabLayout,
+                                         FragmentManager fm,
+                                         List<Fragment> fragments,
+                                         List<String> titleList) {
+        List<TextView> textViews = new ArrayList<>();
+        for (Fragment f : fragments) {
+            TextView textView = new TextView(context);
+            textView.setTextSize(14);
+            textView.setTextColor(context.getResources().getColorStateList(R.color.color_main_selector));
+            textViews.add(textView);
+        }
+        initPagerFragment(context,mViewPager,mTabLayout,fm,textViews,fragments,titleList);
+    }
+
     /**
      * 默认的viewpager搭配tabLayout内容是fragment的设置
      * @param mViewPager vp
@@ -37,6 +53,7 @@ public class TabLayoutHelper {
                                          final ViewPager mViewPager,
                                          TabLayout mTabLayout,
                                          FragmentManager fm,
+                                         List<TextView> customViews,
                                          List<Fragment> fragments,
                                          List<String> titleList) {
         if (ObjectUtils.isNull(fragments) || ObjectUtils.isNull(titleList)) {
@@ -52,14 +69,12 @@ public class TabLayoutHelper {
             //获得每一个tab
             TabLayout.Tab tab = mTabLayout.getTabAt(i);
             if (tab != null) {
-                TextView textView = new TextView(context);
-                textView.setTextSize(14);
-                textView.setTextColor(context.getResources().getColorStateList(R.color.color_main_selector));
+                TextView textView = customViews.get(i);
                 tab.setCustomView(textView);
                 if (i == 0) {
                     // 设置第一个tab的TextView是被选择的样式//第一个tab被选中
                     textView.setSelected(true);
-                }else{
+                } else {
                     textView.setSelected(false);
                 }
                 //设置tab上的文字

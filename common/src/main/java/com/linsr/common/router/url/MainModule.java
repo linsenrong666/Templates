@@ -30,6 +30,7 @@ public class MainModule {
         String COMMENT_RESULT = ACTIVITY +"commentResult";
         String AFTER_SALES = ACTIVITY +"afterSales";
         String AFTER_SALES_DETAILS = ACTIVITY +"afterSalesDetails";
+        String FLASH_SALE = ACTIVITY +"flashSale";
     }
 
     public interface Fragment {
@@ -42,5 +43,6 @@ public class MainModule {
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
         String ORDER_LIST = FRAGMENT + "orderList";
         String MALL_HOME = FRAGMENT + "mallHome";
+        String FLASH_SALE = FRAGMENT +"flashSale";
     }
 }

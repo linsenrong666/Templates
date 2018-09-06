@@ -2,6 +2,8 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.main.R;
@@ -19,6 +21,7 @@ public abstract class RefreshFragment extends FragmentEx {
 
     protected RecyclerView mRecyclerView;
     protected SmartRefreshLayout mRefreshLayout;
+    private FrameLayout mTopLayout;
 
     @Override
     protected int getLayoutId() {
@@ -32,6 +35,8 @@ public abstract class RefreshFragment extends FragmentEx {
 
     @Override
     protected void initView() {
+        mTopLayout = findViewById(R.id.main_refresh_top_layout);
+        initTopLayout(mTopLayout);
         mRecyclerView = findViewById(R.id.main_recycler_view);
         initRecyclerView(mRecyclerView);
         mRefreshLayout = findViewById(R.id.main_refresh_layout);
@@ -47,6 +52,9 @@ public abstract class RefreshFragment extends FragmentEx {
                 onLoadMoreEx(refreshLayout);
             }
         });
+    }
+
+    protected void initTopLayout(FrameLayout topLayout) {
     }
 
     protected abstract void initRecyclerView(RecyclerView recyclerView);
