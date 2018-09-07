@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="MainMeItemView">
         <attr name="mainLeftText" format="string|reference"/>
+        <attr name="mainLeftTextDrawable" format="reference"/>
         <attr name="mainRightText" format="string|reference"/>
         <attr name="mainShowRightView" format="boolean"/>
         <attr name="mainSpanCount" format="integer"/>

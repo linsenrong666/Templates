@@ -46,5 +46,8 @@ public class GlideModelConfig implements GlideModule {
 
     @Override
     public void registerComponents(Context context, Glide glide) {
+
     }
+
+
 }

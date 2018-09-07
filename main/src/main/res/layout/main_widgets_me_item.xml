@@ -12,7 +12,8 @@
 
         <TextView
             android:id="@+id/me_item_left_tv"
-            style="@style/TextView"
+            style="@style/TextView.TitleLv3"
+            android:layout_centerVertical="true"
             android:padding="@dimen/small"
             tools:text="我的卡券"/>
 
@@ -20,18 +21,20 @@
             android:id="@+id/me_item_right_tv"
             style="@style/TextView"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="@dimen/mini"
+            android:drawableRight="@mipmap/ic_right_arrow"
             android:padding="@dimen/small"
-            tools:text="全部订单 >"/>
+            android:textSize="@dimen/font_mini"
+            tools:text="全部订单"/>
     </RelativeLayout>
 
     <View style="@style/common_divider_horizontal"/>
 
     <android.support.v7.widget.RecyclerView
-        android:overScrollMode="never"
         android:id="@+id/me_item_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small"
-        android:layout_marginTop="@dimen/small"/>
+        android:overScrollMode="never"/>
 
 </LinearLayout>

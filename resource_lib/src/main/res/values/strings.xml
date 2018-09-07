@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">res</string>
+    <string name="app_name">姨吗网</string>
 
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
@@ -14,4 +14,5 @@
     <string name="zhifubao">支付宝</string>
     <string name="weixin_pay">微信支付</string>
     <string name="finish">完成</string>
+    
 </resources>

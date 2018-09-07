@@ -30,6 +30,7 @@
             android:background="@color/white"
             app:mainIconList="@array/main_order_status_icon_list"
             app:mainLeftText="@string/main_my_order"
+            app:mainLeftTextDrawable="@mipmap/ic_my_order"
             app:mainRightText="@string/main_all_order"
             app:mainSpanCount="5"
             app:mainTitleList="@array/main_order_status_list"/>

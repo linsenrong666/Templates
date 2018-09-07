@@ -100,11 +100,11 @@
     </string-array>
 
     <array name="main_order_status_icon_list">
-        <item>@mipmap/ic_launcher</item>
-        <item>@mipmap/ic_launcher</item>
-        <item>@mipmap/ic_launcher</item>
-        <item>@mipmap/ic_launcher</item>
-        <item>@mipmap/ic_launcher</item>
+        <item>@mipmap/ic_me_wait_pay</item>
+        <item>@mipmap/ic_me_to_be_shipped</item>
+        <item>@mipmap/ic_me_to_be_received</item>
+        <item>@mipmap/ic_me_waiting_parity</item>
+        <item>@mipmap/ic_me_after_sale</item>
     </array>
 
 </resources>

@@ -41,7 +41,7 @@ public class SplashActivity extends ActivityEx {
             getRootContent().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Router.startActivity(LoginModule.Activity.LOGIN);
+                    Router.startActivity(MainModule.Activity.MAIN);
                     finish();
                 }
             }, 1000);

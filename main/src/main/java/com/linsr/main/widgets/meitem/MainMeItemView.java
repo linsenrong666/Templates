@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,6 +119,13 @@ public class MainMeItemView extends FrameLayout {
         setText(a, mLeftTextView, R.styleable.MainMeItemView_mainLeftText);
         setText(a, mRightTextView, R.styleable.MainMeItemView_mainRightText);
 
+        Drawable leftDrawable = a.getDrawable(R.styleable.MainMeItemView_mainLeftTextDrawable);
+        if (leftDrawable != null) {
+            leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
+            mLeftTextView.setCompoundDrawables(leftDrawable, null, null, null);
+            mLeftTextView.setCompoundDrawablePadding(DisplayUtils.dp2px(context, 8));
+        }
+
         boolean showRightView = a.getBoolean(R.styleable.MainMeItemView_mainShowRightView, true);
         mRightTextView.setVisibility(showRightView ? VISIBLE : GONE);
 
@@ -182,6 +190,11 @@ public class MainMeItemView extends FrameLayout {
         public BaseViewHolder<MeItemPojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             TextView textView = new TextView(mContext);
             textView.setGravity(Gravity.CENTER);
+            textView.setTextColor(getResources().getColor(R.color.text_primary));
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    getResources().getDimension(R.dimen.font_small));
+            int padding = DisplayUtils.dp2px(mContext, getResources().getDimension(R.dimen.tiny));
+            textView.setPadding(0, padding, 0, padding);
             return new Holder(mContext, textView);
         }
 

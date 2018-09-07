@@ -18,6 +18,7 @@ import com.linsr.main.R;
  */
 public class SortIndexView extends FrameLayout {
 
+
     public SortIndexView(@NonNull Context context) {
         this(context, null, 0);
     }
@@ -28,8 +29,12 @@ public class SortIndexView extends FrameLayout {
 
     public SortIndexView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        View view = LayoutInflater.from(context).inflate(R.layout.main_widgets_sort_index, (ViewGroup) getRootView(), false);
+        View view = LayoutInflater.from(context).inflate(R.layout.main_widgets_sort_index,
+                (ViewGroup) getRootView(), false);
+
 
         addView(view);
     }
+
+
 }

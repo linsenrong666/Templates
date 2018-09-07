@@ -16,7 +16,7 @@
         style="@style/TextView"
         android:layout_width="match_parent"
         android:background="@color/background"
-        android:padding="@dimen/middle"
+        android:padding="@dimen/small"
         android:text="@string/main_search_hot"/>
 
     <com.linsr.common.gui.widgets.FlowLayout
@@ -63,7 +63,7 @@
         style="@style/TextView"
         android:layout_width="match_parent"
         android:background="@color/background"
-        android:padding="@dimen/middle"
+        android:padding="@dimen/small"
         android:text="@string/main_search_history"/>
 
     <com.linsr.common.gui.widgets.FlowLayout

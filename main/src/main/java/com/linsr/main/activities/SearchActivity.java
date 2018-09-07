@@ -15,13 +15,20 @@ import com.linsr.main.R;
  */
 @Route(path = MainModule.Activity.SEARCH)
 public class SearchActivity extends ActivityEx {
+
     @Override
     protected int getLayoutId() {
         return R.layout.main_activity_search;
     }
 
     @Override
+    protected boolean showTitleView() {
+        return false;
+    }
+
+    @Override
     protected void initView() {
+
         findViewById(R.id.search_title_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,4 +36,6 @@ public class SearchActivity extends ActivityEx {
             }
         });
     }
+
+
 }

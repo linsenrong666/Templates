@@ -1,32 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#008800"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/me_top_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/common_middle">
+        android:background="@mipmap/bg_me_top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/holo_orange_light"
+            android:text="省代理"/>
 
         <ImageView
             android:id="@+id/me_top_profile_iv"
-            android:layout_width="88dp"
-            android:layout_height="88dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/large"
             android:src="@mipmap/common_ic_launcher_round"/>
 
         <TextView
             android:id="@+id/me_top_user_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/common_large"
-            android:layout_toRightOf="@id/me_top_profile_iv"
+            android:layout_below="@id/me_top_profile_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/tiny"
             android:text="@string/common_app_name"
-            android:textSize="@dimen/common_font_large"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_middle"/>
+
+        <TextView
+            android:id="@+id/me_top_user_no_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/me_top_user_name_tv"
+            android:layout_centerHorizontal="true"
+            android:text="10000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_middle"/>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -71,4 +92,4 @@
             android:gravity="center"
             android:text="奖金\n200元"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
