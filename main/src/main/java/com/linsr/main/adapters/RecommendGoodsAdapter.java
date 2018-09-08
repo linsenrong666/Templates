@@ -17,13 +17,13 @@ import com.linsr.main.model.HomePojo;
  *
  * @author Linsr 2018/7/13 上午11:21
  */
-public class HomeGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
+public class RecommendGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
 
     public interface OnGoodsClickListener {
         void onAdd(int position);
     }
 
-    public HomeGoodsAdapter(Context context) {
+    public RecommendGoodsAdapter(Context context) {
         super(context);
     }
 
@@ -45,21 +45,19 @@ public class HomeGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
         private TextView title;
         private TextView desc;
         private ImageView img;
-        private TextView add;
+        private ImageView add;
 
         Holder(Context context, View itemView) {
             super(context, itemView);
             title = findViewById(R.id.item_goods_title_tv);
             desc = findViewById(R.id.item_goods_desc_tv);
             img = findViewById(R.id.item_goods_img_iv);
-            add = findViewById(R.id.item_goods_add_tv);
+            add = findViewById(R.id.item_goods_add_iv);
         }
 
         @Override
         public void convert(final int position, HomePojo data, int itemType) {
             title.setText(data.getTitle());
-            desc.setText(data.getDesc());
-//            ImageUtils.load(mContext, data.getUrl(), img);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

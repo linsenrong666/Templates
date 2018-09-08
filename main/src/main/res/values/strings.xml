@@ -107,4 +107,11 @@
         <item>@mipmap/ic_me_after_sale</item>
     </array>
 
+    <array name="main_card_icon_list">
+        <item>@mipmap/ic_me_card1</item>
+        <item>@mipmap/ic_me_card2</item>
+        <item>@mipmap/ic_me_card3</item>
+        <item>@mipmap/ic_me_card4</item>
+    </array>
+
 </resources>

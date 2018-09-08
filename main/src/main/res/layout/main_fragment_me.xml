@@ -41,9 +41,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mini"
             android:background="@color/white"
-            app:mainIconList="@array/main_order_status_icon_list"
+            app:mainIconList="@array/main_card_icon_list"
             app:mainLeftText="@string/main_my_card"
+            app:mainLeftTextDrawable="@mipmap/ic_card_voucher"
             app:mainRightText="@string/main_all_order"
+            app:mainShowRightView="false"
             app:mainSpanCount="4"
             app:mainTitleList="@array/main_my_card_list"/>
 

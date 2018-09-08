@@ -5,42 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+
+    <com.linsr.main.widgets.SortIndexView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/background"
-        android:gravity="center_vertical"
-        android:padding="@dimen/tiny"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/tiny"
-            android:text="全部"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/tiny"
-            android:text="全部"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/tiny"
-            android:text="全部"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/tiny"
-            android:text="全部"/>
-    </LinearLayout>
+        android:layout_height="40dp"/>
 
     <include layout="@layout/main_layout_refresh_recycler_view"/>
 </LinearLayout>

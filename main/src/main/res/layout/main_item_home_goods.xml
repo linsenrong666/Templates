@@ -6,38 +6,38 @@
     android:layout_height="wrap_content"
     android:background="@color/common_white"
     android:gravity="center"
-    android:padding="@dimen/small"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/small">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_width="173dp"
+        android:layout_height="173dp">
 
         <ImageView
             android:id="@+id/item_goods_img_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/common_ic_launcher_round"
-            android:background="@color/background"/>
+            android:background="@color/background_image"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/placeholders_goods"/>
 
         <TextView
             style="@style/TextView"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_tiny"
             android:background="@color/main_color"
-            android:text="3.2折"/>
+            android:text="3.2折"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_tiny"/>
     </RelativeLayout>
 
     <TextView
-        android:layout_marginTop="@dimen/middle"
         android:id="@+id/item_goods_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mini"
         android:singleLine="true"
-        android:textColor="@color/common_text_primary_black"
+        android:textColor="@color/text_primary_black"
         android:textSize="@dimen/font_small"
         tools:text="商品名称商品名称商品名称商品名称商品名称商品名称"/>
 
@@ -45,33 +45,31 @@
         android:id="@+id/item_goods_desc_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_tiny"
+        android:layout_marginTop="@dimen/tiny"
         android:singleLine="true"
         android:textColor="@color/common_text_primary"
         android:textSize="@dimen/font_small"
-        tools:text="商品名称商品名称商品名称商品名称商品名称商品名称"/>
+        tools:text="买一赠一"/>
 
     <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_middle">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextView.MainColor"
+            android:textSize="@dimen/font_small"
             android:layout_centerVertical="true"
             android:text="$100"
-            android:textColor="@android:color/holo_red_light"
-            android:textSize="@dimen/font_small"/>
+            android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/item_goods_add_tv"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
+        <ImageView
+            android:id="@+id/item_goods_add_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@color/colorAccent"
-            android:gravity="center"
-            android:text="+"/>
+            android:padding="@dimen/mini"
+            android:src="@mipmap/ic_add"/>
 
     </RelativeLayout>
 

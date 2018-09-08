@@ -39,11 +39,10 @@ public class MenuHolder extends BaseViewHolder {
     @Override
     public void convert(int position, Object data, int itemType) {
         MenuItemAdapter adapter = new MenuItemAdapter(mContext);
-        List<MenuItemPojo> menuItemList = Mock.getMenuItemList(8);
+        List<MenuItemPojo> menuItemList = Mock.getMenuItemList(5);
         adapter.addData(menuItemList);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, mSpanCount));
         mRecyclerView.setAdapter(adapter);
-
     }
 }

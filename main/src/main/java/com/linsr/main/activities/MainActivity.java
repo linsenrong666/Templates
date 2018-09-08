@@ -53,7 +53,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
 
             @Override
             public boolean isActive() {
-                return mIsActive;
+                return true;
             }
 
             @Override

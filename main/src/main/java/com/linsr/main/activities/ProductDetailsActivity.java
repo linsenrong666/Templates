@@ -20,7 +20,7 @@ public class ProductDetailsActivity extends ActivityEx {
 
     @Override
     protected void initView() {
-
+        initTitleView(R.string.main_goods_details);
     }
 
 }

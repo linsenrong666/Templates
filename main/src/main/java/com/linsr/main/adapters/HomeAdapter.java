@@ -36,8 +36,20 @@ public class HomeAdapter extends BaseRecyclerAdapter {
         mOnRecommendHolderListener = onRecommendHolderListener;
     }
 
+    private ShopWindowHolder.OnShopWindowItemClickListener mOnShopWindowItemClickListener;
+
+    public void setOnShopWindowItemClickListener(ShopWindowHolder.OnShopWindowItemClickListener onShopWindowItemClickListener) {
+        mOnShopWindowItemClickListener = onShopWindowItemClickListener;
+    }
+
     public HomeAdapter(Context context) {
         super(context);
+    }
+
+    private int mMenuSpanCount = 4;
+
+    public void setMenuSpanCount(int menuSpanCount) {
+        mMenuSpanCount = menuSpanCount;
     }
 
     @NonNull
@@ -50,12 +62,11 @@ public class HomeAdapter extends BaseRecyclerAdapter {
                 return new BannerHolder(mContext, view);
             case Constants.FloorType.MENU:
                 view = mInflater.inflate(R.layout.main_item_menu_container, parent, false);
-                return new MenuHolder(mContext, view, 4);
+                return new MenuHolder(mContext, view, mMenuSpanCount);
             case Constants.FloorType.RECOMMEND_GOODS:
                 return newRecommendHolder(parent);
             case Constants.FloorType.SHOP_WINDOW:
-                view = mInflater.inflate(R.layout.main_item_shop_window, parent, false);
-                return new ShopWindowHolder(mContext, view);
+                return newShopWindowHolder(parent);
             case Constants.FloorType.ACTIVITY_ENTER:
                 view = mInflater.inflate(R.layout.main_item_activity_enter, parent, false);
                 return new ActivityEnterHolder(mContext, view);
@@ -69,6 +80,13 @@ public class HomeAdapter extends BaseRecyclerAdapter {
                 view = mInflater.inflate(R.layout.main_item_null, parent, false);
                 return new NullHolder(mContext, view);
         }
+    }
+
+    private ShopWindowHolder newShopWindowHolder(ViewGroup parent) {
+        View view = mInflater.inflate(R.layout.main_item_shop_window, parent, false);
+        ShopWindowHolder shopWindowHolder = new ShopWindowHolder(mContext, view);
+        shopWindowHolder.setOnShopWindowItemClickListener(mOnShopWindowItemClickListener);
+        return shopWindowHolder;
     }
 
     private RecommendHolder newRecommendHolder(ViewGroup parent) {

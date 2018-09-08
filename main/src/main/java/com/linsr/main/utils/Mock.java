@@ -53,7 +53,7 @@ public class Mock {
         List<MenuItemPojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             MenuItemPojo pojo = new MenuItemPojo();
-            pojo.setIcon(R.mipmap.ic_launcher_round);
+            pojo.setIcon(R.mipmap.placeholders_icon);
             pojo.setText("item:" + i);
             list.add(pojo);
         }
@@ -104,7 +104,7 @@ public class Mock {
                 list.add(pojo);
                 continue;
             }
-            if (i > 6) {
+            if (i > 7) {
                 pojo.setFloorType(Constants.FloorType.RECOMMEND_GOODS);
                 list.add(pojo);
                 continue;
@@ -142,6 +142,11 @@ public class Mock {
             }
 
             if (i == 3) {
+                pojo.setFloorType(Constants.FloorType.SHOP_WINDOW);
+                list.add(pojo);
+                continue;
+            }
+            if (i == 4) {
                 pojo.setFloorType(Constants.FloorType.SHOP_WINDOW);
                 list.add(pojo);
                 continue;

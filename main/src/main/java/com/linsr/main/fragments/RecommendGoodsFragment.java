@@ -13,7 +13,7 @@ import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
-import com.linsr.main.adapters.HomeGoodsAdapter;
+import com.linsr.main.adapters.RecommendGoodsAdapter;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -32,7 +32,7 @@ public class RecommendGoodsFragment extends FragmentEx {
 
     private RecyclerView mRecyclerView;
     private SmartRefreshLayout mRefreshLayout;
-    private HomeGoodsAdapter mAdapter;
+    private RecommendGoodsAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -63,11 +63,11 @@ public class RecommendGoodsFragment extends FragmentEx {
         });
 
         mRecyclerView = findViewById(R.id.main_recycler_view);
-        mAdapter = new HomeGoodsAdapter(mActivity);
+        mAdapter = new RecommendGoodsAdapter(mActivity);
         RecyclerViewHelper.initGridLayout(mActivity, 2, mRecyclerView, mAdapter);
 
 
-        mAdapter.setOnGoodsClickListener(new HomeGoodsAdapter.OnGoodsClickListener() {
+        mAdapter.setOnGoodsClickListener(new RecommendGoodsAdapter.OnGoodsClickListener() {
             @Override
             public void onAdd(int position) {
                 JLog.e(TAG, "on add position :" + position);

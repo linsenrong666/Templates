@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
 
     <TextView
+        android:background="@color/background_image"
         android:id="@+id/item_shop_window_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
         android:gravity="center"
         android:padding="@dimen/small"
-        android:text="XXXXXX"
+        android:text="姨妈街"
         android:textColor="@color/text_primary_black"
         android:textSize="@dimen/font_middle"
         android:textStyle="bold"/>
 
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/bg_index_holder_title"/>
+
+    <ImageView
         android:id="@+id/item_shop_window_bg_tv"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="197dp"
         android:layout_below="@id/item_shop_window_title_tv"
-        android:background="@android:color/holo_red_light"/>
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_index_shop_window"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/item_shop_window_recycler_view"
@@ -31,6 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/item_shop_window_bg_tv"
         android:layout_marginBottom="12dp"
-        android:layout_marginTop="70dp"/>
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/bg_stroke_divider_color"
+        android:padding="0.7dp"/>
 
 </RelativeLayout>

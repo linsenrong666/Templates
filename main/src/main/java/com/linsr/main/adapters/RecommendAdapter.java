@@ -48,7 +48,6 @@ public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
         public void convert(int position, RecommendPojo data, int itemType) {
             name.setText(data.getName());
             price.setText(data.getPrice());
-            ImageUtils.load(mContext, data.getUrl(), img);
         }
     }
 }

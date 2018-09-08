@@ -28,9 +28,8 @@ public class BannerHolder extends BaseViewHolder {
 
     @Override
     public void convert(int position, Object data, int itemType) {
-        JLog.i("banner convert,data:" + data + ",position:" + position);
-        List<String> imageUrlList = Mock.getImageUrlList(5);
-        BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(mContext, imageUrlList);
+        int[] res = {R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
+        BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(mContext, res);
         mFlipperView.setPageAdapter(pagerAdapter);
     }
 

@@ -81,9 +81,6 @@ public class CartFragment extends FragmentEx {
                 mCartAdapter.addData(cartList);
                 mGoodsAdapterWrapper.notifyDataSetChanged();
 
-                List<RecommendPojo> goodsList3 = Mock.getRecommendList(1);
-                mRecommendAdapter.addData(goodsList3);
-
             }
         });
     }
@@ -103,7 +100,7 @@ public class CartFragment extends FragmentEx {
         wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(
                 R.layout.main_header_recommend, null));
 
-        List<RecommendPojo> goodsList2 = Mock.getRecommendList(1);
+        List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
         mRecommendAdapter.addData(goodsList2);
 
         RecyclerViewHelper.initGridLayout(mContext, 3,

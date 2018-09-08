@@ -25,6 +25,7 @@ public class BannerPagerAdapter extends PagerAdapter {
     private static final String TAG = "BannerPagerAdapter";
 
     private List<String> mStrings;
+    private int[] mRedIds;
     private List<View> mViews;
     private Context mContext;
     private LayoutInflater mInflater;
@@ -44,6 +45,21 @@ public class BannerPagerAdapter extends PagerAdapter {
         }
     }
 
+    public BannerPagerAdapter(Context context,
+                              int[] strings) {
+        mContext = context;
+        mRedIds = strings;
+        mInflater = LayoutInflater.from(mContext);
+
+        mViews = new ArrayList<>();
+        for (int url : strings) {
+            ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item,
+                    null);
+            view.setImageResource(url);
+            mViews.add(view);
+        }
+    }
+
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -59,7 +75,7 @@ public class BannerPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mStrings == null ? 0 : mStrings.size();
+        return mRedIds == null ? 0 : mRedIds.length;
     }
 
     @Override

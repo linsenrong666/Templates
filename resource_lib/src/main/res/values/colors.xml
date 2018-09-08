@@ -5,29 +5,37 @@
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <!--<color name="colorAccent">#FF4081</color>-->
     <!--主色-->
-    <color name="main_color">#FB6384</color>
+    <color name="main_color">#FB6182</color>
     <!--主色按下效果-->
     <color name="main_color_p">#CCFB6384</color>
     <color name="main_color_disable">#99FB6384</color>
     <color name="main_color_n">@color/main_color</color>
 
+    <!--通用文字颜色-浅-->
+    <color name="text_primary_weak">#a7a7a7</color>
     <!--通用文字颜色-->
     <color name="text_primary">#686868</color>
     <!--通用文字颜色-深-->
     <color name="text_primary_dark">#383838</color>
-    <color name="text_primary_black">#333</color>
-    <!--通用文字颜色-浅-->
-    <color name="text_primary_weak">#aeaeae</color>
+    <!--通用文字颜色 黑-->
+    <color name="text_primary_black">#111</color>
+
+    <!--默认分割线颜色-->
+    <color name="divider">#dcdcdc</color>
+    <!--默认界面底色-->
+    <color name="background">#f6f6f6</color>
+    <!--默认编辑框底色-->
+    <color name="background_edit">#fafafa</color>
+    <!--默认图片底色-->
+    <color name="background_image">#fafafa</color>
+    <!--白色-->
+    <color name="white">#fff</color>
+
     <!--透明-->
     <color name="transparent">@android:color/transparent</color>
     <color name="transparent10">#1A000000</color>
     <color name="transparent30">#4D000000</color>
-    <!--默认分割线颜色-->
-    <color name="divider">#ababab</color>
-    <!--通用背景色-->
-    <color name="background">#ececec</color>
-    <!--白色-->
-    <color name="white">#fff</color>
+
 
      <!--十六进制透明度换算-->
     <!--100% — FF -->
