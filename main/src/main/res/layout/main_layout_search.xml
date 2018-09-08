@@ -18,15 +18,15 @@
     <TextView
         android:id="@+id/layout_search_left_tv"
         style="@style/TextView"
+        android:layout_margin="@dimen/small"
         android:drawableLeft="@mipmap/ic_star_zero"
         android:drawablePadding="@dimen/tiny"
         android:gravity="center"
-        android:visibility="gone"
-        android:layout_margin="@dimen/small"
-        android:text="三明"/>
+        android:text="三明"
+        android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/layout_search_tv"
+    <EditText
+        android:id="@+id/layout_search_et"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/mini"
@@ -34,6 +34,8 @@
         android:layout_weight="1"
         android:background="#FAFAFA"
         android:drawableRight="@mipmap/ic_search"
+        android:enabled="false"
+        android:focusable="false"
         android:gravity="center_vertical"
         android:hint="@string/main_text_search_goods"
         android:paddingLeft="@dimen/small"

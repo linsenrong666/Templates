@@ -17,4 +17,13 @@ public interface Constants {
         int DAILY_NEW = 7;//每日上新
     }
 
+    //value对应的页面顺序，不能随意改动
+    interface OrderStatus {
+        int ALL_ORDER = 0;
+        int WAIT_PAY = 1;
+        int WAIT_SEND = 2;
+        int WAIT_RECEIVE = 3;
+        int WAIT_COMMENT = 4;
+    }
+
 }

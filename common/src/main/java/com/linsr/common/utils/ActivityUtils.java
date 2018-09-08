@@ -42,6 +42,7 @@ public class ActivityUtils {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(frameId, fragment);
         transaction.commit();
+        fragment.setUserVisibleHint(true);
     }
 
     public static Fragment addOrShowFragment(Fragment currentFragment,

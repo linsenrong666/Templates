@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Param;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
+import com.linsr.common.router.url.CommonModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
@@ -29,12 +33,13 @@ import java.util.List;
  * @author Linsr 2018/7/10 下午5:59
  */
 @Route(path = MainModule.Fragment.HOME)
-public class HomeFragment extends FragmentEx {
+public class HomeFragment extends FragmentEx implements CommonModule.Activity.FragmentContainerParams {
 
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
     private HeaderAndFooterWrapper mWrapper;
     private HomeAdapter mAdapter;
+    private ImageView mLeftImage;
 
     @Override
     protected int getLayoutId() {
@@ -55,21 +60,22 @@ public class HomeFragment extends FragmentEx {
         RecyclerViewHelper.initDefault(mActivity, mRecyclerView, mWrapper);
     }
 
-
     private void findView() {
+        mLeftImage = findViewById(R.id.layout_search_left_img);
+        mLeftImage.setImageResource(R.mipmap.ic_logo_1);
         mRefreshLayout = findViewById(R.id.home_refresh_layout);
         mRecyclerView = findViewById(R.id.home_recycler_view);
     }
 
     private void initAdapter() {
         mAdapter = new HomeAdapter(mActivity);
-        List<HomePojo> findList = Mock.getHomeList(100);
-        mAdapter.addData(findList);
+
         mAdapter.setOnRecommendHolderListener(new RecommendHolder.OnRecommendHolderListener() {
             @Override
             public void onMoreClick(int position) {
-                JLog.i("position:" + position);
-                Router.startActivity(MainModule.Activity.RECOMMEND_GOODS);
+                Params params = new Params(MainModule.Fragment.RECOMMEND_GOODS);
+                params.add(TITLE_TEXT, R.string.main_recommend_for_you);
+                Router.startActivity(CommonModule.Activity.FRAGMENT_CONTAINER, params);
             }
         });
     }
@@ -92,7 +98,8 @@ public class HomeFragment extends FragmentEx {
 
     @Override
     protected void loadData() {
-
+        List<HomePojo> findList = Mock.getHomeList(100);
+        mAdapter.addData(findList);
     }
 
 }

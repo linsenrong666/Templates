@@ -48,9 +48,6 @@
             android:name=".activities.PayResultActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activities.RecommendGoodsActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".activities.OrderMainActivity"
             android:screenOrientation="portrait"/>
         <activity
@@ -65,9 +62,6 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.AfterSalesDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.FragmentActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.FlashSaleActivity"

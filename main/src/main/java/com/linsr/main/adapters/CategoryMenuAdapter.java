@@ -45,20 +45,25 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
     }
 
     private class MenuHolder extends BaseViewHolder<CategoryMenuPojo> {
-
+        private View strip;
         private TextView title;
 
         MenuHolder(Context context, View itemView) {
             super(context, itemView);
             title = findViewById(R.id.item_category_title_tv);
+            strip = findViewById(R.id.item_category_strip);
         }
 
         @Override
         public void convert(final int position, CategoryMenuPojo data, int itemType) {
             title.setText(data.getTitle());
             if (mSelectedPosition == position) {
-                itemView.setBackgroundColor(getColor(R.color.colorAccent));
+                strip.setVisibility(View.VISIBLE);
+                title.setTextColor(getColor(R.color.main_color));
+                itemView.setBackgroundColor(getColor(R.color.white));
             } else {
+                strip.setVisibility(View.INVISIBLE);
+                title.setTextColor(getColor(R.color.text_primary));
                 itemView.setBackgroundColor(getColor(R.color.common_transparent));
             }
         }

@@ -10,6 +10,12 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
 }
@@ -35,6 +41,7 @@ dependencies {
 
     //ARouter
     compile "com.alibaba:arouter-api:$rootProject.ext.arouterApi"
+    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.ext.arouterCompiler"
     //RxJava
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"

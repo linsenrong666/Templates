@@ -5,6 +5,11 @@
         <meta-data
             android:name="com.linsr.common.utils.glide.GlideModelConfig"
             android:value="GlideModule"/>
+
+        <activity
+            android:name=".biz.FragmentActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 

@@ -160,7 +160,7 @@ public abstract class BaseFragment extends Fragment {
      * 页面可见
      */
     protected void onVisible() {
-        JLog.d(TAG, "Fragment onVisible " + getClass().getSimpleName());
+        JLog.d(TAG, "Fragment onVisible " + getClass().getName());
         JLog.d(TAG, "mOnContentUpdateListeners.size: " + mOnContentUpdateListeners.size());
         for (AbstractOnContentUpdateListener listener : mOnContentUpdateListeners) {
             if (listener.isUpdateHappened()) {
@@ -170,27 +170,17 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     /**
      * 页面隐藏
      */
     protected void onInvisible() {
-        JLog.d(TAG, "Fragment onInvisible " + getClass().getSimpleName());
+        JLog.d(TAG, "Fragment onInvisible " + getClass().getName());
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     @Override

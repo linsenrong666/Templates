@@ -26,7 +26,6 @@ public class CategoryDetailsFragment extends FragmentEx {
     private RecyclerView mRecyclerView;
     private CategoryDetailsAdapter mAdapter;
     private String mCategoryId;
-    private TextView mTitleTextView;
 
     public static CategoryDetailsFragment newInstance(String categoryId) {
 
@@ -53,9 +52,6 @@ public class CategoryDetailsFragment extends FragmentEx {
         mRecyclerView = findViewById(R.id.category_details_recycler_view);
         mAdapter = new CategoryDetailsAdapter(mActivity);
         RecyclerViewHelper.initGridLayout(mActivity, 3, mRecyclerView, mAdapter);
-
-        mTitleTextView = findViewById(R.id.category_details_title_tv);
-        mTitleTextView.setText(mCategoryId);
 
         mAdapter.addData(Mock.getMenuList(50));
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<CategoryMenuPojo>() {

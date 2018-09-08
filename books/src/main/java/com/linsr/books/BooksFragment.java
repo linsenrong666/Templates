@@ -71,11 +71,6 @@ public class BooksFragment extends BaseFragment {
     }
 
     @Override
-    protected void loadData() {
-        super.loadData();
-    }
-
-    @Override
     protected void onVisible() {
         super.onVisible();
         JLog.i(TAG, "====BooksFragment:" + aa);

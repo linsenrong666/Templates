@@ -1,5 +1,6 @@
 package com.linsr.main.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,10 +11,13 @@ import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
+import com.linsr.main.app.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.linsr.common.router.url.MainModule.Activity.OrderMainParams.ORDER_STATUS;
 
 /**
  * Description
@@ -25,6 +29,16 @@ public class OrderMainActivity extends ActivityEx {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+
+    private int mOrderStatus;
+
+    @Override
+    protected void init(Intent intent) {
+        super.init(intent);
+        if (intent != null) {
+            mOrderStatus = intent.getIntExtra(ORDER_STATUS, Constants.OrderStatus.ALL_ORDER);
+        }
+    }
 
     @Override
     protected int getLayoutId() {
@@ -50,6 +64,8 @@ public class OrderMainActivity extends ActivityEx {
         adapter.setTitles(titles);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
+
+        mViewPager.setCurrentItem(mOrderStatus);
     }
 
     private void findView() {

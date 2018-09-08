@@ -1,8 +1,8 @@
 package com.linsr.common.router;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 
 import com.alibaba.android.arouter.facade.Postcard;
@@ -21,7 +21,7 @@ public class Router {
     public static void startActivityForResult(Activity context,
                                               String activity,
                                               int requestCode,
-                                              Map<String, Object> params) {
+                                              Params params) {
         Postcard build = ARouter.getInstance().build(activity);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
@@ -33,7 +33,7 @@ public class Router {
         startActivity(activity, null);
     }
 
-    public static void startActivity(String activity, Map<String, Object> params) {
+    public static void startActivity(String activity, Params params) {
         Postcard build = ARouter.getInstance().build(activity);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
@@ -41,7 +41,7 @@ public class Router {
         build.navigation();
     }
 
-    public static Fragment findFragment(String fragment, Map<String, Object> params) {
+    public static Fragment findFragment(String fragment, Params params) {
         Postcard build = ARouter.getInstance().build(fragment);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
@@ -57,7 +57,7 @@ public class Router {
         ARouter.getInstance().inject(o);
     }
 
-    private static Postcard handleParams(Map<String, Object> params, Postcard build) {
+    private static Postcard handleParams(Params params, Postcard build) {
         for (Map.Entry<String, Object> entry : params.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
@@ -75,6 +75,8 @@ public class Router {
                 build.withBundle(key, (Bundle) value);
             } else if (value instanceof Serializable) {
                 build.withSerializable(key, (Serializable) value);
+            } else if (value instanceof Parcelable) {
+                build.withParcelable(key, (Parcelable) value);
             } else {
                 throw new RuntimeException("参数类型不支持,请补充参数类型.");
             }

@@ -17,7 +17,7 @@ public class ChildCategoryActivity extends ActivityEx {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.main_activity_fragment_container;
+        return R.layout.common_activity_fragment_container;
     }
 
     @Override

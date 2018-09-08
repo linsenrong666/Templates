@@ -12,8 +12,6 @@ public class MainModule {
     private static final String FRAGMENT = ROOT + "fragment/";
 
     public interface Activity {
-        String FRAGMENT_CONTAINER = ACTIVITY + "fragmentContainer";
-
         String MAIN = ACTIVITY + "main";
         String SCAN_CODE = ACTIVITY + "scanCode";
         String PRODUCT_DETAILS = ACTIVITY + "productDetails";
@@ -24,14 +22,19 @@ public class MainModule {
         String SEARCH = ACTIVITY + "search";
         String SEARCH_RESULT = ACTIVITY + "searchResult";
         String PAY_RESULT = ACTIVITY + "payResult";
-        String RECOMMEND_GOODS = ACTIVITY + "recommendGoods";
+
         String ORDER_MAIN = ACTIVITY + "orderMain";
+
+        interface OrderMainParams {
+            String ORDER_STATUS = "order_status";
+        }
+
         String COMMENT = ACTIVITY + "comment";
-        String COMMENT_RESULT = ACTIVITY +"commentResult";
-        String AFTER_SALES = ACTIVITY +"afterSales";
-        String AFTER_SALES_DETAILS = ACTIVITY +"afterSalesDetails";
-        String FLASH_SALE = ACTIVITY +"flashSale";
-        String DAILY_NEW = ACTIVITY +"dailyNew";
+        String COMMENT_RESULT = ACTIVITY + "commentResult";
+        String AFTER_SALES = ACTIVITY + "afterSales";
+        String AFTER_SALES_DETAILS = ACTIVITY + "afterSalesDetails";
+        String FLASH_SALE = ACTIVITY + "flashSale";
+        String DAILY_NEW = ACTIVITY + "dailyNew";
     }
 
     public interface Fragment {
@@ -44,6 +47,6 @@ public class MainModule {
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
         String ORDER_LIST = FRAGMENT + "orderList";
         String MALL_HOME = FRAGMENT + "mallHome";
-        String FLASH_SALE = FRAGMENT +"flashSale";
+        String FLASH_SALE = FRAGMENT + "flashSale";
     }
 }
