@@ -68,6 +68,9 @@
     <string name="main_flash_sales">限时购</string>
     <string name="main_daily_new">每日上新</string>
     <string name="main_flash_buy">抢购</string>
+    <string name="main_selected">已选</string>
+    <string name="main_product_details_express">配送</string>
+    <string name="main_explain">说明</string>
 
     <string-array name="main_order_status_text_list">
         <item>全部订单</item>

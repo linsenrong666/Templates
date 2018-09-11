@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".activities.ProductDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,48 +18,100 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:divider="@drawable/divider_horizontal"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <com.linsr.common.gui.widgets.FlipperView
+                android:id="@+id/product_details_flipper_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+
+            <TextView
+                style="@style/TextView.MainColor"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/middle"
+                android:text="$999"
+                android:textSize="@dimen/font_large"
+                android:textStyle="bold"/>
 
             <TextView
                 style="@style/TextView"
-                android:text="aaaa"
-                android:textSize="80sp"/>
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/middle"
+                android:text="商品名称名称名\r\n商品描述描述描述"/>
 
             <TextView
                 style="@style/TextView"
-                android:text="bbbbb"
-                android:textSize="80sp"/>
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/middle"
+                android:text="赠品"/>
 
-            <TextView
-                style="@style/TextView"
-                android:text="cccc"
-                android:textSize="80sp"/>
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/middle"
+                android:background="@color/white"
+                app:common_content_image="@mipmap/ic_right_arrow"
+                app:common_content_text="@string/app_name"
+                app:common_inner_margin="@dimen/middle"
+                app:common_label_margin_right="@dimen/middle"
+                app:common_label_text="@string/main_selected"
+                app:common_label_text_color="@color/text_primary"/>
 
-            <TextView
-                style="@style/TextView"
-                android:text="ddddddd"
-                android:textSize="80sp"/>
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:common_content_image="@mipmap/ic_right_arrow"
+                app:common_content_text="@string/app_name"
+                app:common_inner_margin="@dimen/middle"
+                app:common_label_margin_right="@dimen/middle"
+                app:common_label_text="@string/main_product_details_express"
+                app:common_label_text_color="@color/text_primary"/>
 
-            <TextView
-                style="@style/TextView"
-                android:text="bbbbb"
-                android:textSize="80sp"/>
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:common_content_image="@mipmap/ic_right_arrow"
+                app:common_content_text="@string/app_name"
+                app:common_inner_margin="@dimen/middle"
+                app:common_label_margin_right="@dimen/middle"
+                app:common_label_text="@string/main_balance_freight"
+                app:common_label_text_color="@color/text_primary"/>
 
-            <TextView
-                style="@style/TextView"
-                android:text="cccc"
-                android:textSize="80sp"/>
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/middle"
+                android:background="@color/white"
+                app:common_content_image="@mipmap/ic_right_arrow"
+                app:common_content_text="测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"
+                app:common_inner_margin="@dimen/middle"
+                app:common_label_margin_right="@dimen/middle"
+                app:common_label_text="@string/main_explain"
+                app:common_label_text_color="@color/text_primary"/>
 
-            <TextView
-                style="@style/TextView"
-                android:text="ddddddd"
-                android:textSize="80sp"/>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/product_details_tab_layout"
+                style="@style/main_default_tab_layout"
+                android:layout_width="match_parent"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/product_details_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
         </LinearLayout>
     </ScrollView>
 
     <com.linsr.main.widgets.ProductDetailsBottomBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentTop="true"/>
 
 </RelativeLayout>

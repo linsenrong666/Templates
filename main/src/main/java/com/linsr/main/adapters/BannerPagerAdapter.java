@@ -38,8 +38,7 @@ public class BannerPagerAdapter extends PagerAdapter {
 
         mViews = new ArrayList<>();
         for (String url : strings) {
-            ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item,
-                    null);
+            ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item, null);
             ImageUtils.load(mContext, url, view);
             mViews.add(view);
         }

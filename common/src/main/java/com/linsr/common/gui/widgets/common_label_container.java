@@ -91,6 +91,11 @@ public class common_label_container extends FrameLayout {
         if (titleColor != -1) {
             mTitleTextView.setTextColor(titleColor);
         }
+        //设置标题margin right
+        float titleMarginRight = a.getDimension(R.styleable.common_label_container_common_label_margin_right, -1);
+        if (titleMarginRight != -1) {
+            ViewUtils.setMargins(mTitleTextView, 0, 0, (int) titleMarginRight, 0);
+        }
         // 设置标题居中权重
         int titleGravity = a.getInt(R.styleable.common_label_container_common_label_text_gravity, -1);
         switch (titleGravity) {

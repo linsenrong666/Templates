@@ -14,8 +14,7 @@
         android:background="@color/transparent30"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:focusable="true"

@@ -49,4 +49,15 @@
         <item name="common_inner_margin_top">@dimen/small</item>
         <item name="common_inner_margin_bottom">@dimen/small</item>
     </style>
+
+    <style name="main_default_tab_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/main_default_tab_layout_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="tabGravity">center</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabSelectedTextColor">@color/colorAccent</item>
+        <item name="tabTextColor">@color/text_primary_black</item>
+    </style>
 </resources>
