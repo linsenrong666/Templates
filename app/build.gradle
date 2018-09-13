@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
         applicationId "com.linsr.templates"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -10,6 +11,12 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
     signingConfigs {
 //        debug {
@@ -22,7 +29,7 @@ android {
         release {
             keyAlias 'templates_release'
             keyPassword 'templates123'
-            storeFile file('templates_release.jks')
+            storeFile file('/Users/Moss/Desktop/Android Project/Templates/templates_release.jks')
             storePassword 'templates123'
             v1SigningEnabled true
             v2SigningEnabled true

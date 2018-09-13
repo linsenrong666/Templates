@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_product_details_titles">
+        <item>图文详情</item>
+        <item>参数/规格</item>
+        <item>常见问题</item>
+    </string-array>
+
+    <string-array name="main_order_status_text_list">
+        <item>全部订单</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待评价</item>
+    </string-array>
+
+    <string-array name="main_order_status_list">
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待评价</item>
+        <item>退款/售后</item>
+    </string-array>
+
+    <string-array name="main_my_card_list">
+        <item>优惠券</item>
+        <item>兑换券/礼品</item>
+        <item>红包</item>
+        <item>会员卡</item>
+    </string-array>
+
+    <string-array name="main_mall_index_list">
+        <item>首页</item>
+        <item>拼团</item>
+        <item>竞拍</item>
+        <item>限时购</item>
+    </string-array>
+
+    <array name="main_order_status_icon_list">
+        <item>@mipmap/ic_me_wait_pay</item>
+        <item>@mipmap/ic_me_to_be_shipped</item>
+        <item>@mipmap/ic_me_to_be_received</item>
+        <item>@mipmap/ic_me_waiting_parity</item>
+        <item>@mipmap/ic_me_after_sale</item>
+    </array>
+
+    <array name="main_card_icon_list">
+        <item>@mipmap/ic_me_card1</item>
+        <item>@mipmap/ic_me_card2</item>
+        <item>@mipmap/ic_me_card3</item>
+        <item>@mipmap/ic_me_card4</item>
+    </array>
+
+</resources>

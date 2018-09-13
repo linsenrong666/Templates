@@ -21,4 +21,12 @@ public class CommonModule {
             String PARAMS = "params";
         }
     }
+
+    public interface Fragment {
+        String WEB_VIEW = FRAGMENT + "webView";
+
+        interface WebViewParams {
+            String URL = "url";
+        }
+    }
 }

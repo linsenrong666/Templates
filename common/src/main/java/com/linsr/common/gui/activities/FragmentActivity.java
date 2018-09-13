@@ -1,10 +1,11 @@
-package com.linsr.common.biz;
+package com.linsr.common.gui.activities;
 
 import android.content.Intent;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.R;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;

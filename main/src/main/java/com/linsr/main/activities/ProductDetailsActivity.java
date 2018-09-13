@@ -1,12 +1,21 @@
 package com.linsr.main.activities;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
+import com.linsr.common.router.Params;
+import com.linsr.common.router.Router;
+import com.linsr.common.router.url.CommonModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 商品详情页
@@ -32,7 +41,19 @@ public class ProductDetailsActivity extends ActivityEx {
     }
 
     private void initViewPager() {
+        String[] titles = getResources().getStringArray(R.array.main_product_details_titles);
+        List<Fragment> list = new ArrayList<>();
+        Params params = new Params();
+        params.put(CommonModule.Fragment.WebViewParams.URL, "https://www.baidu.com");
+        list.add(Router.findFragment(CommonModule.Fragment.WEB_VIEW, params));
+        list.add(Router.findFragment(CommonModule.Fragment.WEB_VIEW, params));
+        list.add(Router.findFragment(CommonModule.Fragment.WEB_VIEW, params));
+        FragmentPagerAdapterEx fragmentPagerAdapterEx = new FragmentPagerAdapterEx(getSupportFragmentManager(), list);
+        fragmentPagerAdapterEx.setTitles(Arrays.asList(titles));
+        mViewPager.setOffscreenPageLimit(list.size());
 
+        mViewPager.setAdapter(fragmentPagerAdapterEx);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void findView() {
