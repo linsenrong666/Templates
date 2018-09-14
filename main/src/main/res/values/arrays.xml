@@ -31,8 +31,8 @@
 
     <string-array name="main_mall_index_list">
         <item>首页</item>
-        <item>拼团</item>
         <item>竞拍</item>
+        <item>拼团</item>
         <item>限时购</item>
     </string-array>
 

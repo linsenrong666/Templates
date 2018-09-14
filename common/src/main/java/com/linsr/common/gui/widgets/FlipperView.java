@@ -31,7 +31,6 @@ public class FlipperView extends FrameLayout implements ViewPager.OnPageChangeLi
     private ViewPager mViewPager;
     private PagerAdapter mPagerAdapter;
     private LinearLayout mDotContainer;
-    private boolean mIsShowDot = true;
 
     private int mDotDrawableResId;
     private int mDotDrawableSelectedResId;

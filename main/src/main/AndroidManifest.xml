@@ -69,6 +69,9 @@
         <activity
             android:name=".activities.DailyNewActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.AuctionDetailsActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

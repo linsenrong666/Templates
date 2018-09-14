@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.Adapter;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.adapter.BaseRecyclerAdapter;
+import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.gui.divider.GridDivider;
 import com.linsr.common.gui.divider.RecycleViewDivider;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
@@ -57,7 +60,14 @@ public class AuctionFragment extends RefreshFragment {
         mHeaderRecyclerView.setHasFixedSize(true);
         mHeaderAdapter = new AuctionHeaderAdapter(mActivity);
         mHeaderRecyclerView.setAdapter(mHeaderAdapter);
-
+        mHeaderAdapter.setOnItemClickListener(
+                new BaseRecyclerAdapter.OnItemClickListener<AuctionPojo>() {
+                    @Override
+                    public void onItemClick(BaseViewHolder<AuctionPojo> holder, int position,
+                                            int itemType, AuctionPojo data) {
+                        Router.startActivity(MainModule.Activity.AUCTION_DETAILS);
+                    }
+                });
         mHeaderAdapter.addData(Mock.getList(10, AuctionPojo.class));
         wrapper.addHeaderView(headerView);
         return wrapper;

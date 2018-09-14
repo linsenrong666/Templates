@@ -77,5 +77,6 @@
     <string name="main_auction_time">剩余时间</string>
     <string name="main_auction_join">立即参与</string>
     <string name="main_auction_sold">已拍出</string>
+    <string name="main_auction_channel">竞拍频道</string>
 
 </resources>
