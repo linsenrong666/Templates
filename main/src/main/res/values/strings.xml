@@ -71,5 +71,11 @@
     <string name="main_selected">已选</string>
     <string name="main_product_details_express">配送</string>
     <string name="main_explain">说明</string>
+    <string name="main_auction">竞拍</string>
+    <string name="main_auction_start_price">起拍价</string>
+    <string name="main_auction_current_price">当前出价</string>
+    <string name="main_auction_time">剩余时间</string>
+    <string name="main_auction_join">立即参与</string>
+    <string name="main_auction_sold">已拍出</string>
 
 </resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/placeholders_index_img1"/>
+
+    <TextView
+        style="@style/TextView"
+        android:layout_gravity="center"
+        android:padding="@dimen/mini"
+        android:text="@string/main_auction_sold"/>
+
+    <View
+        style="@style/common_divider_horizontal"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/auction_header_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/tiny"
+        android:paddingTop="@dimen/tiny"/>
+
+</LinearLayout>

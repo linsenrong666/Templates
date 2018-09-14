@@ -52,7 +52,7 @@ public class MallContainerFragment extends FragmentEx {
     private void initFragments() {
         List<Fragment> list = new ArrayList<>();
         list.add(Router.findFragment(MainModule.Fragment.MALL_HOME));
-        list.add(Router.findFragment(MainModule.Fragment.ORDER_LIST));
+        list.add(Router.findFragment(MainModule.Fragment.AUCTION));
         list.add(Router.findFragment(MainModule.Fragment.ORDER_LIST));
         list.add(Router.findFragment(MainModule.Fragment.ORDER_LIST));
         FragmentPagerAdapterEx adapter = new FragmentPagerAdapterEx(getChildFragmentManager(), list);

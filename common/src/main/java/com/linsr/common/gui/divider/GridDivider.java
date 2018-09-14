@@ -33,9 +33,9 @@ public class GridDivider extends RecyclerView.ItemDecoration {
      int dividerHight  分割线的线宽
      int dividerColor  分割线的颜色
      */
-    public GridDivider(Context context, int dividerHight, int dividerColor) {
+    public GridDivider(Context context, int height, int dividerColor) {
         this(context);
-        mDividerHight = dividerHight;
+        mDividerHight = height;
         mColorPaint = new Paint();
         mColorPaint.setColor(dividerColor);
     }
@@ -44,9 +44,9 @@ public class GridDivider extends RecyclerView.ItemDecoration {
      int dividerHight  分割线的线宽
      Drawable dividerDrawable  图片分割线
      */
-    public GridDivider(Context context, int dividerHight, Drawable dividerDrawable) {
+    public GridDivider(Context context, int height, Drawable dividerDrawable) {
         this(context);
-        mDividerHight = dividerHight;
+        mDividerHight = height;
         mDividerDarwable = dividerDrawable;
     }
 

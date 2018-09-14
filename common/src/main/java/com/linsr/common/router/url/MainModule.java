@@ -49,5 +49,6 @@ public class MainModule {
         String ORDER_LIST = FRAGMENT + "orderList";
         String MALL_HOME = FRAGMENT + "mallHome";
         String FLASH_SALE = FRAGMENT + "flashSale";
+        String AUCTION = FRAGMENT + "auction";
     }
 }
