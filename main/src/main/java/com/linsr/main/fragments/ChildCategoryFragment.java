@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.gui.widgets.CategoryTitle;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
@@ -25,6 +26,7 @@ public class ChildCategoryFragment extends FragmentEx {
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
     private RecommendAdapter mAdapter;
+    private CategoryTitle mCategoryTitle;
 
     @Override
     protected int getLayoutId() {
@@ -58,5 +60,12 @@ public class ChildCategoryFragment extends FragmentEx {
                 mAdapter.addData(Mock.getRecommendList(10));
             }
         });
+
+        mCategoryTitle = findViewById(R.id.child_category_title);
+    }
+
+    @Override
+    protected void loadData() {
+        mCategoryTitle.setData(Mock.getStringList(10));
     }
 }

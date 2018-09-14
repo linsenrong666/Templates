@@ -45,6 +45,7 @@ public class MainModule {
         String CART = FRAGMENT + "cart";
         String ME = FRAGMENT + "me";
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
+        String CATEGORY_DETAILS = FRAGMENT + "categoryDetails";
         String ORDER_LIST = FRAGMENT + "orderList";
         String MALL_HOME = FRAGMENT + "mallHome";
         String FLASH_SALE = FRAGMENT + "flashSale";

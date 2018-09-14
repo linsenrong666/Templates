@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_right_arrow"/>
+                    android:src="@mipmap/ic_arrow_right"/>
             </RelativeLayout>
 
             <RadioGroup
@@ -215,7 +215,7 @@
                     <TextView
                         style="@style/TextView"
                         android:layout_width="match_parent"
-                        android:drawableRight="@mipmap/ic_right_arrow"
+                        android:drawableRight="@mipmap/ic_arrow_right"
                         android:text="@string/main_balance_coupon"/>
                 </RelativeLayout>
 
@@ -243,7 +243,7 @@
                         style="@style/TextView"
                         android:layout_alignParentRight="true"
                         android:drawablePadding="@dimen/small"
-                        android:drawableRight="@mipmap/ic_right_arrow"
+                        android:drawableRight="@mipmap/ic_arrow_right"
                         android:text="不开发票"/>
                 </RelativeLayout>
 

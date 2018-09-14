@@ -248,4 +248,14 @@ public class Mock {
         }
         return list;
     }
+
+    public static List<String> getStringList(int size) {
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            list.add("item" + i);
+        }
+        return list;
+
+    }
 }

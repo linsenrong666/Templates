@@ -48,7 +48,7 @@ public class FragmentActivity extends ActivityEx implements CommonModule.Activit
 
     @Override
     protected void initView() {
-        if (!mHideTitleLayout) {
+        if (!mHideTitleLayout && mTitleTextResId != -1) {
             initTitleView(mTitleTextResId);
         }
 

@@ -23,7 +23,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:drawablePadding="@dimen/mini"
-            android:drawableRight="@mipmap/ic_right_arrow"
+            android:drawableRight="@mipmap/ic_arrow_right"
             android:padding="@dimen/small"
             android:textSize="@dimen/font_mini"
             tools:text="全部订单"/>

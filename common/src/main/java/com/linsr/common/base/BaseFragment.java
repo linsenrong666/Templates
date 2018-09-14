@@ -75,8 +75,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
+    public void onResume() {
+        super.onResume();
+        JLog.d(TAG, "Fragment onResume.called , this: " + getClass().getName());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        JLog.d(TAG, "Fragment onPause.called , this: " + getClass().getName());
     }
 
     @Nullable

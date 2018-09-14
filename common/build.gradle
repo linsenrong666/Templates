@@ -63,6 +63,5 @@ dependencies {
     //badge for bottom navigation view
     compile "q.rorbin:badgeview:$rootProject.ext.badgeViewVersion"
     //lombok
-    compile "javax.annotation:javax.annotation-api:1.2"
-    compile "org.projectlombok:lombok:1.16.20"
+    compile "org.projectlombok:lombok:$rootProject.ext.lombokVerison"
 }

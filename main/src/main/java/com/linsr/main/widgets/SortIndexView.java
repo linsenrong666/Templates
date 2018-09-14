@@ -33,6 +33,7 @@ public class SortIndexView extends FrameLayout {
                 (ViewGroup) getRootView(), false);
 
 
+
         addView(view);
     }
 

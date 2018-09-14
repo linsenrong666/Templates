@@ -13,7 +13,6 @@ import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.CategoryMenuAdapter;
@@ -51,7 +50,7 @@ public class CategoryFragment extends FragmentEx {
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<CategoryMenuPojo>() {
             @Override
             public void onItemClick(BaseViewHolder<CategoryMenuPojo> holder, int position, int itemType, CategoryMenuPojo data) {
-                replaceFragment(CategoryDetailsFragment.newInstance(data.getTitle()));
+                replaceFragment(Router.findFragment(MainModule.Fragment.CATEGORY_DETAILS));
                 mAdapter.setSelectedPosition(position);
             }
         });
@@ -68,18 +67,16 @@ public class CategoryFragment extends FragmentEx {
     private void replaceFragment(Fragment fragment) {
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        // 把碎片添加到碎片中
         transaction.replace(R.id.category_fragment_container, fragment);
         transaction.commit();
     }
 
     @Override
     protected void loadData() {
-        JLog.e("====loadData====");
         mAdapter.addData(Mock.getMenuList(20));
         int selectedPosition = 0;
         mAdapter.setSelectedPosition(selectedPosition);
-        replaceFragment(CategoryDetailsFragment.newInstance("item-"));
+        replaceFragment(Router.findFragment(MainModule.Fragment.CATEGORY_DETAILS));
     }
 
 }

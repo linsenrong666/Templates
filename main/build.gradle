@@ -42,5 +42,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':common')
+    //lombok
+    compile "org.projectlombok:lombok:$rootProject.ext.lombokVerison"
+    compile "com.alibaba:arouter-api:$rootProject.ext.arouterApi"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.ext.arouterCompiler"
 }

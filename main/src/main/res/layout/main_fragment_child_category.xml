@@ -7,9 +7,10 @@
 
     <include layout="@layout/main_layout_search"/>
 
-   <com.linsr.main.widgets.SortIndexView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
+    <com.linsr.common.gui.widgets.CategoryTitle
+        android:id="@+id/child_category_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <include layout="@layout/main_layout_refresh_recycler_view"/>
 </LinearLayout>
