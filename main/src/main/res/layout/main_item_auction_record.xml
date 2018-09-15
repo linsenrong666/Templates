@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/small"
+    android:paddingRight="@dimen/small">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="@dimen/tiny"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginRight="@dimen/small"
+        android:layout_marginTop="@dimen/tiny"
+        android:src="@mipmap/common_ic_launcher"/>
+
+    <TextView
+        style="@style/TextView"
+        android:text="张***三"
+        android:textSize="@dimen/font_small"/>
+
+    <TextView
+        style="@style/TextView.MainColor"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="张***三"
+        android:textSize="@dimen/font_small"/>
+
+    <TextView
+        style="@style/TextView"
+        android:gravity="right"
+        android:text="2018.01.01 15:21"
+        android:textSize="@dimen/font_small"/>
+
+</LinearLayout>

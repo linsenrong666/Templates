@@ -18,6 +18,7 @@
         <attr name="common_content_text" format="string"/>
         <attr name="common_content_text_size" format="dimension"/>
         <attr name="common_content_text_color" format="color"/>
+        <attr name="common_content_text_bold" format="boolean"/>
         <attr name="common_content_edit_size" format="dimension"/>
         <attr name="common_content_image" format="reference"/>
         <attr name="common_show_edit_text" format="boolean"/>
@@ -70,6 +71,11 @@
         <attr name="starEmpty" format="reference"/>
         <!--星星满图-->
         <attr name="starFill" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="WatchTextView">
+        <attr name="watchLabelText" format="string"/>
+        <attr name="watchShowLabel" format="boolean"/>
     </declare-styleable>
 
 </resources>

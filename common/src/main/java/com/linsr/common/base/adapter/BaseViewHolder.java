@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,13 @@ import java.lang.reflect.Field;
  */
 public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
-    protected Context mContext;
+    protected final Context mContext;
+    private final SparseArray<View> mCacheViews;
 
     public BaseViewHolder(Context context, View itemView) {
         super(itemView);
         mContext = context;
-        initView();
+        mCacheViews = new SparseArray<>();
     }
 
     public static <T> BaseViewHolder<T> createViewHolder(Context context, View itemView) {
@@ -53,26 +55,13 @@ public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
      */
     public abstract void convert(int position, T data, int itemType);
 
-    protected <V extends View> V findViewById(@IdRes int id) {
-        return itemView.findViewById(id);
-    }
-
-    private void initView() {
-        Field[] fields = this.getClass().getDeclaredFields();
-        if (fields != null && fields.length > 0) {
-            for (Field field : fields) {
-                BindView viewInject = field.getAnnotation(BindView.class);
-                if (viewInject != null) {
-                    int id = viewInject.id();
-                    field.setAccessible(true);
-                    try {
-                        field.set(this, itemView.findViewById(id));
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+    public   <T extends View> T findViewById(int viewId) {
+        View view = mCacheViews.get(viewId);
+        if (view == null) {
+            view = itemView.findViewById(viewId);
+            mCacheViews.put(viewId, view);
         }
+        return (T) view;
     }
 
     protected String getString(int resId, Object... args) {

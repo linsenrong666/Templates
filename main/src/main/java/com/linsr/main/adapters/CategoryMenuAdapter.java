@@ -2,22 +2,14 @@ package com.linsr.main.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.base.adapter.BindView;
 import com.linsr.main.R;
 import com.linsr.main.model.CategoryMenuPojo;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Description

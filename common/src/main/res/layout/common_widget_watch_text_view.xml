@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/watch_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/small"
+        android:gravity="center"
+        android:text="剩余时间"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/font_mini"/>
+
+    <TextView
+        android:id="@+id/watch_hour_tv"
+        style="@style/FlashSalesTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"/>
+
+    <TextView
+        android:id="@+id/watch_min_tv"
+        style="@style/FlashSalesTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"/>
+
+    <TextView
+        android:id="@+id/watch_sec_tv"
+        style="@style/FlashSalesTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"/>
+
+</LinearLayout>

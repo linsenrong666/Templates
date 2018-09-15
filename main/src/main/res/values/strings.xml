@@ -78,5 +78,6 @@
     <string name="main_auction_join">立即参与</string>
     <string name="main_auction_sold">已拍出</string>
     <string name="main_auction_channel">竞拍频道</string>
+    <string name="main_auction_current_top_price">当前出价最高者</string>
 
 </resources>

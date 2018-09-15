@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -99,7 +98,6 @@ public class CategoryTitle extends LinearLayout {
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
     }
 
-
     private void toggle() {
         if (mPopupWindow == null) {
             return;
@@ -138,8 +136,7 @@ public class CategoryTitle extends LinearLayout {
             textView.setBackground(mContext.getResources().getDrawable(R.drawable.bg_stroke_btn));
             textView.setSingleLine();
             textView.setGravity(Gravity.CENTER);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.font_small));
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContext.getResources().getDimension(R.dimen.font_small));
             int hor = DisplayUtils.dp2px(mContext, 10);
             int ver = DisplayUtils.dp2px(mContext, 6);
             textView.setPadding(hor, ver, hor, ver);

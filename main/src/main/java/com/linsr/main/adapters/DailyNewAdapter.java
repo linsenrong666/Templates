@@ -27,7 +27,6 @@ public class DailyNewAdapter extends BaseRecyclerAdapter<DailyNewPojo> {
     @Override
     public BaseViewHolder<DailyNewPojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.main_item_flash_sale_item, parent, false);
-
         return new Holder(mContext,view );
     }
 

@@ -134,6 +134,9 @@ public class common_label_container extends FrameLayout {
         if (contentTextColor != -1) {
             mContentTextView.setTextColor(contentTextColor);
         }
+        //设置内容文字是否加粗
+        boolean contentTextBold = a.getBoolean(R.styleable.common_label_container_common_content_text_bold, false);
+        mContentTextView.getPaint().setFakeBoldText(contentTextBold);
         //设置左边图片
         Drawable drawable = a.getDrawable(R.styleable.common_label_container_common_content_image);
         if (drawable != null) {

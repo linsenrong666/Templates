@@ -51,5 +51,6 @@ public class MainModule {
         String MALL_HOME = FRAGMENT + "mallHome";
         String FLASH_SALE = FRAGMENT + "flashSale";
         String AUCTION = FRAGMENT + "auction";
+        String GROUP_SHOPPING = FRAGMENT +"groupShopping";
     }
 }

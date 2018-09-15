@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.base.adapter.BindView;
 import com.linsr.main.R;
 import com.linsr.main.model.CategoryMenuPojo;
 

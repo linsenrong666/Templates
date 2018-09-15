@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/background"
+    android:fillViewport="true">
 
-    <com.linsr.common.gui.widgets.FlipperView
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.linsr.common.gui.widgets.FlipperView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
 
 
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/small">
+
+            <TextView
+                android:id="@+id/auction_details_goods_name_tv"
+                style="@style/TextView.TitleLv3"
+                android:text="极简主义极简主义极简主义极简主义极简主义极简主义极简主义"
+                android:textStyle="normal"/>
+
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:id="@+id/auction_details_start_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/auction_details_goods_name_tv"
+                android:layout_marginTop="@dimen/small"
+                app:common_content_text="$20"
+                app:common_content_text_bold="true"
+                app:common_content_text_color="@color/text_primary_black"
+                app:common_content_text_size="@dimen/font_middle"
+                app:common_label_text="@string/main_auction_start_price"
+                app:common_label_text_color="@color/text_primary"
+                app:common_label_text_size="@dimen/font_mini"
+                app:common_label_width="60dp"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:id="@+id/auction_details_current_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/auction_details_start_price_tv"
+                android:layout_marginTop="@dimen/mini"
+                app:common_content_text="$20"
+                app:common_content_text_bold="true"
+                app:common_content_text_color="@color/main_color"
+                app:common_content_text_size="@dimen/font_middle"
+                app:common_label_text="@string/main_auction_current_price"
+                app:common_label_text_color="@color/text_primary"
+                app:common_label_text_size="@dimen/font_mini"
+                app:common_label_width="60dp"/>
+
+            <com.linsr.common.gui.widgets.WatchTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/auction_details_goods_name_tv"
+                android:layout_marginTop="@dimen/tiny"
+                app:watchLabelText="@string/main_auction_time"
+                app:watchShowLabel="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mini"
+            android:background="@color/white"
+            android:divider="@drawable/divider_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <TextView
+                style="@style/TextView.TitleLv3"
+                android:padding="@dimen/mini"
+                android:text="@string/main_auction_current_top_price"
+                android:textStyle="normal"/>
+
+            <include layout="@layout/main_item_auction_record"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            android:background="@color/white"/>
+    </LinearLayout>
+</ScrollView>

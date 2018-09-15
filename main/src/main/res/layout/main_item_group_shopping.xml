@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/small">
+
+    <ImageView
+        android:id="@+id/item_auction_pic_iv"
+        style="@style/ImageView.Goods"
+        android:layout_centerVertical="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_toRightOf="@id/item_auction_pic_iv"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_auction_icon"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:text="@string/main_auction"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_mini"/>
+
+            <TextView
+                style="@style/TextView.TitleLv3"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginRight="@dimen/small"
+                android:singleLine="true"
+                android:text="商品名称商品名称商品名称"
+                android:textStyle="normal"/>
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextView"
+            android:layout_marginTop="@dimen/tiny"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/font_small"/>
+
+        <com.linsr.common.gui.widgets.common_label_container
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/middle"
+            app:common_content_text="￥20"
+            app:common_label_text="@string/main_auction_start_price"
+            app:common_label_text_size="@dimen/font_small"
+            app:common_label_width="60dp"/>
+
+        <com.linsr.common.gui.widgets.common_label_container
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tiny"
+            app:common_content_text="￥20"
+            app:common_inner_margin_top="@dimen/tiny"
+            app:common_label_text="@string/main_auction_current_price"
+            app:common_label_text_size="@dimen/font_small"
+            app:common_label_width="60dp"/>
+
+        <com.linsr.common.gui.widgets.common_label_container
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/tiny"
+            app:common_content_text="￥20"
+            app:common_label_text="@string/main_auction_time"
+            app:common_label_text_size="@dimen/font_small"
+            app:common_label_width="60dp"/>
+    </LinearLayout>
+
+    <TextView
+        style="@style/TextViewButton.MainColor"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/middle"
+        android:text="@string/main_auction_join"/>
+</RelativeLayout>

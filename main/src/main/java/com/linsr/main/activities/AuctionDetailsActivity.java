@@ -12,6 +12,7 @@ import com.linsr.main.R;
  */
 @Route(path = MainModule.Activity.AUCTION_DETAILS)
 public class AuctionDetailsActivity extends ActivityEx {
+
     @Override
     protected int getLayoutId() {
         return R.layout.main_activity_auction_details;
