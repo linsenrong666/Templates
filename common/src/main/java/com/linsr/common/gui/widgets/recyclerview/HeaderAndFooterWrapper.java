@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 
 import com.linsr.common.base.adapter.BaseViewHolder;
 
-import java.lang.ref.WeakReference;
-
 
 public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
 
@@ -20,11 +18,11 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
     private SparseArrayCompat<View> mHeaderViews = new SparseArrayCompat<>();
     private SparseArrayCompat<View> mFootViews = new SparseArrayCompat<>();
 
-    private WeakReference<RecyclerView.Adapter> mInnerAdapter;
+    private RecyclerView.Adapter mInnerAdapter;
 
     public HeaderAndFooterWrapper(RecyclerView.Adapter adapter) {
-        mInnerAdapter = new WeakReference<>(adapter);
-        mInnerAdapter.get().registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+        mInnerAdapter = adapter;
+        mInnerAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
                 notifyDataSetChanged();
@@ -40,7 +38,7 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
         } else if (mFootViews.get(viewType) != null) {
             return BaseViewHolder.createViewHolder(parent.getContext(), mFootViews.get(viewType));
         }
-        return mInnerAdapter.get().onCreateViewHolder(parent, viewType);
+        return mInnerAdapter.onCreateViewHolder(parent, viewType);
     }
 
     @Override
@@ -50,11 +48,11 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
         } else if (isFooterViewPos(position)) {
             return mFootViews.keyAt(position - getHeadersCount() - getRealItemCount());
         }
-        return mInnerAdapter.get().getItemViewType(position - getHeadersCount());
+        return mInnerAdapter.getItemViewType(position - getHeadersCount());
     }
 
     private int getRealItemCount() {
-        return mInnerAdapter.get().getItemCount();
+        return mInnerAdapter.getItemCount();
     }
 
 
@@ -66,7 +64,7 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
         if (isFooterViewPos(position)) {
             return;
         }
-        mInnerAdapter.get().onBindViewHolder(holder, position - getHeadersCount());
+        mInnerAdapter.onBindViewHolder(holder, position - getHeadersCount());
     }
 
     @Override
@@ -76,7 +74,7 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
 
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
-        WrapperUtils.onAttachedToRecyclerView(mInnerAdapter.get(), recyclerView, new WrapperUtils.SpanSizeCallback() {
+        WrapperUtils.onAttachedToRecyclerView(mInnerAdapter, recyclerView, new WrapperUtils.SpanSizeCallback() {
             @Override
             public int getSpanSize(GridLayoutManager layoutManager,
                                    GridLayoutManager.SpanSizeLookup oldLookup, int position) {
@@ -96,7 +94,7 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter {
 
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
-        mInnerAdapter.get().onViewAttachedToWindow(holder);
+        mInnerAdapter.onViewAttachedToWindow(holder);
         int position = holder.getLayoutPosition();
         if (isHeaderViewPos(position) || isFooterViewPos(position)) {
             WrapperUtils.setFullSpan(holder);

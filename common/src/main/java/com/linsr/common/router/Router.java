@@ -1,12 +1,15 @@
 package com.linsr.common.router;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.linsr.common.R;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -22,7 +25,9 @@ public class Router {
                                               String activity,
                                               int requestCode,
                                               Params params) {
-        Postcard build = ARouter.getInstance().build(activity);
+        Postcard build = ARouter.getInstance()
+                .build(activity)
+                .withTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
         }
@@ -34,7 +39,8 @@ public class Router {
     }
 
     public static void startActivity(String activity, Params params) {
-        Postcard build = ARouter.getInstance().build(activity);
+        Postcard build = ARouter.getInstance()
+                .build(activity);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
         }
