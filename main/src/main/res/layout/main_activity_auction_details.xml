@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".activities.AuctionDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,8 +15,9 @@
         android:orientation="vertical">
 
         <com.linsr.common.gui.widgets.FlipperView
+            android:id="@+id/auction_details_flipper_view"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="300dp"/>
 
 
         <RelativeLayout
@@ -90,10 +93,32 @@
             <include layout="@layout/main_item_auction_record"/>
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/auction_details_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:background="@color/white"/>
+
+        <LinearLayout
+            android:id="@+id/auction_details_content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small"
-            android:background="@color/white"/>
+            android:layout_marginTop="@dimen/mini"
+            android:background="@color/white"
+            android:divider="@drawable/divider_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <TextView
+                style="@style/TextView.TitleLv3"
+                android:padding="@dimen/mini"
+                android:text="@string/main_goods_desc"
+                android:textStyle="normal"/>
+
+
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

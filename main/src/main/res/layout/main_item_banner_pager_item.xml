@@ -5,5 +5,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_banner_pic_iv"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/main_item_banner_height"
+    android:layout_height="match_parent"
     android:scaleType="centerCrop"/>

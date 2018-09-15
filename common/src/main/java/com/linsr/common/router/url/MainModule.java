@@ -16,6 +16,12 @@ public class MainModule {
         String SCAN_CODE = ACTIVITY + "scanCode";
         String PRODUCT_DETAILS = ACTIVITY + "productDetails";
         String CHILD_CATEGORY = ACTIVITY + "childCategory";
+
+        interface ChildCategoryParams {
+            String MENU_LIST = "menu_list";
+            String ENTER_POSITION = "enter_position";
+        }
+
         String BALANCE = ACTIVITY + "balance";
         String ADDRESS_LIST = ACTIVITY + "addressList";
         String ADD_ADDRESS = ACTIVITY + "addAddress";
@@ -35,7 +41,7 @@ public class MainModule {
         String AFTER_SALES_DETAILS = ACTIVITY + "afterSalesDetails";
         String FLASH_SALE = ACTIVITY + "flashSale";
         String DAILY_NEW = ACTIVITY + "dailyNew";
-        String AUCTION_DETAILS = ACTIVITY +"auctionDetails";
+        String AUCTION_DETAILS = ACTIVITY + "auctionDetails";
     }
 
     public interface Fragment {
@@ -51,6 +57,6 @@ public class MainModule {
         String MALL_HOME = FRAGMENT + "mallHome";
         String FLASH_SALE = FRAGMENT + "flashSale";
         String AUCTION = FRAGMENT + "auction";
-        String GROUP_SHOPPING = FRAGMENT +"groupShopping";
+        String GROUP_SHOPPING = FRAGMENT + "groupShopping";
     }
 }

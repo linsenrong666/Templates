@@ -14,7 +14,8 @@ public abstract class SimpleAdapter<T> extends BaseRecyclerAdapter<T> {
 
     protected abstract int getLayoutId();
 
-    protected abstract void bindData(BaseViewHolder<T> holder, int position, T data, int itemType);
+    protected abstract void bindData(BaseViewHolder<T> holder, int position,
+                                     T data, int itemType);
 
     public SimpleAdapter(Context context) {
         super(context);

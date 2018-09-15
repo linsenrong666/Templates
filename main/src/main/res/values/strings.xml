@@ -79,5 +79,7 @@
     <string name="main_auction_sold">已拍出</string>
     <string name="main_auction_channel">竞拍频道</string>
     <string name="main_auction_current_top_price">当前出价最高者</string>
+    <string name="main_goods_desc">商品描述</string>
+    <string name="main_auction_show_last_record"><![CDATA[显示最近的十条 >]]></string>
 
 </resources>

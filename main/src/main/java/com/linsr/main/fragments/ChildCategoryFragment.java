@@ -21,51 +21,15 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
  * @author Linsr 2018/8/14 上午11:11
  */
 @Route(path = MainModule.Fragment.CHILD_CATEGORY)
-public class ChildCategoryFragment extends FragmentEx {
+public class ChildCategoryFragment extends RefreshFragment {
 
-    private SmartRefreshLayout mRefreshLayout;
-    private RecyclerView mRecyclerView;
     private RecommendAdapter mAdapter;
-    private CategoryTitle mCategoryTitle;
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.main_fragment_child_category;
-    }
-
-    @Override
-    protected void initArguments(Bundle arguments) {
-
-    }
-
-    @Override
-    protected void initView() {
-        mRecyclerView = findViewById(R.id.main_recycler_view);
+    protected void initRecyclerView(RecyclerView recyclerView) {
         mAdapter = new RecommendAdapter(mContext);
         mAdapter.addData(Mock.getRecommendList(21));
         RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);
-
-        mRefreshLayout = findViewById(R.id.main_refresh_layout);
-        mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshLayout) {
-                refreshLayout.finishLoadMore();
-                mAdapter.addData(Mock.getRecommendList(5));
-            }
-
-            @Override
-            public void onRefresh(RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh();
-                mAdapter.clear();
-                mAdapter.addData(Mock.getRecommendList(10));
-            }
-        });
-
-        mCategoryTitle = findViewById(R.id.child_category_title);
     }
 
-    @Override
-    protected void loadData() {
-        mCategoryTitle.setData(Mock.getStringList(10));
-    }
 }

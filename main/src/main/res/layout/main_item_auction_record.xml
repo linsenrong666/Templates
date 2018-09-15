@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/small"
@@ -27,12 +27,12 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="张***三"
+        android:text="$1288"
         android:textSize="@dimen/font_small"/>
 
     <TextView
         style="@style/TextView"
-        android:gravity="right"
+        android:gravity="end"
         android:text="2018.01.01 15:21"
         android:textSize="@dimen/font_small"/>
 

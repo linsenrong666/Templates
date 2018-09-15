@@ -2,11 +2,13 @@ package com.linsr.common.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.linsr.common.R;
+import com.linsr.common.gui.divider.RecycleViewDivider;
 
 /**
  * Description
@@ -15,9 +17,44 @@ import com.linsr.common.R;
  */
 public class RecyclerViewHelper {
 
+    public static void initNestScrollView(Context context,
+                                          RecyclerView recyclerView,
+                                          RecyclerView.Adapter adapter,
+                                          boolean hasDivider) {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setFocusable(false);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+
+        if (hasDivider) {
+            recyclerView.addItemDecoration(new RecycleViewDivider(context,
+                    LinearLayoutManager.VERTICAL,
+                    DisplayUtils.dp2px(context, 0.5f),
+                    ContextCompat.getColor(context, R.color.divider)));
+        }
+    }
+
     public static void initDefault(Context context,
                                    RecyclerView recyclerView,
                                    RecyclerView.Adapter adapter) {
+        initDefault(context, recyclerView, adapter, false);
+    }
+
+    public static void initDefault(Context context,
+                                   RecyclerView recyclerView,
+                                   RecyclerView.Adapter adapter,
+                                   boolean hasDivider) {
+        if (hasDivider) {
+            recyclerView.addItemDecoration(new RecycleViewDivider(context,
+                    LinearLayoutManager.VERTICAL, R.drawable.divider_horizontal));
+        }
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);

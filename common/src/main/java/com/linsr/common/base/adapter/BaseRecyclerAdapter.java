@@ -141,7 +141,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         notifyDataSetChanged();
     }
 
-    private void ensureDataNotNull() {
+    protected void ensureDataNotNull() {
         if (null == mList) {
             mList = new ArrayList<>();
         }
