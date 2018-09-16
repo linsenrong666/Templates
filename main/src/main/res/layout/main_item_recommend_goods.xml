@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/recommend_goods_img_iv"
-        android:layout_width="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:layout_height="120dp"
         android:src="@mipmap/placeholders_goods"/>
 
     <TextView

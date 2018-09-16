@@ -65,10 +65,10 @@
     <style name="TextViewButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">@dimen/mini</item>
-        <item name="android:paddingBottom">@dimen/mini</item>
-        <item name="android:paddingLeft">@dimen/middle</item>
-        <item name="android:paddingRight">@dimen/middle</item>
+        <item name="android:paddingTop">@dimen/tiny</item>
+        <item name="android:paddingBottom">@dimen/tiny</item>
+        <item name="android:paddingLeft">@dimen/small</item>
+        <item name="android:paddingRight">@dimen/small</item>
         <item name="android:textSize">@dimen/font_middle</item>
     </style>
 

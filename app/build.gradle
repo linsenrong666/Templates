@@ -66,6 +66,7 @@ android {
         }
 
         debug {
+            debuggable true
             minifyEnabled false
             versionNameSuffix "_debug"
             signingConfig signingConfigs.debug

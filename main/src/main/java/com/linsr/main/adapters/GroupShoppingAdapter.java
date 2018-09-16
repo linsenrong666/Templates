@@ -1,6 +1,8 @@
 package com.linsr.main.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 
 import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.base.adapter.SimpleAdapter;
@@ -14,6 +16,7 @@ import com.linsr.main.model.GroupShoppingPojo;
  */
 public class GroupShoppingAdapter extends SimpleAdapter<GroupShoppingPojo> {
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.main_item_group_shopping;
@@ -24,7 +27,7 @@ public class GroupShoppingAdapter extends SimpleAdapter<GroupShoppingPojo> {
                             GroupShoppingPojo data, int itemType) {
 
     }
-
+    
     public GroupShoppingAdapter(Context context) {
         super(context);
     }

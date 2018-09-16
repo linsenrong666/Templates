@@ -1,19 +1,17 @@
 package com.linsr.main.fragments;
 
-import android.os.Bundle;
+
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.linsr.common.biz.FragmentEx;
-import com.linsr.common.gui.widgets.CategoryTitle;
+import com.linsr.common.base.adapter.BaseRecyclerAdapter;
+import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.RecyclerViewHelper;
-import com.linsr.main.R;
 import com.linsr.main.adapters.RecommendAdapter;
+import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.utils.Mock;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 /**
  * Description
@@ -29,6 +27,14 @@ public class ChildCategoryFragment extends RefreshFragment {
     protected void initRecyclerView(RecyclerView recyclerView) {
         mAdapter = new RecommendAdapter(mContext);
         mAdapter.addData(Mock.getRecommendList(21));
+        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<RecommendPojo>() {
+
+            @Override
+            public void onItemClick(BaseViewHolder<RecommendPojo> holder, int position,
+                                    int itemType, RecommendPojo data) {
+                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS);
+            }
+        });
         RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);
     }
 

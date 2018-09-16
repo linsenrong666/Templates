@@ -9,15 +9,16 @@
     android:padding="@dimen/small">
 
     <ImageView
-        android:id="@+id/item_auction_pic_iv"
+        android:id="@+id/item_group_shopping_pic_iv"
         style="@style/ImageView.Goods"
         android:layout_centerVertical="true"/>
 
     <LinearLayout
+        android:id="@+id/item_group_shopping_content_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/small"
-        android:layout_toRightOf="@id/item_auction_pic_iv"
+        android:layout_toRightOf="@id/item_group_shopping_pic_iv"
         android:orientation="vertical">
 
         <LinearLayout
@@ -29,10 +30,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_auction_icon"
+                android:background="@drawable/bg_group_shopping_icon"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp"
-                android:text="@string/main_auction"
+                android:text="@string/main_group_shopping"
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_mini"/>
 
@@ -52,41 +53,94 @@
             android:maxLines="2"
             android:text="商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述"
             android:textColor="@color/text_primary"
-            android:textSize="@dimen/font_small"/>
+            android:textSize="@dimen/font_mini"/>
 
-        <com.linsr.common.gui.widgets.common_label_container
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/middle"
-            app:common_content_text="￥20"
-            app:common_label_text="@string/main_auction_start_price"
-            app:common_label_text_size="@dimen/font_small"
-            app:common_label_width="60dp"/>
+            android:layout_marginTop="@dimen/middle">
 
-        <com.linsr.common.gui.widgets.common_label_container
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/item_group_shopping_btn"
+                style="@style/TextViewButton.MainColor"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/small"
+                android:text="@string/main_group_shopping"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:id="@+id/item_group_shopping_retail_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/item_group_shopping_btn"
+                app:common_content_text="￥20"
+                app:common_label_text="@string/main_retail_price"
+                app:common_label_text_color="@color/text_primary"
+                app:common_label_text_size="@dimen/font_mini"
+                app:common_label_width="40dp"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:id="@+id/item_group_shopping_group_tv"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_group_shopping_retail_tv"
+                android:layout_marginTop="@dimen/tiny"
+                app:common_content_text="￥20"
+                app:common_label_text="@string/main_group_price"
+                app:common_label_text_color="@color/text_primary"
+                app:common_label_text_size="@dimen/font_mini"
+                app:common_label_width="40dp"/>
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_group_shopping_retail_tv"
+                android:layout_marginTop="@dimen/tiny"
+                android:layout_toLeftOf="@id/item_group_shopping_btn"
+                android:layout_toRightOf="@id/item_group_shopping_group_tv"
+                app:common_content_text="￥20"
+                app:common_label_text="@string/main_save_money"
+                app:common_label_text_color="@color/text_primary"
+                app:common_label_text_size="@dimen/font_mini"
+                app:common_label_width="30dp"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tiny"
-            app:common_content_text="￥20"
-            app:common_inner_margin_top="@dimen/tiny"
-            app:common_label_text="@string/main_auction_current_price"
-            app:common_label_text_size="@dimen/font_small"
-            app:common_label_width="60dp"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <com.linsr.common.gui.widgets.common_label_container
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/tiny"
-            app:common_content_text="￥20"
-            app:common_label_text="@string/main_auction_time"
-            app:common_label_text_size="@dimen/font_small"
-            app:common_label_width="60dp"/>
+            <TextView
+                style="@style/TextView.TitleLv3"
+                android:text="0"
+                android:textSize="@dimen/font_tiny"/>
+
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/tiny"
+                android:layout_marginLeft="@dimen/tiny"
+                android:layout_marginRight="@dimen/tiny"
+                android:max="3"
+                android:progress="1"
+                android:progressDrawable="@drawable/progress_bar_main_color"/>
+
+            <TextView
+                style="@style/TextView.TitleLv3"
+                android:layout_marginRight="@dimen/small"
+                android:text="1/3"
+                android:textSize="@dimen/font_tiny"/>
+
+            <TextView
+                style="@style/TextView.TitleLv3"
+                android:text="还差3人"
+                android:textSize="@dimen/font_tiny"/>
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        style="@style/TextViewButton.MainColor"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/middle"
-        android:text="@string/main_auction_join"/>
 </RelativeLayout>

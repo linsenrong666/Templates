@@ -81,5 +81,9 @@
     <string name="main_auction_current_top_price">当前出价最高者</string>
     <string name="main_goods_desc">商品描述</string>
     <string name="main_auction_show_last_record"><![CDATA[显示最近的十条 >]]></string>
+    <string name="main_group_shopping">拼团</string>
+    <string name="main_retail_price">零售价</string>
+    <string name="main_group_price">拼团价</string>
+    <string name="main_save_money">节省</string>
 
 </resources>
