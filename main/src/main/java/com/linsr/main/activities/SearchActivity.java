@@ -7,6 +7,8 @@ import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
+import com.linsr.main.widgets.MainSearchTitleLayout;
+import com.linsr.main.widgets.MainSearchTitleLayoutManager;
 
 /**
  * Description
@@ -15,6 +17,8 @@ import com.linsr.main.R;
  */
 @Route(path = MainModule.Activity.SEARCH)
 public class SearchActivity extends ActivityEx {
+
+    private MainSearchTitleLayout mSearchTitleLayout;
 
     @Override
     protected int getLayoutId() {
@@ -28,13 +32,9 @@ public class SearchActivity extends ActivityEx {
 
     @Override
     protected void initView() {
-
-        findViewById(R.id.search_title_layout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Router.startActivity(MainModule.Activity.SEARCH_RESULT);
-            }
-        });
+        mSearchTitleLayout = findViewById(R.id.search_title_layout);
+        MainSearchTitleLayoutManager mainSearchTitleLayoutManager = new MainSearchTitleLayoutManager();
+        mainSearchTitleLayoutManager.setUp(this, mSearchTitleLayout);
     }
 
 

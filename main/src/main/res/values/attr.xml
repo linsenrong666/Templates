@@ -9,4 +9,15 @@
         <attr name="mainTitleList" format="reference"/>
         <attr name="mainIconList" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="MainSearchTitleLayout">
+        <attr name="mainSearchLeftImage" format="reference"/>
+        <attr name="mainSearchShowLeftImage" format="boolean"/>
+        <attr name="mainSearchLeftText" format="string"/>
+        <attr name="mainSearchShowLeftText" format="boolean"/>
+        <attr name="mainSearchLeftTextDrawable" format="reference"/>
+        <attr name="mainSearchEnableEdit" format="boolean"/>
+        <attr name="mainSearchRightImage" format="reference"/>
+    </declare-styleable>
+
 </resources>

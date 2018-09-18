@@ -3,8 +3,6 @@ package com.linsr.main.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.MapView;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.LoginModule;

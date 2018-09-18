@@ -1,22 +1,18 @@
 package com.linsr.main.fragments;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.alibaba.android.arouter.facade.annotation.Param;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.DisplayUtils;
-import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
@@ -27,6 +23,8 @@ import com.linsr.main.adapters.holder.ShopWindowHolder;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.utils.Mock;
+import com.linsr.main.widgets.MainSearchTitleLayoutManager;
+import com.linsr.main.widgets.MainSearchTitleLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -46,6 +44,7 @@ public class HomeFragment extends FragmentEx implements CommonModule.Activity.Fr
     private HeaderAndFooterWrapper mWrapper;
     private HomeAdapter mAdapter;
     private ImageView mLeftImage;
+    private MainSearchTitleLayout mSearchTitleLayout;
 
     @Override
     protected int getLayoutId() {
@@ -67,10 +66,15 @@ public class HomeFragment extends FragmentEx implements CommonModule.Activity.Fr
     }
 
     private void findView() {
+        mSearchTitleLayout = findViewById(R.id.home_search_title);
         mLeftImage = findViewById(R.id.layout_search_left_img);
         mLeftImage.setImageResource(R.mipmap.ic_logo_1);
         mRefreshLayout = findViewById(R.id.home_refresh_layout);
         mRecyclerView = findViewById(R.id.home_recycler_view);
+
+        MainSearchTitleLayoutManager searchTitleLayoutManager = new MainSearchTitleLayoutManager();
+        searchTitleLayoutManager.setUp(mActivity, mSearchTitleLayout,
+                MainSearchTitleLayoutManager.PAGE_TYPE_HOME);
     }
 
     private void initAdapter() {

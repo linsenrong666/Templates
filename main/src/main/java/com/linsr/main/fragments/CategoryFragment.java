@@ -18,6 +18,8 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.CategoryMenuAdapter;
 import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.utils.Mock;
+import com.linsr.main.widgets.MainSearchTitleLayout;
+import com.linsr.main.widgets.MainSearchTitleLayoutManager;
 
 /**
  * Description
@@ -29,7 +31,8 @@ public class CategoryFragment extends FragmentEx {
 
     private RecyclerView mRecyclerView;
     private CategoryMenuAdapter mAdapter;
-    private View mSearchLayout;
+    private MainSearchTitleLayout mSearchTitleLayout;
+
 
     @Override
     protected int getLayoutId() {
@@ -55,13 +58,9 @@ public class CategoryFragment extends FragmentEx {
             }
         });
 
-        mSearchLayout = findViewById(R.id.category_title_layout);
-        mSearchLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Router.startActivity(MainModule.Activity.SEARCH);
-            }
-        });
+        mSearchTitleLayout = findViewById(R.id.category_search_title_layout);
+        MainSearchTitleLayoutManager manager = new MainSearchTitleLayoutManager();
+        manager.setUp(mActivity, mSearchTitleLayout);
     }
 
     private void replaceFragment(Fragment fragment) {
