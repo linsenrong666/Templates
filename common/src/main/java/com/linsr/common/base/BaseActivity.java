@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     protected DialogFactory mDialogFactory;
 
     private RelativeLayout mMiddleLayout;
-    protected FrameLayout mTopLayout;
+    private FrameLayout mTopLayout;
     protected FrameLayout mBottomLayout;
     protected FrameLayout mContentLayout;
     protected FrameLayout mNoDataLayout;
@@ -71,7 +71,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
         findView();
         setContentLayout();
         setNoDataLayout();
-        initTopLayout();
+        initTopLayout(mTopLayout);
         onCreateEx(savedInstanceState);
     }
 
@@ -84,7 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     /**
      * 初始化顶部布局
      */
-    protected void initTopLayout() {
+    protected void initTopLayout(FrameLayout topLayout) {
     }
 
     protected void onCreateEx(@Nullable Bundle savedInstanceState) {

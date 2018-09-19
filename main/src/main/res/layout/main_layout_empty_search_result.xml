@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cart_empty_view"
@@ -10,17 +9,12 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/result_text_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_cart_empty"
+        android:drawablePadding="@dimen/middle"
+        android:drawableTop="@mipmap/ic_search_1"
+        android:text="@string/main_search_result_empty"
         android:textColor="@color/text_primary"
-        android:textSize="@dimen/font_middle"/>
-
-    <TextView
-        android:id="@+id/result_btn"
-        style="@style/TextViewButton.MainColor"
-        android:layout_marginTop="@dimen/middle"
-        android:text="@string/main_cart_shopping"/>
+        android:textSize="@dimen/font_small"/>
 
 </LinearLayout>

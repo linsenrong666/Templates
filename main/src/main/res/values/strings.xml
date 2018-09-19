@@ -85,5 +85,6 @@
     <string name="main_retail_price">零售价</string>
     <string name="main_group_price">拼团价</string>
     <string name="main_save_money">节省</string>
+    <string name="main_search_result_empty">没有找到搜索结果</string>
 
 </resources>

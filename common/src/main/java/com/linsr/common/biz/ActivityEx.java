@@ -9,6 +9,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import com.linsr.common.R;
 import com.linsr.common.base.BaseActivity;
@@ -31,11 +32,11 @@ public abstract class ActivityEx extends BaseActivity implements IView {
     protected TitleView mTitleView;
 
     @Override
-    protected void initTopLayout() {
+    protected void initTopLayout(FrameLayout topLayout) {
         if (showTitleView()) {
-            mTopLayout.setVisibility(View.VISIBLE);
+            topLayout.setVisibility(View.VISIBLE);
             mTitleView = new TitleView(this);
-            mTopLayout.addView(mTitleView);
+            topLayout.addView(mTitleView);
         }
     }
 

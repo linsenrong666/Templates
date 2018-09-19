@@ -16,7 +16,6 @@ public class EmptyWrapper extends RecyclerView.Adapter {
     private View mEmptyView;
     private int mEmptyLayoutId;
 
-
     public EmptyWrapper(RecyclerView.Adapter adapter) {
         mInnerAdapter = adapter;
     }

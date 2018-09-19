@@ -37,5 +37,4 @@ public class SearchActivity extends ActivityEx {
         mainSearchTitleLayoutManager.setUp(this, mSearchTitleLayout);
     }
 
-
 }
