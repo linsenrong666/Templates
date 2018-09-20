@@ -45,7 +45,7 @@ public class SearchResultActivity extends ActivityEx {
     private AuctionAdapter mAdapter;
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mSearchRecyclerView;
-    private RecyclerView mRecommondRecyclerView;
+    private RecyclerView mRecommendRecyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -57,8 +57,8 @@ public class SearchResultActivity extends ActivityEx {
         mRefreshLayout = findViewById(R.id.main_refresh_layout);
         mSearchRecyclerView = findViewById(R.id.main_recycler_view);
         mSearchRecyclerView.setNestedScrollingEnabled(false);
-        mRecommondRecyclerView = findViewById(R.id.search_result_recommend_rv);
-        mRecommondRecyclerView.setNestedScrollingEnabled(false);
+        mRecommendRecyclerView = findViewById(R.id.search_result_recommend_rv);
+        mRecommendRecyclerView.setNestedScrollingEnabled(false);
 
         mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -90,6 +90,6 @@ public class SearchResultActivity extends ActivityEx {
         RecommendAdapter adapter = new RecommendAdapter(this);
         List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
         adapter.addData(goodsList2);
-        RecyclerViewHelper.initGridLayout(this, 3, mRecommondRecyclerView, adapter);
+        RecyclerViewHelper.initGridLayout(this, 3, mRecommendRecyclerView, adapter);
     }
 }
