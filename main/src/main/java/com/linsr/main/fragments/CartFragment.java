@@ -2,6 +2,7 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -26,6 +27,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Description
@@ -76,11 +78,10 @@ public class CartFragment extends FragmentEx {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 refreshLayout.finishRefresh();
-
-                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(2);
+                Random random = new Random();
+                int size = random.nextInt(3);
+                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(size);
                 mCartAdapter.addData(cartList);
-                mGoodsAdapterWrapper.notifyDataSetChanged();
-
             }
         });
     }
@@ -111,6 +112,7 @@ public class CartFragment extends FragmentEx {
 
     private void initCartAdapter() {
         mCartAdapter = new CartAdapter(mContext);
+        ((SimpleItemAnimator) mCartRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         mGoodsAdapterWrapper = new EmptyWrapper(mCartAdapter);
         mGoodsAdapterWrapper.setEmptyView(R.layout.main_layout_empty_result);
         RecyclerViewHelper.initDefault(mContext, mCartRecyclerView, mGoodsAdapterWrapper);

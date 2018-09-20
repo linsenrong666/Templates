@@ -190,9 +190,11 @@ public class Mock {
         List<TreePojo<CartShopPojo, CartGoodsPojo>> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             TreePojo<CartShopPojo, CartGoodsPojo> treePojo = new TreePojo<>();
-            treePojo.setParentPojo(new CartShopPojo("SHOP：" + i));
+            treePojo.setParentPojo(new CartShopPojo("SHOP:" + i));
             List<CartGoodsPojo> goodsPojos = new ArrayList<>();
-            for (int j = 0; j < 2; j++) {
+            Random random = new Random();
+            int csize = random.nextInt(3);
+            for (int j = 0; j < csize; j++) {
                 goodsPojos.add(new CartGoodsPojo("GOODS:" + j));
             }
             treePojo.setChildPojo(goodsPojos);

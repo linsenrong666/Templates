@@ -5,24 +5,39 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <Button
+    <TextView
         android:id="@+id/cart_count_down_btn"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="-"/>
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/common_bg_cart_count_btn"
+        android:gravity="center"
+        android:text="—"
+        android:textColor="@color/text_primary_black"
+        android:textSize="@dimen/font_middle"/>
 
     <TextView
         android:id="@+id/cart_count_result_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginLeft="@dimen/tiny"
+        android:layout_marginRight="@dimen/tiny"
+        android:background="#e1e2e3"
         android:gravity="center"
-        android:padding="@dimen/middle"
-        android:text="0"/>
+        android:paddingLeft="@dimen/small"
+        android:paddingRight="@dimen/small"
+        android:singleLine="true"
+        android:text="0"
+        android:textColor="@color/text_primary_black"
+        android:textSize="@dimen/font_middle"/>
 
-    <Button
+    <TextView
         android:id="@+id/cart_count_up_btn"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="+"/>
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/common_bg_cart_count_btn"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/text_primary_black"
+        android:textSize="@dimen/font_middle"/>
 
 </LinearLayout>

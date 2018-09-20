@@ -20,7 +20,12 @@ import com.linsr.common.R;
 public class CartCountView extends LinearLayout implements View.OnClickListener {
 
     public interface OnCountChangedListener {
+
         void onChanged(int count);
+
+        void onMinCount(int minCont);
+
+        void onMaxCount(int maxCount);
     }
 
     private TextView mDownButton;
@@ -47,7 +52,8 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
 
     public CartCountView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        LayoutInflater.from(context).inflate(R.layout.common_widget_cart_count, (ViewGroup) getRootView(), true);
+        LayoutInflater.from(context).inflate(R.layout.common_widget_cart_count,
+                (ViewGroup) getRootView(), true);
         mDownButton = findViewById(R.id.cart_count_down_btn);
         mDownButton.setOnClickListener(this);
         mUpButton = findViewById(R.id.cart_count_up_btn);
@@ -63,6 +69,7 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
     public void setResultCount(int count) {
         mCount = count;
         mResultTextView.setText(String.valueOf(mCount));
+        check();
     }
 
     @Override
@@ -74,29 +81,46 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
             onUp();
         }
         mResultTextView.setText(String.valueOf(mCount));
+        check();
+    }
+
+    private void check() {
+        if (mCount <= mMinCount) {
+            mDownButton.setEnabled(false);
+        } else {
+            mDownButton.setEnabled(true);
+        }
+        if (mCount >= mMaxCount) {
+            mUpButton.setEnabled(false);
+        } else {
+            mUpButton.setEnabled(true);
+        }
     }
 
     private void onDown() {
         if (mCount > mMinCount) {
             mCount--;
-        } else if (mCount == mMinCount) {
-            mCount = mMinCount;
-        } else {
+            assert mOnCountChangedListener != null;
+            if (mCount == mMinCount) {
+                mOnCountChangedListener.onMinCount(mCount);
+            } else {
+                mOnCountChangedListener.onChanged(mCount);
+            }
+        }
 
-        }
-        if (mOnCountChangedListener != null) {
-            mOnCountChangedListener.onChanged(mCount);
-        }
     }
 
     private void onUp() {
         if (mCount < mMaxCount) {
             mCount++;
-        } else {
-
-        }
-        if (mOnCountChangedListener != null) {
-            mOnCountChangedListener.onChanged(mCount);
+            if (mOnCountChangedListener != null) {
+                if (mCount == mMaxCount) {
+                    mOnCountChangedListener.onMaxCount(mCount);
+                } else {
+                    mOnCountChangedListener.onChanged(mCount);
+                }
+            }
         }
     }
+
 }

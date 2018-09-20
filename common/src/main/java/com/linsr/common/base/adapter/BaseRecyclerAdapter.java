@@ -75,6 +75,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         setOnLongClickListener(holder, itemViewType, item);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull BaseViewHolder<T> holder, int position, @NonNull List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+
+    }
+
     protected void setOnItemClickListener(final BaseViewHolder<T> holder,
                                           final int itemViewType,
                                           final T item) {
@@ -104,11 +110,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         });
     }
 
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
 
     public void setOnItemClickListener(OnItemClickListener<T> onItemClickListener) {
         mOnItemClickListener = onItemClickListener;

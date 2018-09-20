@@ -15,4 +15,7 @@
     <color name="common_background">#f8f8f8</color>
     <!--白色-->
     <color name="common_white">#fff</color>
+
+    <color name="common_cart_count_btn_disable">#f6f7f8</color>
+    <color name="common_cart_count_btn_enable">#e1e2e3</color>
 </resources>

@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="@dimen/small"
-    >
+    android:paddingBottom="@dimen/mini"
+    android:paddingTop="@dimen/mini"
+    tools:background="@android:color/holo_orange_light">
 
     <CheckBox
         android:id="@+id/cart_goods_check_box"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/small"
+        android:button="@drawable/ic_check_box_selector"
+        android:checked="true"
+        android:paddingLeft="@dimen/small"/>
 
     <ImageView
         android:layout_width="88dp"
         android:layout_height="88dp"
-        android:layout_marginLeft="@dimen/small"
-        android:layout_marginRight="@dimen/small"
-        android:background="@color/main_color"/>
+        android:background="@color/background_image"
+        android:src="@mipmap/placeholders_goods"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="极简主义浪漫机器人  白色版"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginRight="@dimen/small">
 
         <TextView
             style="@style/TextView"
+            android:text="极简主义浪漫机器人  白色版"/>
+
+        <TextView
+            style="@style/TextView.MainColor"
             android:layout_alignParentBottom="true"
-            android:text="$1988"/>
+            android:text="$1988"
+            android:textSize="@dimen/font_large"
+            android:textStyle="bold"/>
 
         <com.linsr.common.gui.widgets.CartCountView
             android:id="@+id/cart_goods_count_ccv"

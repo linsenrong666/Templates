@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="@dimen/small">
+    android:orientation="horizontal">
+
+    <View
+        style="@style/common_divider_horizontal"/>
 
     <CheckBox
         android:id="@+id/cart_shop_check_box"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_marginRight="@dimen/small"
+        android:button="@drawable/ic_check_box_selector"
+        android:ellipsize="end"
+        android:padding="@dimen/mini"
+        android:singleLine="true"
+        android:text="店铺名称"
+        android:textColor="@color/text_primary_dark"
+        android:textSize="@dimen/font_small"/>
 
-    <TextView
-        android:id="@+id/cart_shop_name_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/small"
-        android:text="中国石油有限公司"/>
-</LinearLayout>
+    <View
+        style="@style/common_divider_horizontal"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
