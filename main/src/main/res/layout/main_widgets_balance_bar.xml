@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <View style="@style/common_divider_horizontal"/>
+
+    <TextView
+        android:id="@+id/balance_bar_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/main_color"
+        android:gravity="center"
+        android:paddingLeft="@dimen/small"
+        android:paddingRight="@dimen/small"
+        android:text="@string/main_go_balance"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_small"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/balance_bar_btn"
+        android:paddingLeft="@dimen/small"
+        android:paddingRight="@dimen/small">
+
+        <CheckBox
+            android:id="@+id/balance_bar_check_box"
+            style="@style/TextView"
+            android:layout_centerVertical="true"
+            android:button="@drawable/ic_check_box_selector"
+            android:gravity="center"
+            android:padding="@dimen/small"
+            android:text="@string/all_selected"/>
+
+        <TextView
+            android:id="@+id/balance_bar_amount_tv"
+            style="@style/TextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/main_balance_count"/>
+    </RelativeLayout>
+
+</RelativeLayout>

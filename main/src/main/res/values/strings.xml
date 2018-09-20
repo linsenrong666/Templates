@@ -13,7 +13,8 @@
     <string name="main_shop_center">购物中心</string>
     <string name="main_no_address">没有地址信息，请点击后添加地址</string>
     <string name="main_pay">去支付</string>
-    <string name="main_balance_count">合计：%s</string>
+    <string name="main_go_balance">去结算(%s)</string>
+    <string name="main_balance_count">合计:%s</string>
     <string name="main_add_address">+添加地址</string>
     <string name="main_address_user_name">收货人姓名</string>
     <string name="main_address_user_phone">手机号码</string>

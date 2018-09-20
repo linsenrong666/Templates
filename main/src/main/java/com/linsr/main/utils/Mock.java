@@ -193,7 +193,7 @@ public class Mock {
             treePojo.setParentPojo(new CartShopPojo("SHOP:" + i));
             List<CartGoodsPojo> goodsPojos = new ArrayList<>();
             Random random = new Random();
-            int csize = random.nextInt(3);
+            int csize = random.nextInt(3) + 1;
             for (int j = 0; j < csize; j++) {
                 goodsPojos.add(new CartGoodsPojo("GOODS:" + j));
             }

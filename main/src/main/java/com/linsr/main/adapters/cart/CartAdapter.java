@@ -15,9 +15,7 @@ import com.linsr.main.R;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Description
@@ -29,7 +27,6 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
     public CartAdapter(Context context) {
         super(context);
     }
-
 
     @NonNull
     @Override
@@ -178,4 +175,18 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
             });
         }
     }
+
+    public void allToggleChecked(boolean isChecked) {
+        ensureDataNotNull();
+        for (TreePojo<CartShopPojo, CartGoodsPojo> treePojo : mList) {
+            CartShopPojo parentPojo = treePojo.getParentPojo();
+            parentPojo.setChecked(isChecked);
+            List<CartGoodsPojo> childPojo = treePojo.getChildPojo();
+            for (CartGoodsPojo cartGoodsPojo : childPojo) {
+                cartGoodsPojo.setChecked(isChecked);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 }

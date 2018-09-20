@@ -21,13 +21,12 @@ import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.utils.Mock;
-import com.linsr.main.widgets.CartBottomBar;
+import com.linsr.main.widgets.BalanceBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Description
@@ -41,7 +40,7 @@ public class CartFragment extends FragmentEx {
     private CartAdapter mCartAdapter;
     private RecyclerView mRecommendRecyclerView;
     private RecommendAdapter mRecommendAdapter;
-    private CartBottomBar mCartBottomBar;
+    private BalanceBar mBalanceBar;
 
     private SmartRefreshLayout mRefreshLayout;
 
@@ -65,10 +64,15 @@ public class CartFragment extends FragmentEx {
     }
 
     private void initBottomBar() {
-        mCartBottomBar.setOnCartBottomBarListener(new CartBottomBar.OnCartBottomBarListener() {
+        mBalanceBar.setOnCartBottomBarListener(new BalanceBar.OnCartBottomBarListener() {
             @Override
             public void onBalanceClick() {
                 Router.startActivity(MainModule.Activity.BALANCE);
+            }
+
+            @Override
+            public void onAllChecked(boolean isChecked) {
+                mCartAdapter.allToggleChecked(isChecked);
             }
         });
     }
@@ -78,9 +82,7 @@ public class CartFragment extends FragmentEx {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 refreshLayout.finishRefresh();
-                Random random = new Random();
-                int size = random.nextInt(3);
-                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(size);
+                List<TreePojo<CartShopPojo, CartGoodsPojo>> cartList = Mock.getCartList(2);
                 mCartAdapter.addData(cartList);
             }
         });
@@ -88,7 +90,7 @@ public class CartFragment extends FragmentEx {
 
     private void findView() {
         mRefreshLayout = findViewById(R.id.cart_refresh_layout);
-        mCartBottomBar = findViewById(R.id.cart_bottom_layout);
+        mBalanceBar = findViewById(R.id.cart_bottom_layout);
         mCartRecyclerView = findViewById(R.id.cart_recycler_view);
         mCartRecyclerView.setNestedScrollingEnabled(false);
         mRecommendRecyclerView = findViewById(R.id.recommend_recycler_view);
@@ -129,9 +131,9 @@ public class CartFragment extends FragmentEx {
         @Override
         public void onChanged() {
             if (mCartAdapter.getItemCount() == 0) {
-                mCartBottomBar.setVisibility(View.GONE);
+                mBalanceBar.setVisibility(View.GONE);
             } else {
-                mCartBottomBar.setVisibility(View.VISIBLE);
+                mBalanceBar.setVisibility(View.VISIBLE);
             }
         }
     };

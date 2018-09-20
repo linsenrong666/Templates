@@ -42,7 +42,7 @@
         </android.support.v4.widget.NestedScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    <com.linsr.main.widgets.CartBottomBar
+    <com.linsr.main.widgets.BalanceBar
         android:id="@id/cart_bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="48dp"
