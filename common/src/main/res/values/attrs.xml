@@ -35,6 +35,8 @@
         <attr name="common_inner_margin" format="dimension"/>
         <attr name="common_label_margin_right" format="dimension"/>
         <attr name="common_label_width" format="dimension"/>
+        <attr name="common_label_left_drawable" format="reference"/>
+        <attr name="common_label_drawable_padding" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="common_label_radioGroup">

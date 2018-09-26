@@ -42,6 +42,7 @@ public class MainModule {
         String FLASH_SALE = ACTIVITY + "flashSale";
         String DAILY_NEW = ACTIVITY + "dailyNew";
         String AUCTION_DETAILS = ACTIVITY + "auctionDetails";
+        String FOLLOW_SHOP = ACTIVITY + "followShop";
     }
 
     public interface Fragment {

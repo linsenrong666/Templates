@@ -72,6 +72,9 @@
         <activity
             android:name=".activities.AuctionDetailsActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.FollowShopActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

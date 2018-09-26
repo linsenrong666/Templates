@@ -96,6 +96,14 @@ public class common_label_container extends FrameLayout {
         if (titleMarginRight != -1) {
             ViewUtils.setMargins(mTitleTextView, 0, 0, (int) titleMarginRight, 0);
         }
+        //设置标题left drawable
+        Drawable titleLeftDrawable = a.getDrawable(R.styleable.common_label_container_common_label_left_drawable);
+        if (titleLeftDrawable != null) {
+            mTitleTextView.setCompoundDrawablesWithIntrinsicBounds(titleLeftDrawable, null, null, null);
+        }
+        //设置标题 drawable padding
+        int titleDrawablePadding = (int) a.getDimension(R.styleable.common_label_container_common_label_drawable_padding,0);
+        mTitleTextView.setCompoundDrawablePadding(titleDrawablePadding);
         // 设置标题居中权重
         int titleGravity = a.getInt(R.styleable.common_label_container_common_label_text_gravity, -1);
         switch (titleGravity) {

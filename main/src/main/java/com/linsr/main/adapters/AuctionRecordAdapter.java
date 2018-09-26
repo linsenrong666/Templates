@@ -1,6 +1,7 @@
 package com.linsr.main.adapters;
 
 import android.content.Context;
+import android.view.View;
 
 import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.base.adapter.SimpleAdapter;
@@ -24,6 +25,11 @@ public class AuctionRecordAdapter extends SimpleAdapter<AuctionRecordPojo> {
     @Override
     protected int getLayoutId() {
         return R.layout.main_item_auction_record;
+    }
+
+    @Override
+    protected void initView(View itemView) {
+
     }
 
     @Override

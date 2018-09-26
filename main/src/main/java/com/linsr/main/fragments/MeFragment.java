@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.gui.widgets.common_label_container;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
@@ -27,6 +28,7 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
 
     private MeTopView mMeTopView;
     private MainMeItemView mMainMeItemView;
+    private common_label_container mFollowShop;
 
     @Override
     protected int getLayoutId() {
@@ -64,6 +66,14 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
                     params.put(OrderMainParams.ORDER_STATUS, position + 1);
                     Router.startActivity(ORDER_MAIN, params);
                 }
+            }
+        });
+
+        mFollowShop = findViewById(R.id.me_follow_shop);
+        mFollowShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router.startActivity(MainModule.Activity.FOLLOW_SHOP);
             }
         });
     }

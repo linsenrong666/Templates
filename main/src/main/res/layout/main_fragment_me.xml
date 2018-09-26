@@ -49,6 +49,31 @@
             app:mainSpanCount="4"
             app:mainTitleList="@array/main_my_card_list"/>
 
+        <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/me_follow_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small"
+            android:background="@color/white"
+            app:common_content_image="@mipmap/ic_arrow_right"
+            app:common_inner_margin="@dimen/small"
+            app:common_label_drawable_padding="@dimen/small"
+            app:common_label_left_drawable="@mipmap/ic_follow_shop"
+            app:common_label_text="@string/main_follow_shop"
+            app:common_show_bottom_divider="true"/>
+
+        <com.linsr.common.gui.widgets.common_label_container
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:common_content_image="@mipmap/ic_arrow_right"
+            app:common_inner_margin="@dimen/small"
+            app:common_label_drawable_padding="@dimen/small"
+            app:common_label_left_drawable="@mipmap/ic_follow_shop"
+            app:common_label_text="@string/main_collect"
+            app:common_show_bottom_divider="true"/>
+
+
     </LinearLayout>
 
 </ScrollView>

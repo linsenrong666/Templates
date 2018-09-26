@@ -3,6 +3,7 @@ package com.linsr.main.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.base.adapter.SimpleAdapter;
@@ -20,6 +21,11 @@ public class GroupShoppingAdapter extends SimpleAdapter<GroupShoppingPojo> {
     @Override
     protected int getLayoutId() {
         return R.layout.main_item_group_shopping;
+    }
+
+    @Override
+    protected void initView(View itemView) {
+
     }
 
     @Override
