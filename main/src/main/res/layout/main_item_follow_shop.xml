@@ -2,23 +2,40 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="64dp"
+    android:background="@color/white">
 
     <com.linsr.common.gui.widgets.SwipeMenu
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="64dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/main_color"
-            android:text="aaaaaaaaaaa"/>
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.linsr.common.gui.widgets.CircleImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginRight="@dimen/small"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                style="@style/TextView"
+
+                android:text="@string/app_name"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/divider"
-            android:text="bbbbbbbbbb"/>
+            android:layout_height="64dp"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:text="@string/main_cancel_follow"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_small"/>
+
     </com.linsr.common.gui.widgets.SwipeMenu>
 </FrameLayout>

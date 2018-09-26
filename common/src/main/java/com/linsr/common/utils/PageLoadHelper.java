@@ -6,6 +6,7 @@ import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.mvp.IView;
 import com.linsr.common.net.NetConstants;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.io.IOException;
 import java.util.List;
@@ -95,7 +96,7 @@ public class PageLoadHelper {
      * 加载完毕
      * @param refreshLayout 刷新控件
      */
-    public static void onCompleted(SmartRefreshLayout refreshLayout) {
+    public static void onCompleted(RefreshLayout refreshLayout) {
         refreshLayout.finishRefresh();
         refreshLayout.finishLoadMore();
     }

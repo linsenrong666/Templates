@@ -49,15 +49,15 @@ public abstract class RefreshActivity extends ActivityEx {
 
     protected abstract void initRecyclerView(RecyclerView recyclerView);
 
-    protected abstract void requestData();
+    protected abstract void requestData(RefreshLayout refreshLayout);
 
     protected void onRefreshEx(RefreshLayout refreshLayout) {
         mPageIndex = NetConstants.DEFAULT_PAGE_INDEX;
-        requestData();
+        requestData(refreshLayout);
     }
 
     protected void onLoadMoreEx(RefreshLayout refreshLayout) {
-        requestData();
+        requestData(refreshLayout);
     }
 
 }

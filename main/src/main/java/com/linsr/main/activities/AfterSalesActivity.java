@@ -10,6 +10,7 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.AfterSalesAdapter;
 import com.linsr.main.model.AfterSalesPojo;
 import com.linsr.main.utils.Mock;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 /**
  * Description
@@ -36,7 +37,7 @@ public class AfterSalesActivity extends RefreshActivity {
     }
 
     @Override
-    protected void requestData() {
+    protected void requestData(RefreshLayout refreshLayout) {
 
     }
 
