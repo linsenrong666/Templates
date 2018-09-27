@@ -24,6 +24,7 @@ public class FindPasswordActivity extends ActivityEx {
 
     @Override
     protected void initView() {
+        initTitleView(R.string.forgot_password);
         mCountDownButton = findViewById(R.id.find_pwd_countdown_btn);
         mCountDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
