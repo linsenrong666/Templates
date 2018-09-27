@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.linsr.common.R;
 import com.linsr.common.gui.divider.RecycleViewDivider;
+import com.linsr.common.gui.widgets.recyclerview.EmptyWrapper;
 
 /**
  * Description

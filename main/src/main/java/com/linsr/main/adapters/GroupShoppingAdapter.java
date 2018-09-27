@@ -24,11 +24,6 @@ public class GroupShoppingAdapter extends SimpleAdapter<GroupShoppingPojo> {
     }
 
     @Override
-    protected void initView(View itemView) {
-
-    }
-
-    @Override
     protected void bindData(BaseViewHolder<GroupShoppingPojo> holder, int position,
                             GroupShoppingPojo data, int itemType) {
 

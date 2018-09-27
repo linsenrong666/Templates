@@ -32,9 +32,10 @@ public class AddressActivity extends ActivityEx {
 
     @Override
     protected void initView() {
+        initTitleView(R.string.main_address_manage);
         mRecyclerView = findViewById(R.id.address_recycler_view);
         mAdapter = new AddressAdapter(this);
-        RecyclerViewHelper.initDefault(this, mRecyclerView, mAdapter);
+        RecyclerViewHelper.initDefault(this, mRecyclerView, mAdapter, true);
 
         mAddButton = findViewById(R.id.address_add_btn);
         mAddButton.setOnClickListener(new View.OnClickListener() {
@@ -44,5 +45,7 @@ public class AddressActivity extends ActivityEx {
                 Router.startActivity(MainModule.Activity.ADD_ADDRESS);
             }
         });
+
     }
+
 }

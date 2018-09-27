@@ -29,6 +29,8 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
     private MeTopView mMeTopView;
     private MainMeItemView mMainMeItemView;
     private common_label_container mFollowShop;
+    private common_label_container mCollect;
+    private common_label_container mAddressManage;
 
     @Override
     protected int getLayoutId() {
@@ -74,6 +76,20 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
             @Override
             public void onClick(View v) {
                 Router.startActivity(MainModule.Activity.FOLLOW_SHOP);
+            }
+        });
+        mCollect = findViewById(R.id.me_collect);
+        mCollect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router.startActivity(MainModule.Activity.MY_COLLECT);
+            }
+        });
+        mAddressManage = findViewById(R.id.me_address_manage);
+        mAddressManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router.startActivity(MainModule.Activity.ADDRESS_LIST);
             }
         });
     }

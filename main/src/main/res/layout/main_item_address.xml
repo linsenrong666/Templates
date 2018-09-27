@@ -3,19 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:gravity="center_vertical"
-    android:padding="@dimen/small"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/small"
+    android:paddingTop="@dimen/small">
 
     <CheckBox
         android:id="@+id/item_address_check_box"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small"
+        android:button="@drawable/ic_check_box_selector"
+        android:paddingBottom="@dimen/small"
+        android:paddingLeft="@dimen/small"
+        android:paddingTop="@dimen/small"/>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -37,15 +44,18 @@
 
         <TextView
             android:id="@+id/item_address_content_tv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:text="北京市东城区景山前街4号"/>
+            style="@style/TextView"
+            android:layout_marginTop="@dimen/tiny"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/font_small"
+            tools:text="北京市东城区景山前街4号北京市东城区景山前街4号北京市东城区景山前街4号"/>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/item_address_edit_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round"/>
+        android:padding="@dimen/small"
+        android:src="@mipmap/ic_edit"/>
 
 </LinearLayout>

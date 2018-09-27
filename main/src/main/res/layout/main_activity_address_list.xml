@@ -2,13 +2,17 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    tools:context=".activities.AddressActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/address_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/address_add_btn"/>
+        android:layout_above="@+id/address_add_btn"
+        />
 
     <Button
         android:id="@id/address_add_btn"

@@ -43,6 +43,7 @@ public class MainModule {
         String DAILY_NEW = ACTIVITY + "dailyNew";
         String AUCTION_DETAILS = ACTIVITY + "auctionDetails";
         String FOLLOW_SHOP = ACTIVITY + "followShop";
+        String MY_COLLECT = ACTIVITY + "myCollect";
     }
 
     public interface Fragment {

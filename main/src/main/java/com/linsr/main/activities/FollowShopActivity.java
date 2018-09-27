@@ -12,6 +12,9 @@ import com.linsr.main.model.FollowShopPojo;
 import com.linsr.main.utils.Mock;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Description
  *
@@ -27,13 +30,25 @@ public class FollowShopActivity extends RefreshActivity {
         initTitleView(R.string.main_follow_shop);
 
         mAdapter = new FollowShopAdapter(this);
-        mAdapter.addData(Mock.getList(10, FollowShopPojo.class));
+        mAdapter.setOnEventListener(new FollowShopAdapter.OnEventListener() {
+            @Override
+            public void onCancel(int position, FollowShopPojo data) {
+                mAdapter.remove(position);
+            }
+        });
         RecyclerViewHelper.initDefault(this, recyclerView, mAdapter, true);
     }
 
     @Override
     protected void requestData(RefreshLayout refreshLayout) {
         PageLoadHelper.onCompleted(refreshLayout);
-        mAdapter.addData(Mock.getList(10, FollowShopPojo.class));
+
+        List<FollowShopPojo> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            FollowShopPojo pojo = new FollowShopPojo();
+            pojo.setName("item" + i);
+            list.add(pojo);
+        }
+        mAdapter.addData(list);
     }
 }

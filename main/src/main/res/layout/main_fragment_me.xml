@@ -64,16 +64,28 @@
             app:common_show_bottom_divider="true"/>
 
         <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/me_collect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:common_content_image="@mipmap/ic_arrow_right"
             app:common_inner_margin="@dimen/small"
             app:common_label_drawable_padding="@dimen/small"
-            app:common_label_left_drawable="@mipmap/ic_follow_shop"
-            app:common_label_text="@string/main_collect"
+            app:common_label_left_drawable="@mipmap/ic_collect"
+            app:common_label_text="@string/main_my_collect"
             app:common_show_bottom_divider="true"/>
 
+        <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/me_address_manage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:common_content_image="@mipmap/ic_arrow_right"
+            app:common_inner_margin="@dimen/small"
+            app:common_label_drawable_padding="@dimen/small"
+            app:common_label_left_drawable="@mipmap/ic_address_manage"
+            app:common_label_text="@string/main_address_manage"
+            app:common_show_bottom_divider="true"/>
 
     </LinearLayout>
 

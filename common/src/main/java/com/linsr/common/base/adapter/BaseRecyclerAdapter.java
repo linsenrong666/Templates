@@ -142,6 +142,20 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         notifyDataSetChanged();
     }
 
+    public void remove(int position) {
+        if (mList != null && mList.size() > position) {
+            mList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void remove(T data) {
+        if (mList != null && mList.contains(data)) {
+            mList.remove(data);
+            notifyDataSetChanged();
+        }
+    }
+
     protected void ensureDataNotNull() {
         if (null == mList) {
             mList = new ArrayList<>();

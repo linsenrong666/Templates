@@ -28,11 +28,6 @@ public class AuctionRecordAdapter extends SimpleAdapter<AuctionRecordPojo> {
     }
 
     @Override
-    protected void initView(View itemView) {
-
-    }
-
-    @Override
     protected void bindData(BaseViewHolder<AuctionRecordPojo> holder, int position,
                             AuctionRecordPojo data, int itemType) {
 
