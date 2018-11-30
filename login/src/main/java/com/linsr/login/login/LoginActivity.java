@@ -1,5 +1,6 @@
 package com.linsr.login.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,13 +22,18 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
 
     private EditText mAccountEditText;
     private EditText mPasswordEditText;
-    private Button mConfirmButton;
 
     private LoginPresenter mPresenter;
 
     @Override
     protected int getLayoutId() {
         return R.layout.login_activity_login;
+    }
+
+    @Override
+    protected void init(Intent intent) {
+        super.init(intent);
+        mPresenter = new LoginPresenter(this);
     }
 
     @Override
@@ -43,6 +49,7 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
                 Router.startActivity(LoginModule.Activity.REGISTER);
             }
         });
+
         TextView mForgotTextView = findViewById(R.id.login_forgot_password_tv);
         mForgotTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,15 +57,26 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
                 Router.startActivity(LoginModule.Activity.FIND_PASSWORD);
             }
         });
-        mConfirmButton = findViewById(R.id.login_confirm_btn);
+
+        Button mConfirmButton = findViewById(R.id.login_confirm_btn);
         mConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Router.startActivity(MainModule.Activity.MAIN);
-                finish();
+                String userName = mAccountEditText.getText().toString();
+                String password = mPasswordEditText.getText().toString();
+                mPresenter.login(userName, password);
             }
         });
     }
 
 
+    @Override
+    public void onLoginSucceed() {
+
+    }
+
+    @Override
+    public void onLoginFailure() {
+
+    }
 }

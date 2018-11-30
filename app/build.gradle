@@ -49,17 +49,14 @@ android {
             //混淆文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        def fileName = 'ymw.apk'
-                        if (variant.buildType.name.equals('release')) {
-                            fileName = "ymw${defaultConfig.versionName}_${releaseTime()}.apk"
-                        } else if (variant.buildType.name.equals('debug')) {
-                            fileName = "ymw${defaultConfig.versionName}_${releaseTime()}_debug.apk"
-                        }
-                        output.outputFile = new File(outputFile.parent, fileName)
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    if (variant.buildType.name.equals('release')) {
+                        outputFileName = "ymw${defaultConfig.versionName}_${releaseTime()}.apk"
+                    } else if (variant.buildType.name.equals('debug')) {
+                        outputFileName = "ymw${defaultConfig.versionName}_${releaseTime()}_debug.apk"
+                    }else{
+                        outputFileName = "ymw.apk"
                     }
                 }
             }

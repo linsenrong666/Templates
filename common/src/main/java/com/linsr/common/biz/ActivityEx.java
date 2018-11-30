@@ -145,7 +145,6 @@ public abstract class ActivityEx extends BaseActivity implements IView {
         mContentLayout.setVisibility(View.GONE);
     }
 
-
     protected SystemBarTintManager tintManager;
 
     @Override

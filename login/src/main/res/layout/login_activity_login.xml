@@ -32,7 +32,8 @@
                 style="@style/LoginEditText"
                 android:drawableLeft="@mipmap/login_ic_password"
                 android:drawablePadding="@dimen/middle"
-                android:hint="@string/login_hint_password_tip"/>
+                android:hint="@string/login_hint_password_tip"
+                android:inputType="textPassword"/>
 
         </LinearLayout>
 

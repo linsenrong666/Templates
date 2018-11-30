@@ -17,6 +17,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
 
 /**
  * Description
@@ -25,7 +27,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  */
 public class Api {
 
-    private static final String BASE_URL = "";
+    private static final String BASE_URL = "https://www.sisipay.com/";
+    private static final String BASE_URL_DEBUG = "";
     /**
      * 连接超时时间
      */
@@ -44,6 +47,7 @@ public class Api {
                 .client(initClient())
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
@@ -89,6 +93,7 @@ public class Api {
 
         private static final String TAG = "net_log";
         private static final String POST = "POST";
+        private static final String GET = "GET";
 
         @Override
         public okhttp3.Response intercept(@NonNull Chain chain) throws IOException {
@@ -99,9 +104,8 @@ public class Api {
             long duration = endTime - startTime;
             okhttp3.MediaType mediaType = response.body().contentType();
             String content = response.body().string();
-            JLog.d(TAG, "\n");
-            JLog.d(TAG, "----------Start----------------");
-            JLog.d(TAG, "| " + request.toString());
+
+            JLog.d(TAG, "| " + request.method() + "| 请求路径：" + request.url());
             String method = request.method();
             if (POST.equals(method)) {
                 StringBuilder sb = new StringBuilder();
@@ -114,12 +118,13 @@ public class Api {
                                     .append(body.encodedValue(i)).append(",");
                         }
                         sb.delete(sb.length() - 1, sb.length());
-                        JLog.d(TAG, "| RequestParams:{" + URLDecoder.decode(sb.toString()) + "}");
+                        JLog.d(TAG, "| 参数:" + URLDecoder.decode(sb.toString()));
                     }
                 }
+            } else if (GET.equals(method)) {
+
             }
-            JLog.json(TAG, "| Response:" + content);
-            JLog.d(TAG, "----------End:" + duration + "毫秒----------");
+            JLog.d(TAG, "| 用时:" + duration + "毫秒");
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))
                     .build();

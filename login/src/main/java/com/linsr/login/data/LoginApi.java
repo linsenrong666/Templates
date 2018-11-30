@@ -7,6 +7,7 @@ import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
@@ -16,7 +17,9 @@ import retrofit2.http.POST;
  */
 public interface LoginApi {
 
-    @POST("user/login")
-    Observable<ResponsePojo<BasePojo>> login(@Field("userName") String userName,
-                                             @Field("password") String password);
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=login")
+    Observable<ResponsePojo> login(@Field("username") String userName,
+                                   @Field("password") String password);
+
 }

@@ -10,7 +10,9 @@ import com.linsr.common.base.mvp.IView;
 public interface LoginContact {
 
     interface View extends IView {
+        void onLoginSucceed();
 
+        void onLoginFailure();
     }
 
     interface Presenter {
