@@ -3,16 +3,11 @@ package com.linsr.common.utils;
 import android.support.v7.widget.RecyclerView;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
-import com.linsr.common.base.mvp.IView;
+import com.linsr.common.biz.IView;
 import com.linsr.common.net.NetConstants;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * 分页加载帮助类，默认分页逻辑写在这里

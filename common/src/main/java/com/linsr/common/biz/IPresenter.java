@@ -1,4 +1,4 @@
-package com.linsr.common.base.mvp;
+package com.linsr.common.biz;
 
 /**
  * Description
@@ -6,6 +6,5 @@ package com.linsr.common.base.mvp;
  * @author Linsr 2018/7/9 下午4:41
  */
 public interface IPresenter {
-
-
+    void onDestroy();
 }

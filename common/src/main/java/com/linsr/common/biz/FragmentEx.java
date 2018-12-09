@@ -1,21 +1,28 @@
 package com.linsr.common.biz;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.linsr.common.base.BaseFragment;
-import com.linsr.common.base.mvp.IView;
 
 /**
  * Description
  *
  * @author Linsr 2018/6/16 下午2:42
  */
-public abstract class FragmentEx extends BaseFragment implements IView {
+public abstract class FragmentEx<P extends IPresenter> extends BaseFragment implements IView {
+
+    protected P mPresenter;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mPresenter = bindPresenter();
+    }
+
+    protected P bindPresenter() {
+        return null;
+    }
 
     @Override
     public void showNoData() {
@@ -47,5 +54,14 @@ public abstract class FragmentEx extends BaseFragment implements IView {
     public void showError(String text) {
         mContentLayout.setVisibility(View.VISIBLE);
         mNoDataLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+            mPresenter = null;
+        }
     }
 }

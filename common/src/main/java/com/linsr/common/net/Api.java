@@ -15,6 +15,7 @@ import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -37,6 +38,10 @@ public class Api {
      * 读取超时时间
      */
     private static final int READ_TIMEOUT = 10;
+    /**
+     * 重试次数
+     */
+    private static final int RETRY_TIMES = 3;
 
     private ConcurrentMap<String, Object> mServiceCache;
     private Retrofit mRetrofit;
@@ -80,18 +85,22 @@ public class Api {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
         builder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
-
+        //重试次数
+        if (RETRY_TIMES > 0) {
+            builder.addInterceptor(new Retry(RETRY_TIMES));
+        }
         boolean isDebug = ApplicationEx.getInstance().isDebug();
         //添加日志拦截
         if (isDebug) {
             builder.addInterceptor(new LogInterceptor());
         }
+
         return builder.build();
     }
 
     private class LogInterceptor implements Interceptor {
 
-        private static final String TAG = "net_log";
+        private static final String TAG = "NET";
         private static final String POST = "POST";
         private static final String GET = "GET";
 
@@ -130,4 +139,31 @@ public class Api {
                     .build();
         }
     }
+
+    /**
+     * 自定义的，重试N次的拦截器
+     * 通过：addInterceptor 设置
+     */
+    public static class Retry implements Interceptor {
+        public int maxRetry;//最大重试次数
+        private int retryNum = 0;//假如设置为3次重试的话，则最大可能请求4次（默认1次+3次重试）
+
+        public Retry(int maxRetry) {
+            this.maxRetry = maxRetry;
+        }
+
+        @Override
+        public Response intercept(@NonNull Chain chain) throws IOException {
+            Request request = chain.request();
+            Response response = chain.proceed(request);
+            JLog.i("num:" + retryNum);
+            while (!response.isSuccessful() && retryNum < maxRetry) {
+                retryNum++;
+                JLog.i("Retry", "num:" + retryNum);
+                response = chain.proceed(request);
+            }
+            return response;
+        }
+    }
+
 }

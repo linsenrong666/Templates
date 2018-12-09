@@ -2,10 +2,13 @@ package com.linsr.common.utils;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class ViewUtils {
+    private static final String TAG = ViewUtils.class.getSimpleName();
+
 
     //重设listView的高度
     public static int setListViewHeightBasedOnChildren(ListView listView) {
@@ -32,6 +35,14 @@ public class ViewUtils {
             p.setMargins(l, t, r, b);
             v.requestLayout();
         }
+    }
+
+    public static String getEditTextContent(EditText editText) {
+        if (editText == null) {
+            JLog.e(TAG, "Error: EditText is null !!!");
+            return "";
+        }
+        return editText.getText().toString().trim();
     }
 
 }

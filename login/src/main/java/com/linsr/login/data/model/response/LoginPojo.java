@@ -1,4 +1,4 @@
-package com.linsr.login.data.model;
+package com.linsr.login.data.model.response;
 
 import com.linsr.common.model.BizPojo;
 
@@ -8,4 +8,5 @@ import com.linsr.common.model.BizPojo;
  * @author Linsr 2018/11/30 下午4:22
  */
 public class LoginPojo extends BizPojo {
+
 }

@@ -2,10 +2,9 @@ package com.linsr.common.biz;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Build;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,7 +12,6 @@ import android.widget.FrameLayout;
 
 import com.linsr.common.R;
 import com.linsr.common.base.BaseActivity;
-import com.linsr.common.base.mvp.IView;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.SystemBarTintManager;
 import com.linsr.common.gui.widgets.TitleView;
@@ -23,13 +21,25 @@ import com.linsr.common.gui.widgets.TitleView;
  *
  * @author Linsr 2018/6/16 下午2:42
  */
-public abstract class ActivityEx extends BaseActivity implements IView {
+public abstract class ActivityEx<P extends IPresenter> extends BaseActivity implements IView {
 
     private final Object mLockObject = new Object();
 
-    private volatile Dialog mTransparentDialog;
+    private Dialog mTransparentDialog;
 
     protected TitleView mTitleView;
+
+    protected P mPresenter;
+
+    @Override
+    protected void init(Intent intent) {
+        super.init(intent);
+        mPresenter = bindPresenter();
+    }
+
+    protected P bindPresenter() {
+        return null;
+    }
 
     @Override
     protected void initTopLayout(FrameLayout topLayout) {
@@ -178,4 +188,12 @@ public abstract class ActivityEx extends BaseActivity implements IView {
         win.setAttributes(winParams);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+            mPresenter = null;
+        }
+    }
 }

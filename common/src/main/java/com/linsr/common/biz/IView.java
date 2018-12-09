@@ -1,4 +1,4 @@
-package com.linsr.common.base.mvp;
+package com.linsr.common.biz;
 
 /**
  * Description

@@ -1,6 +1,7 @@
 package com.linsr.login.login;
 
-import com.linsr.common.base.mvp.IView;
+import com.linsr.common.biz.IPresenter;
+import com.linsr.common.biz.IView;
 
 /**
  * Description
@@ -12,10 +13,10 @@ public interface LoginContact {
     interface View extends IView {
         void onLoginSucceed();
 
-        void onLoginFailure();
+        void onLoginFailure(String errMsg);
     }
 
-    interface Presenter {
+    interface Presenter extends IPresenter {
         void login(String userName, String password);
     }
 

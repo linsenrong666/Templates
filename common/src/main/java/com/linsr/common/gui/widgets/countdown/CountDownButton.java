@@ -12,9 +12,9 @@ import com.linsr.common.utils.JLog;
  */
 public class CountDownButton extends android.support.v7.widget.AppCompatTextView {
 
-    public final Object mLock = new Object();
+    private final Object mLock = new Object();
 
-    public CountDownHandler mHandler;
+    private CountDownHandler mHandler;
 
     public CountDownButton(Context context) {
         this(context, null, 0);

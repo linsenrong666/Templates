@@ -2,9 +2,8 @@ package com.linsr.common.net;
 
 /**
  * Description
- @author Linsr
+ * @author Linsr
  */
-
 public class ApiException extends RuntimeException {
     private String mErrorMsg;
 

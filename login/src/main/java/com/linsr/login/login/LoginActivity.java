@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
+import com.linsr.common.biz.IPresenter;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.ToastUtils;
 import com.linsr.login.R;
 
 /**
@@ -18,12 +20,10 @@ import com.linsr.login.R;
  * @author Linsr
  */
 @Route(path = LoginModule.Activity.LOGIN)
-public class LoginActivity extends ActivityEx implements LoginContact.View {
+public class LoginActivity extends ActivityEx<LoginPresenter> implements LoginContact.View {
 
     private EditText mAccountEditText;
     private EditText mPasswordEditText;
-
-    private LoginPresenter mPresenter;
 
     @Override
     protected int getLayoutId() {
@@ -31,9 +31,8 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
     }
 
     @Override
-    protected void init(Intent intent) {
-        super.init(intent);
-        mPresenter = new LoginPresenter(this);
+    protected LoginPresenter bindPresenter() {
+        return new LoginPresenter(this);
     }
 
     @Override
@@ -64,6 +63,7 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
             public void onClick(View v) {
                 String userName = mAccountEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
+
                 mPresenter.login(userName, password);
             }
         });
@@ -76,7 +76,8 @@ public class LoginActivity extends ActivityEx implements LoginContact.View {
     }
 
     @Override
-    public void onLoginFailure() {
-
+    public void onLoginFailure(String msg) {
+        ToastUtils.show(msg);
     }
+
 }

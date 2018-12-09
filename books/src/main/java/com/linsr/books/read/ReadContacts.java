@@ -1,7 +1,7 @@
 package com.linsr.books.read;
 
-import com.linsr.common.base.mvp.IPresenter;
-import com.linsr.common.base.mvp.IView;
+import com.linsr.common.biz.IPresenter;
+import com.linsr.common.biz.IView;
 
 /**
  * Description
