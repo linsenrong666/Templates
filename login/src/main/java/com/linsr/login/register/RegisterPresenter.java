@@ -2,8 +2,7 @@ package com.linsr.login.register;
 
 import android.text.TextUtils;
 
-import com.linsr.common.net.ApiException;
-import com.linsr.common.net.NetObserver;
+import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.utils.NumberUtils;
 import com.linsr.common.utils.ToastUtils;
@@ -32,6 +31,7 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
         }
         mLoginApi.sendCode(mobile, NumberUtils.getRandomNumberStr())
                 .compose(NetUtils.handleResponse(CodePojo.class))
+                .retryWhen(NetUtils.retry())
                 .subscribe(new NetObserver<CodePojo>(mIView, true) {
 
                     @Override
@@ -40,9 +40,10 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
                     }
 
                     @Override
-                    public void onFailed(ApiException e) {
-
+                    public void onFailed(Throwable e) {
+                        mIView.stopCountDown();
                     }
+
                 });
     }
 
@@ -65,7 +66,7 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
                     }
 
                     @Override
-                    public void onFailed(ApiException e) {
+                    public void onFailed(Throwable e) {
 
                     }
                 });

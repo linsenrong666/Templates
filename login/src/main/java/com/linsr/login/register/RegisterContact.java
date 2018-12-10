@@ -13,6 +13,8 @@ public interface RegisterContact {
 
     interface View extends IView {
         void startCountDown();
+
+        void stopCountDown();
     }
 
     interface Presenter {

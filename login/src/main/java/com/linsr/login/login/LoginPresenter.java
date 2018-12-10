@@ -1,8 +1,7 @@
 package com.linsr.login.login;
 
 import com.linsr.common.net.Api;
-import com.linsr.common.net.ApiException;
-import com.linsr.common.net.NetObserver;
+import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.utils.JLog;
 import com.linsr.login.data.LoginApi;
@@ -38,7 +37,7 @@ public class LoginPresenter implements LoginContact.Presenter {
                     }
 
                     @Override
-                    public void onFailed(ApiException e) {
+                    public void onFailed(Throwable e) {
                         JLog.e(e.toString());
                         mView.onLoginFailure(e.getMessage());
                     }

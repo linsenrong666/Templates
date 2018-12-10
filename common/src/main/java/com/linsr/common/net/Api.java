@@ -156,7 +156,6 @@ public class Api {
         public Response intercept(@NonNull Chain chain) throws IOException {
             Request request = chain.request();
             Response response = chain.proceed(request);
-            JLog.i("num:" + retryNum);
             while (!response.isSuccessful() && retryNum < maxRetry) {
                 retryNum++;
                 JLog.i("Retry", "num:" + retryNum);

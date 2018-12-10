@@ -1,9 +1,9 @@
-package com.linsr.common.net;
-
-import android.nfc.Tag;
+package com.linsr.common.net.callback;
 
 import com.linsr.common.biz.IView;
+import com.linsr.common.net.exception.ApiException;
 import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.ToastUtils;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -20,11 +20,22 @@ public abstract class NetObserver<T> implements Observer<T> {
 
     private IView mIView;
     private boolean mShowLoading;
+    private boolean mShowToast;
+
+    public NetObserver(IView iView) {
+        this(iView, false, false);
+    }
 
     public NetObserver(IView iView, boolean showLoading) {
+        this(iView, showLoading, false);
+    }
+
+    public NetObserver(IView iView, boolean showLoading, boolean showToast) {
         mIView = iView;
         mShowLoading = showLoading;
+        mShowToast = showToast;
     }
+
 
     @Override
     public void onSubscribe(@NonNull Disposable d) {
@@ -42,11 +53,8 @@ public abstract class NetObserver<T> implements Observer<T> {
     public void onError(@NonNull Throwable e) {
         JLog.v(TAG, "net  request onError ");
         hideLoading();
-        if (e instanceof ApiException) {
-            onFailed((ApiException) e);
-        } else {
-            onNetError(e);
-        }
+        printFailedToast(e);
+        onFailed(e);
     }
 
     @Override
@@ -66,7 +74,7 @@ public abstract class NetObserver<T> implements Observer<T> {
      * 网络请求失败
      * @param e error
      */
-    public abstract void onFailed(ApiException e);
+    public abstract void onFailed(Throwable e);
 
     /**
      * 网络请求完成
@@ -75,8 +83,10 @@ public abstract class NetObserver<T> implements Observer<T> {
 
     }
 
-    public void onNetError(Throwable throwable) {
-
+    private void printFailedToast(Throwable e) {
+        if (mShowToast && e instanceof ApiException) {
+            ToastUtils.show(e.getMessage());
+        }
     }
 
     private void hideLoading() {

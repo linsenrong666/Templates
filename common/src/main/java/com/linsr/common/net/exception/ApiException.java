@@ -1,10 +1,10 @@
-package com.linsr.common.net;
+package com.linsr.common.net.exception;
 
 /**
  * Description
  * @author Linsr
  */
-public class ApiException extends RuntimeException {
+public class ApiException extends Exception {
     private String mErrorMsg;
 
     public ApiException(String msg) {

@@ -133,4 +133,9 @@ public class RegisterActivity extends ActivityEx<RegisterPresenter> implements R
         mCodeButton.start();
     }
 
+    @Override
+    public void stopCountDown() {
+        mCodeButton.stop();
+    }
+
 }
