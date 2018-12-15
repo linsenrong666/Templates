@@ -14,6 +14,7 @@ import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.ToastUtils;
 import com.linsr.login.R;
+import com.linsr.login.data.model.response.LoginPojo;
 
 /**
  *
@@ -69,10 +70,12 @@ public class LoginActivity extends ActivityEx<LoginPresenter> implements LoginCo
         });
     }
 
-
     @Override
-    public void onLoginSucceed() {
-
+    public void onLoginSucceed(LoginPojo pojo) {
+        if (pojo != null) {
+            Router.startActivity(MainModule.Activity.MAIN);
+            finish();
+        }
     }
 
     @Override

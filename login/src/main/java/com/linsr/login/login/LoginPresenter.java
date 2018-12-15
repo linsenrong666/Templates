@@ -1,9 +1,14 @@
 package com.linsr.login.login;
 
+import com.linsr.common.biz.BasePresenter;
+import com.linsr.common.biz.config.AppConfig;
+import com.linsr.common.biz.config.UserInfoKey;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.utils.JLog;
+import com.linsr.common.utils.PrefsUtils;
+import com.linsr.login.base.BaseLoginPresenter;
 import com.linsr.login.data.LoginApi;
 import com.linsr.login.data.model.response.LoginPojo;
 
@@ -12,14 +17,13 @@ import com.linsr.login.data.model.response.LoginPojo;
  *
  * @author Linsr 2018/8/8 上午9:52
  */
-public class LoginPresenter implements LoginContact.Presenter {
+public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implements LoginContact.Presenter {
 
-    private LoginContact.View mView;
     private LoginApi mLoginApi;
 
-    public LoginPresenter(LoginContact.View view) {
+    LoginPresenter(LoginContact.View view) {
+        super(view);
         mLoginApi = Api.getService(LoginApi.class);
-        mView = view;
     }
 
     @Override
@@ -31,9 +35,11 @@ public class LoginPresenter implements LoginContact.Presenter {
 
                     @Override
                     public void onSucceed(LoginPojo data) {
-                        String message = data.getMessage();
-                        JLog.i(message);
-                        mView.onLoginSucceed();
+                        String userId = data.getUser_id();
+                        String token = data.getToken();
+                        PrefsUtils.putSharedString(mApplication, UserInfoKey.TOKEN, token);
+                        PrefsUtils.putSharedString(mApplication, UserInfoKey.USER_ID, userId);
+                        mView.onLoginSucceed(data);
                     }
 
                     @Override

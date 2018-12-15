@@ -1,5 +1,9 @@
 package com.linsr.common.biz;
 
+import android.app.Application;
+
+import com.linsr.common.base.BaseApplication;
+
 /**
  * Description
  *
@@ -7,14 +11,16 @@ package com.linsr.common.biz;
  */
 public abstract class BasePresenter<V extends IView> implements IPresenter {
 
-    protected V mIView;
+    protected V mView;
+    protected Application mApplication ;
 
     public BasePresenter(V IView) {
-        mIView = IView;
+        mView = IView;
+        mApplication = BaseApplication.getInstance();
     }
 
     @Override
     public void onDestroy() {
-        mIView = null;
+        mView = null;
     }
 }

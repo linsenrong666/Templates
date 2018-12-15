@@ -2,6 +2,7 @@ package com.linsr.login.login;
 
 import com.linsr.common.biz.IPresenter;
 import com.linsr.common.biz.IView;
+import com.linsr.login.data.model.response.LoginPojo;
 
 /**
  * Description
@@ -11,7 +12,7 @@ import com.linsr.common.biz.IView;
 public interface LoginContact {
 
     interface View extends IView {
-        void onLoginSucceed();
+        void onLoginSucceed(LoginPojo pojo);
 
         void onLoginFailure(String errMsg);
     }

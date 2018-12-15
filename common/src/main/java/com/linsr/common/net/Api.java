@@ -89,6 +89,7 @@ public class Api {
         if (RETRY_TIMES > 0) {
             builder.addInterceptor(new Retry(RETRY_TIMES));
         }
+        builder.addInterceptor(new ParamsInterceptor());
         boolean isDebug = ApplicationEx.getInstance().isDebug();
         //添加日志拦截
         if (isDebug) {

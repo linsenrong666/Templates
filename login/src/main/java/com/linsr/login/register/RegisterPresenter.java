@@ -32,16 +32,16 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
         mLoginApi.sendCode(mobile, NumberUtils.getRandomNumberStr())
                 .compose(NetUtils.handleResponse(CodePojo.class))
                 .retryWhen(NetUtils.retry())
-                .subscribe(new NetObserver<CodePojo>(mIView, true) {
+                .subscribe(new NetObserver<CodePojo>(mView, true) {
 
                     @Override
                     public void onSucceed(CodePojo data) {
-                        mIView.startCountDown();
+                        mView.startCountDown();
                     }
 
                     @Override
                     public void onFailed(Throwable e) {
-                        mIView.stopCountDown();
+                        mView.stopCountDown();
                     }
 
                 });
@@ -59,7 +59,7 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
         mLoginApi.register(username, password, phone, code, recommendCode, key)
                 .compose(NetUtils.handleResponse(RegisterPojo.class))
                 .retryWhen(NetUtils.retry())
-                .subscribe(new NetObserver<RegisterPojo>(mIView, true) {
+                .subscribe(new NetObserver<RegisterPojo>(mView, true) {
                     @Override
                     public void onSucceed(RegisterPojo data) {
 

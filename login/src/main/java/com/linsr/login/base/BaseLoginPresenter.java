@@ -1,6 +1,5 @@
 package com.linsr.login.base;
 
-import com.amap.api.location.APSService;
 import com.linsr.common.biz.BasePresenter;
 import com.linsr.common.biz.IView;
 import com.linsr.common.net.Api;
