@@ -36,7 +36,6 @@ public abstract class NetObserver<T> implements Observer<T> {
         mShowToast = showToast;
     }
 
-
     @Override
     public void onSubscribe(@NonNull Disposable d) {
         JLog.v(TAG, "net  request onSubscribe ");

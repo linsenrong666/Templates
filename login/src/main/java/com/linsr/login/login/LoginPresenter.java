@@ -1,13 +1,14 @@
 package com.linsr.login.login;
 
-import com.linsr.common.biz.BasePresenter;
-import com.linsr.common.biz.config.AppConfig;
+import android.text.TextUtils;
+
 import com.linsr.common.biz.config.UserInfoKey;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.PrefsUtils;
+import com.linsr.common.utils.ToastUtils;
 import com.linsr.login.base.BaseLoginPresenter;
 import com.linsr.login.data.LoginApi;
 import com.linsr.login.data.model.response.LoginPojo;
@@ -28,6 +29,14 @@ public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implem
 
     @Override
     public void login(String userName, String password) {
+        if (TextUtils.isEmpty(userName)) {
+            ToastUtils.show("用户名/手机号不能为空");
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            ToastUtils.show("密码不能为空");
+            return;
+        }
         mLoginApi.login(userName, password)
                 .compose(NetUtils.handleResponse(LoginPojo.class))
                 .retryWhen(NetUtils.retry())

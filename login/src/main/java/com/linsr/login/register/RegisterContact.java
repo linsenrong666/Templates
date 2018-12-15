@@ -15,6 +15,8 @@ public interface RegisterContact {
         void startCountDown();
 
         void stopCountDown();
+
+        void registerSucceed();
     }
 
     interface Presenter {

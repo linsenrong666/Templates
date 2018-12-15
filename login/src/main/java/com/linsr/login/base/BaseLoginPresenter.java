@@ -1,6 +1,6 @@
 package com.linsr.login.base;
 
-import com.linsr.common.biz.BasePresenter;
+import com.linsr.common.biz.PresenterEx;
 import com.linsr.common.biz.IView;
 import com.linsr.common.net.Api;
 import com.linsr.login.data.LoginApi;
@@ -10,7 +10,7 @@ import com.linsr.login.data.LoginApi;
  *
  * @author Linsr 2018/12/9 下午5:11
  */
-public abstract class BaseLoginPresenter<V extends IView> extends BasePresenter<V> {
+public abstract class BaseLoginPresenter<V extends IView> extends PresenterEx<V> {
     protected LoginApi mLoginApi;
 
     public BaseLoginPresenter(V IView) {

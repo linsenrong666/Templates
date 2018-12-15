@@ -17,7 +17,7 @@ public interface LoginContact {
         void onLoginFailure(String errMsg);
     }
 
-    interface Presenter extends IPresenter {
+    interface Presenter {
         void login(String userName, String password);
     }
 

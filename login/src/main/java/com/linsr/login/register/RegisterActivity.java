@@ -8,10 +8,8 @@ import android.widget.EditText;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.gui.widgets.countdown.CountDownButton;
-import com.linsr.common.gui.widgets.countdown.CountDownHandler;
 import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.utils.NumberUtils;
-import com.linsr.common.utils.ObjectUtils;
 import com.linsr.common.utils.ToastUtils;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.login.R;
@@ -57,17 +55,6 @@ public class RegisterActivity extends ActivityEx<RegisterPresenter> implements R
             @Override
             public void onClick(View v) {
                 mPresenter.sendCode(ViewUtils.getEditTextContent(mPhoneEditText));
-            }
-        });
-        mCodeButton.setOnCountDownListener(new CountDownHandler.OnCountDownListener() {
-            @Override
-            public void onCountDown(long time) {
-
-            }
-
-            @Override
-            public void onStop() {
-
             }
         });
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -138,4 +125,14 @@ public class RegisterActivity extends ActivityEx<RegisterPresenter> implements R
         mCodeButton.stop();
     }
 
+    @Override
+    public void registerSucceed() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopCountDown();
+    }
 }

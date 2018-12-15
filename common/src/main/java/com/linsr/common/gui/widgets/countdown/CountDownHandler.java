@@ -4,6 +4,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
 
+import com.linsr.common.utils.JLog;
+
+import java.lang.ref.WeakReference;
+
 /**
  * Description
  *
@@ -23,18 +27,15 @@ public class CountDownHandler extends Handler {
     private long mInterval = 1000;
     private int curMode = STOP;
     private long curTime;
-    private TextView mButton;
     private OnCountDownListener mOnCountDownListener;
 
-    CountDownHandler(TextView button, long initTime, long interval) {
-        mButton = button;
+    CountDownHandler(long initTime, long interval) {
         mInitTime = initTime;
         mInterval = interval;
         if (mInitTime <= 0 || mInitTime < interval) {
             throw new RuntimeException("初始时间不能小于0或者小于间隔时间");
         }
     }
-
 
     void setOnCountDownListener(OnCountDownListener onCountDownListener) {
         mOnCountDownListener = onCountDownListener;
@@ -45,8 +46,6 @@ public class CountDownHandler extends Handler {
         switch (msg.what) {
             case RUNNING:
                 curMode = RUNNING;
-                mButton.setClickable(false);
-                mButton.setEnabled(false);
                 curTime = curTime + mInterval;
                 if (curTime < mInitTime) {
                     long time = mInitTime - curTime;
@@ -60,8 +59,6 @@ public class CountDownHandler extends Handler {
                 break;
             case STOP:
                 curMode = STOP;
-                mButton.setClickable(true);
-                mButton.setEnabled(true);
                 curTime = 0;
                 removeCallbacksAndMessages(null);
                 if (mOnCountDownListener != null) {
