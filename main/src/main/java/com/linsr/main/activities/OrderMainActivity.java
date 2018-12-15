@@ -65,6 +65,7 @@ public class OrderMainActivity extends ActivityEx {
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
+        mViewPager.setOffscreenPageLimit(list.size());
         mViewPager.setCurrentItem(mOrderStatus);
     }
 

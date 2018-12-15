@@ -15,6 +15,7 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.FlashSaleAdapter;
 import com.linsr.main.model.FlashSalePojo;
 import com.linsr.main.utils.Mock;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 /**
  * Description
@@ -45,6 +46,11 @@ public class FlashSaleFragment extends RefreshFragment {
         mAdapter = new FlashSaleAdapter(mActivity);
         mAdapter.addData(Mock.getList(10, FlashSalePojo.class));
         RecyclerViewHelper.initDefault(mActivity, recyclerView, mAdapter);
+    }
+
+    @Override
+    protected void requestData(RefreshLayout refreshLayout) {
+
     }
 
 }

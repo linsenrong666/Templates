@@ -21,6 +21,7 @@ import com.linsr.main.adapters.AuctionAdapter;
 import com.linsr.main.adapters.AuctionHeaderAdapter;
 import com.linsr.main.model.AuctionPojo;
 import com.linsr.main.utils.Mock;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 /**
  * Description
@@ -40,13 +41,17 @@ public class AuctionFragment extends RefreshFragment {
         mAdapter.addData(Mock.getList(10, AuctionPojo.class));
         RecyclerView.Adapter adapter = initHeader(mAdapter);
 
-
         recyclerView.addItemDecoration(new RecycleViewDivider(mActivity,
                 LinearLayoutManager.VERTICAL,
                 (int) mContext.getResources().getDimension(R.dimen.mini),
                 mContext.getResources().getColor(R.color.background)));
 
         RecyclerViewHelper.initDefault(mActivity, recyclerView, adapter);
+    }
+
+    @Override
+    protected void requestData(RefreshLayout refreshLayout) {
+
     }
 
     private RecyclerView.Adapter initHeader(AuctionAdapter adapter) {

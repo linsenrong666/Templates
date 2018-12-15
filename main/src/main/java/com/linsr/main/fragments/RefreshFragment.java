@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.net.NetConstants;
 import com.linsr.main.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -22,6 +23,8 @@ public abstract class RefreshFragment extends FragmentEx {
     protected RecyclerView mRecyclerView;
     protected SmartRefreshLayout mRefreshLayout;
     private FrameLayout mTopLayout;
+    protected int mPageIndex = NetConstants.DEFAULT_PAGE_INDEX;
+    protected int mPageSize = NetConstants.DEFAULT_PAGE_SIZE;
 
     @Override
     protected int getLayoutId() {
@@ -59,12 +62,15 @@ public abstract class RefreshFragment extends FragmentEx {
 
     protected abstract void initRecyclerView(RecyclerView recyclerView);
 
+    protected abstract void requestData(RefreshLayout refreshLayout);
+
     protected void onRefreshEx(RefreshLayout refreshLayout) {
-        refreshLayout.finishRefresh();
+        mPageIndex = NetConstants.DEFAULT_PAGE_INDEX;
+        requestData(refreshLayout);
     }
 
     protected void onLoadMoreEx(RefreshLayout refreshLayout) {
-        refreshLayout.finishLoadMore();
+        requestData(refreshLayout);
     }
 
 

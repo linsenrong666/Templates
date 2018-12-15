@@ -12,6 +12,7 @@ import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.utils.Mock;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 /**
  * Description
@@ -36,6 +37,11 @@ public class ChildCategoryFragment extends RefreshFragment {
             }
         });
         RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);
+    }
+
+    @Override
+    protected void requestData(RefreshLayout refreshLayout) {
+
     }
 
 }

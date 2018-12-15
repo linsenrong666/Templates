@@ -56,23 +56,23 @@ public class Api {
                 .build();
     }
 
-    private static volatile Api mApi;
+    private static volatile Api sApi;
 
     public static <S> S getService(Class<S> c) {
-        if (mApi == null) {
+        if (sApi == null) {
             synchronized (Api.class) {
-                if (mApi == null) {
-                    mApi = new Api();
+                if (sApi == null) {
+                    sApi = new Api();
                 }
             }
         }
         S service;
-        String key = c.getClass().getCanonicalName();
-        if (mApi.mServiceCache.get(key) == null) {
-            service = mApi.create(c);
-            mApi.mServiceCache.put(key, service);
+        String key = c.getName();
+        if (sApi.mServiceCache.get(key) == null) {
+            service = sApi.create(c);
+            sApi.mServiceCache.put(key, service);
         } else {
-            service = (S) mApi.mServiceCache.get(key);
+            service = (S) sApi.mServiceCache.get(key);
         }
         return service;
     }

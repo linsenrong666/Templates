@@ -35,8 +35,6 @@ public class CountDownButton extends android.support.v7.widget.AppCompatTextView
         if (mHandler == null) {
             mHandler = new CountDownHandler(initTime, interval);
             setOnCountDownListener();
-        } else {
-            JLog.i("Handler已经生成了");
         }
     }
 

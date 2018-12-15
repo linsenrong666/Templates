@@ -11,6 +11,7 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.GroupShoppingAdapter;
 import com.linsr.main.model.GroupShoppingPojo;
 import com.linsr.main.utils.Mock;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 /**
  * Description
@@ -27,5 +28,10 @@ public class GroupShoppingFragment extends RefreshFragment {
         mAdapter = new GroupShoppingAdapter(mActivity);
         mAdapter.addData(Mock.getList(10, GroupShoppingPojo.class));
         RecyclerViewHelper.initDefault(mActivity,recyclerView,mAdapter,true);
+    }
+
+    @Override
+    protected void requestData(RefreshLayout refreshLayout) {
+
     }
 }

@@ -13,6 +13,7 @@ import com.linsr.main.adapters.HomeAdapter;
 import com.linsr.main.app.Constants;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.utils.Mock;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import java.util.List;
 
@@ -43,6 +44,11 @@ public class MallHomeFragment extends RefreshFragment {
                 }
             }
         });
+    }
+
+    @Override
+    protected void requestData(RefreshLayout refreshLayout) {
+
     }
 
 }

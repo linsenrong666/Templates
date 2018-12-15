@@ -45,6 +45,7 @@ public abstract class NetObserver<T> implements Observer<T> {
     @Override
     public void onNext(@NonNull T data) {
         JLog.v(TAG, "net  request onNext ");
+        hideLoading();
         onSucceed(data);
     }
 
