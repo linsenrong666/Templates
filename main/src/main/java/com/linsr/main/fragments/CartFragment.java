@@ -103,8 +103,8 @@ public class CartFragment extends FragmentEx {
         wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(
                 R.layout.main_header_recommend, null));
 
-        List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
-        mRecommendAdapter.addData(goodsList2);
+//        List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
+//        mRecommendAdapter.addData(goodsList2);
 
         RecyclerViewHelper.initGridLayout(mContext, 3,
                 mRecommendRecyclerView, wrapper);

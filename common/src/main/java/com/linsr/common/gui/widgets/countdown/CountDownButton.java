@@ -50,8 +50,10 @@ public class CountDownButton extends android.support.v7.widget.AppCompatTextView
     }
 
     public void stop() {
-        mHandler.sendEmptyMessage(CountDownHandler.STOP);
-        mHandler = null;
+        if (mHandler != null) {
+            mHandler.sendEmptyMessage(CountDownHandler.STOP);
+            mHandler = null;
+        }
     }
 
     private CountDownHandler.OnCountDownListener mProxy;

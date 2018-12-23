@@ -20,10 +20,11 @@ import com.linsr.main.adapters.HomeAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.holder.RecommendHolder;
 import com.linsr.main.adapters.holder.ShopWindowHolder;
-import com.linsr.main.model.HomePojo;
+import com.linsr.main.logic.contacts.HomeContact;
+import com.linsr.main.logic.presenter.HomePresenter;
 import com.linsr.main.model.RecommendPojo;
+import com.linsr.main.model.bean.IsbestBean;
 import com.linsr.main.utils.Mock;
-import com.linsr.main.widgets.MainSearchTitleLayoutManager;
 import com.linsr.main.widgets.MainSearchTitleLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -37,7 +38,8 @@ import java.util.List;
  * @author Linsr 2018/7/10 下午5:59
  */
 @Route(path = MainModule.Fragment.HOME)
-public class HomeFragment extends FragmentEx implements CommonModule.Activity.FragmentContainerParams {
+public class HomeFragment extends FragmentEx<HomePresenter> implements
+        CommonModule.Activity.FragmentContainerParams, HomeContact.View {
 
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
@@ -45,6 +47,11 @@ public class HomeFragment extends FragmentEx implements CommonModule.Activity.Fr
     private HomeAdapter mAdapter;
     private ImageView mLeftImage;
     private MainSearchTitleLayout mSearchTitleLayout;
+
+    @Override
+    protected HomePresenter bindPresenter() {
+        return new HomePresenter(this);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -72,9 +79,27 @@ public class HomeFragment extends FragmentEx implements CommonModule.Activity.Fr
         mRefreshLayout = findViewById(R.id.home_refresh_layout);
         mRecyclerView = findViewById(R.id.home_recycler_view);
 
-        MainSearchTitleLayoutManager searchTitleLayoutManager = new MainSearchTitleLayoutManager();
-        searchTitleLayoutManager.setUp(mActivity, mSearchTitleLayout,
-                MainSearchTitleLayoutManager.PAGE_TYPE_HOME);
+        mSearchTitleLayout.setOnEventListener(new MainSearchTitleLayout.OnEventListener() {
+            @Override
+            public void onSearchClick(String text) {
+
+            }
+
+            @Override
+            public void onEditClick() {
+                Router.startActivity(MainModule.Activity.SEARCH);
+            }
+
+            @Override
+            public void onLeftImageClick() {
+
+            }
+
+            @Override
+            public void onRightImageClick() {
+
+            }
+        });
     }
 
     private void initAdapter() {
@@ -101,35 +126,59 @@ public class HomeFragment extends FragmentEx implements CommonModule.Activity.Fr
         View headerView = LayoutInflater.from(mActivity).inflate(R.layout.main_header_home_shop_info,
                 mContentLayout, false);
         mWrapper.addHeaderView(headerView);
-
-
-        RecyclerView recyclerView = new RecyclerView(mActivity);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        recyclerView.setLayoutParams(layoutParams);
-        RecommendAdapter adapter = new RecommendAdapter(mActivity);
-        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(adapter);
-        wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.main_header_recommend, null));
-        List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
-        adapter.addData(goodsList2);
-        RecyclerViewHelper.initGridLayout(mContext, 3, recyclerView, wrapper);
-
-        mWrapper.addFootView(recyclerView);
     }
 
     private void initRefresh() {
         mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh();
+                requestMain(false);
             }
         });
     }
 
     @Override
     protected void loadData() {
-        List<HomePojo> findList = Mock.getHomeList(5);
-        mAdapter.addData(findList);
+        requestMain(true);
+        requestGoods();
+    }
+
+    private void requestMain(boolean showLoading) {
+        mPresenter.mainList(showLoading);
+    }
+    private void requestGoods() {
+        mPresenter.recommendGoodsList();
+    }
+
+    @Override
+    public void mainListSucceed() {
+
+    }
+
+    @Override
+    public void mainListFailed() {
+
+    }
+
+    @Override
+    public void goodsListSucceed(List<IsbestBean> list) {
+        RecyclerView recyclerView = new RecyclerView(mActivity);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        recyclerView.setLayoutParams(layoutParams);
+        RecommendAdapter adapter = new RecommendAdapter(mActivity);
+        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(adapter);
+        wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.main_header_recommend, null));
+        adapter.addData(list);
+        RecyclerViewHelper.initGridLayout(mContext, 3, recyclerView, wrapper);
+
+        mWrapper.addFootView(recyclerView);
+    }
+
+    @Override
+    public void goodsListFailed() {
+
     }
 
 }

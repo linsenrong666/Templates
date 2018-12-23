@@ -34,6 +34,8 @@ public class ParamsInterceptor implements Interceptor {
             if (AppConfig.getInstance().isLoggedIn()) {
                 builder.add("token", PrefsUtils.getSharedString(ApplicationEx.getInstance(),
                         UserInfoKey.TOKEN));
+                builder.add("user_id", PrefsUtils.getSharedString(ApplicationEx.getInstance(),
+                        UserInfoKey.USER_ID));
             }
             formBody = builder.build();
             request = request.newBuilder().post(formBody).build();

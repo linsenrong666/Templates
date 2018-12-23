@@ -16,13 +16,14 @@ import com.linsr.common.utils.DisplayUtils;
 import com.linsr.common.utils.ImageUtils;
 import com.linsr.main.R;
 import com.linsr.main.model.RecommendPojo;
+import com.linsr.main.model.bean.IsbestBean;
 
 /**
  * Description
  *
  * @author Linsr 2018/8/13 下午5:24
  */
-public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
+public class RecommendAdapter extends BaseRecyclerAdapter<IsbestBean> {
 
     public RecommendAdapter(Context context) {
         super(context);
@@ -30,7 +31,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
 
     @NonNull
     @Override
-    public BaseViewHolder<RecommendPojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BaseViewHolder<IsbestBean> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new Holder(mContext, mInflater.inflate(R.layout.main_item_recommend_goods,
                 parent, false));
     }
@@ -46,7 +47,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
         }
     }
 
-    class Holder extends BaseViewHolder<RecommendPojo> {
+    class Holder extends BaseViewHolder<IsbestBean> {
 
         private TextView name;
         private TextView price;
@@ -66,9 +67,9 @@ public class RecommendAdapter extends BaseRecyclerAdapter<RecommendPojo> {
         }
 
         @Override
-        public void convert(int position, RecommendPojo data, int itemType) {
-            name.setText(data.getName());
-            price.setText(data.getPrice());
+        public void convert(int position, IsbestBean data, int itemType) {
+            name.setText(data.getShort_name());
+            price.setText(data.getShop_price());
         }
     }
 

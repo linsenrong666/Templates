@@ -25,8 +25,14 @@ public class MainModule {
         String BALANCE = ACTIVITY + "balance";
         String ADDRESS_LIST = ACTIVITY + "addressList";
         String ADD_ADDRESS = ACTIVITY + "addAddress";
+
         String SEARCH = ACTIVITY + "search";
         String SEARCH_RESULT = ACTIVITY + "searchResult";
+
+        interface SearchResultParams {
+            String KEYWORD = "keyword";
+        }
+
         String PAY_RESULT = ACTIVITY + "payResult";
 
         String ORDER_MAIN = ACTIVITY + "orderMain";

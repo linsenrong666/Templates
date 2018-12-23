@@ -29,7 +29,6 @@ import com.linsr.main.R;
  */
 public class MainSearchTitleLayout extends FrameLayout {
 
-
     public interface OnEventListener {
         void onSearchClick(String text);
 
@@ -150,4 +149,14 @@ public class MainSearchTitleLayout extends FrameLayout {
         a.recycle();
     }
 
+    public void setEnableEdit(boolean enableEdit) {
+        mEnableEdit = enableEdit;
+        mEditText.setFocusable(mEnableEdit);
+        mEditText.setFocusableInTouchMode(mEnableEdit);
+        setListener();
+    }
+
+    public void setEditTextContent(CharSequence sequence) {
+        mEditText.setText(sequence);
+    }
 }

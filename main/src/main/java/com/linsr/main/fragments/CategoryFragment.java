@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
@@ -19,7 +18,6 @@ import com.linsr.main.adapters.CategoryMenuAdapter;
 import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.utils.Mock;
 import com.linsr.main.widgets.MainSearchTitleLayout;
-import com.linsr.main.widgets.MainSearchTitleLayoutManager;
 
 /**
  * Description
@@ -59,8 +57,27 @@ public class CategoryFragment extends FragmentEx {
         });
 
         mSearchTitleLayout = findViewById(R.id.category_search_title_layout);
-        MainSearchTitleLayoutManager manager = new MainSearchTitleLayoutManager();
-        manager.setUp(mActivity, mSearchTitleLayout);
+        mSearchTitleLayout.setOnEventListener(new MainSearchTitleLayout.OnEventListener() {
+            @Override
+            public void onSearchClick(String text) {
+
+            }
+
+            @Override
+            public void onEditClick() {
+                Router.startActivity(MainModule.Activity.SEARCH);
+            }
+
+            @Override
+            public void onLeftImageClick() {
+
+            }
+
+            @Override
+            public void onRightImageClick() {
+
+            }
+        });
     }
 
     private void replaceFragment(Fragment fragment) {

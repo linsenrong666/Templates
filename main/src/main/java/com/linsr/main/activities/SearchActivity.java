@@ -1,14 +1,12 @@
 package com.linsr.main.activities;
 
-import android.view.View;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
+import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
 import com.linsr.main.widgets.MainSearchTitleLayout;
-import com.linsr.main.widgets.MainSearchTitleLayoutManager;
 
 /**
  * Description
@@ -33,8 +31,29 @@ public class SearchActivity extends ActivityEx {
     @Override
     protected void initView() {
         mSearchTitleLayout = findViewById(R.id.search_title_layout);
-        MainSearchTitleLayoutManager mainSearchTitleLayoutManager = new MainSearchTitleLayoutManager();
-        mainSearchTitleLayoutManager.setUp(this, mSearchTitleLayout);
+        mSearchTitleLayout.setOnEventListener(new MainSearchTitleLayout.OnEventListener() {
+            @Override
+            public void onSearchClick(String text) {
+                Params params = new Params();
+                params.add(MainModule.Activity.SearchResultParams.KEYWORD, text);
+                Router.startActivity(MainModule.Activity.SEARCH_RESULT, params);
+            }
+
+            @Override
+            public void onEditClick() {
+
+            }
+
+            @Override
+            public void onLeftImageClick() {
+                back();
+            }
+
+            @Override
+            public void onRightImageClick() {
+
+            }
+        });
     }
 
 }

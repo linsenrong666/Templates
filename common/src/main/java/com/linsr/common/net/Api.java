@@ -134,6 +134,7 @@ public class Api {
             } else if (GET.equals(method)) {
 
             }
+            JLog.v(TAG, "| 返回:" + content);
             JLog.d(TAG, "| 用时:" + duration + "毫秒");
             return response.newBuilder()
                     .body(okhttp3.ResponseBody.create(mediaType, content))

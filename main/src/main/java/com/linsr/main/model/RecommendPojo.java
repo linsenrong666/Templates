@@ -1,39 +1,23 @@
 package com.linsr.main.model;
 
 import com.linsr.common.model.BasePojo;
+import com.linsr.common.model.BizPojo;
+import com.linsr.main.model.bean.IsbestBean;
+
+import java.util.List;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Description
  *
  * @author Linsr 2018/8/13 下午5:25
  */
-public class RecommendPojo extends BasePojo {
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class RecommendPojo extends BizPojo {
 
-    private String name;
-    private String price;
-    private String url;
+    private List<IsbestBean> isbest;
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }

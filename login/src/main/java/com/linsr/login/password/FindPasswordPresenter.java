@@ -2,6 +2,7 @@ package com.linsr.login.password;
 
 import android.text.TextUtils;
 
+import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.utils.NumberUtils;
@@ -17,9 +18,12 @@ import com.linsr.login.data.model.response.CodePojo;
 public class FindPasswordPresenter extends BaseLoginPresenter<FindPasswordContact.View>
         implements FindPasswordContact.Presenter {
 
+    private String mKeyCode;
+
     FindPasswordPresenter(FindPasswordContact.View IView) {
         super(IView);
     }
+
 
     @Override
     public void sendCode(String mobile) {
@@ -27,12 +31,13 @@ public class FindPasswordPresenter extends BaseLoginPresenter<FindPasswordContac
             ToastUtils.show("请输入手机号码");
             return;
         }
-        mLoginApi.sendForgetCode(mobile, NumberUtils.getRandomNumberStr())
-                .compose(NetUtils.handleResponse(CodePojo.class))
+        mKeyCode = NumberUtils.getRandomNumberStr();
+        mLoginApi.sendForgetCode(mobile, mKeyCode)
+                .compose(NetUtils.handleResponse(BizPojo.class))
                 .retryWhen(NetUtils.retry())
-                .subscribe(new NetObserver<CodePojo>(mView, true, true) {
+                .subscribe(new NetObserver<BizPojo>(mView, true, true) {
                     @Override
-                    public void onSucceed(CodePojo data) {
+                    public void onSucceed(BizPojo data) {
                         mView.startCountDown();
                     }
 
@@ -57,7 +62,11 @@ public class FindPasswordPresenter extends BaseLoginPresenter<FindPasswordContac
             ToastUtils.show("请输入新密码");
             return;
         }
-        mLoginApi.resetPassword(mobile, code, password, NumberUtils.getRandomNumberStr())
+        if (TextUtils.isEmpty(mKeyCode)) {
+            ToastUtils.show("请先获取验证码");
+            return;
+        }
+        mLoginApi.resetPassword(mobile, code, password, mKeyCode)
                 .compose(NetUtils.handleResponse(CodePojo.class))
                 .retryWhen(NetUtils.retry())
                 .subscribe(new NetObserver<CodePojo>(mView, true, true) {

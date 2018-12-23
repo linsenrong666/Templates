@@ -26,17 +26,17 @@ public class ChildCategoryFragment extends RefreshFragment {
 
     @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
-        mAdapter = new RecommendAdapter(mContext);
-        mAdapter.addData(Mock.getRecommendList(21));
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<RecommendPojo>() {
-
-            @Override
-            public void onItemClick(BaseViewHolder<RecommendPojo> holder, int position,
-                                    int itemType, RecommendPojo data) {
-                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS);
-            }
-        });
-        RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);
+//        mAdapter = new RecommendAdapter(mContext);
+//        mAdapter.addData(Mock.getRecommendList(21));
+//        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<RecommendPojo>() {
+//
+//            @Override
+//            public void onItemClick(BaseViewHolder<RecommendPojo> holder, int position,
+//                                    int itemType, RecommendPojo data) {
+//                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS);
+//            }
+//        });
+//        RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);
     }
 
     @Override
