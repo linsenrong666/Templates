@@ -41,12 +41,14 @@ public class HomePresenter extends PresenterEx<HomeContact.View> implements Home
     @Override
     public void recommendGoodsList() {
         IndexRequest.recommendGoodsList(getLifecycleOwner(),
-                new NetObserver<RecommendPojo>(mView, false, false) {
+                new NetObserver<RecommendPojo>(mView) {
 
                     @Override
                     public void onSucceed(RecommendPojo data) {
                         List<IsbestBean> isbest = data.getIsbest();
-                        mView.goodsListSucceed(isbest);
+                        if (isbest != null) {
+                            mView.goodsListSucceed(isbest.subList(0, 9));
+                        }
                     }
 
                     @Override

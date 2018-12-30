@@ -18,7 +18,8 @@ public class MainModule {
         String CHILD_CATEGORY = ACTIVITY + "childCategory";
 
         interface ChildCategoryParams {
-            String MENU_LIST = "menu_list";
+            String FIRST_CATEGORY_ID = "first_category_id";
+            String SECOND_CATEGORY_ID = "second_category_id";
             String ENTER_POSITION = "enter_position";
         }
 
@@ -61,6 +62,11 @@ public class MainModule {
         String ME = FRAGMENT + "me";
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
         String CATEGORY_DETAILS = FRAGMENT + "categoryDetails";
+
+        interface CategoryDetailsParams {
+            String CATEGORY_BEAN = "category_bean";
+        }
+
         String ORDER_LIST = FRAGMENT + "orderList";
         String MALL_HOME = FRAGMENT + "mallHome";
         String FLASH_SALE = FRAGMENT + "flashSale";

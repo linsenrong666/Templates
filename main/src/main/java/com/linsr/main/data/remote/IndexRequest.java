@@ -6,12 +6,15 @@ import android.arch.lifecycle.LifecycleOwner;
 import com.linsr.common.biz.ApplicationEx;
 import com.linsr.common.biz.config.UserInfoKey;
 import com.linsr.common.model.BizPojo;
+import com.linsr.common.model.ResponsePojo;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.utils.NumberUtils;
 import com.linsr.common.utils.PrefsUtils;
 import com.linsr.main.data.IndexApi;
+import com.linsr.main.model.CategoryMenuPojo;
+import com.linsr.main.model.ChildCategoryPojo;
 import com.linsr.main.model.RecommendPojo;
 
 /**
@@ -42,6 +45,10 @@ public class IndexRequest {
 
     }
 
+
+    /**
+     * 获取推荐商品
+     */
     public static void recommendGoodsList(LifecycleOwner lifecycleOwner,
                                           NetObserver<RecommendPojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
@@ -52,5 +59,32 @@ public class IndexRequest {
                 .subscribe(observer);
     }
 
+    /**
+     * 分类列表
+     */
+    public static void categoryList(LifecycleOwner lifecycleOwner,
+                                    NetObserver<CategoryMenuPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.categoryList()
+                .compose(NetUtils.handleResponse(CategoryMenuPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<CategoryMenuPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    /**
+     * 子分类页面
+     */
+    public static void childCategoryList(LifecycleOwner lifecycleOwner,
+                                         String fid,
+                                         String sid,
+                                         NetObserver<ChildCategoryPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.childCategoryList(fid, sid)
+                .compose(NetUtils.handleResponse(ChildCategoryPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<ChildCategoryPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
 
 }

@@ -60,16 +60,6 @@ public class Mock {
         return list;
     }
 
-    public static List<CategoryMenuPojo> getMenuList(int size) {
-        List<CategoryMenuPojo> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            CategoryMenuPojo pojo = new CategoryMenuPojo();
-            pojo.setTitle("item:" + i);
-            list.add(pojo);
-        }
-        return list;
-    }
-
     public static List<HomePojo> getFindList(int size) {
         int[] arr = {Constants.FloorType.BANNER,
                 Constants.FloorType.MENU,

@@ -38,7 +38,7 @@ public abstract class FragmentEx<P extends IPresenter> extends BaseFragment impl
             mPresenter.setLifecycleOwner(this);
             lifecycle.addObserver(mPresenter);
         } else {
-            JLog.e("ERROR: Presenter is null !!!");
+            JLog.e(TAG, "ERROR: Presenter is null !!!");
         }
     }
 

@@ -18,6 +18,7 @@ import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.HomeAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
+import com.linsr.main.adapters.RecommendGoodsAdapter;
 import com.linsr.main.adapters.holder.RecommendHolder;
 import com.linsr.main.adapters.holder.ShopWindowHolder;
 import com.linsr.main.logic.contacts.HomeContact;
@@ -47,6 +48,7 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     private HomeAdapter mAdapter;
     private ImageView mLeftImage;
     private MainSearchTitleLayout mSearchTitleLayout;
+    private RecommendAdapter mFootAdapter;
 
     @Override
     protected HomePresenter bindPresenter() {
@@ -69,7 +71,21 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
         initAdapter();
         initHeader();
         initRefresh();
+        initFooter();
         RecyclerViewHelper.initDefault(mActivity, mRecyclerView, mWrapper);
+    }
+
+    private void initFooter() {
+        RecyclerView mFootRecyclerView = new RecyclerView(mActivity);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        mFootRecyclerView.setLayoutParams(layoutParams);
+        mFootAdapter = new RecommendAdapter(mActivity);
+        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mFootAdapter);
+        wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.main_header_recommend, null));
+        RecyclerViewHelper.initGridLayout(mContext, 3, mFootRecyclerView, wrapper);
+        mWrapper.addFootView(mFootRecyclerView);
     }
 
     private void findView() {
@@ -133,6 +149,7 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 requestMain(false);
+                requestGoods();
             }
         });
     }
@@ -146,34 +163,25 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     private void requestMain(boolean showLoading) {
         mPresenter.mainList(showLoading);
     }
+
     private void requestGoods() {
         mPresenter.recommendGoodsList();
     }
 
     @Override
     public void mainListSucceed() {
-
+        mRefreshLayout.finishRefresh();
     }
 
     @Override
     public void mainListFailed() {
-
+        mRefreshLayout.finishRefresh();
     }
 
     @Override
     public void goodsListSucceed(List<IsbestBean> list) {
-        RecyclerView recyclerView = new RecyclerView(mActivity);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        recyclerView.setLayoutParams(layoutParams);
-        RecommendAdapter adapter = new RecommendAdapter(mActivity);
-        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(adapter);
-        wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.main_header_recommend, null));
-        adapter.addData(list);
-        RecyclerViewHelper.initGridLayout(mContext, 3, recyclerView, wrapper);
-
-        mWrapper.addFootView(recyclerView);
+        mFootAdapter.clear();
+        mFootAdapter.addData(list);
     }
 
     @Override

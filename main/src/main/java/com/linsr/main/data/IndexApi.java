@@ -27,7 +27,16 @@ public interface IndexApi {
 
     @FormUrlEncoded
     @POST("api.php?c=cate&a=isbest")
-    Observable<ResponsePojo> recommendGoodsList(@Field("key")String key);
+    Observable<ResponsePojo> recommendGoodsList(@Field("key") String key);
+
+
+    @POST("api.php?c=category&a=index")
+    Observable<ResponsePojo> categoryList();
+
+    @FormUrlEncoded
+    @POST("api.php?c=category&a=catlist")
+    Observable<ResponsePojo> childCategoryList(@Field("fid") String fid,
+                                               @Field("sid") String sid);
 
 
 }

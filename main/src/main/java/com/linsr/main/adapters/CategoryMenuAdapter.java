@@ -16,7 +16,7 @@ import com.linsr.main.model.CategoryMenuPojo;
  *
  * @author Linsr 2018/7/11 下午2:31
  */
-public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
+public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo.CatListsBean> {
 
     private int mSelectedPosition;
 
@@ -26,7 +26,7 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
 
     @NonNull
     @Override
-    public BaseViewHolder<CategoryMenuPojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BaseViewHolder<CategoryMenuPojo.CatListsBean> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.main_item_category_menu_item, parent, false);
         return new MenuHolder(mContext, view);
     }
@@ -36,7 +36,7 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
         notifyDataSetChanged();
     }
 
-    private class MenuHolder extends BaseViewHolder<CategoryMenuPojo> {
+    private class MenuHolder extends BaseViewHolder<CategoryMenuPojo.CatListsBean> {
         private View strip;
         private TextView title;
 
@@ -47,8 +47,8 @@ public class CategoryMenuAdapter extends BaseRecyclerAdapter<CategoryMenuPojo> {
         }
 
         @Override
-        public void convert(final int position, CategoryMenuPojo data, int itemType) {
-            title.setText(data.getTitle());
+        public void convert(final int position, CategoryMenuPojo.CatListsBean data, int itemType) {
+            title.setText(data.getCat_name());
             if (mSelectedPosition == position) {
                 strip.setVisibility(View.VISIBLE);
                 title.setTextColor(getColor(R.color.main_color));
