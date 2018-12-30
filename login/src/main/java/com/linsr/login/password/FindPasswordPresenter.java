@@ -9,6 +9,7 @@ import com.linsr.common.utils.NumberUtils;
 import com.linsr.common.utils.ToastUtils;
 import com.linsr.login.base.BaseLoginPresenter;
 import com.linsr.login.data.model.response.CodePojo;
+import com.linsr.login.data.model.response.LoginPojo;
 
 /**
  * Description
@@ -35,6 +36,7 @@ public class FindPasswordPresenter extends BaseLoginPresenter<FindPasswordContac
         mLoginApi.sendForgetCode(mobile, mKeyCode)
                 .compose(NetUtils.handleResponse(BizPojo.class))
                 .retryWhen(NetUtils.retry())
+                .as(this.<BizPojo>bindLifecycle())
                 .subscribe(new NetObserver<BizPojo>(mView, true, true) {
                     @Override
                     public void onSucceed(BizPojo data) {
@@ -69,6 +71,7 @@ public class FindPasswordPresenter extends BaseLoginPresenter<FindPasswordContac
         mLoginApi.resetPassword(mobile, code, password, mKeyCode)
                 .compose(NetUtils.handleResponse(CodePojo.class))
                 .retryWhen(NetUtils.retry())
+                .as(this.<CodePojo>bindLifecycle())
                 .subscribe(new NetObserver<CodePojo>(mView, true, true) {
                     @Override
                     public void onSucceed(CodePojo data) {
@@ -81,5 +84,4 @@ public class FindPasswordPresenter extends BaseLoginPresenter<FindPasswordContac
                     }
                 });
     }
-
 }

@@ -62,7 +62,6 @@ public class LoginActivity extends ActivityEx<LoginPresenter> implements LoginCo
             public void onClick(View v) {
                 String userName = mAccountEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
-
                 mPresenter.login(userName, password);
             }
         });

@@ -14,6 +14,10 @@ import com.linsr.login.base.BaseLoginPresenter;
 import com.linsr.login.data.model.dto.RegisterDto;
 import com.linsr.login.data.model.response.RegisterPojo;
 
+import org.reactivestreams.Subscription;
+
+import io.reactivex.disposables.Disposable;
+
 /**
  * Description
  *
@@ -38,10 +42,12 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
         mLoginApi.sendCode(mobile, mRandomNumber)
                 .compose(NetUtils.handleResponse(BizPojo.class))
                 .retryWhen(NetUtils.retry())
+                .as(this.<BizPojo>bindLifecycle())
                 .subscribe(new NetObserver<BizPojo>(mView, true, true) {
 
                     @Override
                     public void onSucceed(BizPojo data) {
+                        ToastUtils.show("验证码已发送,请注意查收");
                         mView.startCountDown();
                     }
 
@@ -66,6 +72,7 @@ public class RegisterPresenter extends BaseLoginPresenter<RegisterContact.View>
         mLoginApi.register(username, password, phone, code, recommendCode, mRandomNumber)
                 .compose(NetUtils.handleResponse(RegisterPojo.class))
                 .retryWhen(NetUtils.retry())
+                .as(this.<RegisterPojo>bindLifecycle())
                 .subscribe(new NetObserver<RegisterPojo>(mView, true, true) {
                     @Override
                     public void onSucceed(RegisterPojo data) {

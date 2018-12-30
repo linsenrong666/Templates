@@ -24,22 +24,23 @@ public class HomePresenter extends PresenterEx<HomeContact.View> implements Home
 
     @Override
     public void mainList(boolean showLoading) {
-        IndexRequest.mainList(new NetObserver<BizPojo>(mView, showLoading, true) {
-            @Override
-            public void onSucceed(BizPojo data) {
-                mView.mainListSucceed();
-            }
+        IndexRequest.mainList(getLifecycleOwner(),
+                new NetObserver<BizPojo>(mView, showLoading, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        mView.mainListSucceed();
+                    }
 
-            @Override
-            public void onFailed(Throwable e) {
-                mView.mainListFailed();
-            }
-        });
+                    @Override
+                    public void onFailed(Throwable e) {
+                        mView.mainListFailed();
+                    }
+                });
     }
 
     @Override
     public void recommendGoodsList() {
-        IndexRequest.recommendGoodsList(
+        IndexRequest.recommendGoodsList(getLifecycleOwner(),
                 new NetObserver<RecommendPojo>(mView, false, false) {
 
                     @Override

@@ -1,5 +1,8 @@
 package com.linsr.common.net.callback;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleOwner;
+
 import com.linsr.common.biz.IView;
 import com.linsr.common.net.exception.ApiException;
 import com.linsr.common.utils.JLog;

@@ -1,9 +1,12 @@
 package com.linsr.common.biz;
 
+import android.arch.lifecycle.Lifecycle;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.CallSuper;
+import android.support.annotation.MainThread;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +19,8 @@ import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.SystemBarTintManager;
 import com.linsr.common.gui.widgets.TitleView;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * 和业务相关的activity基类
  *
@@ -24,21 +29,31 @@ import com.linsr.common.gui.widgets.TitleView;
 public abstract class ActivityEx<P extends IPresenter> extends BaseActivity implements IView {
 
     private final Object mLockObject = new Object();
-
     private Dialog mTransparentDialog;
-
     protected TitleView mTitleView;
-
+    protected SystemBarTintManager tintManager;
     protected P mPresenter;
 
     @Override
     protected void init(Intent intent) {
         super.init(intent);
         mPresenter = bindPresenter();
+        initLifecycleObserver(getLifecycle());
     }
 
     protected P bindPresenter() {
         return null;
+    }
+
+    @CallSuper
+    @MainThread
+    protected void initLifecycleObserver(@NotNull Lifecycle lifecycle) {
+        if (mPresenter != null) {
+            mPresenter.setLifecycleOwner(this);
+            lifecycle.addObserver(mPresenter);
+        } else {
+            JLog.e("ERROR: Presenter is null !!!");
+        }
     }
 
     @Override
@@ -155,7 +170,6 @@ public abstract class ActivityEx<P extends IPresenter> extends BaseActivity impl
         mContentLayout.setVisibility(View.GONE);
     }
 
-    protected SystemBarTintManager tintManager;
 
     @Override
     protected void initSystemBarTint() {
@@ -188,11 +202,12 @@ public abstract class ActivityEx<P extends IPresenter> extends BaseActivity impl
         win.setAttributes(winParams);
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) {
-            mPresenter.onDestroy();
+            mPresenter.onDestroy(this);
             mPresenter = null;
         }
     }

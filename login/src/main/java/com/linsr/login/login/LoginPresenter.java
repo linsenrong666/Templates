@@ -2,7 +2,9 @@ package com.linsr.login.login;
 
 import android.text.TextUtils;
 
+import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.biz.config.UserInfoKey;
+import com.linsr.common.model.ResponsePojo;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.NetUtils;
@@ -13,6 +15,10 @@ import com.linsr.login.base.BaseLoginPresenter;
 import com.linsr.login.data.LoginApi;
 import com.linsr.login.data.model.response.LoginPojo;
 
+import org.reactivestreams.Subscription;
+
+import io.reactivex.Observable;
+
 /**
  * Description
  *
@@ -20,11 +26,8 @@ import com.linsr.login.data.model.response.LoginPojo;
  */
 public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implements LoginContact.Presenter {
 
-    private LoginApi mLoginApi;
-
     LoginPresenter(LoginContact.View view) {
         super(view);
-        mLoginApi = Api.getService(LoginApi.class);
     }
 
     @Override
@@ -40,14 +43,14 @@ public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implem
         mLoginApi.login(userName, password)
                 .compose(NetUtils.handleResponse(LoginPojo.class))
                 .retryWhen(NetUtils.retry())
+                .as(this.<LoginPojo>bindLifecycle())
                 .subscribe(new NetObserver<LoginPojo>(mView, true) {
 
                     @Override
                     public void onSucceed(LoginPojo data) {
                         String userId = data.getUser_id();
                         String token = data.getToken();
-                        PrefsUtils.putSharedString(mApplication, UserInfoKey.TOKEN, token);
-                        PrefsUtils.putSharedString(mApplication, UserInfoKey.USER_ID, userId);
+                        AppConfig.getInstance().login(token, userId);
                         mView.onLoginSucceed(data);
                     }
 
@@ -57,10 +60,5 @@ public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implem
                         mView.onLoginFailure(e.getMessage());
                     }
                 });
-    }
-
-    @Override
-    public void onDestroy() {
-        mView = null;
     }
 }

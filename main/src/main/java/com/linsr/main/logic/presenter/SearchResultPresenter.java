@@ -20,7 +20,7 @@ public class SearchResultPresenter extends PresenterEx<SearchResultContact.View>
 
     @Override
     public void search(String keyword, int pageIndex, int pageSize, boolean showLoading) {
-        IndexRequest.search(keyword, pageIndex, pageSize,
+        IndexRequest.search(getLifecycleOwner(), keyword, pageIndex, pageSize,
                 new NetObserver<BizPojo>(mView, showLoading, true) {
                     @Override
                     public void onSucceed(BizPojo data) {

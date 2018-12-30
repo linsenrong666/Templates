@@ -46,6 +46,8 @@ dependencies {
     //RxJava
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
+    compile "com.uber.autodispose:autodispose:$rootProject.ext.autodispose"
+    compile "com.uber.autodispose:autodispose-android-archcomponents:$rootProject.ext.autodispose"
     //retrofit
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
@@ -65,4 +67,5 @@ dependencies {
     compile "q.rorbin:badgeview:$rootProject.ext.badgeViewVersion"
     //lombok
     compile "org.projectlombok:lombok:$rootProject.ext.lombokVerison"
+    implementation 'org.jetbrains:annotations-java5:15.0'
 }

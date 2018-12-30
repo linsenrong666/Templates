@@ -35,16 +35,33 @@ public class Router {
     }
 
     public static void startActivity(String activity) {
-        startActivity(activity, null);
+        startActivity(activity, null, null);
     }
 
     public static void startActivity(String activity, Params params) {
-        Postcard build = ARouter.getInstance()
-                .build(activity);
+        startActivity(activity, params, null);
+    }
+
+    public static void startActivity(String activity, Flags flags) {
+        startActivity(activity, null, flags);
+    }
+
+    public static void startActivity(String activity, Params params, Flags flags) {
+        Postcard build = ARouter.getInstance().build(activity);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
         }
+        if (flags != null && flags.size() > 0) {
+            build = handleFlags(flags, build);
+        }
         build.navigation();
+    }
+
+    private static Postcard handleFlags(Flags flags, Postcard build) {
+        for (int flag : flags) {
+            build.withFlags(flag);
+        }
+        return build;
     }
 
     public static Fragment findFragment(String fragment, Params params) {

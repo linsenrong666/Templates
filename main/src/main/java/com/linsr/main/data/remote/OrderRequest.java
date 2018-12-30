@@ -1,5 +1,7 @@
 package com.linsr.main.data.remote;
 
+import android.arch.lifecycle.LifecycleOwner;
+
 import com.linsr.common.biz.ApplicationEx;
 import com.linsr.common.biz.IView;
 import com.linsr.common.biz.config.UserInfoKey;
@@ -18,11 +20,13 @@ import com.linsr.main.model.OrderPojo;
  */
 public class OrderRequest {
 
-    public static void orderList(NetObserver<OrderPojo> observer) {
+    public static void orderList(LifecycleOwner lifecycleOwner,
+                                 NetObserver<OrderPojo> observer) {
         UserApi userApi = Api.getService(UserApi.class);
         String userId = PrefsUtils.getSharedString(ApplicationEx.getInstance(), UserInfoKey.USER_ID);
         userApi.orderList(userId).compose(NetUtils.handleResponse(OrderPojo.class))
                 .retryWhen(NetUtils.retry())
+                .as(NetUtils.<OrderPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
 }

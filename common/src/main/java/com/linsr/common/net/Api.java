@@ -95,7 +95,6 @@ public class Api {
         if (isDebug) {
             builder.addInterceptor(new LogInterceptor());
         }
-
         return builder.build();
     }
 

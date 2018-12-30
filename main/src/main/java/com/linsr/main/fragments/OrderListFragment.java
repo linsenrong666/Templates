@@ -61,23 +61,24 @@ public class OrderListFragment extends RefreshFragment {
     }
 
     private void request(boolean showLoading) {
-        OrderRequest.orderList(new NetObserver<OrderPojo>(this, showLoading, true) {
-            @Override
-            public void onSucceed(OrderPojo data) {
-                List<OrderListBean> orderList = data.getOrder_list();
-                mPageIndex = PageLoadHelper.onSuccess(mPageIndex, mAdapter, orderList,
-                        OrderListFragment.this);
-            }
+        OrderRequest.orderList(this,
+                new NetObserver<OrderPojo>(this, showLoading, true) {
+                    @Override
+                    public void onSucceed(OrderPojo data) {
+                        List<OrderListBean> orderList = data.getOrder_list();
+                        mPageIndex = PageLoadHelper.onSuccess(mPageIndex, mAdapter, orderList,
+                                OrderListFragment.this);
+                    }
 
-            @Override
-            public void onFailed(Throwable e) {
-                mPageIndex = PageLoadHelper.onFailure(mPageIndex, OrderListFragment.this);
-            }
+                    @Override
+                    public void onFailed(Throwable e) {
+                        mPageIndex = PageLoadHelper.onFailure(mPageIndex, OrderListFragment.this);
+                    }
 
-            @Override
-            public void onComplete() {
-                PageLoadHelper.onCompleted(mRefreshLayout);
-            }
-        });
+                    @Override
+                    public void onComplete() {
+                        PageLoadHelper.onCompleted(mRefreshLayout);
+                    }
+                });
     }
 }

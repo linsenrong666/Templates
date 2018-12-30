@@ -1,6 +1,7 @@
 package com.linsr.common.net;
 
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.text.TextUtils;
 import android.util.Base64;
 
@@ -11,9 +12,13 @@ import com.linsr.common.model.ResponsePojo;
 import com.linsr.common.net.exception.ApiException;
 import com.linsr.common.net.exception.RetryException;
 import com.linsr.common.utils.JLog;
+import com.uber.autodispose.AutoDispose;
+import com.uber.autodispose.AutoDisposeConverter;
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -22,6 +27,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+
+import com.uber.autodispose.AutoDispose;
+import com.uber.autodispose.AutoDisposeConverter;
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 
 /**
  * Description
@@ -106,10 +115,10 @@ public class NetUtils implements NetConstants {
                             if (currentRetryCount[0] < maxConnectCount) {
                                 currentRetryCount[0]++;
                                 _waitRetryTime[0] = _waitRetryTime[0] + currentRetryCount[0] * 1000;
-                                JLog.d("retryCount:" + currentRetryCount[0]+",time:"+_waitRetryTime[0]);
+                                JLog.d("retryCount:" + currentRetryCount[0] + ",time:" + _waitRetryTime[0]);
                                 return Observable.just(1).delay(_waitRetryTime[0], TimeUnit.MILLISECONDS);
                             } else {
-                                JLog.d("retryCount:" + currentRetryCount[0]+",time:"+_waitRetryTime[0]);
+                                JLog.d("retryCount:" + currentRetryCount[0] + ",time:" + _waitRetryTime[0]);
                                 return Observable.error(new RetryException(currentRetryCount[0]));
                             }
                         } else {
@@ -119,6 +128,10 @@ public class NetUtils implements NetConstants {
                 });
             }
         };
+    }
+
+    public static <T> AutoDisposeConverter<T> bindLifecycle(LifecycleOwner lifecycleOwner) {
+        return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(lifecycleOwner));
     }
 
 }

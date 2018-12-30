@@ -14,7 +14,6 @@ import com.linsr.common.utils.PrefsUtils;
 public class AppConfig implements UserInfoKey {
 
     private Application mApplication;
-    private boolean mIsLoggedIn;
 
     private AppConfig() {
         mApplication = ApplicationEx.getInstance();
@@ -36,4 +35,15 @@ public class AppConfig implements UserInfoKey {
     public boolean isLoggedIn() {
         return !TextUtils.isEmpty(PrefsUtils.getSharedString(mApplication, UserInfoKey.TOKEN));
     }
+
+    public void login(String token, String userId) {
+        PrefsUtils.putSharedString(mApplication, UserInfoKey.TOKEN, token);
+        PrefsUtils.putSharedString(mApplication, UserInfoKey.USER_ID, userId);
+    }
+
+    public void logout() {
+        PrefsUtils.putSharedString(mApplication, UserInfoKey.TOKEN, "");
+        PrefsUtils.putSharedString(mApplication, UserInfoKey.USER_ID, "");
+    }
+
 }
