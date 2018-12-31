@@ -29,7 +29,7 @@ public class ProductDetailsPresenter extends PresenterEx<ProductDetailsContact.V
                             onFailed(new ApiException(""));
                             return;
                         }
-                        mView.loadGoodsInfo(data);
+                        mView.loadGoodsInfo(data.getGoods());
                         mView.loadPictures(data.getPictures());
                     }
 

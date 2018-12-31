@@ -13,7 +13,7 @@ import java.util.List;
 public interface ProductDetailsContact {
 
     interface View extends IView {
-        void loadGoodsInfo(ProductDetailsPojo pojo);
+        void loadGoodsInfo(ProductDetailsPojo.GoodsBean pojo);
 
         void loadPictures(List<ProductDetailsPojo.PicturesBean> list);
     }

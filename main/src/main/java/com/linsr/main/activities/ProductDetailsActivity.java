@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
@@ -14,7 +15,6 @@ import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
-import com.linsr.main.adapters.BannerPagerAdapter;
 import com.linsr.main.adapters.GoodsBannerAdapter;
 import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.logic.presenter.ProductDetailsPresenter;
@@ -36,8 +36,8 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private FlipperView mFlipperView;
-
-    private GoodsBannerAdapter mBannerPagerAdapter;
+    private TextView mGoodsNameTextView;
+    private TextView mGoodsDescTextView;
 
     private String mGoodsId;
 
@@ -64,12 +64,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         initTitleView(R.string.main_goods_details);
         findView();
         initViewPager();
-        initFlipperView();
         requestData();
-    }
-
-    private void initFlipperView() {
-
     }
 
     private void initViewPager() {
@@ -92,6 +87,8 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mViewPager = findViewById(R.id.product_details_view_pager);
         mTabLayout = findViewById(R.id.product_details_tab_layout);
         mFlipperView = findViewById(R.id.product_details_flipper_view);
+        mGoodsNameTextView = findViewById(R.id.product_details_goods_name_tv);
+        mGoodsDescTextView = findViewById(R.id.product_details_goods_desc_tv);
     }
 
     private void requestData() {
@@ -99,13 +96,14 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     }
 
     @Override
-    public void loadGoodsInfo(ProductDetailsPojo pojo) {
-
+    public void loadGoodsInfo(ProductDetailsPojo.GoodsBean pojo) {
+        mGoodsNameTextView.setText(pojo.getGoods_name());
+        mGoodsDescTextView.setText(pojo.getGoods_desc_bubaohan());
     }
 
     @Override
     public void loadPictures(List<ProductDetailsPojo.PicturesBean> list) {
-        mBannerPagerAdapter = new GoodsBannerAdapter(this, list);
+        GoodsBannerAdapter mBannerPagerAdapter = new GoodsBannerAdapter(this, list);
         mFlipperView.setPageAdapter(mBannerPagerAdapter);
     }
 }

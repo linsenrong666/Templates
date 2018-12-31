@@ -37,12 +37,29 @@
                 android:textSize="@dimen/font_large"
                 android:textStyle="bold"/>
 
-            <TextView
-                style="@style/TextView"
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:padding="@dimen/middle"
-                android:text="商品名称名称名\r\n商品描述描述描述"/>
+                android:orientation="vertical"
+                android:padding="@dimen/middle">
+
+                <TextView
+                    android:id="@+id/product_details_goods_name_tv"
+                    style="@style/TextView"
+                    android:layout_width="match_parent"
+                    android:text="商品名称"/>
+
+                <TextView
+                    android:id="@+id/product_details_goods_desc_tv"
+                    style="@style/TextView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/tiny"
+                    android:text="商品描述描"
+                    android:textColor="@color/text_primary_weak"
+                    android:textSize="@dimen/font_small"/>
+            </LinearLayout>
+
 
             <TextView
                 style="@style/TextView"
