@@ -67,84 +67,42 @@ public class Mock {
                 Constants.FloorType.FLASH_SALE,
                 Constants.FloorType.DAILY_NEW,};
         List<HomePojo> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            HomePojo pojo = new HomePojo();
-            if (i == 0) {
-                pojo.setFloorType(Constants.FloorType.BANNER);
-                list.add(pojo);
-                continue;
-            }
-            if (i == 1) {
-                pojo.setFloorType(Constants.FloorType.MENU);
-                list.add(pojo);
-                continue;
-            }
-            if (i == 2) {
-                pojo.setFloorType(Constants.FloorType.FLASH_SALE);
-                list.add(pojo);
-                continue;
-            }
-            if (i == 3) {
-                pojo.setFloorType(Constants.FloorType.DAILY_NEW);
-                list.add(pojo);
-                continue;
-            }
-            if (i == 4 || i == 5 || i == 6) {
-                pojo.setFloorType(Constants.FloorType.ACTIVITY_ENTER);
-                list.add(pojo);
-                continue;
-            }
-            if (i > 7) {
-                pojo.setFloorType(Constants.FloorType.RECOMMEND_GOODS);
-                list.add(pojo);
-                continue;
-            }
-            int index = (int) (Math.random() * arr.length);
-            pojo.setFloorType(arr[index]);
-            list.add(pojo);
-        }
-        return list;
-    }
-
-    public static List<HomePojo> getHomeList(int size) {
-        int[] arr = {Constants.FloorType.MENU,
-                Constants.FloorType.ACTIVITY_ENTER,
-                Constants.FloorType.RECOMMEND_GOODS,
-                Constants.FloorType.SHOP_WINDOW};
-        List<HomePojo> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            HomePojo pojo = new HomePojo();
-            if (i == 0) {
-                pojo.setFloorType(Constants.FloorType.BANNER);
-                list.add(pojo);
-                continue;
-            }
-            if (i == 1) {
-                pojo.setFloorType(Constants.FloorType.MENU);
-                list.add(pojo);
-                continue;
-            }
-
-            if (i == 2) {
-                pojo.setFloorType(Constants.FloorType.RECOMMEND_GOODS);
-                list.add(pojo);
-                continue;
-            }
-
-            if (i == 3) {
-                pojo.setFloorType(Constants.FloorType.SHOP_WINDOW);
-                list.add(pojo);
-                continue;
-            }
-            if (i == 4) {
-                pojo.setFloorType(Constants.FloorType.SHOP_WINDOW);
-                list.add(pojo);
-                continue;
-            }
-            int index = (int) (Math.random() * arr.length);
-            pojo.setFloorType(arr[index]);
-            list.add(pojo);
-        }
+//        for (int i = 0; i < size; i++) {
+//            HomePojo pojo = new HomePojo();
+//            if (i == 0) {
+//                pojo.setFloorType(Constants.FloorType.BANNER);
+//                list.add(pojo);
+//                continue;
+//            }
+//            if (i == 1) {
+//                pojo.setFloorType(Constants.FloorType.MENU);
+//                list.add(pojo);
+//                continue;
+//            }
+//            if (i == 2) {
+//                pojo.setFloorType(Constants.FloorType.FLASH_SALE);
+//                list.add(pojo);
+//                continue;
+//            }
+//            if (i == 3) {
+//                pojo.setFloorType(Constants.FloorType.DAILY_NEW);
+//                list.add(pojo);
+//                continue;
+//            }
+//            if (i == 4 || i == 5 || i == 6) {
+//                pojo.setFloorType(Constants.FloorType.ACTIVITY_ENTER);
+//                list.add(pojo);
+//                continue;
+//            }
+//            if (i > 7) {
+//                pojo.setFloorType(Constants.FloorType.RECOMMEND_GOODS);
+//                list.add(pojo);
+//                continue;
+//            }
+//            int index = (int) (Math.random() * arr.length);
+//            pojo.setFloorType(arr[index]);
+//            list.add(pojo);
+//        }
         return list;
     }
 
@@ -152,12 +110,6 @@ public class Mock {
         List<HomePojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             HomePojo pojo = new HomePojo();
-            pojo.setTitle("item:" + i);
-            pojo.setDesc("content content content content content content content content " +
-                    "content content content content content content content content " +
-                    "content content content content content content content content " +
-                    "content content content content content content content content ");
-            pojo.setUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531463747502&di=dfd96a9a0909db0cad21818981866e8e&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201507%2F01%2F20150701165443_3XdLc.jpeg");
             list.add(pojo);
         }
         return list;

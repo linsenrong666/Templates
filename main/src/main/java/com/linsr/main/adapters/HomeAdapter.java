@@ -98,7 +98,7 @@ public class HomeAdapter extends BaseRecyclerAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        HomePojo homePojo = (HomePojo) mList.get(position);
+        HomePojo.HomeListBean homePojo = (HomePojo.HomeListBean) mList.get(position);
         return homePojo.getFloorType();
     }
 

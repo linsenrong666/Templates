@@ -14,6 +14,8 @@ import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
+import com.linsr.main.adapters.FollowShopAdapter;
+import com.linsr.main.widgets.MainSearchTitleLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +32,7 @@ public class MallContainerFragment extends FragmentEx {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private TextView mLocationTextView;
+    private MainSearchTitleLayout mSearchTitleLayout;
 
     @Override
     protected int getLayoutId() {
@@ -63,20 +66,25 @@ public class MallContainerFragment extends FragmentEx {
     }
 
     private void initSearchLayout() {
-        findViewById(R.id.layout_search_left_img).setVisibility(View.GONE);
-        mLocationTextView = findViewById(R.id.layout_search_left_tv);
-        mLocationTextView.setVisibility(View.VISIBLE);
-        mLocationTextView.setOnClickListener(new View.OnClickListener() {
+        mSearchTitleLayout= findViewById(R.id.mall_container_search_layout);
+        mSearchTitleLayout.setOnEventListener(new MainSearchTitleLayout.OnEventListener() {
             @Override
-            public void onClick(View v) {
+            public void onSearchClick(String text) {
 
             }
-        });
-        ImageView rightImageView = findViewById(R.id.layout_search_right_img);
-        rightImageView.setImageResource(R.mipmap.ic_share);
-        rightImageView.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
+            public void onEditClick() {
+                Router.startActivity(MainModule.Activity.SEARCH);
+            }
+
+            @Override
+            public void onLeftImageClick() {
+
+            }
+
+            @Override
+            public void onRightImageClick() {
 
             }
         });

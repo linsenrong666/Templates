@@ -17,15 +17,10 @@ public interface HomeContact {
         void mainListSucceed();
 
         void mainListFailed();
-
-        void goodsListSucceed(List<IsbestBean> list);
-
-        void goodsListFailed();
     }
 
     interface Presenter {
         void mainList(boolean show);
 
-        void recommendGoodsList();
     }
 }

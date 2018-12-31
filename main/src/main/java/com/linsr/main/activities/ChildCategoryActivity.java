@@ -11,12 +11,14 @@ import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.model.ResponsePojo;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.exception.ApiException;
+import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.model.ChildCategoryPojo;
+import com.linsr.main.widgets.MainSearchTitleLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +29,13 @@ import java.util.List;
  * @author Linsr 2018/8/14 上午10:36
  */
 @Route(path = MainModule.Activity.CHILD_CATEGORY)
-public class ChildCategoryActivity extends ActivityEx implements MainModule.Activity.ChildCategoryParams {
+public class ChildCategoryActivity extends ActivityEx implements
+        MainModule.Activity.ChildCategoryParams, MainModule.Fragment.ChildCategoryParams {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private MainSearchTitleLayout mSearchTitleLayout;
+
     private static final int MAX_CACHE_FRAGMENT_COUNT = 10;
     private int mCurrentPosition;
     private String mFid;
@@ -55,6 +60,28 @@ public class ChildCategoryActivity extends ActivityEx implements MainModule.Acti
     protected void initView() {
         mTabLayout = findViewById(R.id.child_category_tab_layout);
         mViewPager = findViewById(R.id.child_category_view_pager);
+        mSearchTitleLayout = findViewById(R.id.child_category_search_layout);
+        mSearchTitleLayout.setOnEventListener(new MainSearchTitleLayout.OnEventListener() {
+            @Override
+            public void onSearchClick(String text) {
+
+            }
+
+            @Override
+            public void onEditClick() {
+                Router.startActivity(MainModule.Activity.SEARCH);
+            }
+
+            @Override
+            public void onLeftImageClick() {
+
+            }
+
+            @Override
+            public void onRightImageClick() {
+
+            }
+        });
         requestData();
     }
 
@@ -88,16 +115,20 @@ public class ChildCategoryActivity extends ActivityEx implements MainModule.Acti
         List<Fragment> list = new ArrayList<>();
         for (ChildCategoryPojo.CatListBean pojo : catListBeans) {
             titles.add(pojo.getCat_name());
-            list.add(Router.findFragment(MainModule.Fragment.CHILD_CATEGORY));
+            Params params = new Params();
+            params.add(FID, mFid).add(SID, pojo.getCat_id());
+            list.add(Router.findFragment(MainModule.Fragment.CHILD_CATEGORY, params));
         }
         FragmentPagerAdapterEx adapterEx = new FragmentPagerAdapterEx(getSupportFragmentManager(), list);
         adapterEx.setTitles(titles);
         mViewPager.setAdapter(adapterEx);
+
         if (catListBeans.size() < MAX_CACHE_FRAGMENT_COUNT) {
             mViewPager.setOffscreenPageLimit(catListBeans.size());
         } else {
             mViewPager.setOffscreenPageLimit(MAX_CACHE_FRAGMENT_COUNT);
         }
+
         if (mCurrentPosition <= catListBeans.size()) {
             mViewPager.setCurrentItem(mCurrentPosition);
         }

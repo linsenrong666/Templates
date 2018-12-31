@@ -57,7 +57,6 @@ public class RecommendGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
 
         @Override
         public void convert(final int position, HomePojo data, int itemType) {
-            title.setText(data.getTitle());
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

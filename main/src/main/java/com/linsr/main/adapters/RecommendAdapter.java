@@ -1,6 +1,7 @@
 package com.linsr.main.adapters;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -68,8 +69,9 @@ public class RecommendAdapter extends BaseRecyclerAdapter<IsbestBean> {
 
         @Override
         public void convert(int position, IsbestBean data, int itemType) {
-            name.setText(data.getShort_name());
+            name.setText(data.getGoods_name());
             price.setText(data.getShop_price());
+            ImageUtils.load(mContext, data.getGoods_img(), img);
         }
     }
 

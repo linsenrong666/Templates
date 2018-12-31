@@ -16,6 +16,7 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.AuctionAdapter;
 import com.linsr.main.logic.contacts.SearchResultContact;
 import com.linsr.main.logic.presenter.SearchResultPresenter;
+import com.linsr.main.model.SearchResultPojo;
 import com.linsr.main.widgets.MainSearchTitleLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -134,7 +135,7 @@ public class SearchResultActivity extends ActivityEx<SearchResultPresenter> impl
     }
 
     @Override
-    public void searchSucceed() {
+    public void searchSucceed(SearchResultPojo pojo) {
 
     }
 

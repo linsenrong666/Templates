@@ -1,6 +1,7 @@
 package com.linsr.main.logic.contacts;
 
 import com.linsr.common.biz.IView;
+import com.linsr.main.model.SearchResultPojo;
 
 /**
  * Description
@@ -9,7 +10,7 @@ import com.linsr.common.biz.IView;
  */
 public interface SearchResultContact {
     interface View extends IView {
-        void searchSucceed();
+        void searchSucceed(SearchResultPojo pojo);
 
         void searchFailed();
     }

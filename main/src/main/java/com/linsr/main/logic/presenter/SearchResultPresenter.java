@@ -5,6 +5,7 @@ import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.logic.contacts.SearchResultContact;
+import com.linsr.main.model.SearchResultPojo;
 
 /**
  * Description
@@ -21,10 +22,10 @@ public class SearchResultPresenter extends PresenterEx<SearchResultContact.View>
     @Override
     public void search(String keyword, int pageIndex, int pageSize, boolean showLoading) {
         IndexRequest.search(getLifecycleOwner(), keyword, pageIndex, pageSize,
-                new NetObserver<BizPojo>(mView, showLoading, true) {
+                new NetObserver<SearchResultPojo>(mView, showLoading, true) {
                     @Override
-                    public void onSucceed(BizPojo data) {
-                        mView.searchSucceed();
+                    public void onSucceed(SearchResultPojo data) {
+                        mView.searchSucceed(data);
                     }
 
                     @Override

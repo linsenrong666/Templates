@@ -15,7 +15,10 @@ import com.linsr.common.utils.PrefsUtils;
 import com.linsr.main.data.IndexApi;
 import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.model.ChildCategoryPojo;
+import com.linsr.main.model.HomePojo;
+import com.linsr.main.model.ProductDetailsPojo;
 import com.linsr.main.model.RecommendPojo;
+import com.linsr.main.model.SearchResultPojo;
 
 /**
  * Description
@@ -24,23 +27,23 @@ import com.linsr.main.model.RecommendPojo;
  */
 public class IndexRequest {
 
-    public static void mainList(LifecycleOwner lifecycleOwner, NetObserver<BizPojo> observer) {
+    public static void mainList(LifecycleOwner lifecycleOwner, NetObserver<HomePojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
         String userId = PrefsUtils.getSharedString(ApplicationEx.getInstance(), UserInfoKey.USER_ID);
         api.mainList(userId)
-                .compose(NetUtils.handleResponse(BizPojo.class))
+                .compose(NetUtils.handleResponse(HomePojo.class))
                 .retryWhen(NetUtils.retry())
-                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .as(NetUtils.<HomePojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
 
     public static void search(LifecycleOwner lifecycleOwner, String keyword,
-                              int pageIndex, int pageSize, NetObserver<BizPojo> observer) {
+                              int pageIndex, int pageSize, NetObserver<SearchResultPojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
         api.search(keyword, pageIndex, pageSize)
-                .compose(NetUtils.handleResponse(BizPojo.class))
+                .compose(NetUtils.handleResponse(SearchResultPojo.class))
                 .retryWhen(NetUtils.retry())
-                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .as(NetUtils.<SearchResultPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
 
     }
@@ -87,4 +90,16 @@ public class IndexRequest {
                 .subscribe(observer);
     }
 
+    /**
+     * 商品详情
+     */
+    public static void goodsInfo(LifecycleOwner lifecycleOwner, String goodsId,
+                                 NetObserver<ProductDetailsPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.goodsInfo(goodsId)
+                .compose(NetUtils.handleResponse(ProductDetailsPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<ProductDetailsPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
 }

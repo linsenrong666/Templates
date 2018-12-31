@@ -10,8 +10,10 @@
     android:orientation="vertical"
     android:showDividers="middle">
 
-
-    <include layout="@layout/main_layout_search"/>
+    <com.linsr.main.widgets.MainSearchTitleLayout
+        android:id="@+id/mall_container_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/mall_container_tab_layout"

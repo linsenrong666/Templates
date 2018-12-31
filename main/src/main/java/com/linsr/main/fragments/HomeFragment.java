@@ -149,7 +149,6 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 requestMain(false);
-                requestGoods();
             }
         });
     }
@@ -157,15 +156,10 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     @Override
     protected void loadData() {
         requestMain(true);
-        requestGoods();
     }
 
     private void requestMain(boolean showLoading) {
         mPresenter.mainList(showLoading);
-    }
-
-    private void requestGoods() {
-        mPresenter.recommendGoodsList();
     }
 
     @Override
@@ -176,17 +170,6 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     @Override
     public void mainListFailed() {
         mRefreshLayout.finishRefresh();
-    }
-
-    @Override
-    public void goodsListSucceed(List<IsbestBean> list) {
-        mFootAdapter.clear();
-        mFootAdapter.addData(list);
-    }
-
-    @Override
-    public void goodsListFailed() {
-
     }
 
 }

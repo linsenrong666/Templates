@@ -38,5 +38,9 @@ public interface IndexApi {
     Observable<ResponsePojo> childCategoryList(@Field("fid") String fid,
                                                @Field("sid") String sid);
 
+    @FormUrlEncoded
+    @POST("api.php?c=goods&a=index")
+    Observable<ResponsePojo> goodsInfo(@Field("id") String goodsId);
+
 
 }

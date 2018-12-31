@@ -1,0 +1,24 @@
+package com.linsr.main.logic.contacts;
+
+import com.linsr.common.biz.IView;
+import com.linsr.main.model.ProductDetailsPojo;
+
+import java.util.List;
+
+/**
+ * Description
+ *
+ * @author Linsr 2018/12/31 下午8:00
+ */
+public interface ProductDetailsContact {
+
+    interface View extends IView {
+        void loadGoodsInfo(ProductDetailsPojo pojo);
+
+        void loadPictures(List<ProductDetailsPojo.PicturesBean> list);
+    }
+
+    interface Presenter {
+        void getGoodsInfo(String goodsId);
+    }
+}

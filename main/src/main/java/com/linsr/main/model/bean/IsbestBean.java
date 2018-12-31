@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Description
+ * 商品的object
  *
  * @author Linsr 2018/12/23 下午6:54
  */

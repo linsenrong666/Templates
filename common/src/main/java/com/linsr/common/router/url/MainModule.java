@@ -15,6 +15,11 @@ public class MainModule {
         String MAIN = ACTIVITY + "main";
         String SCAN_CODE = ACTIVITY + "scanCode";
         String PRODUCT_DETAILS = ACTIVITY + "productDetails";
+
+        interface ProductDetailsParams {
+            String GOODS_ID = "goods_id";
+        }
+
         String CHILD_CATEGORY = ACTIVITY + "childCategory";
 
         interface ChildCategoryParams {
@@ -60,7 +65,14 @@ public class MainModule {
         String MALL_CONTAINER = FRAGMENT + "mallContainer";
         String CART = FRAGMENT + "cart";
         String ME = FRAGMENT + "me";
+
         String CHILD_CATEGORY = FRAGMENT + "childCategory";
+
+        interface ChildCategoryParams {
+            String FID = "fid";
+            String SID = "sid";
+        }
+
         String CATEGORY_DETAILS = FRAGMENT + "categoryDetails";
 
         interface CategoryDetailsParams {

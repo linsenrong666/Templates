@@ -1,30 +1,15 @@
 package com.linsr.main.model;
 
-import com.linsr.common.model.BizPojo;
-
 import java.util.List;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * Description
  *
- * @author Linsr 2018/7/13 上午11:21
+ * @author Linsr 2018/12/31 下午4:52
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-public class HomePojo extends BizPojo {
+public class aaa {
 
     private List<HomeListBean> home_list;
-
-    public List<HomeListBean> getHome_list() {
-        return home_list;
-    }
-
-    public void setHome_list(List<HomeListBean> home_list) {
-        this.home_list = home_list;
-    }
 
     public static class HomeListBean {
         /**
