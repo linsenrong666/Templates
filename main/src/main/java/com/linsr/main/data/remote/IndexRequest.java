@@ -53,9 +53,10 @@ public class IndexRequest {
      * 获取推荐商品
      */
     public static void recommendGoodsList(LifecycleOwner lifecycleOwner,
+                                          int pageIndex,int pageSize,
                                           NetObserver<RecommendPojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
-        api.recommendGoodsList(NumberUtils.getRandomNumberStr())
+        api.recommendGoodsList(pageIndex,pageSize)
                 .compose(NetUtils.handleResponse(RecommendPojo.class))
                 .retryWhen(NetUtils.retry())
                 .as(NetUtils.<RecommendPojo>bindLifecycle(lifecycleOwner))
@@ -102,4 +103,6 @@ public class IndexRequest {
                 .as(NetUtils.<ProductDetailsPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
+
+
 }

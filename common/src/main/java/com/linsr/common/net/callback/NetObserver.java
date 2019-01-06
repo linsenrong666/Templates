@@ -54,7 +54,7 @@ public abstract class NetObserver<T> implements Observer<T> {
 
     @Override
     public void onError(@NonNull Throwable e) {
-        JLog.v(TAG, "net  request onError ");
+        JLog.v(TAG, "net  request onError ,e:" + e.getMessage());
         hideLoading();
         printFailedToast(e);
         onFailed(e);

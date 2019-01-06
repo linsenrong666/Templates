@@ -10,6 +10,7 @@
     tools:background="@color/text_primary_black">
 
     <ImageView
+        android:id="@+id/item_shop_window_img_iv"
         android:layout_width="88dp"
         android:layout_height="88dp"
         android:layout_marginLeft="@dimen/small"

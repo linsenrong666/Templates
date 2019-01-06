@@ -29,21 +29,21 @@ public class MallHomeFragment extends RefreshFragment {
 
     @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
-        mAdapter = new HomeAdapter(mActivity);
-        List<HomePojo> findList = Mock.getFindList(10);
-        RecyclerViewHelper.initGridLayout(mActivity, 6, recyclerView, mAdapter);
-        mAdapter.addData(findList);
-        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseViewHolder holder, int position, int itemType, Object data) {
-                if (itemType == Constants.FloorType.FLASH_SALE) {
-                    Router.startActivity(MainModule.Activity.FLASH_SALE);
-                }
-                if (itemType == Constants.FloorType.DAILY_NEW) {
-                    Router.startActivity(MainModule.Activity.DAILY_NEW);
-                }
-            }
-        });
+//        mAdapter = new HomeAdapter(mActivity);
+//        List<HomePojo> findList = Mock.getFindList(10);
+//        RecyclerViewHelper.initGridLayout(mActivity, 6, recyclerView, mAdapter);
+//        mAdapter.addData(findList);
+//        mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(BaseViewHolder holder, int position, int itemType, Object data) {
+//                if (itemType == Constants.FloorType.FLASH_SALE) {
+//                    Router.startActivity(MainModule.Activity.FLASH_SALE);
+//                }
+//                if (itemType == Constants.FloorType.DAILY_NEW) {
+//                    Router.startActivity(MainModule.Activity.DAILY_NEW);
+//                }
+//            }
+//        });
     }
 
     @Override

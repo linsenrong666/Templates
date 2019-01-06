@@ -9,15 +9,18 @@ import android.widget.TextView;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.utils.ImageUtils;
+import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
 import com.linsr.main.model.HomePojo;
+import com.linsr.main.model.bean.IsbestBean;
 
 /**
  * Description
  *
  * @author Linsr 2018/7/13 上午11:21
  */
-public class RecommendGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
+public class RecommendGoodsAdapter extends BaseRecyclerAdapter<IsbestBean> {
 
     public interface OnGoodsClickListener {
         void onAdd(int position);
@@ -35,12 +38,12 @@ public class RecommendGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
 
     @NonNull
     @Override
-    public BaseViewHolder<HomePojo> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BaseViewHolder<IsbestBean> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.main_item_home_goods, parent, false);
         return new Holder(mContext, view);
     }
 
-    private class Holder extends BaseViewHolder<HomePojo> {
+    private class Holder extends BaseViewHolder<IsbestBean> {
 
         private TextView title;
         private TextView desc;
@@ -56,7 +59,9 @@ public class RecommendGoodsAdapter extends BaseRecyclerAdapter<HomePojo> {
         }
 
         @Override
-        public void convert(final int position, HomePojo data, int itemType) {
+        public void convert(final int position, IsbestBean data, int itemType) {
+            ViewUtils.setText(title, data.getGoods_name());
+            ImageUtils.load(mContext, data.getGoods_img(), img);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

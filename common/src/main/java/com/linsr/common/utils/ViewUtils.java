@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ViewUtils {
     private static final String TAG = ViewUtils.class.getSimpleName();
@@ -43,6 +44,13 @@ public class ViewUtils {
             return "";
         }
         return editText.getText().toString().trim();
+    }
+
+    public static void setText(TextView tv, CharSequence charSequence) {
+        if (tv == null) {
+            return;
+        }
+        tv.setText(charSequence);
     }
 
 }

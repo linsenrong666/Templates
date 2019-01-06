@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.JLog;
 import com.linsr.main.R;
+import com.linsr.main.model.HomePojo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,37 +25,22 @@ public class BannerPagerAdapter extends PagerAdapter {
 
     private static final String TAG = "BannerPagerAdapter";
 
-    private List<String> mStrings;
-    private int[] mRedIds;
+    private List<HomePojo.HomeListBean.BannerDataBean> mStrings;
     private List<View> mViews;
     private Context mContext;
     private LayoutInflater mInflater;
 
     public BannerPagerAdapter(Context context,
-                              List<String> strings) {
+                              List<HomePojo.HomeListBean.BannerDataBean> strings) {
         mContext = context;
         mStrings = strings;
         mInflater = LayoutInflater.from(mContext);
 
         mViews = new ArrayList<>();
-        for (String url : strings) {
-            ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item, null);
-            ImageUtils.load(mContext, url, view);
-            mViews.add(view);
-        }
-    }
-
-    public BannerPagerAdapter(Context context,
-                              int[] strings) {
-        mContext = context;
-        mRedIds = strings;
-        mInflater = LayoutInflater.from(mContext);
-
-        mViews = new ArrayList<>();
-        for (int url : strings) {
+        for (HomePojo.HomeListBean.BannerDataBean bean : strings) {
             ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item,
                     null);
-            view.setImageResource(url);
+            ImageUtils.load(context, bean.getAd_image(), view);
             mViews.add(view);
         }
     }
@@ -74,7 +60,7 @@ public class BannerPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mRedIds == null ? 0 : mRedIds.length;
+        return mStrings == null ? 0 : mStrings.size();
     }
 
     @Override

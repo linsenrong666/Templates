@@ -2,6 +2,7 @@ package com.linsr.main.logic.contacts;
 
 import com.linsr.common.biz.IPresenter;
 import com.linsr.common.biz.IView;
+import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.bean.IsbestBean;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.List;
 public interface HomeContact {
 
     interface View extends IView {
-        void mainListSucceed();
+        void mainListSucceed(List<HomePojo.HomeListBean> list);
 
         void mainListFailed();
+
+        void loadRecommendForYou(List<IsbestBean> list);
     }
 
     interface Presenter {

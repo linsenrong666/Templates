@@ -80,6 +80,11 @@ public class MainModule {
         }
 
         String ORDER_LIST = FRAGMENT + "orderList";
+
+        interface OrderListParams {
+            String ORDER_LIST_STATUS = "order_list_status";
+        }
+
         String MALL_HOME = FRAGMENT + "mallHome";
         String FLASH_SALE = FRAGMENT + "flashSale";
         String AUCTION = FRAGMENT + "auction";

@@ -27,7 +27,8 @@ public interface IndexApi {
 
     @FormUrlEncoded
     @POST("api.php?c=cate&a=isbest")
-    Observable<ResponsePojo> recommendGoodsList(@Field("key") String key);
+    Observable<ResponsePojo> recommendGoodsList(@Field("last") int last,
+                                                @Field("pageSize") int pageSize);
 
 
     @POST("api.php?c=category&a=index")
@@ -42,5 +43,16 @@ public interface IndexApi {
     @POST("api.php?c=goods&a=index")
     Observable<ResponsePojo> goodsInfo(@Field("id") String goodsId);
 
+
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=async_order_list")
+    Observable<ResponsePojo> orderList(@Field("status") int status,
+                                       @Field("last") int pageIndex,
+                                       @Field("pageSize") int pageSize);
+
+
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=index")
+    Observable<ResponsePojo> userCenter(@Field("user_id") String userId);
 
 }

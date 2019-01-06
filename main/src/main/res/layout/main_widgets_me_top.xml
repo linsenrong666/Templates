@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/me_top_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/bg_me_top">
@@ -52,44 +52,179 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/me_top_1"
+        android:layout_height="78dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:padding="@dimen/common_middle">
+        android:paddingLeft="@dimen/mini"
+        android:paddingRight="@dimen/mini"
+        >
 
-        <TextView
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="奖金\n200元"/>
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:id="@+id/me_top_balance_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/font_small"
+                tools:text="1000.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny"
+                android:gravity="center"
+                android:text="余额/积分"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_tiny"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/tiny"
+            android:layout_marginRight="@dimen/tiny"
+            android:background="@drawable/divider_vertical_me_top"/>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="奖金\n200元"/>
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:id="@+id/me_top_commission_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/font_small"
+                tools:text="1000.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny"
+                android:gravity="center"
+                android:text="佣金"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_tiny"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/tiny"
+            android:layout_marginRight="@dimen/tiny"
+            android:background="@drawable/divider_vertical_me_top"/>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="奖金\n200元"/>
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:id="@+id/me_top_wait_commission_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/font_small"
+                tools:text="1000.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny"
+                android:gravity="center"
+                android:text="待发佣金"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_tiny"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/tiny"
+            android:layout_marginRight="@dimen/tiny"
+            android:background="@drawable/divider_vertical_me_top"/>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="奖金\n200元"/>
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:id="@+id/me_top_dividend_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/font_small"
+                tools:text="1000.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny"
+                android:gravity="center"
+                android:text="网店分红"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_tiny"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/tiny"
+            android:layout_marginRight="@dimen/tiny"
+            android:background="@drawable/divider_vertical_me_top"/>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="奖金\n200元"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/me_top_packet_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/font_small"
+                tools:text="1000.00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tiny"
+                android:gravity="center"
+                android:text="红包"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_tiny"/>
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

@@ -8,6 +8,7 @@ import com.linsr.common.utils.JLog;
 import com.linsr.common.gui.widgets.FlipperView;
 import com.linsr.main.R;
 import com.linsr.main.adapters.BannerPagerAdapter;
+import com.linsr.main.model.HomePojo;
 import com.linsr.main.utils.Mock;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  *
  * @author Linsr 2018/8/15 下午2:46
  */
-public class BannerHolder extends BaseViewHolder {
+public class BannerHolder extends BaseViewHolder<HomePojo.HomeListBean> {
 
     private FlipperView mFlipperView;
 
@@ -27,9 +28,8 @@ public class BannerHolder extends BaseViewHolder {
     }
 
     @Override
-    public void convert(int position, Object data, int itemType) {
-        int[] res = {R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
-        BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(mContext, res);
+    public void convert(int position, HomePojo.HomeListBean data, int itemType) {
+        BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(mContext, data.getBannerData());
         mFlipperView.setPageAdapter(pagerAdapter);
     }
 

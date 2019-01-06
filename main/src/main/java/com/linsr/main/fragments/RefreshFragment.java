@@ -22,7 +22,6 @@ public abstract class RefreshFragment extends FragmentEx {
 
     protected RecyclerView mRecyclerView;
     protected SmartRefreshLayout mRefreshLayout;
-    private FrameLayout mTopLayout;
     protected int mPageIndex = NetConstants.DEFAULT_PAGE_INDEX;
     protected int mPageSize = NetConstants.DEFAULT_PAGE_SIZE;
 
@@ -38,7 +37,7 @@ public abstract class RefreshFragment extends FragmentEx {
 
     @Override
     protected void initView() {
-        mTopLayout = findViewById(R.id.main_refresh_top_layout);
+        FrameLayout mTopLayout = findViewById(R.id.main_refresh_top_layout);
         initTopLayout(mTopLayout);
         mRecyclerView = findViewById(R.id.main_recycler_view);
         initRecyclerView(mRecyclerView);

@@ -3,6 +3,8 @@ package com.linsr.main.logic.presenter;
 import com.linsr.common.biz.PresenterEx;
 import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.callback.NetObserver;
+import com.linsr.common.net.exception.ApiException;
+import com.linsr.main.app.Constants;
 import com.linsr.main.data.IndexApi;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.logic.contacts.HomeContact;
@@ -29,7 +31,21 @@ public class HomePresenter extends PresenterEx<HomeContact.View> implements Home
                 new NetObserver<HomePojo>(mView, showLoading, true) {
                     @Override
                     public void onSucceed(HomePojo data) {
-                        mView.mainListSucceed();
+                        if (data != null && data.getHome_list() != null) {
+                            List<HomePojo.HomeListBean> home_list = data.getHome_list();
+                            mView.mainListSucceed(home_list);
+
+                            for (HomePojo.HomeListBean bean : home_list) {
+                                if (bean.getFloorType() == Constants.FloorType.RECOMMEND_FOR_YOU) {
+                                    List<IsbestBean> recData = bean.getRecData();
+                                    mView.loadRecommendForYou(recData);
+                                }
+                            }
+
+                        } else {
+                            onFailed(new ApiException(""));
+                        }
+
                     }
 
                     @Override

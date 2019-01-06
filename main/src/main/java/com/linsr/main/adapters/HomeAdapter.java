@@ -17,7 +17,7 @@ import com.linsr.main.adapters.holder.DailyNewHolder;
 import com.linsr.main.adapters.holder.FlashSaleHolder;
 import com.linsr.main.adapters.holder.MenuHolder;
 import com.linsr.main.adapters.holder.NullHolder;
-import com.linsr.main.adapters.holder.RecommendHolder;
+import com.linsr.main.adapters.holder.RecommendADHolder;
 import com.linsr.main.adapters.holder.ShopWindowHolder;
 import com.linsr.main.app.Constants;
 import com.linsr.main.model.HomePojo;
@@ -27,12 +27,12 @@ import com.linsr.main.model.HomePojo;
  *
  * @author Linsr 2018/8/29 下午4:44
  */
-public class HomeAdapter extends BaseRecyclerAdapter {
+public class HomeAdapter extends BaseRecyclerAdapter<HomePojo.HomeListBean> {
 
-    private RecommendHolder.OnRecommendHolderListener mOnRecommendHolderListener;
+    private RecommendADHolder.OnRecommendHolderListener mOnRecommendHolderListener;
 
     public void setOnRecommendHolderListener(
-            RecommendHolder.OnRecommendHolderListener onRecommendHolderListener) {
+            RecommendADHolder.OnRecommendHolderListener onRecommendHolderListener) {
         mOnRecommendHolderListener = onRecommendHolderListener;
     }
 
@@ -54,19 +54,25 @@ public class HomeAdapter extends BaseRecyclerAdapter {
 
     @NonNull
     @Override
-    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BaseViewHolder<HomePojo.HomeListBean> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         switch (viewType) {
             case Constants.FloorType.BANNER:
                 view = mInflater.inflate(R.layout.main_item_banner, parent, false);
                 return new BannerHolder(mContext, view);
+            case Constants.FloorType.AD_ONE_DATA:
+            case Constants.FloorType.AD_TWO_DATA:
+            case Constants.FloorType.AD_THREE_DATA:
+                return newRecommendHolder(parent);
+            case Constants.FloorType.YIMA_STREET:
+                return newShopWindowHolder(parent);
+
             case Constants.FloorType.MENU:
                 view = mInflater.inflate(R.layout.main_item_menu_container, parent, false);
                 return new MenuHolder(mContext, view, mMenuSpanCount);
             case Constants.FloorType.RECOMMEND_GOODS:
                 return newRecommendHolder(parent);
-            case Constants.FloorType.SHOP_WINDOW:
-                return newShopWindowHolder(parent);
+
             case Constants.FloorType.ACTIVITY_ENTER:
                 view = mInflater.inflate(R.layout.main_item_activity_enter, parent, false);
                 return new ActivityEnterHolder(mContext, view);
@@ -89,16 +95,16 @@ public class HomeAdapter extends BaseRecyclerAdapter {
         return shopWindowHolder;
     }
 
-    private RecommendHolder newRecommendHolder(ViewGroup parent) {
+    private RecommendADHolder newRecommendHolder(ViewGroup parent) {
         View view = mInflater.inflate(R.layout.main_item_recommend_floor, parent, false);
-        RecommendHolder recommendHolder = new RecommendHolder(mContext, view);
-        recommendHolder.setOnRecommendHolderListener(mOnRecommendHolderListener);
-        return recommendHolder;
+        RecommendADHolder recommendADHolder = new RecommendADHolder(mContext, view);
+        recommendADHolder.setOnRecommendHolderListener(mOnRecommendHolderListener);
+        return recommendADHolder;
     }
 
     @Override
     public int getItemViewType(int position) {
-        HomePojo.HomeListBean homePojo = (HomePojo.HomeListBean) mList.get(position);
+        HomePojo.HomeListBean homePojo = mList.get(position);
         return homePojo.getFloorType();
     }
 

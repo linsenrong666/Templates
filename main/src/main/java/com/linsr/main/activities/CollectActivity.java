@@ -23,9 +23,6 @@ public class CollectActivity extends RefreshActivity {
     @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
         initTitleView(R.string.main_my_collect);
-        mAdapter = new RecommendGoodsAdapter(this);
-        mAdapter.addData(Mock.getGoodsList(10));
-        RecyclerViewHelper.initGridLayout(this, 2, recyclerView, mAdapter);
     }
 
     @Override

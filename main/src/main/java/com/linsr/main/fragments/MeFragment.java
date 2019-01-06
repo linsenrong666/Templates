@@ -2,6 +2,7 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
@@ -9,14 +10,15 @@ import com.linsr.common.gui.widgets.common_label_container;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
-import com.linsr.main.activities.OrderMainActivity;
+import com.linsr.main.logic.contacts.MeContact;
+import com.linsr.main.logic.presenter.MePresenter;
+import com.linsr.main.model.UserPojo;
 import com.linsr.main.widgets.MeTopView;
 import com.linsr.main.widgets.meitem.MainMeItemView;
 import com.linsr.main.widgets.meitem.MeItemPojo;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Description
@@ -24,9 +26,11 @@ import java.util.Map;
  * @author Linsr 2018/7/11 上午10:26
  */
 @Route(path = MainModule.Fragment.ME)
-public class MeFragment extends FragmentEx implements MainModule.Activity {
+public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Activity,
+        MeContact.View {
 
     private MeTopView mMeTopView;
+    private TextView mRecNameTextView;
     private MainMeItemView mMainMeItemView;
     private common_label_container mFollowShop;
     private common_label_container mCollect;
@@ -43,6 +47,11 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
     }
 
     @Override
+    protected MePresenter bindPresenter() {
+        return new MePresenter(this);
+    }
+
+    @Override
     protected void initView() {
         mMeTopView = findViewById(R.id.me_top_view);
         mMeTopView.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +60,12 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
                 Router.startActivity(MainModule.Activity.PAY_RESULT);
             }
         });
-
+        mRecNameTextView = findViewById(R.id.me_rec_name_tv);
         mMainMeItemView = findViewById(R.id.me_order_item);
         mMainMeItemView.setOnMeItemClickListener(new MainMeItemView.OnMeItemClickListener() {
             @Override
             public void onRightViewClick() {
-                Router.startActivity(MainModule.Activity.ORDER_MAIN);
+                Router.startActivity(ORDER_MAIN);
             }
 
             @Override
@@ -65,7 +74,7 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
                     Router.startActivity(MainModule.Activity.AFTER_SALES);
                 } else {
                     Params params = new Params();
-                    params.put(OrderMainParams.ORDER_STATUS, position + 1);
+                    params.put(MainModule.Activity.OrderMainParams.ORDER_STATUS, position + 1);
                     Router.startActivity(ORDER_MAIN, params);
                 }
             }
@@ -94,4 +103,18 @@ public class MeFragment extends FragmentEx implements MainModule.Activity {
         });
     }
 
+    @Override
+    protected void loadData() {
+        mPresenter.userCenter();
+    }
+
+    @Override
+    public void fillMeTopData(UserPojo pojo) {
+        mMeTopView.fillData(pojo);
+    }
+
+    @Override
+    public void fillRecName(String name) {
+        ViewUtils.setText(mRecNameTextView, getString(R.string.main_recommend_user_name, name));
+    }
 }

@@ -18,14 +18,12 @@ import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.HomeAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
-import com.linsr.main.adapters.RecommendGoodsAdapter;
-import com.linsr.main.adapters.holder.RecommendHolder;
+import com.linsr.main.adapters.holder.RecommendADHolder;
 import com.linsr.main.adapters.holder.ShopWindowHolder;
 import com.linsr.main.logic.contacts.HomeContact;
 import com.linsr.main.logic.presenter.HomePresenter;
-import com.linsr.main.model.RecommendPojo;
+import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.bean.IsbestBean;
-import com.linsr.main.utils.Mock;
 import com.linsr.main.widgets.MainSearchTitleLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -121,7 +119,7 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     private void initAdapter() {
         mAdapter = new HomeAdapter(mActivity);
         mAdapter.setMenuSpanCount(5);
-        mAdapter.setOnRecommendHolderListener(new RecommendHolder.OnRecommendHolderListener() {
+        mAdapter.setOnRecommendHolderListener(new RecommendADHolder.OnRecommendHolderListener() {
             @Override
             public void onMoreClick(int position) {
                 Params params = new Params(MainModule.Fragment.RECOMMEND_GOODS);
@@ -163,13 +161,20 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     }
 
     @Override
-    public void mainListSucceed() {
+    public void mainListSucceed(List<HomePojo.HomeListBean> list) {
         mRefreshLayout.finishRefresh();
+        mAdapter.clear();
+        mAdapter.addData(list);
     }
 
     @Override
     public void mainListFailed() {
         mRefreshLayout.finishRefresh();
+    }
+
+    @Override
+    public void loadRecommendForYou(List<IsbestBean> list) {
+        mFootAdapter.addData(list);
     }
 
 }

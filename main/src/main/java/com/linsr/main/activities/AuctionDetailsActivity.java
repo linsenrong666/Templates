@@ -78,9 +78,9 @@ public class AuctionDetailsActivity extends ActivityEx {
     }
 
     private void initFlipperView() {
-        int[] res = {R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
-        BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(this, res);
-        mFlipperView.setPageAdapter(pagerAdapter);
+//        int[] res = {R.mipmap.banner1, R.mipmap.banner2, R.mipmap.banner3};
+//        BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(this, res);
+//        mFlipperView.setPageAdapter(pagerAdapter);
     }
 
 }
