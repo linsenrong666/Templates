@@ -55,4 +55,41 @@ public interface IndexApi {
     @POST("api.php?c=user&a=index")
     Observable<ResponsePojo> userCenter(@Field("user_id") String userId);
 
+    //加车
+    @FormUrlEncoded
+    @POST("api.php?c=cart&a=add_to_cart")
+    Observable<ResponsePojo> addToCart(@Field("spec") String[] spec,
+                                       @Field("spec_count") int specCount,
+                                       @Field("goodsId") String goodsId,
+                                       @Field("number") int number);
+
+    //购物车列表
+    @FormUrlEncoded
+    @POST("api.php?c=cart&a=index")
+    Observable<ResponsePojo> cartList(@Field("key") String key);
+
+    //选择地址
+    @FormUrlEncoded
+    @POST("api.php?c=cart&a=consignee_do")
+    Observable<ResponsePojo> chooseAddress(@Field("id") String addressId);
+
+
+    //结算列表
+    @POST("api.php?c=cart&a=checkout")
+    Observable<ResponsePojo> settleList();
+
+    //结算
+    @FormUrlEncoded
+    @POST("api.php?c=cart&a=done")
+    Observable<ResponsePojo> settleAccounts(@Field("payment") int payment,
+                                            @Field("shipping") int shipping,
+                                            @Field("postscript") String postscript);
+
+
+    //查看物流
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=async_ems")
+    Observable<ResponsePojo> queryExpress(@Field("invoice_no") String no);
+
+
 }

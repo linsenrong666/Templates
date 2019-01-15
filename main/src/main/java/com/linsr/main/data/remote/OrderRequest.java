@@ -2,6 +2,7 @@ package com.linsr.main.data.remote;
 
 import android.arch.lifecycle.LifecycleOwner;
 
+import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.NetUtils;
 import com.linsr.common.net.callback.NetObserver;
@@ -18,10 +19,23 @@ public class OrderRequest {
     public static void orderList(LifecycleOwner lifecycleOwner,
                                  int status, int pageIndex, int pageSize,
                                  NetObserver<OrderPojo> observer) {
-        IndexApi userApi = Api.getService(IndexApi.class);
-        userApi.orderList(status, pageIndex, pageSize).compose(NetUtils.handleResponse(OrderPojo.class))
+        IndexApi api = Api.getService(IndexApi.class);
+        api.orderList(status, pageIndex, pageSize)
+                .compose(NetUtils.handleResponse(OrderPojo.class))
                 .retryWhen(NetUtils.retry())
                 .as(NetUtils.<OrderPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
+
+
+    public static void queryExpress(LifecycleOwner lifecycleOwner, String no, NetObserver<OrderPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.queryExpress(no)
+                .compose(NetUtils.handleResponse(OrderPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<OrderPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+
 }

@@ -27,7 +27,7 @@ import java.util.List;
 public class ShopWindowHolder extends BaseViewHolder<HomePojo.HomeListBean> {
 
     public interface OnShopWindowItemClickListener {
-        void onItemClick();
+        void onItemClick(HomePojo.HomeListBean.YimaStreeDataBean.GsBean data);
     }
 
     private ImageView mBackgroundImageView;
@@ -63,7 +63,7 @@ public class ShopWindowHolder extends BaseViewHolder<HomePojo.HomeListBean> {
                     public void onItemClick(BaseViewHolder<HomePojo.HomeListBean.YimaStreeDataBean.GsBean> holder,
                                             int position, int itemType, HomePojo.HomeListBean.YimaStreeDataBean.GsBean data) {
                         if (mOnShopWindowItemClickListener != null) {
-                            mOnShopWindowItemClickListener.onItemClick();
+                            mOnShopWindowItemClickListener.onItemClick(data);
                         }
                     }
                 });

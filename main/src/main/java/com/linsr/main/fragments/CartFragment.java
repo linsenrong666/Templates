@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.adapter.BaseRecyclerAdapter;
+import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
@@ -17,10 +19,14 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.cart.CartAdapter;
 import com.linsr.main.adapters.cart.TreePojo;
+import com.linsr.main.logic.contacts.CartContact;
+import com.linsr.main.logic.presenter.CartPresenter;
 import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.RecommendPojo;
+import com.linsr.main.model.bean.IsbestBean;
 import com.linsr.main.utils.Mock;
+import com.linsr.main.utils.ProductDetailsHelper;
 import com.linsr.main.widgets.BalanceBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -34,7 +40,7 @@ import java.util.List;
  * @author Linsr 2018/7/12 下午4:41
  */
 @Route(path = MainModule.Fragment.CART)
-public class CartFragment extends FragmentEx {
+public class CartFragment extends FragmentEx<CartPresenter> implements CartContact.View {
 
     private RecyclerView mCartRecyclerView;
     private CartAdapter mCartAdapter;
@@ -52,6 +58,16 @@ public class CartFragment extends FragmentEx {
     @Override
     protected void initArguments(Bundle arguments) {
 
+    }
+
+    @Override
+    protected CartPresenter bindPresenter() {
+        return new CartPresenter(this);
+    }
+
+    @Override
+    protected void loadData() {
+        mPresenter.cartList();
     }
 
     @Override
@@ -99,15 +115,16 @@ public class CartFragment extends FragmentEx {
 
     private void initRecommend() {
         mRecommendAdapter = new RecommendAdapter(mContext);
+        mRecommendAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {
+            @Override
+            public void onItemClick(BaseViewHolder<IsbestBean> holder, int position, int itemType, IsbestBean data) {
+                ProductDetailsHelper.startActivity(data.getGoods_id());
+            }
+        });
         HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mRecommendAdapter);
         wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(
                 R.layout.main_header_recommend, null));
-
-//        List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
-//        mRecommendAdapter.addData(goodsList2);
-
-        RecyclerViewHelper.initGridLayout(mContext, 3,
-                mRecommendRecyclerView, wrapper);
+        RecyclerViewHelper.initGridLayout(mContext, 3, mRecommendRecyclerView, wrapper);
     }
 
     EmptyWrapper mGoodsAdapterWrapper;
@@ -138,4 +155,9 @@ public class CartFragment extends FragmentEx {
         }
     };
 
+    @Override
+    public void recommend4U(List<IsbestBean> list) {
+        mRecommendAdapter.clear();
+        mRecommendAdapter.addData(list);
+    }
 }

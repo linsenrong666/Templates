@@ -20,6 +20,7 @@ import com.linsr.main.model.ChildCategoryPojo;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.model.bean.IsbestBean;
 import com.linsr.main.utils.Mock;
+import com.linsr.main.utils.ProductDetailsHelper;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.squareup.haha.perflib.Main;
 
@@ -56,9 +57,8 @@ public class ChildCategoryFragment extends RefreshFragment implements
             @Override
             public void onItemClick(BaseViewHolder<IsbestBean> holder, int position,
                                     int itemType, IsbestBean data) {
-                Params params = new Params();
-                params.add(GOODS_ID, data.getGoods_id());
-                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS, params);
+                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS,
+                        ProductDetailsHelper.createParams(data.getGoods_id()));
             }
         });
         RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);

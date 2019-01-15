@@ -24,6 +24,7 @@ import com.linsr.main.logic.contacts.HomeContact;
 import com.linsr.main.logic.presenter.HomePresenter;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.bean.IsbestBean;
+import com.linsr.main.utils.ProductDetailsHelper;
 import com.linsr.main.widgets.MainSearchTitleLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -129,8 +130,9 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
         });
         mAdapter.setOnShopWindowItemClickListener(new ShopWindowHolder.OnShopWindowItemClickListener() {
             @Override
-            public void onItemClick() {
-                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS);
+            public void onItemClick(HomePojo.HomeListBean.YimaStreeDataBean.GsBean data) {
+                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS,
+                        ProductDetailsHelper.createParams(data.getGoods_id()));
             }
         });
     }
