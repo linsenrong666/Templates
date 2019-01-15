@@ -85,11 +85,46 @@ public interface IndexApi {
                                             @Field("shipping") int shipping,
                                             @Field("postscript") String postscript);
 
-
     //查看物流
     @FormUrlEncoded
     @POST("api.php?c=user&a=async_ems")
     Observable<ResponsePojo> queryExpress(@Field("invoice_no") String no);
+
+
+    /**
+     *
+     * 确认收货
+     * 不可确认收货：
+     *1、订单已完成
+     *2、发货状态不等于1（已发货）（商品未发货）
+     */
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=affirm_received")
+    Observable<ResponsePojo> confirmReceived(@Field("order_id") String orderId);
+
+
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=refund_do")
+    Observable<ResponsePojo> refund(@Field("order_id") String orderId,
+                                    @Field("refund_reason") String reason,
+                                    @Field("refund_note") String node);
+
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=cancel_refund")
+    Observable<ResponsePojo> cancelRefund(@Field("order_id") String orderId);
+
+
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=order_detail")
+    Observable<ResponsePojo> orderDetails(@Field("order_id") String orderId);
+
+
+    //修改商品数量
+    @FormUrlEncoded
+    @POST("api.php?c=goods&a=price")
+    Observable<ResponsePojo> modifyNumber(@Field("id") String goodsId,
+                                          @Field("array") String[] array,
+                                          @Field("number") int number);
 
 
 }

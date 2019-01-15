@@ -91,18 +91,7 @@ public class IndexRequest {
                 .subscribe(observer);
     }
 
-    /**
-     * 商品详情
-     */
-    public static void goodsInfo(LifecycleOwner lifecycleOwner, String goodsId,
-                                 NetObserver<ProductDetailsPojo> observer) {
-        IndexApi api = Api.getService(IndexApi.class);
-        api.goodsInfo(goodsId)
-                .compose(NetUtils.handleResponse(ProductDetailsPojo.class))
-                .retryWhen(NetUtils.retry())
-                .as(NetUtils.<ProductDetailsPojo>bindLifecycle(lifecycleOwner))
-                .subscribe(observer);
-    }
+
 
 
 }

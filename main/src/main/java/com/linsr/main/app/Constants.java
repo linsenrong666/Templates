@@ -8,11 +8,11 @@ package com.linsr.main.app;
 public interface Constants {
 
     interface FloorType {
-        int BANNER = 1;//广告图
-        int AD_ONE_DATA = 2;//首页推荐广告1
-        int AD_TWO_DATA = 3;//首页推荐广告2
-        int AD_THREE_DATA = 4;//首页推荐广告3
-        int STORE_INFO = 5;//网店信息
+        int STORE_INFO = 1;//网店信息
+        int BANNER = 2;//广告图
+        int AD_ONE_DATA = 3;//首页推荐广告1
+        int AD_TWO_DATA = 4;//首页推荐广告2
+        int AD_THREE_DATA = 5;//首页推荐广告3
         int RECOMMEND_FOR_YOU = 6;//为你推荐
         int YIMA_STREET = 7;//姨妈街
 

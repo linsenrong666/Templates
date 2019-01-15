@@ -37,11 +37,13 @@ public class BannerPagerAdapter extends PagerAdapter {
         mInflater = LayoutInflater.from(mContext);
 
         mViews = new ArrayList<>();
-        for (HomePojo.HomeListBean.BannerDataBean bean : strings) {
-            ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item,
-                    null);
-            ImageUtils.load(context, bean.getAd_image(), view);
-            mViews.add(view);
+        if (strings != null) {
+            for (HomePojo.HomeListBean.BannerDataBean bean : strings) {
+                ImageView view = (ImageView) mInflater.inflate(R.layout.main_item_banner_pager_item,
+                        null);
+                ImageUtils.load(context, bean.getAd_image(), view);
+                mViews.add(view);
+            }
         }
     }
 

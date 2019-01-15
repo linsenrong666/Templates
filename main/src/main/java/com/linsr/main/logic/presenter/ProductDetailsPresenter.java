@@ -3,6 +3,7 @@ package com.linsr.main.logic.presenter;
 import com.linsr.common.biz.PresenterEx;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.exception.ApiException;
+import com.linsr.main.data.remote.GoodsRequest;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.model.ProductDetailsPojo;
@@ -21,7 +22,7 @@ public class ProductDetailsPresenter extends PresenterEx<ProductDetailsContact.V
 
     @Override
     public void getGoodsInfo(String goodsId) {
-        IndexRequest.goodsInfo(getLifecycleOwner(), goodsId,
+        GoodsRequest.goodsInfo(getLifecycleOwner(), goodsId,
                 new NetObserver<ProductDetailsPojo>(mView, true, true) {
                     @Override
                     public void onSucceed(ProductDetailsPojo data) {

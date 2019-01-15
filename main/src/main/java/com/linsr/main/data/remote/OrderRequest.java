@@ -28,12 +28,59 @@ public class OrderRequest {
     }
 
 
-    public static void queryExpress(LifecycleOwner lifecycleOwner, String no, NetObserver<OrderPojo> observer) {
+    public static void queryExpress(LifecycleOwner lifecycleOwner,
+                                    String no,
+                                    NetObserver<BizPojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
         api.queryExpress(no)
-                .compose(NetUtils.handleResponse(OrderPojo.class))
+                .compose(NetUtils.handleResponse(BizPojo.class))
                 .retryWhen(NetUtils.retry())
-                .as(NetUtils.<OrderPojo>bindLifecycle(lifecycleOwner))
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    public static void confirmReceived(LifecycleOwner lifecycleOwner,
+                                       String orderId,
+                                       NetObserver<BizPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.confirmReceived(orderId)
+                .compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    public static void refund(LifecycleOwner lifecycleOwner,
+                              String orderId,
+                              String reason, String node,
+                              NetObserver<BizPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.refund(orderId, reason, node)
+                .compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    public static void refund(LifecycleOwner lifecycleOwner,
+                              String orderId,
+                              NetObserver<BizPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.cancelRefund(orderId)
+                .compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    public static void orderDetails(LifecycleOwner lifecycleOwner,
+                                    String orderId,
+                                    NetObserver<BizPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.orderDetails(orderId)
+                .compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
 

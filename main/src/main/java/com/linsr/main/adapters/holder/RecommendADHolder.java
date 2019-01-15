@@ -46,6 +46,9 @@ public class RecommendADHolder extends BaseViewHolder<HomePojo.HomeListBean> {
 
     @Override
     public void convert(final int position, HomePojo.HomeListBean data, int itemType) {
+        if (data == null) {
+            return;
+        }
         List<HomePojo.HomeListBean.AdDataBean> list = new ArrayList<>();
         switch (itemType) {
             case Constants.FloorType.AD_TWO_DATA:
