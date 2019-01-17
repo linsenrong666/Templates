@@ -88,6 +88,12 @@
             app:common_label_text="@string/main_address_manage"
             app:common_show_bottom_divider="true"/>
 
+        <Button
+            android:id="@+id/me_logout"
+            style="@style/Button.MainColor"
+            android:layout_margin="@dimen/middle"
+            android:text="@string/logout"/>
+
     </LinearLayout>
 
 </ScrollView>

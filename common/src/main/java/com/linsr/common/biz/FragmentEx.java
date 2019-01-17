@@ -4,8 +4,11 @@ import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
 import android.support.annotation.CallSuper;
 import android.support.annotation.MainThread;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.linsr.common.R;
 import com.linsr.common.base.BaseFragment;
 import com.linsr.common.utils.JLog;
 
@@ -40,6 +43,13 @@ public abstract class FragmentEx<P extends IPresenter> extends BaseFragment impl
         } else {
             JLog.e(TAG, "ERROR: Presenter is null !!!");
         }
+    }
+
+    @Override
+    protected void setNoDataLayout() {
+        View mNoDataView = LayoutInflater.from(mActivity).inflate(R.layout.common_layout_no_data,
+                (ViewGroup) mNoDataLayout.getParent(), false);
+        mNoDataLayout.addView(mNoDataView);
     }
 
     @Override

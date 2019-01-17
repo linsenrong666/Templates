@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.FragmentEx;
@@ -13,8 +14,10 @@ import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
+import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
 import com.linsr.main.adapters.HomeAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
@@ -48,6 +51,10 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     private ImageView mLeftImage;
     private MainSearchTitleLayout mSearchTitleLayout;
     private RecommendAdapter mFootAdapter;
+
+    private TextView mShopNameTextView;
+    private TextView mVisitCountTextView;
+    private ImageView mShopProfileImageView;
 
     @Override
     protected HomePresenter bindPresenter() {
@@ -141,6 +148,9 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
         View headerView = LayoutInflater.from(mActivity).inflate(R.layout.main_header_home_shop_info,
                 mContentLayout, false);
+        mShopNameTextView = headerView.findViewById(R.id.home_shop_name_tv);
+        mShopProfileImageView = headerView.findViewById(R.id.home_user_profile_tv);
+        mVisitCountTextView = headerView.findViewById(R.id.home_shop_data_tv);
         mWrapper.addHeaderView(headerView);
     }
 
@@ -177,6 +187,15 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     @Override
     public void loadRecommendForYou(List<IsbestBean> list) {
         mFootAdapter.addData(list);
+    }
+
+    @Override
+    public void loadShopInfo(HomePojo.HomeListBean.StoreInfoDataBean bean) {
+        ImageUtils.load(mActivity, bean.getStoreface(), mShopProfileImageView);
+        ViewUtils.setText(mShopNameTextView, bean.getStorename());
+        ViewUtils.setText(mVisitCountTextView,
+                "访问量:" + bean.getVisit() + "  | 网店数:" + bean.getView() + "");
+
     }
 
 }

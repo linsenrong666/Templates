@@ -2,6 +2,8 @@ package com.linsr.main.model.bean;
 
 import com.linsr.common.model.BasePojo;
 
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,18 +15,20 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class OrderListBean extends BasePojo{
+public class OrderListBean extends BasePojo {
+
     /**
      * order_id : 22973
      * user_id : 6
      * rec_userid : 1
      * order_sn : 2018102223061727
      * order_time : 2018-10-22 22:58:09
-     * order_status : 等待商家发货
-     * shipping_id : 11
+     * desc : 等待商家发货
+     * refund_status : 0
      * total_fee : 29.70
-     * handler : <a class="btn cancel"  href="user.php?act=cancel_refund&order_id=22973">取消退款</a><a class="btn pay" href="#order_detail?order_id=22973">提醒发货</a>
-     * desc : <span class="willclose" >退款申请中</span>
+     * shipping_fee : 0.00
+     * goods_info : [{"goods_name":"【宅女】夜用x2+加长夜用x1","goods_img":"images/201809/goods_img/842_G_1535952525592.jpg","goods_number":"1","goods_price":"29.70"}]
+     * total_number : 1
      */
 
     private String order_id;
@@ -32,9 +36,27 @@ public class OrderListBean extends BasePojo{
     private String rec_userid;
     private String order_sn;
     private String order_time;
-    private String order_status;
-    private String shipping_id;
-    private String total_fee;
-    private String handler;
     private String desc;
+    private String refund_status;
+    private String total_fee;
+    private String shipping_fee;
+    private String total_number;
+    private List<GoodsInfoBean> goods_info;
+
+    @EqualsAndHashCode(callSuper = true)
+    @Data
+    public static class GoodsInfoBean extends BasePojo {
+        /**
+         * goods_name : 【宅女】夜用x2+加长夜用x1
+         * goods_img : images/201809/goods_img/842_G_1535952525592.jpg
+         * goods_number : 1
+         * goods_price : 29.70
+         */
+
+        private String goods_name;
+        private String goods_img;
+        private String goods_number;
+        private String goods_price;
+
+    }
 }

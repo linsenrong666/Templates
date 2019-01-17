@@ -13,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.BaseFragment;
 import com.linsr.common.biz.ApplicationEx;
 import com.linsr.common.biz.EventKey;
+import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
@@ -25,7 +26,7 @@ import java.util.List;
  * @author Linsr 2018/6/16 下午3:16
  */
 @Route(path = BookModule.Fragment.TEST1)
-public class BooksFragment extends BaseFragment {
+public class BooksFragment extends FragmentEx {
 
     String aa;
 

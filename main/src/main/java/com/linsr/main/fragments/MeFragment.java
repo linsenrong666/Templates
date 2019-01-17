@@ -9,6 +9,7 @@ import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.gui.widgets.common_label_container;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
+import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
@@ -101,7 +102,19 @@ public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Ac
                 Router.startActivity(MainModule.Activity.ADDRESS_LIST);
             }
         });
+
+        findViewById(R.id.me_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginModule.Service.LoginWrapper wrapper =
+                        Router.startService(LoginModule.Service.WRAPPER);
+                if (wrapper != null) {
+                    wrapper.logout();
+                }
+            }
+        });
     }
+
 
     @Override
     protected void loadData() {

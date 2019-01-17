@@ -61,6 +61,16 @@ public class RecyclerViewHelper {
         recyclerView.setAdapter(adapter);
     }
 
+    public static void initDefault(Context context,
+                                   RecyclerView recyclerView,
+                                   RecyclerView.Adapter adapter,
+                                   RecyclerView.ItemDecoration itemDecoration) {
+        recyclerView.addItemDecoration(itemDecoration);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
+    }
+
     public static void initGridLayout(Context context,
                                       int spanCount,
                                       RecyclerView recyclerView,

@@ -1,6 +1,5 @@
 package com.linsr.main.model;
 
-import com.linsr.common.model.BasePojo;
 import com.linsr.common.model.BizPojo;
 import com.linsr.main.model.bean.OrderListBean;
 
@@ -18,5 +17,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class OrderPojo extends BizPojo {
 
-    private List<OrderListBean> order_list;
+    private List<OrderListBean> list;
+    private int count;
+
 }

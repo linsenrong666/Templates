@@ -40,6 +40,11 @@ public class HomePresenter extends PresenterEx<HomeContact.View> implements Home
                                     List<IsbestBean> recData = bean.getRecData();
                                     mView.loadRecommendForYou(recData);
                                 }
+                                if (bean.getFloorType() == Constants.FloorType.STORE_INFO) {
+                                    if (bean.getStoreInfoData() != null) {
+                                        mView.loadShopInfo(bean.getStoreInfoData());
+                                    }
+                                }
                             }
 
                         } else {

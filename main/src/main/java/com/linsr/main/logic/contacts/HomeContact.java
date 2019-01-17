@@ -20,6 +20,8 @@ public interface HomeContact {
         void mainListFailed();
 
         void loadRecommendForYou(List<IsbestBean> list);
+
+        void loadShopInfo(HomePojo.HomeListBean.StoreInfoDataBean bean);
     }
 
     interface Presenter {

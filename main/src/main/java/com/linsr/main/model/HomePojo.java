@@ -1,5 +1,6 @@
 package com.linsr.main.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.linsr.common.model.BasePojo;
 import com.linsr.common.model.BizPojo;
 import com.linsr.main.model.bean.IsbestBean;
@@ -24,6 +25,7 @@ public class HomePojo extends BizPojo {
     @EqualsAndHashCode(callSuper = true)
     @Data
     public static class HomeListBean extends BasePojo {
+
         /**
          * floorType : 1
          * floorName : banner
@@ -40,11 +42,12 @@ public class HomePojo extends BizPojo {
         private String floorName;
         private AdDataBean adOneData;
         private AdDataBean adThreeData;
-        private String storeInfoData;
+        private StoreInfoDataBean storeInfoData;
         private List<BannerDataBean> bannerData;
         private List<AdDataBean> adTwoData;
         private YimaStreeDataBean yimaStreeData;
         private List<IsbestBean> recData;
+
 
         @EqualsAndHashCode(callSuper = true)
         @Data
@@ -173,6 +176,37 @@ public class HomePojo extends BizPojo {
             private String promote_price;
             private String goods_img;
 
+        }
+
+
+        @EqualsAndHashCode(callSuper = true)
+        @Data
+        public static class StoreInfoDataBean extends BasePojo {
+            /**
+             * id : 1
+             * user_id : 6
+             * storename : TONY的网店
+             * storeface : http://thirdwx.qlogo.cn/mmopen/iaEFXL4ns1RhjhTduVdCvArbSdnn9pL0KicsluTia9ASTnvETlFIVBa854Dylqokxy94PlNRviaT0lTFBOmYBedfzCEqpYmjHMtb/132
+             * storedesc :
+             * bgimg : 0
+             * visit : 13149
+             * order_count : 0
+             * is_show : 1
+             * view : 847140
+             * users_total : 6234
+             */
+
+            private String id;
+            private String user_id;
+            private String storename;
+            private String storeface;
+            private String storedesc;
+            private String bgimg;
+            private String visit;
+            private String order_count;
+            private String is_show;
+            private String view;
+            private String users_total;
         }
     }
 }

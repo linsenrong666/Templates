@@ -2,6 +2,7 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.net.callback.NetObserver;
@@ -40,7 +41,7 @@ public class OrderListFragment extends RefreshFragment implements MainModule.Fra
     @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
         mAdapter = new OrderAdapter(mActivity);
-        RecyclerViewHelper.initDefault(mActivity, recyclerView, mAdapter);
+        RecyclerViewHelper.initDefault(mActivity, recyclerView, mAdapter,true);
         mAdapter.setOnOrderItemClickListener(new OrderAdapter.OnOrderItemClickListener() {
             @Override
             public void onPayBtnClick(int position, OrderListBean data) {
@@ -74,7 +75,7 @@ public class OrderListFragment extends RefreshFragment implements MainModule.Fra
                 new NetObserver<OrderPojo>(this, showLoading, true) {
                     @Override
                     public void onSucceed(OrderPojo data) {
-                        List<OrderListBean> orderList = data.getOrder_list();
+                        List<OrderListBean> orderList = data.getList();
                         mPageIndex = PageLoadHelper.onSuccess(mPageIndex, mAdapter, orderList,
                                 OrderListFragment.this);
                     }

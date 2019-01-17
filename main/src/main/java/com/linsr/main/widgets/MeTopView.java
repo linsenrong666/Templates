@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.linsr.common.gui.widgets.CircleImageView;
 import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
@@ -74,7 +75,7 @@ public class MeTopView extends FrameLayout {
         ViewUtils.setText(mBalance, bean.getUser_money());
         ViewUtils.setText(mCommission, bean.getPay_points());
         ViewUtils.setText(mWaitCommission, bean.getFrozen_money());
-        ImageUtils.load(getContext(), bean.getUserface(), mUserProfile);
+        ImageUtils.loadCircle(getContext(), bean.getUserface(), mUserProfile);
     }
 
 }

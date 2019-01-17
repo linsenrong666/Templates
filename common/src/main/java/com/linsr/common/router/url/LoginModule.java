@@ -1,5 +1,7 @@
 package com.linsr.common.router.url;
 
+import com.alibaba.android.arouter.facade.template.IProvider;
+
 /**
  * Description
  *
@@ -19,5 +21,15 @@ public class LoginModule {
 
     public interface Fragment {
     }
+
+    public interface Service {
+        String WRAPPER = ROOT + "loginWrapper";
+
+        interface LoginWrapper extends IProvider {
+            void logout();
+        }
+    }
+
+
 
 }

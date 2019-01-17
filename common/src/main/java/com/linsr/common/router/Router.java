@@ -1,6 +1,8 @@
 package com.linsr.common.router;
 
 import android.app.Activity;
+import android.app.Service;
+import android.net.IpPrefix;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -8,6 +10,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 
 import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.template.IProvider;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.linsr.common.R;
 
@@ -55,6 +58,15 @@ public class Router {
             build = handleFlags(flags, build);
         }
         build.navigation();
+    }
+
+    public static <S extends IProvider> S startService(String service) {
+        try {
+            return (S) ARouter.getInstance().build(service).navigation(); //
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private static Postcard handleFlags(Flags flags, Postcard build) {

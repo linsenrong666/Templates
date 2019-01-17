@@ -108,9 +108,7 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
-    private void setNoDataLayout() {
-
-    }
+    abstract protected void setNoDataLayout();
 
     protected <T extends View> T findViewById(int resId) {
         if (mContentView == null) {

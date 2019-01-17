@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/small">
+
+    <ImageView
+        android:id="@+id/item_order_goods_pic_iv"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginRight="@dimen/small"
+        android:background="@android:color/holo_red_dark"/>
+
+    <TextView
+        android:id="@+id/item_order_goods_name_tv"
+        style="@style/TextView"
+        android:layout_alignTop="@id/item_order_goods_pic_iv"
+        android:layout_marginTop="@dimen/tiny"
+        android:layout_toLeftOf="@+id/item_order_goods_price_tv"
+        android:layout_toRightOf="@id/item_order_goods_pic_iv"
+        android:text="超级机器人 铁血猛士 未来钢铁科技结晶 哆啦A梦"/>
+
+    <TextView
+        android:id="@id/item_order_goods_price_tv"
+        style="@style/TextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/item_order_goods_pic_iv"
+        android:layout_marginTop="@dimen/tiny"
+        android:text="￥0.05"/>
+
+    <TextView
+        android:id="@+id/item_order_goods_count_tv"
+        style="@style/TextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/item_order_goods_price_tv"
+        android:layout_marginTop="@dimen/mini"
+        android:text="X7"/>
+
+
+</RelativeLayout>
