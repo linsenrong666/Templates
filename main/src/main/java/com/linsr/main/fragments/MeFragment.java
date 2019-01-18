@@ -109,7 +109,7 @@ public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Ac
                 LoginModule.Service.LoginWrapper wrapper =
                         Router.startService(LoginModule.Service.WRAPPER);
                 if (wrapper != null) {
-                    wrapper.logout();
+                    wrapper.logout(mActivity);
                 }
             }
         });

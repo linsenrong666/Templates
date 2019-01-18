@@ -11,9 +11,10 @@ import java.util.ArrayList;
  */
 public class Flags extends ArrayList<Integer> {
 
-    public static Flags clearTop() {
+    public static Flags clearTask() {
         Flags flags = new Flags();
-        flags.add(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        flags.add(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        flags.add(Intent.FLAG_ACTIVITY_NEW_TASK);
         return flags;
     }
 }

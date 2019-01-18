@@ -27,12 +27,16 @@ public class Router {
     public static void startActivityForResult(Activity context,
                                               String activity,
                                               int requestCode,
-                                              Params params) {
+                                              Params params,
+                                              Flags flags) {
         Postcard build = ARouter.getInstance()
                 .build(activity)
                 .withTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         if (params != null && params.size() > 0) {
             build = handleParams(params, build);
+        }
+        if (flags != null && flags.size() > 0) {
+            build = handleFlags(flags, build);
         }
         build.navigation(context, requestCode);
     }
@@ -45,8 +49,12 @@ public class Router {
         startActivity(activity, params, null);
     }
 
-    public static void startActivity(String activity, Flags flags) {
-        startActivity(activity, null, flags);
+    public static void startActivityWithFlags(Activity context, String activity, Params params, Flags flags) {
+        startActivityForResult(context, activity, 0, params, flags);
+    }
+
+    public static void startActivityWithFlags(Activity context, String activity, Flags flags) {
+        startActivityForResult(context, activity, 0, null, flags);
     }
 
     public static void startActivity(String activity, Params params, Flags flags) {

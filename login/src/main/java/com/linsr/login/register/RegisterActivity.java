@@ -1,6 +1,5 @@
 package com.linsr.login.register;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +8,10 @@ import android.widget.EditText;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.gui.widgets.countdown.CountDownButton;
-import com.linsr.common.net.NetUtils;
 import com.linsr.common.router.Flags;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.ActivityUtils;
 import com.linsr.common.utils.NumberUtils;
 import com.linsr.common.utils.ToastUtils;
 import com.linsr.common.utils.ViewUtils;
@@ -134,7 +131,7 @@ public class RegisterActivity extends ActivityEx<RegisterPresenter> implements R
     @Override
     public void registerSucceed() {
         ToastUtils.show("注册成功");
-        Router.startActivity(MainModule.Activity.MAIN, Flags.clearTop());
+        Router.startActivityWithFlags(this, MainModule.Activity.MAIN, Flags.clearTask());
     }
 
     @Override

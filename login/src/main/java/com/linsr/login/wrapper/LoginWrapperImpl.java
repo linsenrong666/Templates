@@ -1,5 +1,6 @@
 package com.linsr.login.wrapper;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -17,9 +18,9 @@ import com.linsr.common.router.url.LoginModule;
 public class LoginWrapperImpl implements LoginModule.Service.LoginWrapper {
 
     @Override
-    public void logout() {
+    public void logout(Activity activity) {
         AppConfig.getInstance().logout();
-        Router.startActivity(LoginModule.Activity.LOGIN, Flags.clearTop());
+        Router.startActivityWithFlags(activity, LoginModule.Activity.LOGIN, Flags.clearTask());
     }
 
     @Override
