@@ -103,7 +103,9 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
     public synchronized CartBalanceTO balance() {
         ensureDataNotNull();
         CartBalanceTO to = new CartBalanceTO();
+        //选中的项
         int count = 0;
+        //商品的个数
         int number = 0;
         double total = 0;
         for (TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo : mList) {
@@ -116,9 +118,9 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
                 if (checked) {
                     count++;
                     try {
-                        number = number + cartGoodsPojo.getCount();
+                        number = number + Integer.parseInt(cartGoodsPojo.getGoods_number());
                         total = total +
-                                (Double.parseDouble(cartGoodsPojo.getGoods_price()) * cartGoodsPojo.getCount());
+                                (Double.parseDouble(cartGoodsPojo.getGoods_price()) * number);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

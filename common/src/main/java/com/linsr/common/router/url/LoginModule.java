@@ -30,6 +30,7 @@ public class LoginModule {
         interface LoginWrapper extends IProvider {
             void logout(android.app.Activity activity);
         }
+
     }
 
 

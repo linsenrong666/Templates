@@ -17,12 +17,9 @@ import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.model.ChildCategoryPojo;
-import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.model.bean.IsbestBean;
-import com.linsr.main.utils.Mock;
 import com.linsr.main.utils.ProductDetailsHelper;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.squareup.haha.perflib.Main;
 
 import java.util.List;
 

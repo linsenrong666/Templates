@@ -30,27 +30,6 @@ public class BaseApplication extends Application {
 
     protected String TAG;
 
-    static {
-        //设置全局的Header构建器
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
-            @NonNull
-            @Override
-            public RefreshHeader createRefreshHeader(@NonNull Context context,
-                                                     @NonNull RefreshLayout layout) {
-                return new ClassicsHeader(context);
-            }
-        });
-        //设置全局的Footer构建器
-        SmartRefreshLayout.setDefaultRefreshFooterCreator(new DefaultRefreshFooterCreator() {
-            @NonNull
-            @Override
-            public RefreshFooter createRefreshFooter(@NonNull Context context,
-                                                     @NonNull RefreshLayout layout) {
-                return new ClassicsFooter(context).setDrawableSize(20);
-            }
-        });
-    }
-
     private static BaseApplication mApplication;
 
     @Override
@@ -65,7 +44,6 @@ public class BaseApplication extends Application {
         JLog.i(TAG, "\n\n\n######################################################################################" +
                 "启动完成######################################################################################");
         isInMainProcesses();
-
         super.onCreate();
         mApplication = this;
         //初始化日志工具
@@ -74,6 +52,8 @@ public class BaseApplication extends Application {
         initRouter();
         //初始化内存泄漏分析工具
         initLeakCanary();
+        //注册生命周期监听
+        registerActivityLifecycleCallbacks(AppLife.getInstance());
     }
 
     private RefWatcher mRefWatcher;

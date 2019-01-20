@@ -5,12 +5,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.AppLife;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.gui.widgets.common_label_container;
+import com.linsr.common.router.Flags;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.ActivityUtils;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
 import com.linsr.main.logic.contacts.MeContact;
@@ -106,11 +110,9 @@ public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Ac
         findViewById(R.id.me_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginModule.Service.LoginWrapper wrapper =
-                        Router.startService(LoginModule.Service.WRAPPER);
-                if (wrapper != null) {
-                    wrapper.logout(mActivity);
-                }
+                AppConfig.getInstance().logout();
+                AppLife.getInstance().exit();
+                Router.startActivity(LoginModule.Activity.LOGIN);
             }
         });
     }

@@ -94,7 +94,7 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
         mCartCountView.setOnCountChangedListener(new CartCountView.OnCountChangedListener() {
             @Override
             public void onChanged(int count) {
-                pojo.setCount(count);
+                pojo.setGoods_number(String.valueOf(count));
                 if (mCartListener != null) {
                     mCartListener.onDataChangeForBalance();
                 }
@@ -118,8 +118,8 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
         ViewUtils.setText(mGoodsPrice, info.getGoods_price());
         if (!TextUtils.isEmpty(info.getGoods_number())) {
             try {
-                info.setCount(Integer.parseInt(info.getGoods_number()));
-                mCartCountView.setResultCount(info.getCount());
+                int number = Integer.parseInt(info.getGoods_number());
+                mCartCountView.setResultCount(number);
             } catch (Exception e) {
                 e.printStackTrace();
 

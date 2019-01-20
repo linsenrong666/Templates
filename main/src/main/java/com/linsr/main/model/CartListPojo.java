@@ -134,7 +134,7 @@ public class CartListPojo extends BizPojo {
             private String goods_img;
 
             private boolean isChecked;
-            private int count;
+//            private int count;
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.linsr.login.login;
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.text.TextUtils;
 
 import com.linsr.common.biz.config.AppConfig;
@@ -14,6 +15,8 @@ import com.linsr.common.utils.ToastUtils;
 import com.linsr.login.base.BaseLoginPresenter;
 import com.linsr.login.data.LoginApi;
 import com.linsr.login.data.model.response.LoginPojo;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import org.reactivestreams.Subscription;
 
@@ -28,6 +31,14 @@ public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implem
 
     LoginPresenter(LoginContact.View view) {
         super(view);
+    }
+
+
+
+    @Override
+    public void onCreate(LifecycleOwner owner) {
+        super.onCreate(owner);
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.linsr.login.login;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,9 @@ import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.ToastUtils;
 import com.linsr.login.R;
+import com.linsr.login.data.LoginApi;
 import com.linsr.login.data.model.response.LoginPojo;
+import com.linsr.login.wxapi.WXEntryActivity;
 
 /**
  *
@@ -63,6 +66,13 @@ public class LoginActivity extends ActivityEx<LoginPresenter> implements LoginCo
                 String userName = mAccountEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
                 mPresenter.login(userName, password);
+            }
+        });
+        findViewById(R.id.login_wechat_tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, WXEntryActivity.class);
+                startActivity(intent);
             }
         });
     }
