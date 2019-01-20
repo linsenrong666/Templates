@@ -4,13 +4,10 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.app.Constants;
 import com.linsr.main.model.AddressPojo;
-import com.linsr.main.model.CartGoodsPojo;
 import com.linsr.main.model.CartShopPojo;
-import com.linsr.main.model.CategoryMenuPojo;
 import com.linsr.main.model.HomePojo;
 import com.linsr.main.model.MenuItemPojo;
 import com.linsr.main.model.OrderPojo;
-import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.model.ShopWindowPojo;
 
 import java.util.ArrayList;
@@ -115,23 +112,6 @@ public class Mock {
         return list;
     }
 
-
-    public static List<TreePojo<CartShopPojo, CartGoodsPojo>> getCartList(int size) {
-        List<TreePojo<CartShopPojo, CartGoodsPojo>> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            TreePojo<CartShopPojo, CartGoodsPojo> treePojo = new TreePojo<>();
-            treePojo.setParentPojo(new CartShopPojo("SHOP:" + i));
-            List<CartGoodsPojo> goodsPojos = new ArrayList<>();
-            Random random = new Random();
-            int csize = random.nextInt(3) + 1;
-            for (int j = 0; j < csize; j++) {
-                goodsPojos.add(new CartGoodsPojo("GOODS:" + j));
-            }
-            treePojo.setChildPojo(goodsPojos);
-            list.add(treePojo);
-        }
-        return list;
-    }
 
     public static List<AddressPojo> getAddressList(int size) {
         List<AddressPojo> list = new ArrayList<>();

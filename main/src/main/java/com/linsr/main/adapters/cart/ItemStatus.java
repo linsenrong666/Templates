@@ -1,12 +1,11 @@
 package com.linsr.main.adapters.cart;
 
-import com.linsr.common.utils.JLog;
-import com.linsr.main.model.CartGoodsPojo;
-import com.linsr.main.model.CartShopPojo;
+import com.linsr.common.model.BasePojo;
 
 import java.util.List;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Description

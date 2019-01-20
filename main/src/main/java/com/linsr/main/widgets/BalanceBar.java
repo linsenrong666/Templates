@@ -58,19 +58,45 @@ public class BalanceBar extends FrameLayout {
         });
         mAmount = findViewById(R.id.balance_bar_amount_tv);
         mCheckBox = findViewById(R.id.balance_bar_check_box);
-        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (mOnCartBottomBarListener != null) {
+//                    mOnCartBottomBarListener.onAllChecked(isChecked);
+//                }
+//            }
+//        });
+        mCheckBox.setOnClickListener(new OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onClick(View v) {
                 if (mOnCartBottomBarListener != null) {
-                    mOnCartBottomBarListener.onAllChecked(isChecked);
+                    mIsChecked = !mIsChecked;
+                    mOnCartBottomBarListener.onAllChecked(mIsChecked);
                 }
             }
         });
     }
 
-    public void setAmount(String amount) {
-        String text = getContext().getString(R.string.main_balance_count, amount);
+    boolean mIsChecked;
+
+    public void setAmount(Double amount) {
+        String text = getContext().getString(R.string.main_balance_count, String.valueOf(amount));
         mAmount.setText(text);
     }
 
+    public void setBalanceNumber(Integer count) {
+        String text = getContext().getString(R.string.main_go_balance, String.valueOf(count));
+        mBalanceButton.setText(text);
+    }
+
+    public void setAllChecked(boolean isChecked) {
+        this.mIsChecked = isChecked;
+        mCheckBox.setChecked(isChecked);
+    }
+
+    public void resetBalance() {
+        mCheckBox.setChecked(false);
+        setAmount(0.0);
+        setBalanceNumber(0);
+    }
 }

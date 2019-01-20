@@ -2,17 +2,14 @@ package com.linsr.main.adapters.cart;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
+import android.util.Pair;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.gui.widgets.CartCountView;
 import com.linsr.common.utils.JLog;
 import com.linsr.main.R;
-import com.linsr.main.model.CartGoodsPojo;
+import com.linsr.main.model.CartListPojo;
 import com.linsr.main.model.CartShopPojo;
 
 import java.util.List;
@@ -22,7 +19,18 @@ import java.util.List;
  *
  * @author Linsr 2018/7/18 下午3:20
  */
-public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, CartGoodsPojo>> {
+public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
+        CartListPojo.GoodsListBean.ListBean>> {
+
+    public interface CartListener {
+        void onDataChangeForBalance();
+    }
+
+    private CartListener mCartListener;
+
+    public void setCartListener(CartListener cartListener) {
+        mCartListener = cartListener;
+    }
 
     public CartAdapter(Context context) {
         super(context);
@@ -30,15 +38,17 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
 
     @NonNull
     @Override
-    public BaseViewHolder onCreateViewHolder(
+    public BaseViewHolder<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> onCreateViewHolder(
             @NonNull ViewGroup parent, int viewType) {
         if (viewType == ItemStatus.VIEW_TYPE_PARENT) {
-            return new ShopHolder(mContext, mInflater.inflate(R.layout.main_item_cart_shop, parent, false));
+            return new ShopHolder(mContext, this, mCartListener,
+                    mInflater.inflate(R.layout.main_item_cart_shop, parent, false));
         } else if (viewType == ItemStatus.VIEW_TYPE_CHILD) {
-            return new GoodsHolder(mContext, mInflater.inflate(R.layout.main_item_cart_goods,
+            return new GoodsHolder(mContext,
+                    this, mCartListener, mInflater.inflate(R.layout.main_item_cart_goods,
                     parent, false));
         }
-        return new ShopHolder(mContext, mInflater.inflate(R.layout.main_item_cart_shop,
+        return new ShopHolder(mContext, this, mCartListener, mInflater.inflate(R.layout.main_item_cart_shop,
                 parent, false));
     }
 
@@ -61,132 +71,63 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo, Cart
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder<TreePojo<CartShopPojo, CartGoodsPojo>> holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> holder, int position) {
         ItemStatus itemStatus = ItemStatus.getItemStatusByPosition(mList, position); // 获取列表项状态
-        final TreePojo<CartShopPojo, CartGoodsPojo> data = mList.get(itemStatus.getParentIndex());
+        final TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> data = mList.get(itemStatus.getParentIndex());
         holder.convert(position, data, getItemViewType(position));
     }
 
-    class ShopHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartGoodsPojo>> {
-        private CheckBox mCheckBox;
-        private boolean onBind;
-
-        ShopHolder(Context context, View itemView) {
-            super(context, itemView);
-            mCheckBox = findViewById(R.id.cart_shop_check_box);
+    public boolean isAllChecked(int checkedCount) {
+        int count = 0;
+        for (TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo : mList) {
+            List<CartListPojo.GoodsListBean.ListBean> childPojo = treePojo.getChildPojo();
+            count = count + childPojo.size();
         }
-
-        @Override
-        public void convert(final int position,
-                            final TreePojo<CartShopPojo, CartGoodsPojo> data,
-                            int itemType) {
-            final CartShopPojo parentPojo = data.getParentPojo();
-            final List<CartGoodsPojo> childPojo = data.getChildPojo();
-            final int rangeCount = 1 + childPojo.size();
-
-            mCheckBox.setText(data.getParentPojo().getName());
-            onBind = true;
-            mCheckBox.setChecked(parentPojo.isChecked());
-            onBind = false;
-            mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (onBind) {
-                        return;
-                    }
-                    parentPojo.setChecked(isChecked);
-                    for (CartGoodsPojo pojo : childPojo) {
-                        pojo.setChecked(isChecked);
-                    }
-                    notifyItemRangeChanged(position, rangeCount);
-                }
-            });
-        }
+        JLog.i("当前选中：" + checkedCount + ",总共:" + count);
+        return checkedCount == count;
     }
 
-    class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartGoodsPojo>> {
-
-        private CheckBox mCheckBox;
-        private CartCountView mCartCountView;
-        private boolean onBind;
-
-        GoodsHolder(Context context, View itemView) {
-            super(context, itemView);
-            mCartCountView = findViewById(R.id.cart_goods_count_ccv);
-            mCheckBox = findViewById(R.id.cart_goods_check_box);
-        }
-
-        @Override
-        public void convert(int position, final TreePojo<CartShopPojo, CartGoodsPojo> data, final int itemType) {
-            final ItemStatus itemStatus = ItemStatus.getItemStatusByPosition(mList, position); // 获取列表项状态
-            final CartGoodsPojo pojo = data.getChildPojo().get(itemStatus.getChildIndex());
-
-            mCartCountView.setResultCount(pojo.getCount());
-
-            onBind = true;
-            mCheckBox.setChecked(pojo.isChecked());
-            onBind = false;
-
-            mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (onBind) {
-                        return;
-                    }
-                    pojo.setChecked(isChecked);
-
-                    //check status
-                    List<CartGoodsPojo> list = data.getChildPojo();
-                    CartShopPojo parentPojo = data.getParentPojo();
-                    int checkedCount = 0;
-                    for (CartGoodsPojo cartGoodsPojo : list) {
-                        if (!cartGoodsPojo.isChecked()) {
-                            parentPojo.setChecked(false);
-                            notifyItemRangeChanged(itemStatus.getParentPosition(), 1);
-                            break;
-                        }
-                        checkedCount++;
-                    }
-                    if (checkedCount == list.size()) {
-                        parentPojo.setChecked(true);
-                        notifyItemRangeChanged(itemStatus.getParentPosition(), 1);
-                    }
-
-                    JLog.i("parentPosition:" + itemStatus.getParentPosition()
-                            + ",childPosition:" + itemStatus.getChildPosition());
-
-                }
-            });
-            mCartCountView.setOnCountChangedListener(new CartCountView.OnCountChangedListener() {
-                @Override
-                public void onChanged(int count) {
-                    pojo.setCount(count);
-                }
-
-                @Override
-                public void onMinCount(int min) {
-                    JLog.i("==onMinCount");
-                }
-
-                @Override
-                public void onMaxCount(int max) {
-                    JLog.i("==onMaxCount");
-                }
-            });
-        }
-    }
-
-    public void allToggleChecked(boolean isChecked) {
+    public void toggleAllChecked(boolean isChecked) {
         ensureDataNotNull();
-        for (TreePojo<CartShopPojo, CartGoodsPojo> treePojo : mList) {
+        for (TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo : mList) {
             CartShopPojo parentPojo = treePojo.getParentPojo();
             parentPojo.setChecked(isChecked);
-            List<CartGoodsPojo> childPojo = treePojo.getChildPojo();
-            for (CartGoodsPojo cartGoodsPojo : childPojo) {
+            List<CartListPojo.GoodsListBean.ListBean> childPojo = treePojo.getChildPojo();
+            for (CartListPojo.GoodsListBean.ListBean cartGoodsPojo : childPojo) {
                 cartGoodsPojo.setChecked(isChecked);
             }
         }
         notifyDataSetChanged();
     }
 
+    public synchronized CartBalanceTO balance() {
+        ensureDataNotNull();
+        CartBalanceTO to = new CartBalanceTO();
+        int count = 0;
+        int number = 0;
+        double total = 0;
+        for (TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo : mList) {
+            List<CartListPojo.GoodsListBean.ListBean> childPojo = treePojo.getChildPojo();
+            if (childPojo == null) {
+                continue;
+            }
+            for (CartListPojo.GoodsListBean.ListBean cartGoodsPojo : childPojo) {
+                boolean checked = cartGoodsPojo.isChecked();
+                if (checked) {
+                    count++;
+                    try {
+                        number = number + cartGoodsPojo.getCount();
+                        total = total +
+                                (Double.parseDouble(cartGoodsPojo.getGoods_price()) * cartGoodsPojo.getCount());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        to.setAmount(total);
+        to.setCount(count);
+        to.setNumber(number);
+        return to;
+    }
 }

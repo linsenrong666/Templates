@@ -2,6 +2,7 @@ package com.linsr.common.biz;
 
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.MainThread;
 import android.view.LayoutInflater;
@@ -32,6 +33,11 @@ public abstract class FragmentEx<P extends IPresenter> extends BaseFragment impl
 
     protected P bindPresenter() {
         return null;
+    }
+
+    @Override
+    protected void initArguments(Bundle arguments) {
+
     }
 
     @CallSuper

@@ -20,6 +20,7 @@
         android:paddingLeft="@dimen/small"/>
 
     <ImageView
+        android:id="@+id/cart_goods_profile_iv"
         android:layout_width="88dp"
         android:layout_height="88dp"
         android:background="@color/background_image"
@@ -32,10 +33,12 @@
         android:layout_marginRight="@dimen/small">
 
         <TextView
+            android:id="@+id/cart_goods_name_tv"
             style="@style/TextView"
             android:text="极简主义浪漫机器人  白色版"/>
 
         <TextView
+            android:id="@+id/cart_goods_price_tv"
             style="@style/TextView.MainColor"
             android:layout_alignParentBottom="true"
             android:text="$1988"

@@ -149,6 +149,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         }
     }
 
+    public List<T> getData() {
+        return mList;
+    }
+
     public void remove(T data) {
         if (mList != null && mList.contains(data)) {
             mList.remove(data);
@@ -161,5 +165,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
             mList = new ArrayList<>();
         }
     }
+
 
 }
