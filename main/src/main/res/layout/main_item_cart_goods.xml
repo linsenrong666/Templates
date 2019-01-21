@@ -19,37 +19,44 @@
         android:checked="true"
         android:paddingLeft="@dimen/small"/>
 
-    <ImageView
-        android:id="@+id/cart_goods_profile_iv"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:background="@color/background_image"
-        android:src="@mipmap/placeholders_goods"/>
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/cart_goods_main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/small"
-        android:layout_marginRight="@dimen/small">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/cart_goods_name_tv"
-            style="@style/TextView"
-            android:text="极简主义浪漫机器人  白色版"/>
+        <ImageView
+            android:id="@+id/cart_goods_profile_iv"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:background="@color/background_image"
+            android:src="@mipmap/placeholders_goods"/>
 
-        <TextView
-            android:id="@+id/cart_goods_price_tv"
-            style="@style/TextView.MainColor"
-            android:layout_alignParentBottom="true"
-            android:text="$1988"
-            android:textSize="@dimen/font_large"
-            android:textStyle="bold"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/small"
+            android:layout_marginRight="@dimen/small">
 
-        <com.linsr.common.gui.widgets.CartCountView
-            android:id="@+id/cart_goods_count_ccv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/cart_goods_name_tv"
+                style="@style/TextView"
+                android:text="极简主义浪漫机器人  白色版"/>
+
+            <TextView
+                android:id="@+id/cart_goods_price_tv"
+                style="@style/TextView.MainColor"
+                android:layout_alignParentBottom="true"
+                android:text="$1988"
+                android:textSize="@dimen/font_large"
+                android:textStyle="bold"/>
+
+            <com.linsr.common.gui.widgets.CartCountView
+                android:id="@+id/cart_goods_count_ccv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

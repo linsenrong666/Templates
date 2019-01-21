@@ -23,7 +23,7 @@ public class ProductDetailsPresenter extends PresenterEx<ProductDetailsContact.V
     @Override
     public void getGoodsInfo(String goodsId) {
         GoodsRequest.goodsInfo(getLifecycleOwner(), goodsId,
-                new NetObserver<ProductDetailsPojo>(mView, true, true) {
+                new NetObserver<ProductDetailsPojo>(mView, false, true) {
                     @Override
                     public void onSucceed(ProductDetailsPojo data) {
                         if (data == null) {

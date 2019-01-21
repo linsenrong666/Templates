@@ -19,6 +19,8 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.cart.CartAdapter;
 import com.linsr.main.adapters.cart.CartBalanceTO;
+import com.linsr.main.adapters.cart.GoodsHolder;
+import com.linsr.main.adapters.cart.ItemStatus;
 import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.logic.contacts.CartContact;
 import com.linsr.main.logic.presenter.CartPresenter;
@@ -124,6 +126,12 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
             public void onDataChangeForBalance() {
                 CartBalanceTO to = balance();
                 mBalanceBar.setAllChecked(mCartAdapter.isAllChecked(to.getCount()));
+            }
+        });
+        mCartAdapter.setOnGoodsClickListener(new GoodsHolder.OnGoodsClickListener() {
+            @Override
+            public void onItemClick(CartListPojo.GoodsListBean.ListBean data) {
+                ProductDetailsHelper.startActivity(data.getGoods_id());
             }
         });
     }

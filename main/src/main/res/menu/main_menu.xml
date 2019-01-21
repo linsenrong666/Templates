@@ -9,10 +9,10 @@
         android:id="@+id/item_category"
         android:icon="@drawable/ic_bot_category_selector"
         android:title="@string/main_category"/>
-    <item
-        android:id="@+id/item_shop_center"
-        android:icon="@drawable/ic_bot_mall_selector"
-        android:title="@string/main_shop_center"/>
+    <!--<item-->
+        <!--android:id="@+id/item_shop_center"-->
+        <!--android:icon="@drawable/ic_bot_mall_selector"-->
+        <!--android:title="@string/main_shop_center"/>-->
     <item
         android:id="@+id/item_cart"
         android:icon="@drawable/ic_bot_cart_selector"

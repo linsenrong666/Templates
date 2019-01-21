@@ -84,7 +84,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         mFragmentList = new ArrayList<>();
         mFragmentList.add(Router.findFragment(MainModule.Fragment.HOME));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.CATEGORY));
-        mFragmentList.add(Router.findFragment(MainModule.Fragment.MALL_CONTAINER));
+//        mFragmentList.add(Router.findFragment(MainModule.Fragment.MALL_CONTAINER));暂时注释
         mFragmentList.add(Router.findFragment(MainModule.Fragment.CART));
         mFragmentList.add(Router.findFragment(MainModule.Fragment.ME));
         FragmentPagerAdapterEx mPagerAdapterEx =
@@ -105,19 +105,21 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
             mTitleView.setVisibility(View.GONE);
             mViewPager.setCurrentItem(1);
             return true;
-        } else if (i == R.id.item_shop_center) {
-            mTitleView.setVisibility(View.GONE);
-            mViewPager.setCurrentItem(2);
-            return true;
-        } else if (i == R.id.item_cart) {
+        }
+//        else if (i == R.id.item_shop_center) {
+//            mTitleView.setVisibility(View.GONE);
+//            mViewPager.setCurrentItem(2);
+//            return true;
+//        }
+        else if (i == R.id.item_cart) {
             mTitleView.setVisibility(View.VISIBLE);
             mTitleView.setTitleText(getString(R.string.main_cart));
-            mViewPager.setCurrentItem(3);
+            mViewPager.setCurrentItem(2);
             return true;
         } else if (i == R.id.item_me) {
             mTitleView.setVisibility(View.VISIBLE);
             mTitleView.setTitleText(getString(R.string.main_me_center));
-            mViewPager.setCurrentItem(4);
+            mViewPager.setCurrentItem(3);
             return true;
         } else {
             return false;

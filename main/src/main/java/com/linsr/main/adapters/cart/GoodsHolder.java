@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.linsr.common.base.adapter.BaseViewHolder;
@@ -26,19 +27,30 @@ import java.util.List;
  */
 public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> {
 
+    public interface OnGoodsClickListener {
+        void onItemClick(CartListPojo.GoodsListBean.ListBean data);
+    }
+
+    private LinearLayout mMainLayout;
     private CheckBox mCheckBox;
     private CartCountView mCartCountView;
     private boolean onBind;
     private ImageView mGoodsProfile;
     private TextView mGoodsName;
     private TextView mGoodsPrice;
+    private OnGoodsClickListener mOnGoodsClickListener;
     private CartAdapter.CartListener mCartListener;
     private CartAdapter mCartAdapter;
+
+    public void setOnGoodsClickListener(OnGoodsClickListener onGoodsClickListener) {
+        mOnGoodsClickListener = onGoodsClickListener;
+    }
 
     GoodsHolder(Context context, CartAdapter adapter, CartAdapter.CartListener cartListener, View itemView) {
         super(context, itemView);
         mCartListener = cartListener;
         mCartAdapter = adapter;
+        mMainLayout = findViewById(R.id.cart_goods_main_layout);
         mCartCountView = findViewById(R.id.cart_goods_count_ccv);
         mCheckBox = findViewById(R.id.cart_goods_check_box);
         mGoodsProfile = findViewById(R.id.cart_goods_profile_iv);
@@ -59,6 +71,14 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
         mCheckBox.setChecked(pojo.isChecked());
         onBind = false;
 
+        mMainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnGoodsClickListener != null) {
+                    mOnGoodsClickListener.onItemClick(pojo);
+                }
+            }
+        });
         mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

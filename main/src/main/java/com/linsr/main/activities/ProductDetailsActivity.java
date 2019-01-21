@@ -63,7 +63,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     protected void initView() {
         initTitleView(R.string.main_goods_details);
         findView();
-        initViewPager();
+//        initViewPager();暂时不用
         requestData();
     }
 

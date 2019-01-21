@@ -27,9 +27,14 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
     }
 
     private CartListener mCartListener;
+    private GoodsHolder.OnGoodsClickListener mOnGoodsClickListener;
 
     public void setCartListener(CartListener cartListener) {
         mCartListener = cartListener;
+    }
+
+    public void setOnGoodsClickListener(GoodsHolder.OnGoodsClickListener onGoodsClickListener) {
+        mOnGoodsClickListener = onGoodsClickListener;
     }
 
     public CartAdapter(Context context) {
@@ -44,9 +49,11 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
             return new ShopHolder(mContext, this, mCartListener,
                     mInflater.inflate(R.layout.main_item_cart_shop, parent, false));
         } else if (viewType == ItemStatus.VIEW_TYPE_CHILD) {
-            return new GoodsHolder(mContext,
+            GoodsHolder goodsHolder = new GoodsHolder(mContext,
                     this, mCartListener, mInflater.inflate(R.layout.main_item_cart_goods,
                     parent, false));
+            goodsHolder.setOnGoodsClickListener(mOnGoodsClickListener);
+            return goodsHolder;
         }
         return new ShopHolder(mContext, this, mCartListener, mInflater.inflate(R.layout.main_item_cart_shop,
                 parent, false));
