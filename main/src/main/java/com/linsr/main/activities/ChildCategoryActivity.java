@@ -74,7 +74,7 @@ public class ChildCategoryActivity extends ActivityEx implements
 
             @Override
             public void onLeftImageClick() {
-
+                back();
             }
 
             @Override

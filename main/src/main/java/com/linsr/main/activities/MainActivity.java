@@ -71,7 +71,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
         BottomNavigationMenuView menuView =
                 (BottomNavigationMenuView) mBottomNavigationView.getChildAt(0);
-        View mCartView = menuView.getChildAt(3);
+        View mCartView = menuView.getChildAt(2);
         mBadge = new QBadgeView(this).bindTarget(mCartView);
         mBadge.setBadgeBackgroundColor(getResources().getColor(R.color.main_color));
         initFragment();

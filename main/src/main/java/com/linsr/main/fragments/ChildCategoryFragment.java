@@ -3,17 +3,22 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.exception.ApiException;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.DisplayUtils;
 import com.linsr.common.utils.PageLoadHelper;
 import com.linsr.common.utils.RecyclerViewHelper;
+import com.linsr.main.R;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.model.ChildCategoryPojo;
@@ -49,6 +54,16 @@ public class ChildCategoryFragment extends RefreshFragment implements
     @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
         mAdapter = new RecommendAdapter(mContext);
+        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mAdapter);
+        ImageView imageView = new ImageView(mContext);
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                DisplayUtils.dp2px(mContext, 150));
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setLayoutParams(params);
+        imageView.setPadding(10, 10, 10, 10);
+        imageView.setImageResource(R.mipmap.banner1);
+        wrapper.addHeaderView(imageView);
+
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {
 
             @Override
@@ -58,7 +73,7 @@ public class ChildCategoryFragment extends RefreshFragment implements
                         ProductDetailsHelper.createParams(data.getGoods_id()));
             }
         });
-        RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, mAdapter);
+        RecyclerViewHelper.initGridLayout(mContext, 2, mRecyclerView, wrapper);
     }
 
     @Override

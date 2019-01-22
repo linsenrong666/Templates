@@ -100,10 +100,10 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
                 });
         HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mFootAdapter);
         View v = LayoutInflater.from(mContext).inflate(R.layout.main_layout_home_item_title,
-                null);
+                mContentLayout, false);
         TextView title = v.findViewById(R.id.layout_home_item_title_tv);
         title.setText(R.string.main_recommend_for_you);
-        wrapper.addHeaderView(title);
+        wrapper.addHeaderView(v);
         RecyclerViewHelper.initGridLayout(mContext, 3, mFootRecyclerView, wrapper);
         mWrapper.addFootView(mFootRecyclerView);
     }
