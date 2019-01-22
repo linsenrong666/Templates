@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.linsr.common.base.adapter.BaseRecyclerAdapter;
+import com.linsr.common.base.adapter.BaseViewHolder;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
@@ -88,8 +90,20 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         mFootRecyclerView.setLayoutParams(layoutParams);
         mFootAdapter = new RecommendAdapter(mActivity);
+        mFootAdapter.setOnItemClickListener(
+                new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {
+                    @Override
+                    public void onItemClick(BaseViewHolder<IsbestBean> holder,
+                                            int position, int itemType, IsbestBean data) {
+                        ProductDetailsHelper.startActivity(data.getGoods_id());
+                    }
+                });
         HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mFootAdapter);
-        wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.main_header_recommend, null));
+        View v = LayoutInflater.from(mContext).inflate(R.layout.main_layout_home_item_title,
+                null);
+        TextView title = v.findViewById(R.id.layout_home_item_title_tv);
+        title.setText(R.string.main_recommend_for_you);
+        wrapper.addHeaderView(title);
         RecyclerViewHelper.initGridLayout(mContext, 3, mFootRecyclerView, wrapper);
         mWrapper.addFootView(mFootRecyclerView);
     }
@@ -140,6 +154,10 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
             public void onItemClick(HomePojo.HomeListBean.YimaStreeDataBean.GsBean data) {
                 Router.startActivity(MainModule.Activity.PRODUCT_DETAILS,
                         ProductDetailsHelper.createParams(data.getGoods_id()));
+            }
+
+            @Override
+            public void onBackgroundClick() {
             }
         });
     }

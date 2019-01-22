@@ -30,6 +30,7 @@
         style="@style/SalesLabel"
         android:layout_marginTop="@dimen/tiny"
         android:text="买一送一"
+        android:visibility="gone"
         />
 
     <TextView

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/layout_home_item_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_image"
+        android:gravity="center"
+        android:padding="@dimen/small"
+        android:textColor="@color/text_primary_black"
+        android:textSize="@dimen/font_middle"
+        android:textStyle="bold"
+        tools:text="姨妈街"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/bg_index_holder_title"/>
+</RelativeLayout>

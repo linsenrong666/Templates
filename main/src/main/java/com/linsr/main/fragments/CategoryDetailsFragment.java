@@ -2,6 +2,7 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
@@ -11,6 +12,7 @@ import com.linsr.common.gui.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.CategoryDetailsAdapter;
@@ -29,6 +31,7 @@ public class CategoryDetailsFragment extends FragmentEx implements
         MainModule.Fragment.CategoryDetailsParams {
 
     private CategoryMenuPojo.CatListsBean mCatListsBean;
+    private ImageView mBannerImageView;
 
     @Override
     protected int getLayoutId() {
@@ -45,6 +48,9 @@ public class CategoryDetailsFragment extends FragmentEx implements
         if (mCatListsBean == null) {
             return;
         }
+        mBannerImageView = findViewById(R.id.category_details_title_iv);
+        ImageUtils.load(mActivity, mCatListsBean.getCat_img(), mBannerImageView);
+
         RecyclerView mRecyclerView = findViewById(R.id.category_details_recycler_view);
         CategoryDetailsAdapter mAdapter = new CategoryDetailsAdapter(mActivity);
         mAdapter.addData(mCatListsBean.getKids());

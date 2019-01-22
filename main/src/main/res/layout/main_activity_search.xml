@@ -20,11 +20,13 @@
         android:layout_width="match_parent"
         android:background="@color/background"
         android:padding="@dimen/small"
-        android:text="@string/main_search_hot"/>
+        android:text="@string/main_search_hot"
+        android:visibility="gone"/>
 
     <com.linsr.common.gui.widgets.FlowLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/TextView"
@@ -70,11 +72,13 @@
         android:layout_width="match_parent"
         android:background="@color/background"
         android:padding="@dimen/small"
-        android:text="@string/main_search_history"/>
+        android:text="@string/main_search_history"
+        android:visibility="gone"/>
 
     <com.linsr.common.gui.widgets.FlowLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/TextView"
