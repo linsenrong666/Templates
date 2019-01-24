@@ -71,7 +71,7 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
         mCheckBox.setChecked(pojo.isChecked());
         onBind = false;
 
-        mMainLayout.setOnClickListener(new View.OnClickListener() {
+        mGoodsProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnGoodsClickListener != null) {

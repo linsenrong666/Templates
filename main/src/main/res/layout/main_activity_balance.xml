@@ -233,6 +233,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     style="@style/main_balance_item_layout">
 
                     <TextView

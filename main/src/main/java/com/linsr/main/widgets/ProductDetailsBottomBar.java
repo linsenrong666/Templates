@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.linsr.common.gui.widgets.CartCountView;
 import com.linsr.main.R;
 
 /**
@@ -22,6 +23,9 @@ public class ProductDetailsBottomBar extends FrameLayout {
 
     private TextView mAddCartTextView;
     private View mContentLayout;
+    private CartCountView mCartCountView;
+    private TextView mShopTextView;
+    private TextView mCollectTextView;
 
     public ProductDetailsBottomBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -45,7 +49,19 @@ public class ProductDetailsBottomBar extends FrameLayout {
                 }
             }
         });
+        mCartCountView = view.findViewById(R.id.widgets_product_details_cart_count_view);
+        mCartCountView.setResultCount(1);
+        mShopTextView = view.findViewById(R.id.widgets_product_details_shop_tv);
+        mCollectTextView = view.findViewById(R.id.widgets_product_details_collect_tv);
         addView(view);
+    }
+
+    public void setOnShopClick(OnClickListener listener) {
+        mShopTextView.setOnClickListener(listener);
+    }
+
+    public void setOnCollectClick(OnClickListener listener) {
+        mCollectTextView.setOnClickListener(listener);
     }
 
     private void hideContent() {

@@ -116,6 +116,10 @@ public abstract class ActivityEx<P extends IPresenter> extends BaseActivity impl
         }
     }
 
+    public TitleView getTitleView() {
+        return mTitleView;
+    }
+
     /**
      * @return 是否显示标题栏
      */
@@ -211,4 +215,6 @@ public abstract class ActivityEx<P extends IPresenter> extends BaseActivity impl
             mPresenter = null;
         }
     }
+
+
 }

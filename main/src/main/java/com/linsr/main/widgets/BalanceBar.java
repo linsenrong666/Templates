@@ -1,12 +1,12 @@
 package com.linsr.main.widgets;
 
 import android.content.Context;
+import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -19,16 +19,21 @@ import com.linsr.main.R;
  */
 public class BalanceBar extends FrameLayout {
 
+    public static final int BALANCE_MODE = 0;
+    public static final int DELETE_MODE = 1;
+
     public interface OnCartBottomBarListener {
-        void onBalanceClick();
+        void onConfirm(int mode);
 
         void onAllChecked(boolean isChecked);
     }
 
     private TextView mBalanceButton;
+    private TextView mDeleteButton;
     private TextView mAmount;
     private CheckBox mCheckBox;
     private OnCartBottomBarListener mOnCartBottomBarListener;
+    private int mCurMode = BALANCE_MODE;
 
     public void setOnCartBottomBarListener(OnCartBottomBarListener onCartBottomBarListener) {
         mOnCartBottomBarListener = onCartBottomBarListener;
@@ -52,20 +57,12 @@ public class BalanceBar extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mOnCartBottomBarListener != null) {
-                    mOnCartBottomBarListener.onBalanceClick();
+                    mOnCartBottomBarListener.onConfirm(mCurMode);
                 }
             }
         });
         mAmount = findViewById(R.id.balance_bar_amount_tv);
         mCheckBox = findViewById(R.id.balance_bar_check_box);
-//        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (mOnCartBottomBarListener != null) {
-//                    mOnCartBottomBarListener.onAllChecked(isChecked);
-//                }
-//            }
-//        });
         mCheckBox.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,9 +72,10 @@ public class BalanceBar extends FrameLayout {
                 }
             }
         });
+        mDeleteButton = findViewById(R.id.balance_bar_delete_btn);
     }
 
-    boolean mIsChecked;
+    private boolean mIsChecked;
 
     public void setAmount(Double amount) {
         String text = getContext().getString(R.string.main_balance_count, String.valueOf(amount));
@@ -95,8 +93,24 @@ public class BalanceBar extends FrameLayout {
     }
 
     public void resetBalance() {
+        mIsChecked = false;
         mCheckBox.setChecked(false);
         setAmount(0.0);
         setBalanceNumber(0);
     }
+
+    public void setDeleteMode() {
+        mDeleteButton.setVisibility(VISIBLE);
+        mBalanceButton.setVisibility(GONE);
+        mAmount.setVisibility(GONE);
+        mCurMode = DELETE_MODE;
+    }
+
+    public void setBalanceMode() {
+        mDeleteButton.setVisibility(GONE);
+        mBalanceButton.setVisibility(VISIBLE);
+        mAmount.setVisibility(VISIBLE);
+        mCurMode = DELETE_MODE;
+    }
+
 }

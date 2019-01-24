@@ -6,6 +6,7 @@
         <!--Main-->
         <activity
             android:name=".activities.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!--闪屏-->
         <activity

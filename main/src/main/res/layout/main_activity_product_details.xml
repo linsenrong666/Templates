@@ -19,6 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:divider="@drawable/divider_horizontal"
             android:orientation="vertical"
             android:showDividers="middle">
@@ -26,21 +27,44 @@
             <com.linsr.common.gui.widgets.FlipperView
                 android:id="@+id/product_details_flipper_view"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"/>
-
-            <TextView
-                style="@style/TextView.MainColor"
-                android:layout_width="match_parent"
-                android:background="@color/white"
-                android:padding="@dimen/middle"
-                android:text="$999"
-                android:textSize="@dimen/font_large"
-                android:textStyle="bold"/>
+                android:layout_height="300dp"
+                android:background="@color/background"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/product_details_price_tv"
+                    style="@style/TextView.MainColor"
+                    android:padding="@dimen/middle"
+                    tools:text="$999"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/product_details_original_price_tv"
+                    style="@style/TextView"
+                    android:padding="@dimen/middle"
+                    tools:text="原价$999"
+                    android:textSize="@dimen/font_middle"/>
+
+                <TextView
+                    android:id="@+id/product_details_integral_tv"
+                    style="@style/TextView.MainColor"
+                    android:layout_marginLeft="@dimen/middle"
+                    android:background="@color/white"
+                    android:padding="@dimen/middle"
+                    tools:text="$999"
+                    android:textSize="@dimen/font_large"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/middle">
 
@@ -64,7 +88,6 @@
             <TextView
                 style="@style/TextView"
                 android:layout_width="match_parent"
-                android:background="@color/white"
                 android:padding="@dimen/middle"
                 android:text="赠品"/>
 
@@ -130,6 +153,7 @@
     </ScrollView>
 
     <com.linsr.main.widgets.ProductDetailsBottomBar
+        android:id="@+id/product_details_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"/>

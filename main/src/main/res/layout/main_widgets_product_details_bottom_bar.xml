@@ -17,15 +17,15 @@
         android:visibility="gone">
 
         <LinearLayout
-            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:clickable="true"
+            android:focusable="true"
             android:orientation="vertical"
+            android:paddingBottom="@dimen/middle"
             android:paddingLeft="@dimen/middle"
-            android:paddingRight="@dimen/middle"
-            android:paddingBottom="@dimen/middle">
+            android:paddingRight="@dimen/middle">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -136,6 +136,7 @@
                     android:textSize="@dimen/font_small"/>
 
                 <com.linsr.common.gui.widgets.CartCountView
+                    android:id="@+id/widgets_product_details_cart_count_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -153,16 +154,18 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/widgets_product_details_shop_tv"
             android:layout_width="54dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="店铺"/>
 
         <TextView
+            android:id="@+id/widgets_product_details_collect_tv"
             android:layout_width="54dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="购物车"/>
+            android:text="收藏"/>
 
         <TextView
             android:id="@+id/widgets_product_details_add_cart_tv"

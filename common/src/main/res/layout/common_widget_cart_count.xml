@@ -7,18 +7,19 @@
 
     <TextView
         android:id="@+id/cart_count_down_btn"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
         android:background="@drawable/common_bg_cart_count_btn"
         android:gravity="center"
         android:text="—"
         android:textColor="@color/text_primary_black"
-        android:textSize="@dimen/font_middle"/>
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/cart_count_result_tv"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginLeft="@dimen/tiny"
         android:layout_marginRight="@dimen/tiny"
         android:background="#e1e2e3"
@@ -32,12 +33,13 @@
 
     <TextView
         android:id="@+id/cart_count_up_btn"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
         android:background="@drawable/common_bg_cart_count_btn"
         android:gravity="center"
         android:text="+"
         android:textColor="@color/text_primary_black"
-        android:textSize="@dimen/font_middle"/>
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold"/>
 
 </LinearLayout>

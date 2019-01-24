@@ -29,11 +29,25 @@ import q.rorbin.badgeview.QBadgeView;
 
 @Route(path = MainModule.Activity.MAIN)
 public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeListener,
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        BottomNavigationView.OnNavigationItemSelectedListener, MainModule.Activity.MainParams {
 
+    private BottomNavigationView mBottomNavigationView;
     private NoScrollViewPager mViewPager;
     private Badge mBadge;
     private List<Fragment> mFragmentList;
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent != null) {
+            int select = intent.getIntExtra(SELECT_PAGE, -1);
+            switch (select) {
+                case HOME_PAGE:
+                    mBottomNavigationView.setSelectedItemId(R.id.item_home);
+                    break;
+            }
+        }
+    }
 
     @Override
     protected int getLayoutId() {
@@ -66,7 +80,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     @Override
     protected void initView() {
         mViewPager = findViewById(R.id.main_view_pager);
-        BottomNavigationView mBottomNavigationView = findViewById(R.id.main_nav_bar);
+        mBottomNavigationView = findViewById(R.id.main_nav_bar);
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
         BottomNavigationMenuView menuView =
@@ -77,7 +91,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         initFragment();
 
         //默认选择home页
-        onNavigationItemSelected(mBottomNavigationView.getMenu().findItem(R.id.item_home));
+        mBottomNavigationView.setSelectedItemId(R.id.item_home);
     }
 
     private void initFragment() {
@@ -125,6 +139,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
             return false;
         }
     }
+
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

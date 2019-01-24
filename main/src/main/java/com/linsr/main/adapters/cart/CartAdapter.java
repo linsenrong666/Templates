@@ -139,4 +139,5 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
         to.setNumber(number);
         return to;
     }
+
 }

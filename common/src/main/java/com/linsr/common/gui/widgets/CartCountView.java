@@ -31,9 +31,9 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
     private TextView mDownButton;
     private TextView mUpButton;
     private TextView mResultTextView;
-    private int mCount;
 
     private int mMinCount = 1;
+    private int mCount = mMinCount;
     private int mMaxCount = Integer.MAX_VALUE;
 
     private OnCountChangedListener mOnCountChangedListener;
@@ -60,6 +60,7 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
         mUpButton.setOnClickListener(this);
 
         mResultTextView = findViewById(R.id.cart_count_result_tv);
+        mResultTextView.setText(String.valueOf(mMinCount));
     }
 
     public int getReusltCount() {
@@ -100,14 +101,14 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
     private void onDown() {
         if (mCount > mMinCount) {
             mCount--;
-            assert mOnCountChangedListener != null;
-            if (mCount == mMinCount) {
-                mOnCountChangedListener.onMinCount(mCount);
-            } else {
-                mOnCountChangedListener.onChanged(mCount);
+            if (mOnCountChangedListener != null) {
+                if (mCount == mMinCount) {
+                    mOnCountChangedListener.onMinCount(mCount);
+                } else {
+                    mOnCountChangedListener.onChanged(mCount);
+                }
             }
         }
-
     }
 
     private void onUp() {

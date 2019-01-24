@@ -9,8 +9,10 @@
     android:showDividers="middle">
 
     <com.linsr.main.widgets.MainSearchTitleLayout
+        android:paddingLeft="@dimen/large"
         android:id="@+id/child_category_search_layout"
         android:layout_width="match_parent"
+        app:mainSearchShowLeftImage="false"
         app:mainSearchRightImage="@mipmap/ic_bot_cart_n"
         android:layout_height="wrap_content"/>
 

@@ -29,6 +29,7 @@ import com.linsr.main.model.HomePojo;
  */
 public class HomeAdapter extends BaseRecyclerAdapter<HomePojo.HomeListBean> {
 
+
     private RecommendADHolder.OnRecommendHolderListener mOnRecommendHolderListener;
 
     public void setOnRecommendHolderListener(
@@ -88,12 +89,24 @@ public class HomeAdapter extends BaseRecyclerAdapter<HomePojo.HomeListBean> {
         }
     }
 
+    private int mShowYimaTitlePosition = -1;
+
+    public void setShowYimaTitlePosition(int showYimaTitlePosition) {
+        mShowYimaTitlePosition = showYimaTitlePosition;
+    }
+
+    public int getShowYimaTitlePosition() {
+        return mShowYimaTitlePosition;
+    }
+
     private ShopWindowHolder newShopWindowHolder(ViewGroup parent) {
         View view = mInflater.inflate(R.layout.main_item_shop_window, parent, false);
         ShopWindowHolder shopWindowHolder = new ShopWindowHolder(mContext, view);
+        shopWindowHolder.setHomeAdapter(this);
         shopWindowHolder.setOnShopWindowItemClickListener(mOnShopWindowItemClickListener);
         return shopWindowHolder;
     }
+
 
     private RecommendADHolder newRecommendHolder(ViewGroup parent) {
         View view = mInflater.inflate(R.layout.main_item_recommend_floor, parent, false);

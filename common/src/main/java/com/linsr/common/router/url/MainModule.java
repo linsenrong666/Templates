@@ -13,6 +13,12 @@ public class MainModule {
 
     public interface Activity {
         String MAIN = ACTIVITY + "main";
+
+        interface MainParams {
+            String SELECT_PAGE = "select_page";
+            int HOME_PAGE = 0;
+        }
+
         String SCAN_CODE = ACTIVITY + "scanCode";
         String PRODUCT_DETAILS = ACTIVITY + "productDetails";
 

@@ -8,13 +8,16 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.biz.FragmentEx;
+import com.linsr.common.gui.widgets.TitleView;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.gui.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
+import com.linsr.common.utils.ToastUtils;
 import com.linsr.main.R;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.cart.CartAdapter;
@@ -48,8 +51,9 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
     private CartAdapter mCartAdapter;
     private RecommendAdapter mRecommendAdapter;
     private BalanceBar mBalanceBar;
-
     private SmartRefreshLayout mRefreshLayout;
+    private boolean mIsBalanceMode = true;
+    private TitleView mTitleView;
 
     @Override
     protected int getLayoutId() {
@@ -68,10 +72,43 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
 
     @Override
     protected void initView() {
+        initTitle();
         findView();
         initCartAdapter();
         initRefreshLayout();
         initBottomBar();
+    }
+
+    private void initTitle() {
+        if (mActivity instanceof ActivityEx) {
+            mTitleView = ((ActivityEx) mActivity).getTitleView();
+        }
+    }
+
+    private void setTitleStatus(boolean show) {
+        if (mTitleView == null) {
+            return;
+        }
+        if (show) {
+            mTitleView.setRightText("管理");
+            mTitleView.setOnRightClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mIsBalanceMode = !mIsBalanceMode;
+                    mBalanceBar.resetBalance();
+                    mCartAdapter.toggleAllChecked(false);
+                    if (mIsBalanceMode) {
+                        mBalanceBar.setBalanceMode();
+                    } else {
+                        mBalanceBar.setDeleteMode();
+                    }
+                }
+            });
+        } else {
+            mTitleView.setRightText("");
+            mTitleView.setOnRightClickListener(null);
+        }
+
     }
 
     private void initBottomBar() {
@@ -146,6 +183,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         @Override
         public void onChanged() {
             JLog.i("数据变了");
+            setTitleStatus(mCartAdapter.getItemCount() != 0);
             if (mCartAdapter.getItemCount() == 0) {
                 mBalanceBar.setVisibility(View.GONE);
             } else {
@@ -170,8 +208,12 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
     }
 
     @Override
-    public void onBalanceClick() {
-        Router.startActivity(MainModule.Activity.BALANCE);
+    public void onConfirm(int mode) {
+        if (mode == BalanceBar.BALANCE_MODE) {
+            Router.startActivity(MainModule.Activity.BALANCE);
+        } else if (mode == BalanceBar.DELETE_MODE) {
+
+        }
     }
 
     @Override
