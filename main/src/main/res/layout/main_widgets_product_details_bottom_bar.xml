@@ -1,192 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widgets_product_details_bar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="@dimen/main_product_details_bottom_bar_height"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/widgets_product_details_bar_content_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/widgets_product_details_shop_tv"
+        android:layout_width="54dp"
         android:layout_height="match_parent"
-        android:layout_above="@+id/widgets_product_details_bar"
-        android:background="@color/transparent30"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:visibility="gone"
-        >
+        android:gravity="center"
+        android:text="店铺"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/middle"
-            android:paddingLeft="@dimen/middle"
-            android:paddingRight="@dimen/middle">
+    <TextView
+        android:id="@+id/widgets_product_details_collect_tv"
+        android:layout_width="54dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="收藏"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/middle"
-                android:paddingTop="@dimen/middle">
+    <TextView
+        android:id="@+id/widgets_product_details_add_cart_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/holo_orange_light"
+        android:gravity="center"
+        android:text="@string/main_add_cart"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_middle"/>
 
-                <ImageView
-                    android:id="@+id/widgets_product_details_img_iv"
-                    android:layout_width="88dp"
-                    android:layout_height="88dp"
-                    android:layout_marginRight="@dimen/middle"
-                    android:background="@android:color/holo_blue_light"/>
-
-                <TextView
-                    android:id="@+id/widgets_product_details_name_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/widgets_product_details_img_iv"
-                    android:maxLines="2"
-                    android:text="极简主义 智能 扫地机器人"
-                    android:textColor="@color/text_primary_black"
-                    android:textSize="@dimen/font_middle"/>
-
-                <TextView
-                    android:id="@+id/widgets_product_details_price_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/widgets_product_details_name_tv"
-                    android:layout_marginTop="@dimen/middle"
-                    android:layout_toRightOf="@id/widgets_product_details_img_iv"
-                    android:text="$ 1988.00"
-                    android:textColor="@color/main_color"
-                    android:textSize="@dimen/font_large"/>
-
-                <TextView
-                    android:id="@+id/widgets_product_details_market_price_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/widgets_product_details_price_tv"
-                    android:layout_toRightOf="@id/widgets_product_details_img_iv"
-                    android:text="$1988.00"
-                    android:textColor="@color/text_primary"
-                    android:textSize="@dimen/font_small"/>
-            </RelativeLayout>
-
-            <View
-                style="@style/common_divider_horizontal"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/middle"
-                android:paddingTop="@dimen/middle">
-
-                <TextView
-                    android:id="@+id/widgets_product_details_option_tv"
-                    style="@style/TextView"
-                    android:text="颜色"
-                    android:textColor="@color/text_primary_black"/>
-
-                <com.linsr.common.gui.widgets.FlowLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/small">
-
-                    <TextView
-                        style="@style/TextView"
-                        android:padding="@dimen/tiny"
-                        android:text="白色"/>
-
-                    <TextView
-                        style="@style/TextView"
-                        android:padding="@dimen/tiny"
-                        android:text="白色"/>
-
-                    <TextView
-                        style="@style/TextView"
-                        android:padding="@dimen/tiny"
-                        android:text="白色"/>
-                </com.linsr.common.gui.widgets.FlowLayout>
-
-            </LinearLayout>
-
-            <View
-                style="@style/common_divider_horizontal"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/middle"
-                android:paddingTop="@dimen/middle">
-
-                <TextView
-                    android:id="@+id/widgets_product_details_buy_count"
-                    style="@style/TextView"
-                    android:text="@string/main_buy_count"
-                    android:textColor="@color/text_primary_black"/>
-
-                <TextView
-                    android:id="@+id/widgets_product_details_remaining_count_tv"
-                    style="@style/TextView"
-                    android:layout_below="@id/widgets_product_details_buy_count"
-                    android:layout_marginTop="@dimen/small"
-                    android:text="@string/main_remaining_count"
-                    android:textColor="@color/text_primary"
-                    android:textSize="@dimen/font_small"/>
-
-                <com.linsr.common.gui.widgets.CartCountView
-                    android:id="@+id/widgets_product_details_cart_count_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@id/widgets_product_details_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/main_product_details_bottom_bar_height"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/widgets_product_details_shop_tv"
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="店铺"/>
-
-        <TextView
-            android:id="@+id/widgets_product_details_collect_tv"
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="收藏"/>
-
-        <TextView
-            android:id="@+id/widgets_product_details_add_cart_tv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_orange_light"
-            android:gravity="center"
-            android:text="@string/main_add_cart"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_middle"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:gravity="center"
-            android:text="@string/main_buy_now"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_middle"/>
-    </LinearLayout>
-</RelativeLayout>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="@string/main_buy_now"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_middle"/>
+</LinearLayout>

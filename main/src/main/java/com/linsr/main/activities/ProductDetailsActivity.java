@@ -11,15 +11,18 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.zxing.common.StringUtils;
 import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
+import com.linsr.common.gui.dialogs.DialogFactory;
 import com.linsr.common.gui.widgets.FlipperView;
 import com.linsr.common.router.Flags;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;
 import com.linsr.common.router.url.MainModule;
+import com.linsr.common.utils.ToastUtils;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
 import com.linsr.main.adapters.GoodsBannerAdapter;
+import com.linsr.main.dialogs.AddCartDialog;
 import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.logic.presenter.ProductDetailsPresenter;
 import com.linsr.main.model.ProductDetailsPojo;
@@ -49,7 +52,10 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     private TextView mIntegralPriceTextView;
     private ProductDetailsBottomBar mBottomBar;
 
+    private AddCartDialog mAddCartDialog;
+
     private String mGoodsId;
+    private ProductDetailsPojo.GoodsBean mGoodsBean;
 
     @Override
     protected void init(Intent intent) {
@@ -93,6 +99,21 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
                 Router.startActivity(MainModule.Activity.MAIN, params);
             }
         });
+        mBottomBar.setAddCartClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mAddCartDialog == null) {
+                    mAddCartDialog = AddCartDialog.newInstance(mGoodsBean);
+                    mAddCartDialog.setOnAddCartClickListener(new AddCartDialog.OnAddCartClickListener() {
+                        @Override
+                        public void onConfirm(int number) {
+                            mPresenter.addCart(null, 0, mGoodsId, number);
+                        }
+                    });
+                }
+                DialogFactory.getInstance().showDialog(getFragmentManager(), "", mAddCartDialog);
+            }
+        });
     }
 
     private void initViewPager() {
@@ -129,6 +150,8 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
 
     @Override
     public void loadGoodsInfo(ProductDetailsPojo.GoodsBean pojo) {
+        mGoodsBean = pojo;
+
         mGoodsNameTextView.setText(pojo.getGoods_name());
         mGoodsDescTextView.setText(pojo.getGoods_desc_bubaohan());
         ViewUtils.setText(mPriceTextView, PriceUtils.format(pojo.getShop_price()));
@@ -142,4 +165,11 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         GoodsBannerAdapter mBannerPagerAdapter = new GoodsBannerAdapter(this, list);
         mFlipperView.setPageAdapter(mBannerPagerAdapter);
     }
+
+    @Override
+    public void onAddCartSuccess() {
+        ToastUtils.show("已加入购物车");
+        DialogFactory.getInstance().dismissDialog(mAddCartDialog);
+    }
+
 }

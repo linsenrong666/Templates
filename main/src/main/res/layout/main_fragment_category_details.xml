@@ -9,10 +9,11 @@
     <ImageView
         android:id="@+id/category_details_title_iv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/bg_category_bannder"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp"/>
+        android:layout_height="150dp"
+        android:layout_margin="@dimen/mini"
+        android:background="@color/background"
+        android:scaleType="centerCrop"
+        android:textColor="@color/colorAccent"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/category_details_recycler_view"

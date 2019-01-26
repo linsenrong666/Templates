@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
@@ -18,6 +19,7 @@ import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.gui.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
 import com.linsr.main.R;
+import com.linsr.main.activities.MainActivity;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.cart.CartAdapter;
 import com.linsr.main.adapters.cart.CartBalanceTO;
@@ -144,8 +146,12 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
             }
         });
         HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mRecommendAdapter);
-        wrapper.addHeaderView(LayoutInflater.from(mContext).inflate(
-                R.layout.main_header_recommend, null));
+        View view = LayoutInflater.from(mContext).inflate(R.layout.main_layout_home_item_title,
+                mContentLayout, false);
+        TextView textView = view.findViewById(R.id.layout_home_item_title_tv);
+        textView.setText(R.string.main_recommend_for_you);
+        wrapper.addHeaderView(view);
+
         RecyclerViewHelper.initGridLayout(mContext, 3, mRecommendRecyclerView, wrapper);
     }
 
@@ -153,7 +159,18 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         mCartAdapter = new CartAdapter(mContext);
         ((SimpleItemAnimator) mCartRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         EmptyWrapper mGoodsAdapterWrapper = new EmptyWrapper(mCartAdapter);
-        mGoodsAdapterWrapper.setEmptyView(R.layout.main_layout_empty_result);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.main_layout_empty_result,
+                mContentLayout, false);
+        TextView tv = view.findViewById(R.id.result_btn);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mActivity instanceof MainActivity) {
+                    ((MainActivity) mActivity).toHomePage();
+                }
+            }
+        });
+        mGoodsAdapterWrapper.setEmptyView(view);
         RecyclerViewHelper.initDefault(mContext, mCartRecyclerView, mGoodsAdapterWrapper);
         mCartAdapter.registerAdapterDataObserver(mAdapterDataObserver);
         mCartAdapter.setCartListener(new CartAdapter.CartListener() {

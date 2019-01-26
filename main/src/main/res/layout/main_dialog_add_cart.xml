@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widgets_product_details_bar_content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent30"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/middle"
+        android:paddingLeft="@dimen/middle"
+        android:paddingRight="@dimen/middle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/middle"
+            android:paddingTop="@dimen/middle">
+
+            <ImageView
+                android:id="@+id/dialog_product_details_img_iv"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:layout_marginRight="@dimen/middle"
+                android:background="@color/background"/>
+
+            <TextView
+                android:id="@+id/dialog_product_details_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/dialog_product_details_img_iv"
+                android:maxLines="2"
+                android:text="极简主义 智能 扫地机器人"
+                android:textColor="@color/text_primary_black"
+                android:textSize="@dimen/font_middle"/>
+
+            <TextView
+                android:id="@+id/widgets_product_details_price_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dialog_product_details_name_tv"
+                android:layout_marginTop="@dimen/middle"
+                android:layout_toRightOf="@id/dialog_product_details_img_iv"
+                android:text="$ 1988.00"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/font_large"/>
+
+            <TextView
+                android:id="@+id/widgets_product_details_market_price_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/widgets_product_details_price_tv"
+                android:layout_toRightOf="@id/dialog_product_details_img_iv"
+                android:text="$1988.00"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_small"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/common_divider_horizontal"/>
+
+        <LinearLayout
+            android:id="@+id/dialog_product_details_spec_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/middle"
+            android:paddingTop="@dimen/middle">
+
+            <TextView
+                android:id="@+id/dialog_product_details_option_tv"
+                style="@style/TextView"
+                android:text="颜色"
+                android:textColor="@color/text_primary_black"/>
+
+            <com.linsr.common.gui.widgets.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small">
+
+                <TextView
+                    style="@style/TextView"
+                    android:padding="@dimen/tiny"
+                    android:text="白色"/>
+
+                <TextView
+                    style="@style/TextView"
+                    android:padding="@dimen/tiny"
+                    android:text="白色"/>
+
+                <TextView
+                    style="@style/TextView"
+                    android:padding="@dimen/tiny"
+                    android:text="白色"/>
+            </com.linsr.common.gui.widgets.FlowLayout>
+
+        </LinearLayout>
+
+        <View
+            style="@style/common_divider_horizontal"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/middle"
+            android:paddingTop="@dimen/middle">
+
+            <TextView
+                android:id="@+id/dialog_product_details_buy_count"
+                style="@style/TextView"
+                android:text="@string/main_buy_count"
+                android:textColor="@color/text_primary_black"/>
+
+            <TextView
+                android:id="@+id/dialog_product_details_remaining_count_tv"
+                style="@style/TextView"
+                android:layout_below="@id/dialog_product_details_buy_count"
+                android:layout_marginTop="@dimen/small"
+                android:text="@string/main_remaining_count"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/font_small"/>
+
+            <com.linsr.common.gui.widgets.CartCountView
+                android:id="@+id/dialog_product_details_cart_count_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/dialog_product_details_confirm_btn"
+            style="@style/Button.MainColor"
+            android:gravity="center"
+            android:padding="@dimen/mini"
+            android:text="@string/confirm"/>
+
+    </LinearLayout>
+</LinearLayout>
+

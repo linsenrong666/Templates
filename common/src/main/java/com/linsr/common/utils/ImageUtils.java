@@ -19,6 +19,9 @@ import com.linsr.common.utils.glide.GlideCircleTransform;
 public class ImageUtils {
 
     public static void load(Context context, String url, ImageView imageView) {
+        if (context == null) {
+            return;
+        }
         if (imageView == null) {
             return;
         }

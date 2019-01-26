@@ -146,6 +146,8 @@ public class MainSearchTitleLayout extends FrameLayout {
         if (rightDrawable != null) {
             mRightImageView.setImageDrawable(rightDrawable);
         }
+        boolean showRightImage = a.getBoolean(R.styleable.MainSearchTitleLayout_mainSearchShowRightImage, true);
+        mRightImageView.setVisibility(showRightImage ? VISIBLE : GONE);
         a.recycle();
     }
 

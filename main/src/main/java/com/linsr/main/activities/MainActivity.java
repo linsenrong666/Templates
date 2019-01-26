@@ -43,7 +43,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
             int select = intent.getIntExtra(SELECT_PAGE, -1);
             switch (select) {
                 case HOME_PAGE:
-                    mBottomNavigationView.setSelectedItemId(R.id.item_home);
+                    toHomePage();
                     break;
             }
         }
@@ -91,7 +91,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         initFragment();
 
         //默认选择home页
-        mBottomNavigationView.setSelectedItemId(R.id.item_home);
+        toHomePage();
     }
 
     private void initFragment() {
@@ -153,6 +153,12 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    public void toHomePage() {
+        if (mBottomNavigationView != null) {
+            mBottomNavigationView.setSelectedItemId(R.id.item_home);
+        }
     }
 
     @Override

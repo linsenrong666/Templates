@@ -13,6 +13,7 @@
     <declare-styleable name="MainSearchTitleLayout">
         <attr name="mainSearchLeftImage" format="reference"/>
         <attr name="mainSearchShowLeftImage" format="boolean"/>
+        <attr name="mainSearchShowRightImage" format="boolean"/>
         <attr name="mainSearchLeftText" format="string"/>
         <attr name="mainSearchShowLeftText" format="boolean"/>
         <attr name="mainSearchLeftTextDrawable" format="reference"/>

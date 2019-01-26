@@ -36,7 +36,6 @@ public class CartPresenter extends PresenterEx<CartContact.View> implements Cart
                             if (treePojos != null) {
                                 mView.loadCartList(treePojos);
                             }
-
                         }
                     }
 
@@ -52,8 +51,11 @@ public class CartPresenter extends PresenterEx<CartContact.View> implements Cart
         if (data == null) {
             return null;
         }
-        List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> result = new ArrayList<>();
         List<CartListPojo.GoodsListBean> goods_list = data.getGoods_list();
+        if (goods_list == null) {
+            return null;
+        }
+        List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> result = new ArrayList<>();
         for (CartListPojo.GoodsListBean bean : goods_list) {
             TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo = new TreePojo<>();
             CartShopPojo cartShopPojo = new CartShopPojo(bean.getSuppliers_name());

@@ -64,7 +64,6 @@ public class ChildCategoryFragment extends RefreshFragment implements
         mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mImageView.setLayoutParams(params);
         mImageView.setPadding(10, 10, 10, 10);
-        mImageView.setImageResource(R.mipmap.banner1);
         wrapper.addHeaderView(mImageView);
 
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {

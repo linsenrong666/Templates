@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,11 +9,10 @@
     android:orientation="vertical"
     tools:context=".activities.ProductDetailsActivity">
 
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/main_product_details_bottom_bar_height"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fillViewport="true">
 
         <LinearLayout
@@ -39,16 +38,16 @@
                     android:id="@+id/product_details_price_tv"
                     style="@style/TextView.MainColor"
                     android:padding="@dimen/middle"
-                    tools:text="$999"
                     android:textSize="@dimen/font_large"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    tools:text="$999"/>
 
                 <TextView
                     android:id="@+id/product_details_original_price_tv"
                     style="@style/TextView"
                     android:padding="@dimen/middle"
-                    tools:text="原价$999"
-                    android:textSize="@dimen/font_middle"/>
+                    android:textSize="@dimen/font_middle"
+                    tools:text="原价$999"/>
 
                 <TextView
                     android:id="@+id/product_details_integral_tv"
@@ -56,8 +55,8 @@
                     android:layout_marginLeft="@dimen/middle"
                     android:background="@color/white"
                     android:padding="@dimen/middle"
-                    tools:text="$999"
-                    android:textSize="@dimen/font_large"/>
+                    android:textSize="@dimen/font_large"
+                    tools:text="$999"/>
 
             </LinearLayout>
 
@@ -155,7 +154,6 @@
     <com.linsr.main.widgets.ProductDetailsBottomBar
         android:id="@+id/product_details_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"/>
+        android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+</LinearLayout>

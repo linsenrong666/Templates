@@ -2,7 +2,10 @@ package com.linsr.common.gui.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.support.transition.FragmentTransitionSupport;
 
 import com.linsr.common.R;
 
@@ -41,6 +44,26 @@ public class DialogFactory {
     public void showDialog(Dialog dialog) {
         try {
             dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showDialog(FragmentManager manager, String tag, DialogFragment dialog) {
+        try {
+            dialog.show(manager, tag);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showDialog(FragmentManager manager, DialogFragment dialog) {
+        showDialog(manager, "", dialog);
+    }
+
+    public void dismissDialog(DialogFragment dialog) {
+        try {
+            dialog.dismiss();
         } catch (Exception e) {
             e.printStackTrace();
         }

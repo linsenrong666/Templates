@@ -16,9 +16,13 @@ public interface ProductDetailsContact {
         void loadGoodsInfo(ProductDetailsPojo.GoodsBean pojo);
 
         void loadPictures(List<ProductDetailsPojo.PicturesBean> list);
+
+        void onAddCartSuccess();
     }
 
     interface Presenter {
         void getGoodsInfo(String goodsId);
+
+        void addCart(String[] spec, int specCount, String goodsId, int number);
     }
 }
