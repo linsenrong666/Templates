@@ -12,6 +12,8 @@ import com.linsr.main.R;
 import com.linsr.main.model.CartListPojo;
 import com.linsr.main.model.CartShopPojo;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -138,6 +140,47 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
         to.setCount(count);
         to.setNumber(number);
         return to;
+    }
+
+    public List<CartListPojo.GoodsListBean.ListBean> getCheckedList() {
+        if (mList == null) {
+            return null;
+        }
+        List<CartListPojo.GoodsListBean.ListBean> result = new ArrayList<>();
+        for (TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo : mList) {
+            List<CartListPojo.GoodsListBean.ListBean> childPojo = treePojo.getChildPojo();
+            if (childPojo == null) {
+                continue;
+            }
+            for (CartListPojo.GoodsListBean.ListBean cartGoodsPojo : childPojo) {
+                boolean checked = cartGoodsPojo.isChecked();
+                if (checked) {
+                    result.add(cartGoodsPojo);
+                }
+            }
+        }
+        return result;
+    }
+
+    public void deleteGoods(List<CartListPojo.GoodsListBean.ListBean> list) {
+        for (Iterator<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> iterator = mList.iterator(); iterator.hasNext(); ) {
+            TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean> treePojo = iterator.next();
+            List<CartListPojo.GoodsListBean.ListBean> childPojo = treePojo.getChildPojo();
+            if (childPojo == null) {
+                continue;
+            }
+            for (Iterator<CartListPojo.GoodsListBean.ListBean> iterator1 = childPojo.iterator(); iterator1.hasNext(); ) {
+                CartListPojo.GoodsListBean.ListBean cartGoodsPojo = iterator1.next();
+                if (list.contains(cartGoodsPojo)) {
+                    JLog.i(cartGoodsPojo.getGoods_id());
+                    iterator1.remove();
+                }
+            }
+            if (childPojo.size() == 0) {
+                iterator.remove();
+            }
+        }
+        notifyDataSetChanged();
     }
 
 }

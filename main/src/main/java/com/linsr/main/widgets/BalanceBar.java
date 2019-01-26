@@ -57,7 +57,7 @@ public class BalanceBar extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mOnCartBottomBarListener != null) {
-                    mOnCartBottomBarListener.onConfirm(mCurMode);
+                    mOnCartBottomBarListener.onConfirm(BALANCE_MODE);
                 }
             }
         });
@@ -73,6 +73,14 @@ public class BalanceBar extends FrameLayout {
             }
         });
         mDeleteButton = findViewById(R.id.balance_bar_delete_btn);
+        mDeleteButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnCartBottomBarListener != null) {
+                    mOnCartBottomBarListener.onConfirm(DELETE_MODE);
+                }
+            }
+        });
     }
 
     private boolean mIsChecked;
@@ -110,7 +118,7 @@ public class BalanceBar extends FrameLayout {
         mDeleteButton.setVisibility(GONE);
         mBalanceButton.setVisibility(VISIBLE);
         mAmount.setVisibility(VISIBLE);
-        mCurMode = DELETE_MODE;
+        mCurMode = BALANCE_MODE;
     }
 
 }

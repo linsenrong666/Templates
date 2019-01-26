@@ -50,6 +50,7 @@ public class CategoryMenuPojo extends BizPojo {
             private String cat_id;
             private String cat_name;
             private String cat_img;
+            private String cat_ico;
             private String parent_id;
         }
     }

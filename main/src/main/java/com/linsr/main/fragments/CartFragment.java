@@ -17,13 +17,11 @@ import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.gui.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
-import com.linsr.common.utils.ToastUtils;
 import com.linsr.main.R;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.cart.CartAdapter;
 import com.linsr.main.adapters.cart.CartBalanceTO;
 import com.linsr.main.adapters.cart.GoodsHolder;
-import com.linsr.main.adapters.cart.ItemStatus;
 import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.logic.contacts.CartContact;
 import com.linsr.main.logic.presenter.CartPresenter;
@@ -212,7 +210,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         if (mode == BalanceBar.BALANCE_MODE) {
             Router.startActivity(MainModule.Activity.BALANCE);
         } else if (mode == BalanceBar.DELETE_MODE) {
-
+            mCartAdapter.deleteGoods(mCartAdapter.getCheckedList());
         }
     }
 

@@ -1,5 +1,7 @@
 package com.linsr.main.model;
 
+import android.text.TextUtils;
+
 import com.linsr.common.model.BasePojo;
 import com.linsr.common.model.BizPojo;
 import com.linsr.main.model.bean.IsbestBean;
@@ -60,7 +62,6 @@ public class CartListPojo extends BizPojo {
         private String suppliers_name;
         private List<ListBean> list;
 
-        @EqualsAndHashCode(callSuper = true)
         @Data
         public static class ListBean extends BasePojo {
             /**
@@ -135,6 +136,25 @@ public class CartListPojo extends BizPojo {
 
             private boolean isChecked;
 //            private int count;
+
+
+            @Override
+            public int hashCode() {
+                return this.getGoods_id().hashCode();
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                if (this == obj) {
+                    return true;
+                }
+                if (obj instanceof ListBean) {
+                    ListBean i = (ListBean) obj;
+                    return TextUtils.equals(this.getGoods_id(), i.getGoods_id());
+                } else {
+                    return false;
+                }
+            }
         }
     }
 }

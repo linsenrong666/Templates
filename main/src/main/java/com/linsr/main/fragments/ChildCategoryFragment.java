@@ -3,6 +3,7 @@ package com.linsr.main.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -16,6 +17,7 @@ import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.DisplayUtils;
+import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.PageLoadHelper;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
@@ -38,6 +40,7 @@ public class ChildCategoryFragment extends RefreshFragment implements
         MainModule.Fragment.ChildCategoryParams, MainModule.Activity.ProductDetailsParams {
 
     private RecommendAdapter mAdapter;
+    private ImageView mImageView;
 
     private String mFid;
     private String mSid;
@@ -55,14 +58,14 @@ public class ChildCategoryFragment extends RefreshFragment implements
     protected void initRecyclerView(RecyclerView recyclerView) {
         mAdapter = new RecommendAdapter(mContext);
         HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(mAdapter);
-        ImageView imageView = new ImageView(mContext);
+        mImageView = new ImageView(mContext);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 DisplayUtils.dp2px(mContext, 150));
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(params);
-        imageView.setPadding(10, 10, 10, 10);
-        imageView.setImageResource(R.mipmap.banner1);
-        wrapper.addHeaderView(imageView);
+        mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        mImageView.setLayoutParams(params);
+        mImageView.setPadding(10, 10, 10, 10);
+        mImageView.setImageResource(R.mipmap.banner1);
+        wrapper.addHeaderView(mImageView);
 
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {
 
@@ -94,6 +97,9 @@ public class ChildCategoryFragment extends RefreshFragment implements
                         if (data != null && data.getCat_list_goods() != null) {
                             List<IsbestBean> cat_list_goods = data.getCat_list_goods();
                             mAdapter.addData(cat_list_goods);
+                            if (!TextUtils.isEmpty(data.getCat_img()) && mImageView != null) {
+                                ImageUtils.load(mContext, data.getCat_img(), mImageView);
+                            }
                         } else {
                             onFailed(new ApiException(""));
                         }
