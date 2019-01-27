@@ -50,6 +50,7 @@ public class AddCartDialog extends DialogFragment {
     private TextView mConfirmTextView;
     private TextView mNameTextView;
     private TextView mPriceTextView;
+    private TextView mMarketPriceTextView;
     private ViewGroup mSpecLayout;
 
 
@@ -88,6 +89,7 @@ public class AddCartDialog extends DialogFragment {
         mSpecLayout = view.findViewById(R.id.dialog_product_details_spec_layout);
         mNameTextView = view.findViewById(R.id.dialog_product_details_name_tv);
         mPriceTextView = view.findViewById(R.id.widgets_product_details_price_tv);
+        mMarketPriceTextView = view.findViewById(R.id.widgets_product_details_market_price_tv);
 
         mCartCountView = view.findViewById(R.id.dialog_product_details_cart_count_view);
         mCartCountView.setResultCount(1);
@@ -97,7 +99,7 @@ public class AddCartDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (mOnAddCartClickListener != null) {
-                    int number = mCartCountView.getReusltCount();
+                    int number = mCartCountView.getResultCount();
                     mOnAddCartClickListener.onConfirm(number);
                 }
             }
@@ -111,7 +113,9 @@ public class AddCartDialog extends DialogFragment {
             return;
         }
         ViewUtils.setText(mNameTextView, mGoodsBean.getShort_name());
-        ViewUtils.setText(mPriceTextView, PriceUtils.format(mGoodsBean.getMarket_price()));
+        ViewUtils.setText(mPriceTextView, PriceUtils.format(mGoodsBean.getShop_price()));
+        ViewUtils.setText(mMarketPriceTextView, PriceUtils.format(mGoodsBean.getMarket_price()));
+        ViewUtils.strikethrough(mMarketPriceTextView);
         ImageUtils.load(mContext, mGoodsBean.getGoods_thumb(), mProfileImageView);
 
 

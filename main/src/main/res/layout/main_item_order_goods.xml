@@ -10,7 +10,7 @@
         android:layout_width="88dp"
         android:layout_height="88dp"
         android:layout_marginRight="@dimen/small"
-        android:background="@android:color/holo_red_dark"/>
+        android:background="@color/background"/>
 
     <TextView
         android:id="@+id/item_order_goods_name_tv"

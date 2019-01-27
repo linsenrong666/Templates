@@ -1,7 +1,8 @@
 package com.linsr.common.gui.widgets;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,6 +37,35 @@ public class FlipperView extends FrameLayout implements ViewPager.OnPageChangeLi
     private int mDotDrawableSelectedResId;
 
     private int mDotPadding;
+    private int mDuration = 3000;
+    private boolean mIsRunning;
+    private Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    if (mPagerAdapter == null || mViewPager == null) {
+                        return;
+                    }
+                    mViewPager.setCurrentItem(0);
+                    break;
+                case 1:
+                    if (mPagerAdapter == null || mViewPager == null) {
+                        return;
+                    }
+                    int cur = mViewPager.getCurrentItem();
+                    int page = cur + 1;
+                    if (page >= mPagerAdapter.getCount()) {
+                        page = 0;
+                    }
+                    mViewPager.setCurrentItem(page);
+                    mHandler.sendEmptyMessageDelayed(1, mDuration);
+                    break;
+            }
+        }
+    };
 
     public FlipperView(@NonNull Context context) {
         this(context, null, 0);
@@ -120,5 +150,17 @@ public class FlipperView extends FrameLayout implements ViewPager.OnPageChangeLi
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    public void start() {
+        if (!mIsRunning) {
+            mHandler.sendEmptyMessageDelayed(1, mDuration);
+            mIsRunning = true;
+        }
+    }
+
+    public void stop() {
+        mIsRunning = false;
+        mHandler.sendEmptyMessage(0);
     }
 }

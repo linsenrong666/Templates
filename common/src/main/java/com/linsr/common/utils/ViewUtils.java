@@ -1,5 +1,6 @@
 package com.linsr.common.utils;
 
+import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -52,5 +53,14 @@ public class ViewUtils {
         }
         tv.setText(charSequence);
     }
+
+    public static void strikethrough(TextView tv) {
+        if (tv == null) {
+            return;
+        }
+        tv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+    }
+
+
 
 }

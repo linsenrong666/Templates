@@ -179,6 +179,11 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
                 CartBalanceTO to = balance();
                 mBalanceBar.setAllChecked(mCartAdapter.isAllChecked(to.getCount()));
             }
+
+            @Override
+            public void onNumberChanged(int count) {
+
+            }
         });
         mCartAdapter.setOnGoodsClickListener(new GoodsHolder.OnGoodsClickListener() {
             @Override

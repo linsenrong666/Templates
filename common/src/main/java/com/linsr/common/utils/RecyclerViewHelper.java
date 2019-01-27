@@ -75,6 +75,17 @@ public class RecyclerViewHelper {
                                       int spanCount,
                                       RecyclerView recyclerView,
                                       RecyclerView.Adapter adapter) {
+        initGridLayout(context, spanCount, recyclerView, adapter, null);
+    }
+
+    public static void initGridLayout(Context context,
+                                      int spanCount,
+                                      RecyclerView recyclerView,
+                                      RecyclerView.Adapter adapter,
+                                      RecyclerView.ItemDecoration itemDecoration) {
+        if (itemDecoration != null) {
+            recyclerView.addItemDecoration(itemDecoration);
+        }
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(context, spanCount));
         recyclerView.setAdapter(adapter);

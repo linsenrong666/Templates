@@ -26,6 +26,8 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
 
     public interface CartListener {
         void onDataChangeForBalance();
+
+        void onNumberChanged(int count);
     }
 
     private CartListener mCartListener;

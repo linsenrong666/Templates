@@ -23,6 +23,11 @@ public class AfterSalesActivity extends RefreshActivity {
     private AfterSalesAdapter mAdapter;
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
         initTitleView(R.string.main_after_sales);
         mAdapter = new AfterSalesAdapter(this);

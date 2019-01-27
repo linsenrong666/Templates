@@ -31,6 +31,8 @@ public class BannerHolder extends BaseViewHolder<HomePojo.HomeListBean> {
     public void convert(int position, HomePojo.HomeListBean data, int itemType) {
         BannerPagerAdapter pagerAdapter = new BannerPagerAdapter(mContext, data.getBannerData());
         mFlipperView.setPageAdapter(pagerAdapter);
+        mFlipperView.start();
     }
+
 
 }

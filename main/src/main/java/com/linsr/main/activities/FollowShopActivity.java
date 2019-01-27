@@ -26,6 +26,11 @@ public class FollowShopActivity extends RefreshActivity {
     private FollowShopAdapter mAdapter;
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     protected void initRecyclerView(RecyclerView recyclerView) {
         initTitleView(R.string.main_follow_shop);
 

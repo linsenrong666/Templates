@@ -45,7 +45,10 @@ public abstract class RefreshActivity extends ActivityEx {
             }
         });
         initRecyclerView(mRecyclerView);
+        initData();
     }
+
+    protected abstract void initData();
 
     protected abstract void initRecyclerView(RecyclerView recyclerView);
 

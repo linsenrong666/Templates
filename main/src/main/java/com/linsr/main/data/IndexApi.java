@@ -123,8 +123,20 @@ public interface IndexApi {
     @FormUrlEncoded
     @POST("api.php?c=goods&a=price")
     Observable<ResponsePojo> modifyNumber(@Field("id") String goodsId,
-                                          @Field("array") String[] array,
+                                          @Field("attr") String[] array,
                                           @Field("number") int number);
 
+    //修改购物车商品数量
+    @FormUrlEncoded
+    @POST("api.php?c=cart&a=update_number")
+    Observable<ResponsePojo> modifyCartNumber(@Field("id") String recId,
+                                              @Field("number") int number);
+
+
+    //收藏列表
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=async_col_goods")
+    Observable<ResponsePojo> collectList(@Field("last") int page,
+                                         @Field("pageSize") int pageSize);
 
 }

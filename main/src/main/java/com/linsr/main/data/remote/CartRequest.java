@@ -38,6 +38,16 @@ public class CartRequest {
                 .subscribe(observer);
     }
 
+    public static void modifyCartNumber(LifecycleOwner lifecycleOwner,
+                                        String recId, int number,
+                                        NetObserver<BizPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.modifyCartNumber(recId, number).compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
     public static void chooseAddress(LifecycleOwner lifecycleOwner,
                                      String addressId,
                                      NetObserver<BizPojo> observer) {

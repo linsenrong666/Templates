@@ -1,6 +1,7 @@
 package com.linsr.main.model;
 
 import android.text.TextUtils;
+import android.widget.TextView;
 
 import com.linsr.common.model.BasePojo;
 import com.linsr.common.model.BizPojo;
@@ -140,7 +141,10 @@ public class CartListPojo extends BizPojo {
 
             @Override
             public int hashCode() {
-                return this.getGoods_id().hashCode();
+                if (!TextUtils.isEmpty(getGoods_id())) {
+                    return this.getGoods_id().hashCode();
+                }
+                return super.hashCode();
             }
 
             @Override

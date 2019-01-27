@@ -12,8 +12,7 @@
         android:layout_height="150dp"
         android:layout_margin="@dimen/mini"
         android:background="@color/background"
-        android:scaleType="centerCrop"
-        android:textColor="@color/colorAccent"/>
+        android:scaleType="centerCrop"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/category_details_recycler_view"

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="@dimen/tiny">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/mini">
+
+        <ImageView
+            android:id="@+id/item_collect_img_iv"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            tools:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/item_collect_name_tv"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/mini"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="aaaaaaa"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mini"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_collect_price_tv"
+                style="@style/TextView.MainColor"
+                android:textStyle="bold"
+                tools:text="$100"/>
+
+            <TextView
+                android:id="@+id/item_collect_count_tv"
+                style="@style/TextView"
+                android:layout_alignParentRight="true"
+                tools:text="$100"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -20,12 +20,15 @@
                 android:layout_height="match_parent"/>
 
             <LinearLayout
+                android:id="@+id/search_result_recommend_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <include
-                    layout="@layout/main_header_recommend"/>
+                    android:id="@+id/search_result_recommend_title"
+                    layout="@layout/main_layout_home_item_title"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/search_result_recommend_rv"

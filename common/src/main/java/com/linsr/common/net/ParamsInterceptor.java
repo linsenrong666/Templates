@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.linsr.common.biz.ApplicationEx;
 import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.biz.config.UserInfoKey;
+import com.linsr.common.utils.DeviceUuidFactory;
 import com.linsr.common.utils.PrefsUtils;
 
 import java.io.IOException;
@@ -20,6 +21,12 @@ import okhttp3.Response;
  * @author Linsr 2018/12/15 下午4:44
  */
 public class ParamsInterceptor implements Interceptor {
+
+    private DeviceUuidFactory mDeviceUuidFactory;
+
+    ParamsInterceptor() {
+        mDeviceUuidFactory = DeviceUuidFactory.getInstance();
+    }
 
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
@@ -37,6 +44,7 @@ public class ParamsInterceptor implements Interceptor {
                 builder.add("user_id", PrefsUtils.getSharedString(ApplicationEx.getInstance(),
                         UserInfoKey.USER_ID));
             }
+            builder.add("sign", mDeviceUuidFactory.getDeviceUuidMD5());
             formBody = builder.build();
             request = request.newBuilder().post(formBody).build();
         }

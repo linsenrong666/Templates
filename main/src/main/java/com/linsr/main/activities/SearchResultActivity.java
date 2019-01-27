@@ -59,6 +59,7 @@ public class SearchResultActivity extends ActivityEx<SearchResultPresenter> impl
         mRefreshLayout = findViewById(R.id.main_refresh_layout);
         mSearchRecyclerView = findViewById(R.id.main_recycler_view);
         mSearchRecyclerView.setNestedScrollingEnabled(false);
+
         mRecommendRecyclerView = findViewById(R.id.search_result_recommend_rv);
         mRecommendRecyclerView.setNestedScrollingEnabled(false);
 
@@ -122,12 +123,6 @@ public class SearchResultActivity extends ActivityEx<SearchResultPresenter> impl
         EmptyWrapper emptyWrapper = new EmptyWrapper(mAdapter);
         emptyWrapper.setEmptyView(R.layout.main_layout_empty_search_result);
         RecyclerViewHelper.initDefault(this, mSearchRecyclerView, emptyWrapper);
-
-        //footer
-//        RecommendAdapter adapter = new RecommendAdapter(this);
-//        List<RecommendPojo> goodsList2 = Mock.getRecommendList(9);
-//        adapter.addData(goodsList2);
-//        RecyclerViewHelper.initGridLayout(this, 3, mRecommendRecyclerView, adapter);
     }
 
     private void requestData(boolean showLoading) {

@@ -34,7 +34,8 @@
                 android:layout_width="88dp"
                 android:layout_height="88dp"
                 android:layout_marginRight="@dimen/middle"
-                android:background="@color/background"/>
+                android:background="@color/background"
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:id="@+id/dialog_product_details_name_tv"
@@ -42,9 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/dialog_product_details_img_iv"
                 android:maxLines="2"
-                android:text="极简主义 智能 扫地机器人"
                 android:textColor="@color/text_primary_black"
-                android:textSize="@dimen/font_middle"/>
+                android:textSize="@dimen/font_middle"
+                tools:text="极简主义 智能 扫地机器人"/>
 
             <TextView
                 android:id="@+id/widgets_product_details_price_tv"
@@ -53,7 +54,6 @@
                 android:layout_below="@+id/dialog_product_details_name_tv"
                 android:layout_marginTop="@dimen/middle"
                 android:layout_toRightOf="@id/dialog_product_details_img_iv"
-                android:text="$ 1988.00"
                 android:textColor="@color/main_color"
                 android:textSize="@dimen/font_large"/>
 
@@ -63,7 +63,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/widgets_product_details_price_tv"
                 android:layout_toRightOf="@id/dialog_product_details_img_iv"
-                android:text="$1988.00"
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/font_small"/>
         </RelativeLayout>
