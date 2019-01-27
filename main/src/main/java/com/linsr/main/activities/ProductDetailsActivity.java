@@ -88,7 +88,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mBottomBar.setOnCollectClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mPresenter.collect(mGoodsId);
             }
         });
         mBottomBar.setOnShopClick(new View.OnClickListener() {

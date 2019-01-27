@@ -24,5 +24,7 @@ public interface ProductDetailsContact {
         void getGoodsInfo(String goodsId);
 
         void addCart(String[] spec, int specCount, String goodsId, int number);
+
+        void collect(String goodId);
     }
 }

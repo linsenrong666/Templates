@@ -13,12 +13,15 @@ public interface LoginContact {
 
     interface View extends IView {
         void onLoginSucceed(LoginPojo pojo);
+        void onWXLoginSucceed(LoginPojo pojo);
 
         void onLoginFailure(String errMsg);
     }
 
     interface Presenter {
         void login(String userName, String password);
+        void wxLogin(String code);
+
     }
 
 }

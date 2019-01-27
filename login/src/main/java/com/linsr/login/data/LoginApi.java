@@ -45,4 +45,8 @@ public interface LoginApi {
                                            @Field("password") String password,
                                            @Field("key") String key);
 
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=wx_login")
+    Observable<ResponsePojo> wxLogin(@Field("code") String code);
+
 }

@@ -23,4 +23,13 @@ public class LoginPojo extends BizPojo {
     private String user_id;
     private String token;
 
+    /**
+     * sess_id : a99e78d28da6852e7865dbc89e87f73e
+     * os : 其它
+     * from : 其它
+     */
+
+    private String sess_id;
+    private String os;
+    private String from;
 }

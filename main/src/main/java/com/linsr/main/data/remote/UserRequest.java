@@ -40,4 +40,14 @@ public class UserRequest {
                 .as(NetUtils.<CollectPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
+
+    public static void collect(LifecycleOwner lifecycleOwner,
+                               String goodsId,
+                               NetObserver<BizPojo> observer) {
+        IndexApi userApi = Api.getService(IndexApi.class);
+        userApi.collect(goodsId).compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
 }

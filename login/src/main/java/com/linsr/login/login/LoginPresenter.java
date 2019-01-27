@@ -2,13 +2,16 @@ package com.linsr.login.login;
 
 import android.arch.lifecycle.LifecycleOwner;
 import android.text.TextUtils;
+import android.widget.TextView;
 
 import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.biz.config.UserInfoKey;
+import com.linsr.common.model.BizPojo;
 import com.linsr.common.model.ResponsePojo;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.NetUtils;
+import com.linsr.common.net.exception.ApiException;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.PrefsUtils;
 import com.linsr.common.utils.ToastUtils;
@@ -32,7 +35,6 @@ public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implem
     LoginPresenter(LoginContact.View view) {
         super(view);
     }
-
 
 
     @Override
@@ -69,6 +71,34 @@ public class LoginPresenter extends BaseLoginPresenter<LoginContact.View> implem
                     public void onFailed(Throwable e) {
                         JLog.e(e.toString());
                         mView.onLoginFailure(e.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void wxLogin(String code) {
+        if (TextUtils.isEmpty(code)) {
+            return;
+        }
+        mLoginApi.wxLogin(code).compose(NetUtils.handleResponse(LoginPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(this.<LoginPojo>bindLifecycle())
+                .subscribe(new NetObserver<LoginPojo>(mView, true) {
+
+                    @Override
+                    public void onSucceed(LoginPojo data) {
+                        if (data != null) {
+                            String userId = data.getUser_id();
+                            String token = data.getToken();
+                            AppConfig.getInstance().login(token, userId);
+                            mView.onWXLoginSucceed(data);
+                        } else {
+                            onFailed(new ApiException(""));
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
                     }
                 });
     }

@@ -92,7 +92,6 @@ public class DeviceUuidFactory {
     }
 
     public UUID getDeviceUUID() {
-        JLog.i("DeviceUuidFactory", "------>获取的设备ID号为：" + uuid.toString());
         return uuid;
     }
 
@@ -102,7 +101,6 @@ public class DeviceUuidFactory {
 
     public String getDeviceUuidMD5() {
         String res = encrypt(getDeviceUUIDStr());
-        JLog.i("DeviceUuidFactory", "------>获取的设备ID号MD5为：" + res);
         return res;
     }
 

@@ -1,6 +1,5 @@
 package com.linsr.main.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.linsr.common.model.BasePojo;
 import com.linsr.common.model.BizPojo;
 import com.linsr.main.model.bean.IsbestBean;
@@ -39,6 +38,7 @@ public class HomePojo extends BizPojo {
          */
 
         private int floorType;
+        private int isShow;
         private String floorName;
         private AdDataBean adOneData;
         private AdDataBean adThreeData;
@@ -47,6 +47,7 @@ public class HomePojo extends BizPojo {
         private List<AdDataBean> adTwoData;
         private YimaStreeDataBean yimaStreeData;
         private List<IsbestBean> recData;
+        private List<IconDataBean> iconData;
 
 
         @EqualsAndHashCode(callSuper = true)
@@ -207,6 +208,20 @@ public class HomePojo extends BizPojo {
             private String is_show;
             private String view;
             private String users_total;
+        }
+
+        @EqualsAndHashCode(callSuper = true)
+        @Data
+        public static class IconDataBean extends BasePojo{
+            /**
+             * c : cate
+             * a : index
+             * id : 20
+             */
+
+            private String c;
+            private String a;
+            private String id;
         }
     }
 }

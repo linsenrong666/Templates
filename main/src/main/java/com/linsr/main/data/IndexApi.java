@@ -139,4 +139,9 @@ public interface IndexApi {
     Observable<ResponsePojo> collectList(@Field("last") int page,
                                          @Field("pageSize") int pageSize);
 
+    //收藏列表
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=like_goods")
+    Observable<ResponsePojo> collect(@Field("id") String goodsId);
+
 }

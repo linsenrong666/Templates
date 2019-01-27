@@ -4,9 +4,11 @@ import com.linsr.common.biz.PresenterEx;
 import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.exception.ApiException;
+import com.linsr.common.utils.ToastUtils;
 import com.linsr.main.data.remote.CartRequest;
 import com.linsr.main.data.remote.GoodsRequest;
 import com.linsr.main.data.remote.IndexRequest;
+import com.linsr.main.data.remote.UserRequest;
 import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.model.ProductDetailsPojo;
 
@@ -59,4 +61,22 @@ public class ProductDetailsPresenter extends PresenterEx<ProductDetailsContact.V
                     }
                 });
     }
+
+    @Override
+    public void collect(String goodId) {
+        UserRequest.collect(getLifecycleOwner(), goodId,
+                new NetObserver<BizPojo>(mView, true, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        ToastUtils.show("收藏成功");
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
+    }
+
+
 }
