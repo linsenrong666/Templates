@@ -50,6 +50,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     private TextView mPriceTextView;
     private TextView mOriginalPriceTextView;
     private TextView mIntegralPriceTextView;
+    private TextView mBrokeragePriceTextView;
     private ProductDetailsBottomBar mBottomBar;
 
     private AddCartDialog mAddCartDialog;
@@ -141,6 +142,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mPriceTextView = findViewById(R.id.product_details_price_tv);
         mOriginalPriceTextView = findViewById(R.id.product_details_original_price_tv);
         mIntegralPriceTextView = findViewById(R.id.product_details_integral_tv);
+        mBrokeragePriceTextView = findViewById(R.id.product_details_brokerage_tv);
         mBottomBar = findViewById(R.id.product_details_bottom_bar);
     }
 
@@ -155,9 +157,10 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mGoodsNameTextView.setText(pojo.getGoods_name());
         mGoodsDescTextView.setText(pojo.getGoods_desc_bubaohan());
         ViewUtils.setText(mPriceTextView, PriceUtils.format(pojo.getShop_price()));
-        ViewUtils.setText(mOriginalPriceTextView, "原价:" +
-                PriceUtils.format(pojo.getMarket_price()));
-        ViewUtils.setText(mIntegralPriceTextView, "积分:" + pojo.getGoods_integral());
+        ViewUtils.setText(mOriginalPriceTextView, PriceUtils.format(pojo.getMarket_price()));
+        ViewUtils.strikethrough(mOriginalPriceTextView);
+        ViewUtils.setText(mIntegralPriceTextView, "积分:" + pojo.getGive_integral());
+        ViewUtils.setText(mBrokeragePriceTextView, "佣金:" + pojo.getGoods_integral());
     }
 
     @Override

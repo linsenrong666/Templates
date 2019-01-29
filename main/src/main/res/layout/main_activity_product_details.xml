@@ -45,9 +45,8 @@
                 <TextView
                     android:id="@+id/product_details_original_price_tv"
                     style="@style/TextView"
-                    android:padding="@dimen/middle"
-                    android:textSize="@dimen/font_middle"
-                    tools:text="原价$999"/>
+                    android:textSize="@dimen/font_small"
+                    tools:text="$999"/>
 
                 <TextView
                     android:id="@+id/product_details_integral_tv"
@@ -58,6 +57,14 @@
                     android:textSize="@dimen/font_large"
                     tools:text="$999"/>
 
+                <TextView
+                    android:id="@+id/product_details_brokerage_tv"
+                    style="@style/TextView.MainColor"
+                    android:layout_marginLeft="@dimen/middle"
+                    android:background="@color/white"
+                    android:padding="@dimen/middle"
+                    android:textSize="@dimen/font_large"
+                    tools:text="$999"/>
             </LinearLayout>
 
 

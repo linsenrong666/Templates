@@ -25,12 +25,19 @@ public class SearchResultPresenter extends PresenterEx<SearchResultContact.View>
                 new NetObserver<SearchResultPojo>(mView, showLoading, true) {
                     @Override
                     public void onSucceed(SearchResultPojo data) {
-                        mView.searchSucceed(data);
+                        if (data != null) {
+                            mView.searchSucceed(data.getList());
+                        }
                     }
 
                     @Override
                     public void onFailed(Throwable e) {
                         mView.searchFailed();
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        mView.searchCompleted();
                     }
                 });
     }

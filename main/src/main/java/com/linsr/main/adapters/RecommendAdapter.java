@@ -60,11 +60,13 @@ public class RecommendAdapter extends BaseRecyclerAdapter<IsbestBean> {
             price = findViewById(R.id.recommend_goods_price_tv);
             img = findViewById(R.id.recommend_goods_img_iv);
 
-            ViewGroup.LayoutParams params = img.getLayoutParams();
-            int x = mGridLayoutManager.getWidth() / mGridLayoutManager.getSpanCount() -
-                    DisplayUtils.dp2px(context, 8) * 2;
-            params.width = params.height = x;
-            img.setLayoutParams(params);
+            if (mGridLayoutManager != null) {
+                ViewGroup.LayoutParams params = img.getLayoutParams();
+                int x = mGridLayoutManager.getWidth() / mGridLayoutManager.getSpanCount() -
+                        DisplayUtils.dp2px(context, 8) * 2;
+                params.width = params.height = x;
+                img.setLayoutParams(params);
+            }
         }
 
         @Override

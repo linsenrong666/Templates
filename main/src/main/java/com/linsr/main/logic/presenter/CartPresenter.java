@@ -46,6 +46,11 @@ public class CartPresenter extends PresenterEx<CartContact.View> implements Cart
                 });
     }
 
+    @Override
+    public void dropGoods() {
+
+    }
+
     private List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> convertCartListPojo
             (CartListPojo data) {
         if (data == null) {

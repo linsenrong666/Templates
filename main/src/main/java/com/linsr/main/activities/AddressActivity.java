@@ -41,7 +41,6 @@ public class AddressActivity extends ActivityEx {
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter.addData(Mock.getAddressList(1));
                 Router.startActivity(MainModule.Activity.ADD_ADDRESS);
             }
         });

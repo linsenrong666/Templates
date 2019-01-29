@@ -10,6 +10,7 @@ import com.linsr.common.net.NetUtils;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.utils.PrefsUtils;
 import com.linsr.main.data.IndexApi;
+import com.linsr.main.model.AddressPojo;
 import com.linsr.main.model.CollectPojo;
 import com.linsr.main.model.OrderPojo;
 import com.linsr.main.model.UserPojo;
@@ -50,4 +51,28 @@ public class UserRequest {
                 .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
+
+    public static void logout(LifecycleOwner lifecycleOwner,
+                              NetObserver<BizPojo> observer) {
+        IndexApi userApi = Api.getService(IndexApi.class);
+        userApi.logout("").compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+    public static void editAddress(LifecycleOwner lifecycleOwner,
+                                   AddressPojo pojo,
+                                   NetObserver<BizPojo> observer) {
+        IndexApi userApi = Api.getService(IndexApi.class);
+        userApi.editAddress(pojo.getAddress_id(), pojo.getConsignee(), pojo.getMobile(),
+                pojo.getAddress(), pojo.getZipcode(), pojo.getIs_default(), pojo.getProvince_str(),
+                pojo.getCity_str(), pojo.getDistrict_str(), pojo.getUser_id())
+
+                .compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
 }

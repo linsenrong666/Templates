@@ -11,7 +11,9 @@
         android:id="@+id/widgets_product_details_shop_tv"
         android:layout_width="54dp"
         android:layout_height="match_parent"
+        android:drawableTop="@mipmap/ic_bot_home_n"
         android:gravity="center"
+        android:paddingTop="@dimen/tiny"
         android:text="店铺"/>
 
     <TextView
@@ -20,6 +22,15 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="收藏"/>
+
+    <TextView
+        android:id="@+id/widgets_product_details_cart_tv"
+        android:layout_width="54dp"
+        android:layout_height="match_parent"
+        android:drawableTop="@mipmap/ic_bot_cart_n"
+        android:gravity="center"
+        android:paddingTop="@dimen/tiny"
+        android:text="购物车"/>
 
     <TextView
         android:id="@+id/widgets_product_details_add_cart_tv"

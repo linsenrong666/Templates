@@ -2,6 +2,9 @@ package com.linsr.main.logic.contacts;
 
 import com.linsr.common.biz.IView;
 import com.linsr.main.model.SearchResultPojo;
+import com.linsr.main.model.bean.IsbestBean;
+
+import java.util.List;
 
 /**
  * Description
@@ -10,9 +13,11 @@ import com.linsr.main.model.SearchResultPojo;
  */
 public interface SearchResultContact {
     interface View extends IView {
-        void searchSucceed(SearchResultPojo pojo);
+        void searchSucceed(List<IsbestBean> list);
 
         void searchFailed();
+
+        void searchCompleted();
     }
 
     interface Presenter {

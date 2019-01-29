@@ -1,4 +1,4 @@
-package com.linsr.main.model;
+package com.linsr.main.model.to;
 
 import com.linsr.common.model.BasePojo;
 
@@ -8,11 +8,11 @@ import lombok.EqualsAndHashCode;
 /**
  * Description
  *
- * @author Linsr 2018/8/21 上午9:57
+ * @author Linsr 2019/1/28 下午11:54
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class AddressPojo extends BasePojo {
+public class AddressTO extends BasePojo {
 
     private String address_id;
     private String consignee;

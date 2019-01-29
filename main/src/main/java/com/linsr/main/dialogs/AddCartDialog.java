@@ -93,7 +93,22 @@ public class AddCartDialog extends DialogFragment {
 
         mCartCountView = view.findViewById(R.id.dialog_product_details_cart_count_view);
         mCartCountView.setResultCount(1);
+        mCartCountView.setOnCountChangedListener(new CartCountView.OnCountChangedListener() {
+            @Override
+            public void onChanged(int count) {
+                mCartCountView.setResultCount(count);
+            }
 
+            @Override
+            public void onMinCount(int minCont) {
+                mCartCountView.setResultCount(minCont);
+            }
+
+            @Override
+            public void onMaxCount(int maxCount) {
+                mCartCountView.setResultCount(maxCount);
+            }
+        });
         mConfirmTextView = view.findViewById(R.id.dialog_product_details_confirm_btn);
         mConfirmTextView.setOnClickListener(new View.OnClickListener() {
             @Override

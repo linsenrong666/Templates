@@ -18,22 +18,42 @@
         android:showDividers="middle">
 
         <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/new_address_name"
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_user_name"/>
 
         <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/new_address_phone"
             style="@style/main_new_address_label"
+            app:common_hint_text="@string/confirm"
             app:common_label_text="@string/main_address_user_phone"/>
 
-        <com.linsr.common.gui.widgets.common_label_container
-            style="@style/main_new_address_label"
-            app:common_label_text="@string/main_address_area"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.linsr.common.gui.widgets.common_label_container
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="@dimen/small"
+                android:layout_marginRight="@dimen/small"
+                app:common_label_text="@string/main_address_area"/>
+
+            <!--<com.mic.adressselectorlib.AddressSelector-->
+                <!--android:id="@+id/new_address_selector"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"/>-->
+
+        </LinearLayout>
+
 
         <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/new_address_street"
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_street"/>
 
         <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/new_address_code"
             style="@style/main_new_address_label"
             app:common_label_text="@string/main_address_post_code"/>
 
@@ -49,6 +69,7 @@
         android:padding="@dimen/small">
 
         <CheckBox
+            android:id="@+id/new_address_default_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_address_set_default"/>

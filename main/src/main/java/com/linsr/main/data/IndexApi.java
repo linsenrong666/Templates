@@ -133,6 +133,13 @@ public interface IndexApi {
                                               @Field("number") int number);
 
 
+    //删除商品
+    @FormUrlEncoded
+    @POST("api.php?c=cart&a=drop_goods")
+    Observable<ResponsePojo> dropGoods(@Field("id") String cartId,
+                                       @Field("user_id") String userId);
+
+
     //收藏列表
     @FormUrlEncoded
     @POST("api.php?c=user&a=async_col_goods")
@@ -143,5 +150,31 @@ public interface IndexApi {
     @FormUrlEncoded
     @POST("api.php?c=user&a=like_goods")
     Observable<ResponsePojo> collect(@Field("id") String goodsId);
+
+
+    //登出
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=logout")
+    Observable<ResponsePojo> logout(@Field("key") String key);//登出
+
+    //删除地址
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=address_drop")
+    Observable<ResponsePojo> dropAddress(@Field("key") String key);
+
+    //修改地址
+    @FormUrlEncoded
+    @POST("api.php?c=user&a=address_edit_do")
+    Observable<ResponsePojo> editAddress(@Field("address_id") String address_id,
+                                         @Field("consignee") String consignee,
+                                         @Field("mobile") String mobile,
+                                         @Field("address") String address,
+                                         @Field("zipcode") String zipcode,
+                                         @Field("is_default") String is_default,
+                                         @Field("province_str") String province_str,
+                                         @Field("city_str") String city_str,
+                                         @Field("district_str") String district_str,
+                                         @Field("user_id") String user_id);
+
 
 }

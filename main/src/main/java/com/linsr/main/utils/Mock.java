@@ -113,17 +113,17 @@ public class Mock {
     }
 
 
-    public static List<AddressPojo> getAddressList(int size) {
-        List<AddressPojo> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            AddressPojo po = new AddressPojo();
-            po.setAddress("这是地址这是地址这是地址这是地址这是地址这是地址");
-            po.setUserName("海贼王路飞" + i);
-            po.setPhoneNumber("1333444455" + i);
-            list.add(po);
-        }
-        return list;
-    }
+//    public static List<AddressPojo> getAddressList(int size) {
+//        List<AddressPojo> list = new ArrayList<>();
+//        for (int i = 0; i < size; i++) {
+//            AddressPojo po = new AddressPojo();
+//            po.setAddress("这是地址这是地址这是地址这是地址这是地址这是地址");
+//            po.setUserName("海贼王路飞" + i);
+//            po.setPhoneNumber("1333444455" + i);
+//            list.add(po);
+//        }
+//        return list;
+//    }
 
     public static List<String> getImageUrlList(int size) {
         Random random = new Random();

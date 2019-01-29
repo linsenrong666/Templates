@@ -24,5 +24,8 @@ public interface CartContact {
 
     interface Presenter {
         void cartList(boolean showLoading);
+
+        void dropGoods();
+
     }
 }

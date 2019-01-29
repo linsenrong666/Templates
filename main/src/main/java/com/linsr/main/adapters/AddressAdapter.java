@@ -48,8 +48,8 @@ public class AddressAdapter extends BaseRecyclerAdapter<AddressPojo> {
         @Override
         public void convert(int position, AddressPojo data, int itemType) {
             address.setText(data.getAddress());
-            name.setText(data.getUserName());
-            phone.setText(data.getPhoneNumber());
+            name.setText(data.getConsignee());
+            phone.setText(data.getMobile());
         }
     }
 }

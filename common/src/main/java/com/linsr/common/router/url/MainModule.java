@@ -38,6 +38,10 @@ public class MainModule {
         String ADDRESS_LIST = ACTIVITY + "addressList";
         String ADD_ADDRESS = ACTIVITY + "addAddress";
 
+        interface AddAddressParams {
+            String ACT_ADDRESSI_ID = "act_address_id";
+        }
+
         String SEARCH = ACTIVITY + "search";
         String SEARCH_RESULT = ACTIVITY + "searchResult";
 

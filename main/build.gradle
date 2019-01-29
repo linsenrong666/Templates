@@ -46,4 +46,6 @@ dependencies {
     compile "org.projectlombok:lombok:$rootProject.ext.lombokVerison"
     compile "com.alibaba:arouter-api:$rootProject.ext.arouterApi"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.ext.arouterCompiler"
+
+
 }

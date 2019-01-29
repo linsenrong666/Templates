@@ -13,9 +13,13 @@ public interface MeContact {
     interface View extends IView {
         void fillMeTopData(UserPojo pojo);
         void fillRecName(String name);
+
+        void logout();
     }
 
     interface Presenter {
         void userCenter();
+
+        void logout();
     }
 }

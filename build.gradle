@@ -10,6 +10,8 @@ buildscript {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        //地址选择库有用到
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -30,6 +32,8 @@ allprojects {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        //地址选择库有用到
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -43,8 +47,8 @@ ext {
     targetSdkVersion = 25
     compileSdkVersion = 27
     buildToolsVersion = '27.0.3'
-    versionCode = 3
-    versionName = '0.0.2'
+    versionCode = 5
+    versionName = '0.0.4'
     // App dependencies
     supportLibraryVersion = '27.1.0'
     constraintLayout = '1.0.2'

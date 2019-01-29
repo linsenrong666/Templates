@@ -1,6 +1,7 @@
 package com.linsr.main.logic.presenter;
 
 import com.linsr.common.biz.PresenterEx;
+import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.exception.ApiException;
 import com.linsr.main.data.remote.UserRequest;
@@ -31,6 +32,22 @@ public class MePresenter extends PresenterEx<MeContact.View> implements MeContac
                         } else {
                             onFailed(new ApiException(""));
                         }
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void logout() {
+        UserRequest.logout(getLifecycleOwner(),
+                new NetObserver<BizPojo>(mView, true, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        mView.logout();
                     }
 
                     @Override

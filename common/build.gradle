@@ -68,4 +68,7 @@ dependencies {
     //lombok
     compile "org.projectlombok:lombok:$rootProject.ext.lombokVerison"
     implementation 'org.jetbrains:annotations-java5:15.0'
+
+//地址选择控件
+//    compile 'com.github.Blincheng:AddressSelector:v1.0.4'
 }

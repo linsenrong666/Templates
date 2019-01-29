@@ -2,6 +2,7 @@ package com.linsr.main.model;
 
 import com.linsr.common.model.BasePojo;
 import com.linsr.common.model.BizPojo;
+import com.linsr.main.model.bean.IsbestBean;
 
 import java.util.List;
 
@@ -23,37 +24,37 @@ public class SearchResultPojo extends BizPojo {
      */
 
     private int count;
-    private List<ListBean> list;
-
-    @EqualsAndHashCode(callSuper = true)
-    @Data
-    public static class ListBean extends BasePojo {
-        /**
-         * goods_id : 421
-         * goods_name : 【宅女】本色抽纸3提9包（每提3包，每包140抽）
-         * market_price : 0.00
-         * is_new : 1
-         * is_best : 1
-         * is_hot : 0
-         * org_price : 0.00
-         * shop_price : 0.00
-         * promote_price :
-         * promote_start_date : 0
-         * promote_end_date : 0
-         * goods_img : http://yimaw.oss-cn-hangzhou.aliyuncs.com/images/201801/goods_img/421_G_1516591870006.jpg
-         */
-
-        private String goods_id;
-        private String goods_name;
-        private String market_price;
-        private String is_new;
-        private String is_best;
-        private String is_hot;
-        private String org_price;
-        private String shop_price;
-        private String promote_price;
-        private String promote_start_date;
-        private String promote_end_date;
-        private String goods_img;
-    }
+    private List<IsbestBean> list;
+//
+//    @EqualsAndHashCode(callSuper = true)
+//    @Data
+//    public static class ListBean extends BasePojo {
+//        /**
+//         * goods_id : 421
+//         * goods_name : 【宅女】本色抽纸3提9包（每提3包，每包140抽）
+//         * market_price : 0.00
+//         * is_new : 1
+//         * is_best : 1
+//         * is_hot : 0
+//         * org_price : 0.00
+//         * shop_price : 0.00
+//         * promote_price :
+//         * promote_start_date : 0
+//         * promote_end_date : 0
+//         * goods_img : http://yimaw.oss-cn-hangzhou.aliyuncs.com/images/201801/goods_img/421_G_1516591870006.jpg
+//         */
+//
+//        private String goods_id;
+//        private String goods_name;
+//        private String market_price;
+//        private String is_new;
+//        private String is_best;
+//        private String is_hot;
+//        private String org_price;
+//        private String shop_price;
+//        private String promote_price;
+//        private String promote_start_date;
+//        private String promote_end_date;
+//        private String goods_img;
+//    }
 }

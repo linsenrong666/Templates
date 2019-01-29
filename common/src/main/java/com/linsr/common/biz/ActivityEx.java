@@ -52,7 +52,7 @@ public abstract class ActivityEx<P extends IPresenter> extends BaseActivity impl
             mPresenter.setLifecycleOwner(this);
             lifecycle.addObserver(mPresenter);
         } else {
-            JLog.e(TAG, "ERROR: Presenter is null !!!");
+            JLog.w(TAG, "ERROR: Presenter is null !!!");
         }
     }
 

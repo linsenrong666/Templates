@@ -115,6 +115,7 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
             @Override
             public void onChanged(int count) {
                 pojo.setGoods_number(String.valueOf(count));
+                mCartCountView.setResultCount(count);
                 if (mCartListener != null) {
                     mCartListener.onDataChangeForBalance();
                 }
@@ -122,12 +123,16 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
 
             @Override
             public void onMinCount(int min) {
+                pojo.setGoods_number(String.valueOf(min));
                 JLog.i("==onMinCount");
+                mCartCountView.setResultCount(min);
             }
 
             @Override
             public void onMaxCount(int max) {
+                pojo.setGoods_number(String.valueOf(max));
                 JLog.i("==onMaxCount");
+                mCartCountView.setResultCount(max);
             }
         });
     }

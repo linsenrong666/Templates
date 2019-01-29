@@ -110,13 +110,10 @@ public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Ac
         findViewById(R.id.me_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppConfig.getInstance().logout();
-                AppLife.getInstance().exit();
-                Router.startActivity(LoginModule.Activity.LOGIN);
+                mPresenter.logout();
             }
         });
     }
-
 
     @Override
     protected void loadData() {
@@ -131,5 +128,12 @@ public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Ac
     @Override
     public void fillRecName(String name) {
         ViewUtils.setText(mRecNameTextView, getString(R.string.main_recommend_user_name, name));
+    }
+
+    @Override
+    public void logout() {
+        AppConfig.getInstance().logout();
+        AppLife.getInstance().exit();
+        Router.startActivity(LoginModule.Activity.LOGIN);
     }
 }
