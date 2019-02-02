@@ -7,14 +7,11 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.biz.ActivityEx;
-import com.linsr.common.biz.EventKey;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.LoginModule;
 import com.linsr.common.router.url.MainModule;
-import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.ToastUtils;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
-import com.linsr.common.utils.contents.OnContentUpdateListener;
 import com.linsr.login.R;
 import com.linsr.login.base.LoginConstants;
 import com.linsr.login.data.model.response.LoginPojo;

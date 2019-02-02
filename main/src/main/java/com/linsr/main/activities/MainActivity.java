@@ -12,7 +12,6 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
-import com.linsr.common.biz.EventKey;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.BottomNavigationViewHelper;
@@ -20,6 +19,7 @@ import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.common.gui.widgets.NoScrollViewPager;
 import com.linsr.main.R;
+import com.linsr.main.app.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,9 +60,10 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
         registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
             @Override
             public void onContentUpdated(List<Object[]> values) {
-                int i = mBadge.getBadgeNumber();
-                i = i + 1;
-                mBadge.setBadgeNumber(i);
+                if (values != null && values.size() > 0) {
+                    int number = (int) values.get(0)[0];
+                    mBadge.setBadgeNumber(number);
+                }
             }
 
             @Override
@@ -72,7 +73,7 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
 
             @Override
             public String getKey() {
-                return EventKey.ADD_GOODS_CART;
+                return Constants.Event.UPDATE_CART_BADGE;
             }
         });
     }

@@ -46,4 +46,7 @@ public class AppConfig implements UserInfoKey {
         PrefsUtils.putSharedString(mApplication, UserInfoKey.USER_ID, "");
     }
 
+    public String getUserId() {
+        return PrefsUtils.getSharedString(ApplicationEx.getInstance(), UserInfoKey.USER_ID);
+    }
 }

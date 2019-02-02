@@ -8,12 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.google.zxing.common.StringUtils;
 import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.gui.dialogs.DialogFactory;
 import com.linsr.common.gui.widgets.FlipperView;
-import com.linsr.common.router.Flags;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;
@@ -22,6 +20,7 @@ import com.linsr.common.utils.ToastUtils;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
 import com.linsr.main.adapters.GoodsBannerAdapter;
+import com.linsr.main.app.Constants;
 import com.linsr.main.dialogs.AddCartDialog;
 import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.logic.presenter.ProductDetailsPresenter;
@@ -173,6 +172,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     public void onAddCartSuccess() {
         ToastUtils.show("已加入购物车");
         DialogFactory.getInstance().dismissDialog(mAddCartDialog);
+        mContentsManager.notifyContentUpdateSuccess(Constants.Event.UPDATE_CART_LIST);
     }
 
 }

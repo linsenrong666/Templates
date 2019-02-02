@@ -61,9 +61,6 @@ public class AddCartDialog extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
-        if (getArguments() != null) {
-            mGoodsBean = (ProductDetailsPojo.GoodsBean) getArguments().getSerializable("data");
-        }
     }
 
     public void setOnAddCartClickListener(OnAddCartClickListener onAddCartClickListener) {
@@ -77,6 +74,9 @@ public class AddCartDialog extends DialogFragment {
         if (dialog != null) {
             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        }
+        if (getArguments() != null) {
+            mGoodsBean = (ProductDetailsPojo.GoodsBean) getArguments().getSerializable("data");
         }
         View view = inflater.inflate(R.layout.main_dialog_add_cart, container, false);
         view.setOnClickListener(new View.OnClickListener() {

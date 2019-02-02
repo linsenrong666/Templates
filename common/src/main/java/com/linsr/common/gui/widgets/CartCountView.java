@@ -35,7 +35,7 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
     private int mMinCount = 1;
     private int mCount = mMinCount;
     private int mMaxCount = Integer.MAX_VALUE;
-
+    private boolean mIsLocalChange = false;
     private OnCountChangedListener mOnCountChangedListener;
 
     public void setOnCountChangedListener(OnCountChangedListener onCountChangedListener) {

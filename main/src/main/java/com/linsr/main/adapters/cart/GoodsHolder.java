@@ -66,6 +66,7 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
                 data.getChildPojo().get(itemStatus.getChildIndex());
 
         setInfo(pojo);
+        mCartCountView.setVisibility(mCartAdapter.isHideCartCountView() ? View.GONE : View.VISIBLE);
 
         onBind = true;
         mCheckBox.setChecked(pojo.isChecked());
@@ -118,21 +119,26 @@ public class GoodsHolder extends BaseViewHolder<TreePojo<CartShopPojo, CartListP
                 mCartCountView.setResultCount(count);
                 if (mCartListener != null) {
                     mCartListener.onDataChangeForBalance();
+                    mCartListener.onNumberChanged(pojo.getRec_id(), count);
                 }
             }
 
             @Override
             public void onMinCount(int min) {
                 pojo.setGoods_number(String.valueOf(min));
-                JLog.i("==onMinCount");
                 mCartCountView.setResultCount(min);
+                if (mCartListener != null) {
+                    mCartListener.onNumberChanged(pojo.getRec_id(), min);
+                }
             }
 
             @Override
             public void onMaxCount(int max) {
                 pojo.setGoods_number(String.valueOf(max));
-                JLog.i("==onMaxCount");
                 mCartCountView.setResultCount(max);
+                if (mCartListener != null) {
+                    mCartListener.onNumberChanged(pojo.getRec_id(), max);
+                }
             }
         });
     }

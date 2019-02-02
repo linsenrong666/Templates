@@ -18,6 +18,8 @@ import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.common.gui.widgets.recyclerview.EmptyWrapper;
 import com.linsr.common.gui.widgets.recyclerview.HeaderAndFooterWrapper;
+import com.linsr.common.utils.ToastUtils;
+import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 import com.linsr.main.R;
 import com.linsr.main.activities.MainActivity;
 import com.linsr.main.adapters.RecommendAdapter;
@@ -25,6 +27,7 @@ import com.linsr.main.adapters.cart.CartAdapter;
 import com.linsr.main.adapters.cart.CartBalanceTO;
 import com.linsr.main.adapters.cart.GoodsHolder;
 import com.linsr.main.adapters.cart.TreePojo;
+import com.linsr.main.app.Constants;
 import com.linsr.main.logic.contacts.CartContact;
 import com.linsr.main.logic.presenter.CartPresenter;
 import com.linsr.main.model.CartListPojo;
@@ -77,6 +80,26 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         initCartAdapter();
         initRefreshLayout();
         initBottomBar();
+        register();
+    }
+
+    private void register() {
+        registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
+            @Override
+            public void onContentUpdated(List<Object[]> values) {
+                mPresenter.cartList(false);
+            }
+
+            @Override
+            public boolean isActive() {
+                return true;
+            }
+
+            @Override
+            public String getKey() {
+                return Constants.Event.UPDATE_CART_LIST;
+            }
+        });
     }
 
     private void initTitle() {
@@ -94,21 +117,28 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
             mTitleView.setOnRightClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mIsBalanceMode = !mIsBalanceMode;
-                    mBalanceBar.resetBalance();
-                    mCartAdapter.toggleAllChecked(false);
-                    if (mIsBalanceMode) {
-                        mBalanceBar.setBalanceMode();
-                    } else {
-                        mBalanceBar.setDeleteMode();
-                    }
+                    toggleCartMode();
                 }
             });
         } else {
             mTitleView.setRightText("");
             mTitleView.setOnRightClickListener(null);
         }
+    }
 
+    private void toggleCartMode() {
+        mIsBalanceMode = !mIsBalanceMode;
+        mBalanceBar.resetBalance();
+        mCartAdapter.toggleAllChecked(false);
+        mRefreshLayout.setEnableRefresh(mIsBalanceMode);
+        mCartAdapter.setHideCartCountView(!mIsBalanceMode);
+        if (mIsBalanceMode) {
+            mTitleView.setRightText("管理");
+            mBalanceBar.setBalanceMode();
+        } else {
+            mTitleView.setRightText(getString(R.string.cancel));
+            mBalanceBar.setDeleteMode();
+        }
     }
 
     private void initBottomBar() {
@@ -181,8 +211,8 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
             }
 
             @Override
-            public void onNumberChanged(int count) {
-
+            public void onNumberChanged(String recId, int count) {
+                mPresenter.modifyGoodsCount(recId,count);
             }
         });
         mCartAdapter.setOnGoodsClickListener(new GoodsHolder.OnGoodsClickListener() {
@@ -228,11 +258,37 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
     }
 
     @Override
+    public void dropGoodsSucceed() {
+        ToastUtils.show("移除商品成功");
+        toggleCartMode();
+        mPresenter.cartList(true);
+    }
+
+    @Override
+    public void modifyCartBadgeCount(int count) {
+        mContentsManager.notifyContentUpdateSuccess(Constants.Event.UPDATE_CART_BADGE, count);
+    }
+
+    @Override
+    public void modifyCartGoodsCount() {
+        mPresenter.cartList(false);
+    }
+
+    @Override
     public void onConfirm(int mode) {
         if (mode == BalanceBar.BALANCE_MODE) {
             Router.startActivity(MainModule.Activity.BALANCE);
         } else if (mode == BalanceBar.DELETE_MODE) {
-            mCartAdapter.deleteGoods(mCartAdapter.getCheckedList());
+            List<CartListPojo.GoodsListBean.ListBean> deleteList = mCartAdapter.getCheckedList();
+            if (deleteList == null || deleteList.size() == 0) {
+                ToastUtils.show("请选择需移除的商品");
+                return;
+            }
+            if (deleteList.size() > 1) {
+                ToastUtils.show("当前一次仅支持移除一种商品");
+                return;
+            }
+            mPresenter.dropGoods(deleteList.get(0).getRec_id());
         }
     }
 

@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
-import com.linsr.common.biz.EventKey;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
@@ -57,8 +56,6 @@ public class RecommendGoodsFragment extends RefreshFragment
         mAdapter.setOnGoodsClickListener(new RecommendGoodsAdapter.OnGoodsClickListener() {
             @Override
             public void onAdd(int position) {
-                JLog.e(TAG, "on add position :" + position);
-                mContentsManager.notifyContentUpdateSuccess(EventKey.ADD_GOODS_CART);
             }
         });
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {

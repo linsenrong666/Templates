@@ -16,16 +16,22 @@ import java.util.List;
 public interface CartContact {
     interface View extends IView {
 
-        void loadCartList( List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> cartList);
+        void loadCartList(List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> cartList);
 
         void recommend4U(List<IsbestBean> list);
 
+        void dropGoodsSucceed();
+
+        void modifyCartBadgeCount(int count);
+
+        void modifyCartGoodsCount();
     }
 
     interface Presenter {
         void cartList(boolean showLoading);
 
-        void dropGoods();
+        void dropGoods(String recId);
 
+        void modifyGoodsCount(String recId, int number);
     }
 }

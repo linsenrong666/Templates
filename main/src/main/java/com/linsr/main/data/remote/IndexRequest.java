@@ -4,6 +4,7 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 
 import com.linsr.common.biz.ApplicationEx;
+import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.biz.config.UserInfoKey;
 import com.linsr.common.model.BizPojo;
 import com.linsr.common.model.ResponsePojo;
@@ -29,7 +30,7 @@ public class IndexRequest {
 
     public static void mainList(LifecycleOwner lifecycleOwner, NetObserver<HomePojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
-        String userId = PrefsUtils.getSharedString(ApplicationEx.getInstance(), UserInfoKey.USER_ID);
+        String userId = AppConfig.getInstance().getUserId();
         api.mainList(userId)
                 .compose(NetUtils.handleResponse(HomePojo.class))
                 .retryWhen(NetUtils.retry())

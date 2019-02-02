@@ -2,11 +2,11 @@ package com.linsr.main.adapters.cart;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Pair;
 import android.view.ViewGroup;
 
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.utils.DoubleUtils;
 import com.linsr.common.utils.JLog;
 import com.linsr.main.R;
 import com.linsr.main.model.CartListPojo;
@@ -27,11 +27,12 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
     public interface CartListener {
         void onDataChangeForBalance();
 
-        void onNumberChanged(int count);
+        void onNumberChanged(String recId,int count);
     }
 
     private CartListener mCartListener;
     private GoodsHolder.OnGoodsClickListener mOnGoodsClickListener;
+    private boolean mIsHideCartCountView;
 
     public void setCartListener(CartListener cartListener) {
         mCartListener = cartListener;
@@ -61,6 +62,15 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
         }
         return new ShopHolder(mContext, this, mCartListener, mInflater.inflate(R.layout.main_item_cart_shop,
                 parent, false));
+    }
+
+    public void setHideCartCountView(boolean isShowCartCountView) {
+        mIsHideCartCountView = isShowCartCountView;
+        notifyDataSetChanged();
+    }
+
+    public boolean isHideCartCountView() {
+        return mIsHideCartCountView;
     }
 
     @Override
@@ -130,8 +140,8 @@ public class CartAdapter extends BaseRecyclerAdapter<TreePojo<CartShopPojo,
                     count++;
                     try {
                         number = number + Integer.parseInt(cartGoodsPojo.getGoods_number());
-                        total = total +
-                                (Double.parseDouble(cartGoodsPojo.getGoods_price()) * number);
+                        total = DoubleUtils.add(total, DoubleUtils.mul(cartGoodsPojo.getGoods_price(),
+                                cartGoodsPojo.getGoods_number()));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

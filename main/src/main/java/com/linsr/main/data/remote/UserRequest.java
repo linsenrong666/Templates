@@ -3,6 +3,7 @@ package com.linsr.main.data.remote;
 import android.arch.lifecycle.LifecycleOwner;
 
 import com.linsr.common.biz.ApplicationEx;
+import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.biz.config.UserInfoKey;
 import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.Api;
@@ -25,7 +26,7 @@ public class UserRequest {
     public static void userCenter(LifecycleOwner lifecycleOwner,
                                   NetObserver<UserPojo> observer) {
         IndexApi userApi = Api.getService(IndexApi.class);
-        String userId = PrefsUtils.getSharedString(ApplicationEx.getInstance(), UserInfoKey.USER_ID);
+        String userId = AppConfig.getInstance().getUserId();
         userApi.userCenter(userId).compose(NetUtils.handleResponse(UserPojo.class))
                 .retryWhen(NetUtils.retry())
                 .as(NetUtils.<UserPojo>bindLifecycle(lifecycleOwner))

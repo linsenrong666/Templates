@@ -1,7 +1,12 @@
 package com.linsr.main.logic.presenter;
 
+import android.text.TextUtils;
+
 import com.linsr.common.biz.PresenterEx;
+import com.linsr.common.biz.config.AppConfig;
+import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.callback.NetObserver;
+import com.linsr.common.net.exception.ApiException;
 import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.data.remote.CartRequest;
 import com.linsr.main.logic.contacts.CartContact;
@@ -32,9 +37,14 @@ public class CartPresenter extends PresenterEx<CartContact.View> implements Cart
                             if (data.getRecommended() != null) {
                                 mView.recommend4U(data.getRecommended());
                             }
-                            List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> treePojos = convertCartListPojo(data);
+                            List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>>
+                                    treePojos = convertCartListPojo(data);
                             if (treePojos != null) {
                                 mView.loadCartList(treePojos);
+                            }
+                            if (data.getTotal() != null) {
+                                int count = data.getTotal().getTotal_number();
+                                mView.modifyCartBadgeCount(count);
                             }
                         }
                     }
@@ -47,8 +57,45 @@ public class CartPresenter extends PresenterEx<CartContact.View> implements Cart
     }
 
     @Override
-    public void dropGoods() {
+    public void dropGoods(String rec_id) {
+        String userId = AppConfig.getInstance().getUserId();
+        CartRequest.dropCartGoods(getLifecycleOwner(), rec_id, userId,
+                new NetObserver<BizPojo>(mView, true, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        if (data != null) {
+                            mView.dropGoodsSucceed();
+                        } else {
+                            onFailed(new ApiException(""));
+                        }
+                    }
 
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void modifyGoodsCount(String recId, int number) {
+        if (TextUtils.isEmpty(recId) || number <= 0) {
+            return;
+        }
+        CartRequest.modifyCartNumber(getLifecycleOwner(), recId, number,
+                new NetObserver<BizPojo>(mView, true, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        if (data != null) {
+                            mView.modifyCartGoodsCount();
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
     }
 
     private List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> convertCartListPojo

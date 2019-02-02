@@ -38,6 +38,17 @@ public class CartRequest {
                 .subscribe(observer);
     }
 
+    public static void dropCartGoods(LifecycleOwner lifecycleOwner,
+                                     String rec_id, String userId,
+                                     NetObserver<BizPojo> observer) {
+        IndexApi api = Api.getService(IndexApi.class);
+        api.dropGoods(rec_id, userId).compose(NetUtils.handleResponse(BizPojo.class))
+                .retryWhen(NetUtils.retry())
+                .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
+                .subscribe(observer);
+    }
+
+
     public static void modifyCartNumber(LifecycleOwner lifecycleOwner,
                                         String recId, int number,
                                         NetObserver<BizPojo> observer) {
@@ -79,4 +90,6 @@ public class CartRequest {
                 .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
                 .subscribe(observer);
     }
+
+
 }

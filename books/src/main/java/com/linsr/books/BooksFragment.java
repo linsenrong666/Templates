@@ -8,16 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.linsr.common.base.BaseFragment;
 import com.linsr.common.biz.ApplicationEx;
-import com.linsr.common.biz.EventKey;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.router.url.BookModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.contents.AbstractOnContentUpdateListener;
 
+import java.lang.invoke.ConstantCallSite;
 import java.util.List;
 
 /**
@@ -37,23 +35,6 @@ public class BooksFragment extends FragmentEx {
 
     @Override
     protected void initArguments(Bundle arguments) {
-        aa = arguments.getString("aa");
-        registerOnContentUpdateListener(new AbstractOnContentUpdateListener() {
-            @Override
-            public void onContentUpdated(List<Object[]> values) {
-                JLog.e("fragment+++++++++++++++++++++++:" + aa);
-            }
-
-            @Override
-            public boolean isActive() {
-                return mIsVisible;
-            }
-
-            @Override
-            public String getKey() {
-                return EventKey.ADD_GOODS_CART;
-            }
-        });
     }
 
     @Override

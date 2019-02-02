@@ -33,4 +33,9 @@ public interface Constants {
         int WAIT_COMMENT = 4;
     }
 
+    interface Event {
+        String UPDATE_CART_LIST = "update_cart_list";
+        String UPDATE_CART_BADGE = "update_cart_badge";
+    }
+
 }
