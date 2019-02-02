@@ -20,7 +20,9 @@
         android:id="@+id/widgets_product_details_collect_tv"
         android:layout_width="54dp"
         android:layout_height="match_parent"
+        android:drawableTop="@mipmap/ic_star_zero"
         android:gravity="center"
+        android:paddingTop="@dimen/tiny"
         android:text="收藏"/>
 
     <TextView
@@ -30,7 +32,7 @@
         android:drawableTop="@mipmap/ic_bot_cart_n"
         android:gravity="center"
         android:paddingTop="@dimen/tiny"
-        android:text="购物车"/>
+        android:text="@string/main_cart"/>
 
     <TextView
         android:id="@+id/widgets_product_details_add_cart_tv"
@@ -44,6 +46,7 @@
         android:textSize="@dimen/font_middle"/>
 
     <TextView
+        android:id="@+id/widgets_product_details_add_buy_tv"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

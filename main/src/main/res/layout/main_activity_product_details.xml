@@ -32,38 +32,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/mini">
 
                 <TextView
                     android:id="@+id/product_details_price_tv"
-                    style="@style/TextView.MainColor"
-                    android:padding="@dimen/middle"
-                    android:textSize="@dimen/font_large"
-                    android:textStyle="bold"
-                    tools:text="$999"/>
-
-                <TextView
-                    android:id="@+id/product_details_original_price_tv"
-                    style="@style/TextView"
-                    android:textSize="@dimen/font_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_huge"
                     tools:text="$999"/>
 
                 <TextView
                     android:id="@+id/product_details_integral_tv"
                     style="@style/TextView.MainColor"
                     android:layout_marginLeft="@dimen/middle"
-                    android:background="@color/white"
-                    android:padding="@dimen/middle"
-                    android:textSize="@dimen/font_large"
+                    android:textSize="@dimen/font_middle"
                     tools:text="$999"/>
 
                 <TextView
                     android:id="@+id/product_details_brokerage_tv"
                     style="@style/TextView.MainColor"
                     android:layout_marginLeft="@dimen/middle"
-                    android:background="@color/white"
-                    android:padding="@dimen/middle"
-                    android:textSize="@dimen/font_large"
+                    android:textSize="@dimen/font_middle"
                     tools:text="$999"/>
             </LinearLayout>
 
@@ -135,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/middle"
+                android:visibility="gone"
                 android:background="@color/white"
                 app:common_content_image="@mipmap/ic_arrow_right"
                 app:common_content_text="测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"

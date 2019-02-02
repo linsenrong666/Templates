@@ -16,10 +16,14 @@ import android.widget.TextView;
 
 import com.linsr.common.gui.widgets.CartCountView;
 import com.linsr.common.utils.ImageUtils;
+import com.linsr.common.utils.ObjectUtils;
 import com.linsr.common.utils.ViewUtils;
 import com.linsr.main.R;
 import com.linsr.main.model.ProductDetailsPojo;
 import com.linsr.main.utils.PriceUtils;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Description
@@ -33,11 +37,14 @@ public class AddCartDialog extends DialogFragment {
     }
 
     private ProductDetailsPojo.GoodsBean mGoodsBean;
+    private List mSpec;
 
-    public static AddCartDialog newInstance(ProductDetailsPojo.GoodsBean goodsBean) {
+    public static AddCartDialog newInstance(ProductDetailsPojo.GoodsBean goodsBean,
+                                            List spec) {
 
         Bundle args = new Bundle();
         args.putSerializable("data", goodsBean);
+        args.putSerializable("spec", (Serializable) spec);
 
         AddCartDialog fragment = new AddCartDialog();
         fragment.setArguments(args);
@@ -53,15 +60,9 @@ public class AddCartDialog extends DialogFragment {
     private TextView mMarketPriceTextView;
     private ViewGroup mSpecLayout;
 
-
-    private ImageView mProfileImageView;
     private Context mContext;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext = context;
-    }
+    private ImageView mProfileImageView;
 
     public void setOnAddCartClickListener(OnAddCartClickListener onAddCartClickListener) {
         mOnAddCartClickListener = onAddCartClickListener;
@@ -74,9 +75,11 @@ public class AddCartDialog extends DialogFragment {
         if (dialog != null) {
             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            mContext = dialog.getContext();
         }
         if (getArguments() != null) {
             mGoodsBean = (ProductDetailsPojo.GoodsBean) getArguments().getSerializable("data");
+            mSpec = (List) getArguments().getSerializable("spec");
         }
         View view = inflater.inflate(R.layout.main_dialog_add_cart, container, false);
         view.setOnClickListener(new View.OnClickListener() {
@@ -119,11 +122,21 @@ public class AddCartDialog extends DialogFragment {
                 }
             }
         });
-        setInfo();
+        setGoodsInfo();
+        setSpec();
         return view;
     }
 
-    public void setInfo() {
+    private void setSpec() {
+        if (ObjectUtils.isNull(mSpec)) {
+            mSpecLayout.setVisibility(View.GONE);
+        }else{
+            mSpecLayout.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+    public void setGoodsInfo() {
         if (mGoodsBean == null) {
             return;
         }
@@ -132,8 +145,6 @@ public class AddCartDialog extends DialogFragment {
         ViewUtils.setText(mMarketPriceTextView, PriceUtils.format(mGoodsBean.getMarket_price()));
         ViewUtils.strikethrough(mMarketPriceTextView);
         ImageUtils.load(mContext, mGoodsBean.getGoods_thumb(), mProfileImageView);
-
-
     }
 
 

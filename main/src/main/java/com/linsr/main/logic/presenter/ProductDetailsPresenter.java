@@ -36,6 +36,7 @@ public class ProductDetailsPresenter extends PresenterEx<ProductDetailsContact.V
                         }
                         mView.loadGoodsInfo(data.getGoods());
                         mView.loadPictures(data.getPictures());
+                        mView.loadSpec(data.getSpecification());
                     }
 
                     @Override
@@ -68,7 +69,25 @@ public class ProductDetailsPresenter extends PresenterEx<ProductDetailsContact.V
                 new NetObserver<BizPojo>(mView, true, true) {
                     @Override
                     public void onSucceed(BizPojo data) {
-                        ToastUtils.show("收藏成功");
+                        ToastUtils.show(data.getMessage());
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void buy(String[] spec, int specCount, String goodsId, int number) {
+        CartRequest.addToCart(getLifecycleOwner(), spec, specCount, goodsId, number,
+                new NetObserver<BizPojo>(mView, true, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        if (data != null) {
+                            mView.onBuySuccess();
+                        }
                     }
 
                     @Override

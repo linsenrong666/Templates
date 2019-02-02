@@ -17,6 +17,7 @@ public class MainModule {
         interface MainParams {
             String SELECT_PAGE = "select_page";
             int HOME_PAGE = 0;
+            int CART_PAGE = 3;
         }
 
         String SCAN_CODE = ACTIVITY + "scanCode";

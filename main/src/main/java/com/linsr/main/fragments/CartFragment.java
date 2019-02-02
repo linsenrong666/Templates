@@ -70,7 +70,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
 
     @Override
     protected void loadData() {
-        mPresenter.cartList(true);
+
     }
 
     @Override
@@ -81,6 +81,8 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         initRefreshLayout();
         initBottomBar();
         register();
+
+        mPresenter.cartList(true);
     }
 
     private void register() {
@@ -212,7 +214,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
 
             @Override
             public void onNumberChanged(String recId, int count) {
-                mPresenter.modifyGoodsCount(recId,count);
+                mPresenter.modifyGoodsCount(recId, count);
             }
         });
         mCartAdapter.setOnGoodsClickListener(new GoodsHolder.OnGoodsClickListener() {
@@ -276,10 +278,15 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
 
     @Override
     public void onConfirm(int mode) {
+        List<CartListPojo.GoodsListBean.ListBean> deleteList = mCartAdapter.getCheckedList();
         if (mode == BalanceBar.BALANCE_MODE) {
+            if (deleteList == null || deleteList.size() == 0) {
+                ToastUtils.show("请选择需结算的商品");
+                return;
+            }
             Router.startActivity(MainModule.Activity.BALANCE);
         } else if (mode == BalanceBar.DELETE_MODE) {
-            List<CartListPojo.GoodsListBean.ListBean> deleteList = mCartAdapter.getCheckedList();
+
             if (deleteList == null || deleteList.size() == 0) {
                 ToastUtils.show("请选择需移除的商品");
                 return;

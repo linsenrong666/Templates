@@ -45,6 +45,9 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
                 case HOME_PAGE:
                     toHomePage();
                     break;
+                case CART_PAGE:
+                    toCartPage();
+                    break;
             }
         }
     }
@@ -159,6 +162,12 @@ public class MainActivity extends ActivityEx implements ViewPager.OnPageChangeLi
     public void toHomePage() {
         if (mBottomNavigationView != null) {
             mBottomNavigationView.setSelectedItemId(R.id.item_home);
+        }
+    }
+
+    private void toCartPage() {
+        if (mBottomNavigationView != null) {
+            mBottomNavigationView.setSelectedItemId(R.id.item_cart);
         }
     }
 

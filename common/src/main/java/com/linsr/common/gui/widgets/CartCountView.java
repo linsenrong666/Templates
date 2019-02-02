@@ -35,7 +35,8 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
     private int mMinCount = 1;
     private int mCount = mMinCount;
     private int mMaxCount = Integer.MAX_VALUE;
-    private boolean mIsLocalChange = false;
+    private boolean mEnableLocalChange = false;
+
     private OnCountChangedListener mOnCountChangedListener;
 
     public void setOnCountChangedListener(OnCountChangedListener onCountChangedListener) {
@@ -94,6 +95,10 @@ public class CartCountView extends LinearLayout implements View.OnClickListener 
             onDown();
         } else if (i == R.id.cart_count_up_btn) {
             onUp();
+        }
+        if (mEnableLocalChange) {
+            mResultTextView.setText(String.valueOf(mCount));
+            check();
         }
     }
 

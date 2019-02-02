@@ -22,6 +22,7 @@ import com.linsr.main.R;
 import com.linsr.main.adapters.GoodsBannerAdapter;
 import com.linsr.main.app.Constants;
 import com.linsr.main.dialogs.AddCartDialog;
+import com.linsr.main.logic.UIHelper;
 import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.logic.presenter.ProductDetailsPresenter;
 import com.linsr.main.model.ProductDetailsPojo;
@@ -31,6 +32,9 @@ import com.linsr.main.widgets.ProductDetailsBottomBar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.linsr.common.router.url.MainModule.Activity.MainParams.CART_PAGE;
+import static com.linsr.common.router.url.MainModule.Activity.MainParams.HOME_PAGE;
 
 /**
  * 商品详情页
@@ -47,7 +51,6 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     private TextView mGoodsNameTextView;
     private TextView mGoodsDescTextView;
     private TextView mPriceTextView;
-    private TextView mOriginalPriceTextView;
     private TextView mIntegralPriceTextView;
     private TextView mBrokeragePriceTextView;
     private ProductDetailsBottomBar mBottomBar;
@@ -56,6 +59,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
 
     private String mGoodsId;
     private ProductDetailsPojo.GoodsBean mGoodsBean;
+    private List mSpec;
 
     @Override
     protected void init(Intent intent) {
@@ -94,16 +98,14 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mBottomBar.setOnShopClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Params params = new Params();
-                params.add(MainModule.Activity.MainParams.SELECT_PAGE, 0);
-                Router.startActivity(MainModule.Activity.MAIN, params);
+                UIHelper.toMainActivity(HOME_PAGE);
             }
         });
         mBottomBar.setAddCartClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mAddCartDialog == null) {
-                    mAddCartDialog = AddCartDialog.newInstance(mGoodsBean);
+                    mAddCartDialog = AddCartDialog.newInstance(mGoodsBean, mSpec);
                     mAddCartDialog.setOnAddCartClickListener(new AddCartDialog.OnAddCartClickListener() {
                         @Override
                         public void onConfirm(int number) {
@@ -112,6 +114,18 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
                     });
                 }
                 DialogFactory.getInstance().showDialog(getFragmentManager(), "", mAddCartDialog);
+            }
+        });
+        mBottomBar.setOnBuyClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.buy(null, 0, mGoodsId, 1);
+            }
+        });
+        mBottomBar.setOnCartClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UIHelper.toMainActivity(CART_PAGE);
             }
         });
     }
@@ -139,7 +153,6 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mGoodsNameTextView = findViewById(R.id.product_details_goods_name_tv);
         mGoodsDescTextView = findViewById(R.id.product_details_goods_desc_tv);
         mPriceTextView = findViewById(R.id.product_details_price_tv);
-        mOriginalPriceTextView = findViewById(R.id.product_details_original_price_tv);
         mIntegralPriceTextView = findViewById(R.id.product_details_integral_tv);
         mBrokeragePriceTextView = findViewById(R.id.product_details_brokerage_tv);
         mBottomBar = findViewById(R.id.product_details_bottom_bar);
@@ -155,9 +168,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
 
         mGoodsNameTextView.setText(pojo.getGoods_name());
         mGoodsDescTextView.setText(pojo.getGoods_desc_bubaohan());
-        ViewUtils.setText(mPriceTextView, PriceUtils.format(pojo.getShop_price()));
-        ViewUtils.setText(mOriginalPriceTextView, PriceUtils.format(pojo.getMarket_price()));
-        ViewUtils.strikethrough(mOriginalPriceTextView);
+        ViewUtils.setText(mPriceTextView, PriceUtils.origStyle(pojo.getShop_price(), pojo.getMarket_price()));
         ViewUtils.setText(mIntegralPriceTextView, "积分:" + pojo.getGive_integral());
         ViewUtils.setText(mBrokeragePriceTextView, "佣金:" + pojo.getGoods_integral());
     }
@@ -169,10 +180,21 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     }
 
     @Override
+    public void loadSpec(List spec) {
+        mSpec = spec;
+    }
+
+    @Override
     public void onAddCartSuccess() {
         ToastUtils.show("已加入购物车");
         DialogFactory.getInstance().dismissDialog(mAddCartDialog);
         mContentsManager.notifyContentUpdateSuccess(Constants.Event.UPDATE_CART_LIST);
+    }
+
+    @Override
+    public void onBuySuccess() {
+        mContentsManager.notifyContentUpdateSuccess(Constants.Event.UPDATE_CART_LIST);
+        UIHelper.toMainActivity(CART_PAGE);
     }
 
 }

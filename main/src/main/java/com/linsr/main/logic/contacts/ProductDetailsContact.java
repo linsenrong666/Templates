@@ -17,7 +17,10 @@ public interface ProductDetailsContact {
 
         void loadPictures(List<ProductDetailsPojo.PicturesBean> list);
 
+        void loadSpec(List spec);
+
         void onAddCartSuccess();
+        void onBuySuccess();
     }
 
     interface Presenter {
@@ -26,5 +29,7 @@ public interface ProductDetailsContact {
         void addCart(String[] spec, int specCount, String goodsId, int number);
 
         void collect(String goodId);
+
+        void buy(String[] spec, int specCount, String goodId, int number);
     }
 }

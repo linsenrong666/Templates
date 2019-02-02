@@ -26,6 +26,8 @@ public class ProductDetailsBottomBar extends FrameLayout {
     private TextView mAddCartTextView;
     private TextView mShopTextView;
     private TextView mCollectTextView;
+    private TextView mCartTextView;
+    private TextView mBuyTextView;
 
     public ProductDetailsBottomBar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -34,6 +36,8 @@ public class ProductDetailsBottomBar extends FrameLayout {
         mAddCartTextView = view.findViewById(R.id.widgets_product_details_add_cart_tv);
         mShopTextView = view.findViewById(R.id.widgets_product_details_shop_tv);
         mCollectTextView = view.findViewById(R.id.widgets_product_details_collect_tv);
+        mBuyTextView = view.findViewById(R.id.widgets_product_details_add_buy_tv);
+        mCartTextView = view.findViewById(R.id.widgets_product_details_cart_tv);
         addView(view);
     }
 
@@ -47,6 +51,14 @@ public class ProductDetailsBottomBar extends FrameLayout {
 
     public void setOnCollectClick(OnClickListener listener) {
         mCollectTextView.setOnClickListener(listener);
+    }
+
+    public void setOnBuyClick(OnClickListener listener) {
+        mBuyTextView.setOnClickListener(listener);
+    }
+
+    public void setOnCartClick(OnClickListener listener) {
+        mCartTextView.setOnClickListener(listener);
     }
 
     public ProductDetailsBottomBar(@NonNull Context context) {
