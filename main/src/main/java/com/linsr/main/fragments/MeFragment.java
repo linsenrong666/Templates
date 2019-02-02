@@ -6,8 +6,10 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.AppLife;
+import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.biz.FragmentEx;
 import com.linsr.common.biz.config.AppConfig;
+import com.linsr.common.gui.widgets.TitleView;
 import com.linsr.common.gui.widgets.common_label_container;
 import com.linsr.common.router.Flags;
 import com.linsr.common.router.Params;
@@ -113,6 +115,16 @@ public class MeFragment extends FragmentEx<MePresenter> implements MainModule.Ac
                 mPresenter.logout();
             }
         });
+    }
+
+    @Override
+    protected void onVisible() {
+        super.onVisible();
+        if (mActivity instanceof ActivityEx) {
+            TitleView mTitleView = ((ActivityEx) mActivity).getTitleView();
+            mTitleView.setRightText("");
+            mTitleView.setOnRightClickListener(null);
+        }
     }
 
     @Override

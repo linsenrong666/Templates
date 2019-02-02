@@ -8,13 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.linsr.common.gui.dialogs.DialogFactory;
-import com.linsr.common.gui.widgets.CartCountView;
 import com.linsr.main.R;
-import com.linsr.main.dialogs.AddCartDialog;
 
 /**
  * Description

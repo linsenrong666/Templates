@@ -115,7 +115,13 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
             return;
         }
         if (show) {
-            mTitleView.setRightText("管理");
+            if (mIsBalanceMode) {
+                mTitleView.setRightText("管理");
+                mBalanceBar.setBalanceMode();
+            } else {
+                mTitleView.setRightText(getString(R.string.cancel));
+                mBalanceBar.setDeleteMode();
+            }
             mTitleView.setOnRightClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -161,6 +167,16 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         mBalanceBar = findViewById(R.id.cart_bottom_layout);
         mCartRecyclerView = findViewById(R.id.cart_recycler_view);
         mCartRecyclerView.setNestedScrollingEnabled(false);
+    }
+
+    @Override
+    protected void onVisible() {
+        super.onVisible();
+        if (mCartAdapter == null || mCartAdapter.getItemCount() == 0) {
+            setTitleStatus(false);
+        } else {
+            setTitleStatus(true);
+        }
     }
 
     private void initRecommend() {
@@ -235,7 +251,6 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         @Override
         public void onChanged() {
             JLog.i("数据变了");
-            setTitleStatus(mCartAdapter.getItemCount() != 0);
             if (mCartAdapter.getItemCount() == 0) {
                 mBalanceBar.setVisibility(View.GONE);
             } else {
