@@ -132,6 +132,7 @@ public class HomePojo extends BizPojo {
                  */
 
                 private String id;
+                private String parent_id;
                 private String cat_desc;
                 private String cat_name;
                 private String cat_img;

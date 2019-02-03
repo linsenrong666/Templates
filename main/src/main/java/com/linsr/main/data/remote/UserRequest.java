@@ -69,7 +69,6 @@ public class UserRequest {
         userApi.editAddress(pojo.getAddress_id(), pojo.getConsignee(), pojo.getMobile(),
                 pojo.getAddress(), pojo.getZipcode(), pojo.getIs_default(), pojo.getProvince_str(),
                 pojo.getCity_str(), pojo.getDistrict_str(), pojo.getUser_id())
-
                 .compose(NetUtils.handleResponse(BizPojo.class))
                 .retryWhen(NetUtils.retry())
                 .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))

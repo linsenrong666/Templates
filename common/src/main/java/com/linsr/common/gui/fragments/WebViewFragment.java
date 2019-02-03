@@ -48,4 +48,5 @@ public class WebViewFragment extends FragmentEx implements CommonModule.Fragment
             mWebView.loadUrl(mUrl);
         }
     }
+
 }

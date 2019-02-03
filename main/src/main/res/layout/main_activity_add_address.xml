@@ -25,26 +25,15 @@
         <com.linsr.common.gui.widgets.common_label_container
             android:id="@+id/new_address_phone"
             style="@style/main_new_address_label"
-            app:common_hint_text="@string/confirm"
             app:common_label_text="@string/main_address_user_phone"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.linsr.common.gui.widgets.common_label_container
-                android:layout_width="80dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="@dimen/small"
-                android:layout_marginRight="@dimen/small"
-                app:common_label_text="@string/main_address_area"/>
-
-            <!--<com.mic.adressselectorlib.AddressSelector-->
-                <!--android:id="@+id/new_address_selector"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"/>-->
-
-        </LinearLayout>
+        <com.linsr.common.gui.widgets.common_label_container
+            android:id="@+id/new_address_content"
+            style="@style/main_new_address_label"
+            app:common_content_text=""
+            app:common_content_text_color="@color/text_primary_black"
+            app:common_label_text="@string/main_address_area"
+            app:common_show_edit_text="false"/>
 
 
         <com.linsr.common.gui.widgets.common_label_container

@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
-import com.linsr.common.model.ResponsePojo;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.net.exception.ApiException;
 import com.linsr.common.router.Params;
@@ -16,7 +16,7 @@ import com.linsr.common.router.Router;
 import com.linsr.common.router.url.MainModule;
 import com.linsr.main.R;
 import com.linsr.main.data.remote.IndexRequest;
-import com.linsr.main.model.CategoryMenuPojo;
+import com.linsr.main.logic.UIHelper;
 import com.linsr.main.model.ChildCategoryPojo;
 import com.linsr.main.widgets.MainSearchTitleLayout;
 
@@ -79,10 +79,21 @@ public class ChildCategoryActivity extends ActivityEx implements
 
             @Override
             public void onRightImageClick() {
-
+                UIHelper.toCartPage();
             }
         });
-        requestData();
+        if (mCurrentPosition == -1) {
+            initOnlyOnePage();
+        } else {
+            requestData();
+        }
+    }
+
+    private void initOnlyOnePage() {
+        List<ChildCategoryPojo.CatListBean> cat_list = new ArrayList<>(1);
+        mTabLayout.setVisibility(View.GONE);
+        cat_list.add(new ChildCategoryPojo.CatListBean(mSid));
+        initFragment(cat_list);
     }
 
     @Override
@@ -100,7 +111,7 @@ public class ChildCategoryActivity extends ActivityEx implements
                             return;
                         }
                         List<ChildCategoryPojo.CatListBean> cat_list = data.getCat_list();
-                        onSuccess(cat_list);
+                        initFragment(cat_list);
                     }
 
                     @Override
@@ -110,7 +121,7 @@ public class ChildCategoryActivity extends ActivityEx implements
                 });
     }
 
-    private void onSuccess(List<ChildCategoryPojo.CatListBean> catListBeans) {
+    private void initFragment(List<ChildCategoryPojo.CatListBean> catListBeans) {
         List<String> titles = new ArrayList<>();
         List<Fragment> list = new ArrayList<>();
         for (ChildCategoryPojo.CatListBean pojo : catListBeans) {
@@ -129,7 +140,7 @@ public class ChildCategoryActivity extends ActivityEx implements
             mViewPager.setOffscreenPageLimit(MAX_CACHE_FRAGMENT_COUNT);
         }
 
-        if (mCurrentPosition <= catListBeans.size()) {
+        if (mCurrentPosition <= catListBeans.size() && mCurrentPosition > 0) {
             mViewPager.setCurrentItem(mCurrentPosition);
         }
         mTabLayout.setupWithViewPager(mViewPager);

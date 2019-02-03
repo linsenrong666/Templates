@@ -51,6 +51,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         , BalanceBar.OnCartBottomBarListener {
 
     private RecyclerView mCartRecyclerView;
+    private RecyclerView mRecommendRecyclerView;
     private CartAdapter mCartAdapter;
     private RecommendAdapter mRecommendAdapter;
     private BalanceBar mBalanceBar;
@@ -80,6 +81,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
         initCartAdapter();
         initRefreshLayout();
         initBottomBar();
+        initRecommend();
         register();
 
         mPresenter.cartList(true);
@@ -172,6 +174,16 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
     @Override
     protected void onVisible() {
         super.onVisible();
+        setTitleStatusIfNeeded();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setTitleStatusIfNeeded();
+    }
+
+    private void setTitleStatusIfNeeded() {
         if (mCartAdapter == null || mCartAdapter.getItemCount() == 0) {
             setTitleStatus(false);
         } else {
@@ -180,11 +192,7 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
     }
 
     private void initRecommend() {
-        if (mRecommendAdapter != null) {
-            return;
-        }
-        RecyclerView mRecommendRecyclerView = findViewById(R.id.recommend_recycler_view);
-        mRecommendRecyclerView.setVisibility(View.VISIBLE);
+        mRecommendRecyclerView = findViewById(R.id.recommend_recycler_view);
         mRecommendRecyclerView.setNestedScrollingEnabled(false);
         mRecommendAdapter = new RecommendAdapter(mContext);
         mRecommendAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {
@@ -250,27 +258,31 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
     private RecyclerView.AdapterDataObserver mAdapterDataObserver = new RecyclerView.AdapterDataObserver() {
         @Override
         public void onChanged() {
-            JLog.i("数据变了");
             if (mCartAdapter.getItemCount() == 0) {
                 mBalanceBar.setVisibility(View.GONE);
             } else {
                 mBalanceBar.setVisibility(View.VISIBLE);
             }
+            setTitleStatusIfNeeded();
         }
     };
 
     @Override
     public void loadCartList(List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>> cartList) {
+        mBalanceBar.resetBalance();
         mRefreshLayout.finishRefresh();
         mCartAdapter.clear();
         mCartAdapter.addData(cartList);
-        mBalanceBar.resetBalance();
     }
 
     @Override
     public void recommend4U(List<IsbestBean> list) {
-        initRecommend();
+        if (list.size() == 0) {
+            mRecommendRecyclerView.setVisibility(View.GONE);
+            return;
+        }
         mRecommendAdapter.clear();
+        mRecommendRecyclerView.setVisibility(View.VISIBLE);
         mRecommendAdapter.addData(list);
     }
 

@@ -71,19 +71,19 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        JLog.d(TAG, "Fragment onCreate.called, this: " + getClass().getName());
+        JLog.v(TAG, "Fragment onCreate.called, this: " + getClass().getName());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        JLog.d(TAG, "Fragment onResume.called , this: " + getClass().getName());
+        JLog.v(TAG, "Fragment onResume.called , this: " + getClass().getName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        JLog.d(TAG, "Fragment onPause.called , this: " + getClass().getName());
+        JLog.v(TAG, "Fragment onPause.called , this: " + getClass().getName());
     }
 
     @Nullable
@@ -165,8 +165,8 @@ public abstract class BaseFragment extends Fragment {
      * 页面可见
      */
     protected void onVisible() {
-        JLog.d(TAG, "Fragment onVisible " + getClass().getName());
-        JLog.d(TAG, "mOnContentUpdateListeners.size: " + mOnContentUpdateListeners.size());
+        JLog.v(TAG, "Fragment onVisible " + getClass().getName());
+        JLog.v(TAG, "mOnContentUpdateListeners.size: " + mOnContentUpdateListeners.size());
         for (AbstractOnContentUpdateListener listener : mOnContentUpdateListeners) {
             if (listener.isUpdateHappened()) {
                 listener.onContentUpdated(listener.getCachedObjects());
@@ -179,7 +179,7 @@ public abstract class BaseFragment extends Fragment {
      * 页面隐藏
      */
     protected void onInvisible() {
-        JLog.d(TAG, "Fragment onInvisible " + getClass().getName());
+        JLog.v(TAG, "Fragment onInvisible " + getClass().getName());
     }
 
     @Override

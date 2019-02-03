@@ -30,7 +30,7 @@ public class ShopWindowHolder extends BaseViewHolder<HomePojo.HomeListBean> {
     public interface OnShopWindowItemClickListener {
         void onItemClick(HomePojo.HomeListBean.YimaStreeDataBean.GsBean data);
 
-        void onBackgroundClick();
+        void onBackgroundClick(String fid, String sid);
     }
 
     private ImageView mBackgroundImageView;
@@ -66,14 +66,14 @@ public class ShopWindowHolder extends BaseViewHolder<HomePojo.HomeListBean> {
     public void convert(int position, HomePojo.HomeListBean data, int itemType) {
         showTitleIfNeed(position);
         if (data.getYimaStreeData() != null) {
-            HomePojo.HomeListBean.YimaStreeDataBean.CatBean cat = data.getYimaStreeData().getCat();
+            final HomePojo.HomeListBean.YimaStreeDataBean.CatBean cat = data.getYimaStreeData().getCat();
             ImageUtils.load(mContext, cat.getCat_img(), mBackgroundImageView);
 
             mBackgroundImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mOnShopWindowItemClickListener != null) {
-                        mOnShopWindowItemClickListener.onBackgroundClick();
+                        mOnShopWindowItemClickListener.onBackgroundClick(cat.getParent_id(), cat.getId());
                     }
                 }
             });

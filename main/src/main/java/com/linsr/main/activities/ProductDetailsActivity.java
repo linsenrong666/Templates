@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.linsr.common.router.url.MainModule.Activity.MainParams.CART_PAGE;
 import static com.linsr.common.router.url.MainModule.Activity.MainParams.HOME_PAGE;
 
 /**
@@ -125,7 +124,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mBottomBar.setOnCartClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIHelper.toMainActivity(CART_PAGE);
+                UIHelper.toCartPage();
             }
         });
     }
@@ -194,7 +193,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     @Override
     public void onBuySuccess() {
         mContentsManager.notifyContentUpdateSuccess(Constants.Event.UPDATE_CART_LIST);
-        UIHelper.toMainActivity(CART_PAGE);
+        UIHelper.toCartPage();
     }
 
 }

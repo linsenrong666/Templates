@@ -25,6 +25,7 @@ import com.linsr.main.adapters.HomeAdapter;
 import com.linsr.main.adapters.RecommendAdapter;
 import com.linsr.main.adapters.holder.RecommendADHolder;
 import com.linsr.main.adapters.holder.ShopWindowHolder;
+import com.linsr.main.logic.UIHelper;
 import com.linsr.main.logic.contacts.HomeContact;
 import com.linsr.main.logic.presenter.HomePresenter;
 import com.linsr.main.model.HomePojo;
@@ -50,8 +51,6 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     private RecyclerView mRecyclerView;
     private HeaderAndFooterWrapper mWrapper;
     private HomeAdapter mAdapter;
-    private ImageView mLeftImage;
-    private MainSearchTitleLayout mSearchTitleLayout;
     private RecommendAdapter mFootAdapter;
 
     private TextView mShopNameTextView;
@@ -109,8 +108,8 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
     }
 
     private void findView() {
-        mSearchTitleLayout = findViewById(R.id.home_search_title);
-        mLeftImage = findViewById(R.id.layout_search_left_img);
+        MainSearchTitleLayout mSearchTitleLayout = findViewById(R.id.home_search_title);
+         ImageView mLeftImage = findViewById(R.id.layout_search_left_img);
         mLeftImage.setImageResource(R.mipmap.ic_logo_1);
         mRefreshLayout = findViewById(R.id.home_refresh_layout);
         mRecyclerView = findViewById(R.id.home_recycler_view);
@@ -152,12 +151,12 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
         mAdapter.setOnShopWindowItemClickListener(new ShopWindowHolder.OnShopWindowItemClickListener() {
             @Override
             public void onItemClick(HomePojo.HomeListBean.YimaStreeDataBean.GsBean data) {
-                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS,
-                        ProductDetailsHelper.createParams(data.getGoods_id()));
+                ProductDetailsHelper.startActivity(data.getGoods_id());
             }
 
             @Override
-            public void onBackgroundClick() {
+            public void onBackgroundClick(String fid, String sid) {
+                UIHelper.toChildCategoryActivity(-1, fid, sid);
             }
         });
     }

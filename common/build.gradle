@@ -71,4 +71,5 @@ dependencies {
 
 //地址选择控件
 //    compile 'com.github.Blincheng:AddressSelector:v1.0.4'
+    compile  'com.github.ywp0919:AddressPickerLib:1.0.1'
 }

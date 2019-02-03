@@ -12,6 +12,7 @@ import com.linsr.main.data.remote.CartRequest;
 import com.linsr.main.logic.contacts.CartContact;
 import com.linsr.main.model.CartListPojo;
 import com.linsr.main.model.CartShopPojo;
+import com.linsr.main.model.bean.IsbestBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +35,26 @@ public class CartPresenter extends PresenterEx<CartContact.View> implements Cart
                     @Override
                     public void onSucceed(CartListPojo data) {
                         if (data != null) {
+
                             if (data.getRecommended() != null) {
                                 mView.recommend4U(data.getRecommended());
+                            } else {
+                                mView.recommend4U(new ArrayList<IsbestBean>(1));
                             }
+
                             List<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>>
                                     treePojos = convertCartListPojo(data);
                             if (treePojos != null) {
                                 mView.loadCartList(treePojos);
+                            } else {
+                                mView.loadCartList(new ArrayList<TreePojo<CartShopPojo, CartListPojo.GoodsListBean.ListBean>>(1));
                             }
+
                             if (data.getTotal() != null) {
                                 int count = data.getTotal().getTotal_number();
                                 mView.modifyCartBadgeCount(count);
+                            } else {
+                                mView.modifyCartBadgeCount(0);
                             }
                         }
                     }

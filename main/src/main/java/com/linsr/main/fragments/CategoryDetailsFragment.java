@@ -16,6 +16,7 @@ import com.linsr.common.utils.ImageUtils;
 import com.linsr.common.utils.RecyclerViewHelper;
 import com.linsr.main.R;
 import com.linsr.main.adapters.CategoryDetailsAdapter;
+import com.linsr.main.logic.UIHelper;
 import com.linsr.main.model.CategoryMenuPojo;
 
 import java.util.List;
@@ -63,11 +64,12 @@ public class CategoryDetailsFragment extends FragmentEx implements
                     public void onItemClick(BaseViewHolder<CategoryMenuPojo.CatListsBean.KidsBean> holder,
                                             int position, int itemType,
                                             CategoryMenuPojo.CatListsBean.KidsBean data) {
-                        Params params = new Params();
-                        params.add(ENTER_POSITION, position);
-                        params.add(FIRST_CATEGORY_ID, mCatListsBean.getCat_id());
-                        params.add(SECOND_CATEGORY_ID, data.getCat_id());
-                        Router.startActivity(MainModule.Activity.CHILD_CATEGORY, params);
+                        UIHelper.toChildCategoryActivity(position,data.getParent_id(),data.getCat_id());
+//                        Params params = new Params();
+//                        params.add(ENTER_POSITION, position);
+//                        params.add(FIRST_CATEGORY_ID, mCatListsBean.getCat_id());
+//                        params.add(SECOND_CATEGORY_ID, data.getCat_id());
+//                        Router.startActivity(MainModule.Activity.CHILD_CATEGORY, params);
                     }
                 });
     }

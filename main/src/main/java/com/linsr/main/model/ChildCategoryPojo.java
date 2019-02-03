@@ -34,5 +34,10 @@ public class ChildCategoryPojo extends BizPojo {
         private String cat_id;
         private String cat_name;
 
+        public CatListBean(){}
+
+        public CatListBean(String cat_id) {
+            this.cat_id = cat_id;
+        }
     }
 }
