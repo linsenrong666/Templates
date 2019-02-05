@@ -73,6 +73,11 @@ public class CollectActivity extends RefreshActivity {
                     public void onFailed(Throwable e) {
                         mPageIndex = PageLoadHelper.onFailure(mPageIndex, CollectActivity.this);
                     }
+
+                    @Override
+                    public void onCompleted() {
+                        PageLoadHelper.onCompleted(mRefreshLayout);
+                    }
                 });
     }
 }

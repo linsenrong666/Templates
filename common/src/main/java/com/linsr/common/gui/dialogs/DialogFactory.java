@@ -6,6 +6,8 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.support.transition.FragmentTransitionSupport;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.linsr.common.R;
 
@@ -70,9 +72,13 @@ public class DialogFactory {
     }
 
     public static class TransparentProgressDialog extends Dialog {
-        public TransparentProgressDialog(Context context) {
+        TransparentProgressDialog(Context context) {
             super(context);
-            getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            Window window = getWindow();
+            if (window != null) {
+                window.setBackgroundDrawableResource(android.R.color.transparent);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            }
             setContentView(R.layout.common_transparent_progress_dialog);
         }
     }

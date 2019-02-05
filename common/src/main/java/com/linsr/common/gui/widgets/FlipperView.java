@@ -21,6 +21,8 @@ import com.linsr.common.R;
 import com.linsr.common.utils.DisplayUtils;
 import com.linsr.common.utils.JLog;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Description
  *
@@ -39,33 +41,48 @@ public class FlipperView extends FrameLayout implements ViewPager.OnPageChangeLi
     private int mDotPadding;
     private int mDuration = 3000;
     private boolean mIsRunning;
-    private Handler mHandler = new Handler() {
+    private Handler mHandler;
+
+    private static class InnerHandler extends Handler {
+        private WeakReference<PagerAdapter> mPagerAdapter;
+        private WeakReference<ViewPager> mViewPager;
+        private int mDuration;
+
+        public InnerHandler(PagerAdapter pagerAdapter, ViewPager viewPager, int duration) {
+            mPagerAdapter = new WeakReference<>(pagerAdapter);
+            mViewPager = new WeakReference<>(viewPager);
+            mDuration = duration;
+        }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    if (mPagerAdapter == null || mViewPager == null) {
+                    if (check()) {
                         return;
                     }
-                    mViewPager.setCurrentItem(0);
+                    mViewPager.get().setCurrentItem(0);
                     break;
                 case 1:
-                    if (mPagerAdapter == null || mViewPager == null) {
+                    if (check()) {
                         return;
                     }
-                    int cur = mViewPager.getCurrentItem();
+                    int cur = mViewPager.get().getCurrentItem();
                     int page = cur + 1;
-                    if (page >= mPagerAdapter.getCount()) {
+                    if (page >= mPagerAdapter.get().getCount()) {
                         page = 0;
                     }
-                    mViewPager.setCurrentItem(page);
-                    mHandler.sendEmptyMessageDelayed(1, mDuration);
+                    mViewPager.get().setCurrentItem(page);
+                    sendEmptyMessageDelayed(1, mDuration);
                     break;
             }
         }
-    };
+
+        private boolean check() {
+            return mPagerAdapter.get() == null || mViewPager.get() == null;
+        }
+    }
 
     public FlipperView(@NonNull Context context) {
         this(context, null, 0);
@@ -152,7 +169,10 @@ public class FlipperView extends FrameLayout implements ViewPager.OnPageChangeLi
 
     }
 
-    public void start() {
+    public synchronized void start() {
+        if (mHandler == null) {
+            mHandler = new InnerHandler(mPagerAdapter, mViewPager, mDuration);
+        }
         if (!mIsRunning) {
             mHandler.sendEmptyMessageDelayed(1, mDuration);
             mIsRunning = true;

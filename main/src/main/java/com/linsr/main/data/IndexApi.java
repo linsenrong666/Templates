@@ -75,8 +75,9 @@ public interface IndexApi {
 
 
     //结算列表
+    @FormUrlEncoded
     @POST("api.php?c=cart&a=checkout")
-    Observable<ResponsePojo> settleList();
+    Observable<ResponsePojo> settleList(@Field("user_id")String userId);
 
     //结算
     @FormUrlEncoded

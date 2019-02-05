@@ -2,6 +2,7 @@ package com.linsr.main.data.remote;
 
 import android.arch.lifecycle.LifecycleOwner;
 
+import com.linsr.common.biz.config.AppConfig;
 import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.Api;
 import com.linsr.common.net.NetUtils;
@@ -73,7 +74,7 @@ public class CartRequest {
     public static void settleList(LifecycleOwner lifecycleOwner,
                                   NetObserver<BizPojo> observer) {
         IndexApi api = Api.getService(IndexApi.class);
-        api.settleList()
+        api.settleList(AppConfig.getInstance().getUserId())
                 .compose(NetUtils.handleResponse(BizPojo.class))
                 .retryWhen(NetUtils.retry())
                 .as(NetUtils.<BizPojo>bindLifecycle(lifecycleOwner))
