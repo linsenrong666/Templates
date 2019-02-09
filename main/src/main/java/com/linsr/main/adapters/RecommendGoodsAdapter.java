@@ -23,7 +23,7 @@ import com.linsr.main.model.bean.IsbestBean;
 public class RecommendGoodsAdapter extends BaseRecyclerAdapter<IsbestBean> {
 
     public interface OnGoodsClickListener {
-        void onAdd(int position);
+        void onAdd(String goodsId);
     }
 
     public RecommendGoodsAdapter(Context context) {
@@ -59,14 +59,14 @@ public class RecommendGoodsAdapter extends BaseRecyclerAdapter<IsbestBean> {
         }
 
         @Override
-        public void convert(final int position, IsbestBean data, int itemType) {
+        public void convert(final int position, final IsbestBean data, int itemType) {
             ViewUtils.setText(title, data.getGoods_name());
             ImageUtils.load(mContext, data.getGoods_img(), img);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mOnGoodsClickListener != null) {
-                        mOnGoodsClickListener.onAdd(position);
+                        mOnGoodsClickListener.onAdd(data.getGoods_id());
                     }
                 }
             });

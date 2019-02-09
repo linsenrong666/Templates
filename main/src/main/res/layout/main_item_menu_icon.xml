@@ -3,10 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:drawablePadding="@dimen/tiny"
-    android:drawableTop="@mipmap/ic_launcher_round"
+    android:drawableTop="@mipmap/ic_index_1"
     android:padding="@dimen/small"
     android:gravity="center"
-    android:text="@string/main_me_center"
+    tools:text="@string/main_me_center"
     android:textColor="@color/text_primary"
     android:textSize="@dimen/font_small"/>

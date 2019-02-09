@@ -36,7 +36,7 @@ public class NewAddressActivity extends ActivityEx implements MainModule.Activit
     protected void init(Intent intent) {
         super.init(intent);
         if (intent != null) {
-            mAddressId = intent.getStringExtra(ACT_ADDRESSI_ID);
+            mAddressId = intent.getStringExtra(ACT_ADDRESS_ID);
         }
     }
 

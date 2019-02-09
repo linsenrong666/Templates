@@ -109,7 +109,7 @@ public class HomeFragment extends FragmentEx<HomePresenter> implements
 
     private void findView() {
         MainSearchTitleLayout mSearchTitleLayout = findViewById(R.id.home_search_title);
-         ImageView mLeftImage = findViewById(R.id.layout_search_left_img);
+        ImageView mLeftImage = findViewById(R.id.layout_search_left_img);
         mLeftImage.setImageResource(R.mipmap.ic_logo_1);
         mRefreshLayout = findViewById(R.id.home_refresh_layout);
         mRecyclerView = findViewById(R.id.home_recycler_view);

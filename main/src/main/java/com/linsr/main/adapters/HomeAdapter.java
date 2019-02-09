@@ -67,10 +67,11 @@ public class HomeAdapter extends BaseRecyclerAdapter<HomePojo.HomeListBean> {
                 return newRecommendHolder(parent);
             case Constants.FloorType.YIMA_STREET:
                 return newShopWindowHolder(parent);
-
-            case Constants.FloorType.MENU:
+            case Constants.FloorType.ICON:
                 view = mInflater.inflate(R.layout.main_item_menu_container, parent, false);
                 return new MenuHolder(mContext, view, mMenuSpanCount);
+
+
             case Constants.FloorType.RECOMMEND_GOODS:
                 return newRecommendHolder(parent);
 

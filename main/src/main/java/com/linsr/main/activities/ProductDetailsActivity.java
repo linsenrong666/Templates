@@ -12,6 +12,7 @@ import com.linsr.common.base.adapter.FragmentPagerAdapterEx;
 import com.linsr.common.biz.ActivityEx;
 import com.linsr.common.gui.dialogs.DialogFactory;
 import com.linsr.common.gui.widgets.FlipperView;
+import com.linsr.common.gui.widgets.common_label_container;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
 import com.linsr.common.router.url.CommonModule;
@@ -27,13 +28,16 @@ import com.linsr.main.logic.contacts.ProductDetailsContact;
 import com.linsr.main.logic.presenter.ProductDetailsPresenter;
 import com.linsr.main.model.ProductDetailsPojo;
 import com.linsr.main.utils.PriceUtils;
+import com.linsr.main.utils.ProductDetailsHelper;
 import com.linsr.main.widgets.ProductDetailsBottomBar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.linsr.common.router.url.MainModule.Activity.ADDRESS_LIST;
 import static com.linsr.common.router.url.MainModule.Activity.MainParams.HOME_PAGE;
+import static com.linsr.common.router.url.MainModule.Activity.ProductDetailsParams.GOODS_ID;
 
 /**
  * 商品详情页
@@ -42,7 +46,7 @@ import static com.linsr.common.router.url.MainModule.Activity.MainParams.HOME_PA
  */
 @Route(path = MainModule.Activity.PRODUCT_DETAILS)
 public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> implements
-        ProductDetailsContact.View, MainModule.Activity.ProductDetailsParams {
+        ProductDetailsContact.View, MainModule.Activity {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -59,6 +63,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
     private String mGoodsId;
     private ProductDetailsPojo.GoodsBean mGoodsBean;
     private List mSpec;
+    private common_label_container mExpress;
 
     @Override
     protected void init(Intent intent) {
@@ -127,6 +132,15 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
                 UIHelper.toCartPage();
             }
         });
+
+        mExpress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Router.startActivityForResult(ProductDetailsActivity.this,
+                        ADDRESS_LIST, AddressListParams.REQUEST_CODE_SELECT_ADDRESS,
+                        null, null);
+            }
+        });
     }
 
     private void initViewPager() {
@@ -155,6 +169,7 @@ public class ProductDetailsActivity extends ActivityEx<ProductDetailsPresenter> 
         mIntegralPriceTextView = findViewById(R.id.product_details_integral_tv);
         mBrokeragePriceTextView = findViewById(R.id.product_details_brokerage_tv);
         mBottomBar = findViewById(R.id.product_details_bottom_bar);
+        mExpress = findViewById(R.id.product_details_express);
     }
 
     private void requestData() {

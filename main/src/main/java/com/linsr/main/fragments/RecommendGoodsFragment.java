@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.linsr.common.base.adapter.BaseRecyclerAdapter;
 import com.linsr.common.base.adapter.BaseViewHolder;
+import com.linsr.common.model.BizPojo;
 import com.linsr.common.net.callback.NetObserver;
 import com.linsr.common.router.Params;
 import com.linsr.common.router.Router;
@@ -15,10 +16,14 @@ import com.linsr.common.router.url.MainModule;
 import com.linsr.common.utils.JLog;
 import com.linsr.common.utils.PageLoadHelper;
 import com.linsr.common.utils.RecyclerViewHelper;
+import com.linsr.common.utils.ToastUtils;
 import com.linsr.main.adapters.RecommendGoodsAdapter;
+import com.linsr.main.app.Constants;
+import com.linsr.main.data.remote.CartRequest;
 import com.linsr.main.data.remote.IndexRequest;
 import com.linsr.main.model.RecommendPojo;
 import com.linsr.main.model.bean.IsbestBean;
+import com.linsr.main.utils.ProductDetailsHelper;
 import com.linsr.main.widgets.SortIndexView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
@@ -55,16 +60,15 @@ public class RecommendGoodsFragment extends RefreshFragment
 
         mAdapter.setOnGoodsClickListener(new RecommendGoodsAdapter.OnGoodsClickListener() {
             @Override
-            public void onAdd(int position) {
+            public void onAdd(String goodsId) {
+                add(goodsId);
             }
         });
         mAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<IsbestBean>() {
             @Override
             public void onItemClick(BaseViewHolder<IsbestBean> holder, int position, int itemType,
                                     IsbestBean data) {
-                Params params = new Params();
-                params.add(GOODS_ID, data.getGoods_id());
-                Router.startActivity(MainModule.Activity.PRODUCT_DETAILS);
+                ProductDetailsHelper.startActivity(data.getGoods_id());
             }
         });
     }
@@ -77,6 +81,24 @@ public class RecommendGoodsFragment extends RefreshFragment
     @Override
     protected void loadData() {
         request(true);
+    }
+
+    private void add(String goodsId) {
+        CartRequest.addToCart(getActivity(), null, 0, goodsId, 1,
+                new NetObserver<BizPojo>(this, true, true) {
+                    @Override
+                    public void onSucceed(BizPojo data) {
+                        if (data != null) {
+                            ToastUtils.show(data.getMessage());
+                            mContentsManager.notifyContentUpdateSuccess(Constants.Event.UPDATE_CART_LIST);
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
     }
 
     private void request(boolean showLoading) {
@@ -93,6 +115,14 @@ public class RecommendGoodsFragment extends RefreshFragment
                     public void onFailed(Throwable e) {
                         mPageIndex = PageLoadHelper.onFailure(mPageIndex, RecommendGoodsFragment.this);
                     }
+
+                    @Override
+                    public void onCompleted() {
+                        super.onCompleted();
+                        PageLoadHelper.onCompleted(mRefreshLayout);
+                    }
                 });
     }
+
+
 }

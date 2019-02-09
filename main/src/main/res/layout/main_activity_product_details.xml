@@ -101,6 +101,7 @@
                 app:common_label_text_color="@color/text_primary"/>
 
             <com.linsr.common.gui.widgets.common_label_container
+                android:id="@+id/product_details_express"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"

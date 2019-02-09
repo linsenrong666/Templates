@@ -1,6 +1,8 @@
 package com.linsr.common.utils;
 
+import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -61,6 +63,21 @@ public class ViewUtils {
         tv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
+    public static void drawableTop(TextView tv, Drawable img) {
+        if (tv == null || img == null) {
+            return;
+        }
+        img.setBounds(0, 0, img.getMinimumWidth(), img.getMinimumHeight());
+        tv.setCompoundDrawables(null, img, null, null);
+    }
+
+    public static void drawableTop(Context context, TextView tv, int resId) {
+        if (context == null) {
+            return;
+        }
+        Drawable drawable = context.getResources().getDrawable(resId);
+        drawableTop(tv, drawable);
+    }
 
 
 }

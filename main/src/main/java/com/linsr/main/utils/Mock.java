@@ -1,12 +1,8 @@
 package com.linsr.main.utils;
 
 import com.linsr.main.R;
-import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.app.Constants;
-import com.linsr.main.model.AddressPojo;
-import com.linsr.main.model.CartShopPojo;
 import com.linsr.main.model.HomePojo;
-import com.linsr.main.model.MenuItemPojo;
 import com.linsr.main.model.OrderPojo;
 import com.linsr.main.model.ShopWindowPojo;
 
@@ -40,17 +36,6 @@ public class Mock {
         List<ShopWindowPojo> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             ShopWindowPojo pojo = new ShopWindowPojo();
-            pojo.setText("item:" + i);
-            list.add(pojo);
-        }
-        return list;
-    }
-
-    public static List<MenuItemPojo> getMenuItemList(int size) {
-        List<MenuItemPojo> list = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            MenuItemPojo pojo = new MenuItemPojo();
-            pojo.setIcon(R.mipmap.placeholders_icon);
             pojo.setText("item:" + i);
             list.add(pojo);
         }

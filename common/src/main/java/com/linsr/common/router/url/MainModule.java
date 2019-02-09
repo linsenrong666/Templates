@@ -37,10 +37,16 @@ public class MainModule {
 
         String BALANCE = ACTIVITY + "balance";
         String ADDRESS_LIST = ACTIVITY + "addressList";
+
+        interface AddressListParams {
+            int REQUEST_CODE_SELECT_ADDRESS = 100;
+            String ACT_MODE = "act_mode";
+        }
+
         String ADD_ADDRESS = ACTIVITY + "addAddress";
 
         interface AddAddressParams {
-            String ACT_ADDRESSI_ID = "act_address_id";
+            String ACT_ADDRESS_ID = "act_address_id";
         }
 
         String SEARCH = ACTIVITY + "search";

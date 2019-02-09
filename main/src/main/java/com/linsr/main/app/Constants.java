@@ -15,6 +15,7 @@ public interface Constants {
         int AD_THREE_DATA = 5;//首页推荐广告3
         int RECOMMEND_FOR_YOU = 6;//为你推荐
         int YIMA_STREET = 7;//姨妈街
+        int ICON = 8;//icon
 
         int MENU = 92;//菜单
         int RECOMMEND_GOODS = 93;//推荐商品
