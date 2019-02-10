@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/balance_goods_pic_iv"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_margin="@dimen/small"
+        android:background="@color/background"/>
+
+    <TextView
+        android:id="@+id/balance_goods_name_tv"
+        style="@style/TextView"
+        android:layout_alignTop="@id/balance_goods_pic_iv"
+        android:layout_toRightOf="@id/balance_goods_pic_iv"
+        tools:text="纪检智能机器人 白色"/>
+
+    <TextView
+        android:id="@+id/balance_goods_price_tv"
+        style="@style/TextView"
+        android:layout_below="@id/balance_goods_name_tv"
+        android:layout_marginTop="@dimen/small"
+        android:layout_toRightOf="@id/balance_goods_pic_iv"
+        android:textColor="@color/main_color"
+        tools:text="$9999999999"/>
+
+    <TextView
+        android:id="@+id/balance_goods_desc_tv"
+        style="@style/TextView"
+        android:layout_alignBottom="@id/balance_goods_pic_iv"
+        android:layout_marginBottom="@dimen/tiny"
+        android:layout_toRightOf="@id/balance_goods_pic_iv"
+        android:textColor="@color/text_primary_weak"
+        android:textSize="@dimen/font_small"
+        tools:text="支持七天无理由退换货"/>
+
+    <TextView
+        android:id="@+id/balance_goods_count_tv"
+        style="@style/TextView"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/small"
+        android:text="X1"/>
+
+</RelativeLayout>

@@ -19,7 +19,7 @@
             style="@style/common_divider_horizontal"/>
 
         <TextView
-            android:id="@+id/balance_count_tv"
+            android:id="@+id/balance_amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -166,57 +166,10 @@
                     android:text="@string/main_goods_details"/>
 
                 <LinearLayout
+                    android:id="@+id/balance_goods_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/balance_goods_pic_iv"
-                            android:layout_width="88dp"
-                            android:layout_height="88dp"
-                            android:layout_margin="@dimen/small"
-                            android:background="@android:color/holo_red_dark"/>
-
-                        <TextView
-                            android:id="@+id/balance_goods_name_tv"
-                            style="@style/TextView"
-                            android:layout_alignTop="@id/balance_goods_pic_iv"
-                            android:layout_toRightOf="@id/balance_goods_pic_iv"
-                            android:text="纪检智能机器人 白色"/>
-
-                        <TextView
-                            android:id="@+id/balance_goods_price_tv"
-                            style="@style/TextView"
-                            android:layout_below="@+id/balance_goods_name_tv"
-                            android:layout_marginTop="@dimen/small"
-                            android:layout_toRightOf="@id/balance_goods_pic_iv"
-                            android:text="$9999999999"
-                            android:textColor="@color/main_color"/>
-
-                        <TextView
-                            android:id="@+id/balance_goods_desc_tv"
-                            style="@style/TextView"
-                            android:layout_alignBottom="@id/balance_goods_pic_iv"
-                            android:layout_marginBottom="@dimen/tiny"
-                            android:layout_toRightOf="@id/balance_goods_pic_iv"
-                            android:text="支持七天无理由退换货"
-                            android:textColor="@color/text_primary_weak"
-                            android:textSize="@dimen/font_small"/>
-
-                        <TextView
-                            android:id="@+id/balance_goods_count_tv"
-                            style="@style/TextView"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/small"
-                            android:text="X1"/>
-                    </RelativeLayout>
-
-                </LinearLayout>
+                    android:orientation="vertical"/>
 
                 <RelativeLayout
                     style="@style/main_balance_item_layout">

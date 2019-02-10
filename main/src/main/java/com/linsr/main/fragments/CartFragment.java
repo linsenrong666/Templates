@@ -28,6 +28,7 @@ import com.linsr.main.adapters.cart.CartBalanceTO;
 import com.linsr.main.adapters.cart.GoodsHolder;
 import com.linsr.main.adapters.cart.TreePojo;
 import com.linsr.main.app.Constants;
+import com.linsr.main.logic.UIHelper;
 import com.linsr.main.logic.contacts.CartContact;
 import com.linsr.main.logic.presenter.CartPresenter;
 import com.linsr.main.model.CartListPojo;
@@ -305,25 +306,30 @@ public class CartFragment extends FragmentEx<CartPresenter> implements CartConta
 
     @Override
     public void onConfirm(int mode) {
-        List<CartListPojo.GoodsListBean.ListBean> deleteList = mCartAdapter.getCheckedList();
+        List<CartListPojo.GoodsListBean.ListBean> list = mCartAdapter.getCheckedList();
         if (mode == BalanceBar.BALANCE_MODE) {
-            if (deleteList == null || deleteList.size() == 0) {
-                ToastUtils.show("请选择需结算的商品");
-                return;
-            }
-            Router.startActivity(MainModule.Activity.BALANCE);
+            toBalanceActivity(list);
         } else if (mode == BalanceBar.DELETE_MODE) {
 
-            if (deleteList == null || deleteList.size() == 0) {
+            if (list == null || list.size() == 0) {
                 ToastUtils.show("请选择需移除的商品");
                 return;
             }
-            if (deleteList.size() > 1) {
+            if (list.size() > 1) {
                 ToastUtils.show("当前一次仅支持移除一种商品");
                 return;
             }
-            mPresenter.dropGoods(deleteList.get(0).getRec_id());
+            mPresenter.dropGoods(list.get(0).getRec_id());
         }
+    }
+
+    private void toBalanceActivity(List<CartListPojo.GoodsListBean.ListBean> list) {
+        if (list == null || list.size() == 0) {
+            ToastUtils.show("请选择需结算的商品");
+            return;
+        }
+        CartBalanceTO to = mCartAdapter.balance();
+        UIHelper.toBalanceActivity(list, to.getAmount());
     }
 
     @Override

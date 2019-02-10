@@ -36,6 +36,12 @@ public class MainModule {
         }
 
         String BALANCE = ACTIVITY + "balance";
+
+        interface BalanceParams {
+            String ACT_BALANCE_GOODS_LIST = "act_balance_goods_list";
+            String ACT_BALANCE_AMOUNT = "act_balance_amount";
+        }
+
         String ADDRESS_LIST = ACTIVITY + "addressList";
 
         interface AddressListParams {

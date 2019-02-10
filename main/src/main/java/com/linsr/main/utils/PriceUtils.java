@@ -39,4 +39,16 @@ public class PriceUtils {
         ssb.setSpan(new ForegroundColorSpan(0xff8F8F8F), _price.length() + space.length(), content.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         return ssb;
     }
+
+    public static CharSequence defaultStyle(String price) {
+        if (TextUtils.isEmpty(price)) {
+            return "";
+        }
+        String _price = "￥" + price;
+        SpannableStringBuilder ssb = new SpannableStringBuilder(_price);
+        ssb.setSpan(new StyleSpan(Typeface.BOLD), 0, _price.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        ssb.setSpan(new ForegroundColorSpan(0xffFB6182), 0, _price.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        return ssb;
+    }
+
 }
